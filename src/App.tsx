@@ -73,12 +73,13 @@ type TextareaProps = {
 	name: string;
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
+	wrap?: "hard" | "soft";
 };
 
 type TextareaValue = string;
 function Textarea(props: TextareaProps) {
 	const [value, changeValue] = useState<TextareaValue>('');
-	const { className, placeholder, id, name, before, after } = props;
+	const { className, placeholder, id, name, wrap,before, after } = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		changeValue(event.target.value);
@@ -95,7 +96,7 @@ function Textarea(props: TextareaProps) {
 			name={name}
 			cols={30}
 			rows={10}
-			wrap="hard"
+			wrap={wrap}
 		/>
 		{after}
 		</>
@@ -106,6 +107,7 @@ Textarea.defaultProps = {
 	before: undefined,
 	after: undefined,
 	placeholder: '',
+	wrap: 'soft'
 };
 
 function App(): JSX.Element {
@@ -136,6 +138,7 @@ function App(): JSX.Element {
 							Subtasks
 						</Label>
 					}
+					wrap="soft"
 				/>
 			</div>
 		</>
