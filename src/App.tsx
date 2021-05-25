@@ -2,13 +2,6 @@ import React, { Fragment, useState } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import './styles/App.scss';
 
-type ContainerProps = {
-	children: JSX.Element;
-};
-function Container(props: ContainerProps) {
-	const { children } = props;
-	return <div className="container">{children}</div>;
-}
 
 // Label
 type LabelProps = {
@@ -156,9 +149,22 @@ function App(): JSX.Element {
 					id="taskSeparator"
 				/>
 			</div>
+			<div className="task-tags">
+			<Input
+					before={
+						<Label htmlFor="taskTags" className="task-tags__label">
+							Tags:
+						</Label>
+					}
+					name="task_tags"
+					placeholder="Self-Development, Psychology"
+					className="input task-tags__input "
+					id="taskTags"
+				/>
+			</div>
 		</>
 	);
-	return <Container>{elementsInsideContainer}</Container>;
+	return <div className="container">{elementsInsideContainer}</div>;
 }
 
 export default App;
