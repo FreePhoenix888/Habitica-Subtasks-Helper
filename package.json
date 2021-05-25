@@ -1,0 +1,62 @@
+{
+	"name": "my-app",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.11.10",
+		"@testing-library/react": "^11.2.6",
+		"@testing-library/user-event": "^12.8.3",
+		"@types/jest": "^26.0.23",
+		"@types/node": "^15.0.3",
+		"@types/react": "^17.0.5",
+		"@types/react-dom": "^17.0.5",
+		"express": "^4.17.1",
+		"node-sass": "^6.0.0",
+		"normalize.css": "^8.0.1",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-scripts": "4.0.3",
+		"react-spring": "^9.1.2",
+		"web-vitals": "^1.1.1"
+	},
+	"scripts": {
+		"serve": "yarn serve -s build",
+		"start": "yarn react-scripts start",
+		"build": "yarn react-scripts build",
+		"buildFromTsx": "yarn tsc",
+		"test": "yarn react-scripts test",
+		"eject": "yarn react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^4.23.0",
+		"@typescript-eslint/parser": "^4.23.0",
+		"eslint": "^7.26.0",
+		"eslint-config-airbnb": "^18.2.1",
+		"eslint-config-airbnb-typescript": "^12.3.1",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.23.2",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-react": "^7.23.2",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"typescript": "^4.2.4"
+	},
+	"proxy": "http://localhost:3001"
+}

@@ -1,0 +1,76 @@
+:root {
+	--text-color: hsl(0, 0%, 100%);
+	--font-family: 'Montserrat', sans-serif;
+	--font-size: 20px;
+	--background-color-main: hsl(203, 8%, 20%);
+	--background-color-secondary: hsl(0, 0%, 77%);
+	--background-color-active: hsl(203, 20%, 71%);
+}
+html {
+	box-sizing: border-box;
+	font-size: var(--font-size);
+}
+
+// Disables browser default styles
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+*:focus {
+	outline: none;
+}
+
+// End: Disables browser default styles
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+	background: var(--background-color-main);
+	text-align: center;
+	color: var(--text-color);
+}
+
+.container {
+	--max-width: 700px;
+	--margin: 0 auto;
+	max-width: var(--max-width);
+	margin: var(--margin);
+}
+
+h1 {
+	--font-weight: 800;
+	--font-size: 1.5rem;
+	font-size: var(--font-size);
+	font-weight: var(--font-weight);
+}
+
+label {
+	--font-weight: 600;
+	--font-size: 1.3rem;
+	font-size: var(--font-size);
+	font-weight: var(--font-weight);
+}
+input {
+	--width: 100%;
+	--text-align: center;
+	--border-radius: 50px;
+	width: var(--width);
+	text-align: var(--text-align);
+	border-radius: var(--border-radius);
+	background: var(--background-color-secondary);
+	&:focus {
+		background: var(--background-color-active);
+		&::placeholder {
+			visibility: hidden;
+		}
+	}
+	border: 0;
+}
