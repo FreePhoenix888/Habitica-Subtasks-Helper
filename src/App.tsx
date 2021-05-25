@@ -1,107 +1,14 @@
 import React, { Fragment, useState } from 'react';
 // import { useSpring, animated } from 'react-spring';
+import {Label, Input, Textarea} from './components'
 import './styles/App.scss';
 
 
-// Label
-type LabelProps = {
-	className: string;
-	htmlFor: string | undefined;
-	children: string;
-};
 
-function Label(props: LabelProps): JSX.Element {
-	const { htmlFor, children, className } = props;
-	return (
-		<label htmlFor={htmlFor} className={className}>
-			{children}
-		</label>
-	);
-}
 
-// Input
-type InputProps = {
-	className: string;
-	placeholder: string;
-	id: string;
-	name: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
-};
 
-type InputValue = string;
-function Input(props: InputProps): JSX.Element {
-	const [value, changeValue] = useState<InputValue>('');
 
-	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-		changeValue(event.target.value);
-	}
-	const { placeholder, className, id, name, before, after } = props;
-	return (
-		<>
-			{before}
-			<input
-				name={name}
-				placeholder={placeholder}
-				className={className}
-				id={id}
-				value={value}
-				onChange={handleChange}
-			/>
-			{after}
-		</>
-	);
-}
 
-Input.defaultProps = {
-	before: undefined,
-	after: undefined,
-};
-
-// Textarea
-type TextareaProps = {
-	className: string;
-	placeholder?: string;
-	id: string;
-	name: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
-	wrap?: 'hard' | 'soft';
-};
-
-type TextareaValue = string;
-function Textarea(props: TextareaProps) {
-	const [value, changeValue] = useState<TextareaValue>('');
-	const { className, placeholder, id, name, wrap, before, after } = props;
-
-	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-		changeValue(event.target.value);
-	}
-	return (
-		<>
-			{before}
-			<textarea
-				onChange={handleChange}
-				value={value}
-				className={className}
-				placeholder={placeholder}
-				id={id}
-				name={name}
-				cols={30}
-				rows={10}
-				wrap={wrap}
-			/>
-			{after}
-		</>
-	);
-}
-
-Textarea.defaultProps = {
-	before: undefined,
-	after: undefined,
-	placeholder: '',
-	wrap: 'soft',
-};
 
 function App(): JSX.Element {
 	const elementsInsideContainer = (
