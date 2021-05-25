@@ -73,32 +73,32 @@ type TextareaProps = {
 	name: string;
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
-	wrap?: "hard" | "soft";
+	wrap?: 'hard' | 'soft';
 };
 
 type TextareaValue = string;
 function Textarea(props: TextareaProps) {
 	const [value, changeValue] = useState<TextareaValue>('');
-	const { className, placeholder, id, name, wrap,before, after } = props;
+	const { className, placeholder, id, name, wrap, before, after } = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		changeValue(event.target.value);
 	}
 	return (
 		<>
-		{before}
-		<textarea
-			onChange={handleChange}
-			value={value}
-			className={className}
-			placeholder={placeholder}
-			id={id}
-			name={name}
-			cols={30}
-			rows={10}
-			wrap={wrap}
-		/>
-		{after}
+			{before}
+			<textarea
+				onChange={handleChange}
+				value={value}
+				className={className}
+				placeholder={placeholder}
+				id={id}
+				name={name}
+				cols={30}
+				rows={10}
+				wrap={wrap}
+			/>
+			{after}
 		</>
 	);
 }
@@ -107,7 +107,7 @@ Textarea.defaultProps = {
 	before: undefined,
 	after: undefined,
 	placeholder: '',
-	wrap: 'soft'
+	wrap: 'soft',
 };
 
 function App(): JSX.Element {
@@ -123,22 +123,37 @@ function App(): JSX.Element {
 					}
 					name="task_title"
 					placeholder="The Venus Project Conception."
-					className="task-title__input"
+					className="input task-title__input"
 					id="taskTitle"
 				/>
 			</div>
 			<div className="task-subtasks">
 				<Textarea
-					className="task-subtasks__textarea"
+					className="textarea task-subtasks__textarea"
 					id="taskSubtasks"
 					name="task_subtasks"
-					placeholder={'What is the Venus Project?\nAims, Proposals.\nFAQ.Free e-Books.\nRecommended books.'}
+					placeholder={
+						'What is the Venus Project?\nAims, Proposals.\nFAQ.Free e-Books.\nRecommended books.'
+					}
 					before={
 						<Label className="task-subtasks__label" htmlFor="taskSubtasks">
 							Subtasks
 						</Label>
 					}
 					wrap="soft"
+				/>
+			</div>
+			<div className="task-separator">
+				<Input
+					before={
+						<Label htmlFor="taskTitle" className="task-separator__label">
+							Separator:
+						</Label>
+					}
+					name="task_separator"
+					placeholder="\n"
+					className="input input--little task-separator__input "
+					id="taskSeparator"
 				/>
 			</div>
 		</>

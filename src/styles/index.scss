@@ -59,16 +59,16 @@ label {
 	font-weight: var(--font-weight);
 }
 
-textarea {
+.textarea {
 	--text-align: left;
 	resize: none;
 }
-input {
+.input {
 	--text-align: center;
 }
 
-textarea,
-input {
+.textarea,
+.input {
 	--padding: 12px 26px;
 	--width: 100%;
 	--border-radius: 50px;
@@ -77,6 +77,10 @@ input {
 	text-align: var(--text-align);
 	border-radius: var(--border-radius);
 	background: var(--background-color-secondary);
+	border: 0;
+	&--little {
+		--width: 25%;
+	}
 	&:focus {
 		background: var(--background-color-active);
 		&::placeholder {
@@ -84,5 +88,4 @@ input {
 			visibility: var(--visibility);
 		}
 	}
-	border: 0;
 }
