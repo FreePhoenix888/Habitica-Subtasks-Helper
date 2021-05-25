@@ -14,7 +14,7 @@ function Container(props: ContainerProps) {
 type LabelProps = {
 	className: string;
 	htmlFor: string | undefined;
-	children: JSX.Element | string;
+	children: string;
 };
 
 function Label(props: LabelProps): JSX.Element {
@@ -66,22 +66,52 @@ Input.defaultProps = {
 };
 
 // Textarea
-/*	type TextareaProps = {
-className: string;
-placeholder: string;
-id: string;
-name:string;
+type TextareaProps = {
+	className: string;
+	placeholder?: string;
+	id: string;
+	name: string;
+	before?: JSX.Element | undefined;
+	after?: JSX.Element | undefined;
+};
+
+type TextareaValue = string;
+function Textarea(props: TextareaProps) {
+	const [value, changeValue] = useState<TextareaValue>('');
+	const { className, placeholder, id, name, before, after } = props;
+
+	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+		changeValue(event.target.value);
+	}
+	return (
+		<>
+		{before}
+		<textarea
+			onChange={handleChange}
+			value={value}
+			className={className}
+			placeholder={placeholder}
+			id={id}
+			name={name}
+			cols={30}
+			rows={10}
+			wrap="hard"
+		/>
+		{after}
+		</>
+	);
 }
 
-function Textarea(props: TextareaProps){
-	const {className, placeholder, id,name} = props;
-	return <textarea name={name} id={id} cols="30" rows="10">{children}</textarea>
-} */
+Textarea.defaultProps = {
+	before: undefined,
+	after: undefined,
+	placeholder: '',
+};
 
 function App(): JSX.Element {
 	const elementsInsideContainer = (
 		<>
-			<h1>Habitica Subtasks Maker</h1>
+			<h1>Habitica Subtasks Helper</h1>
 			<div className="task-title">
 				<Input
 					before={
@@ -93,6 +123,19 @@ function App(): JSX.Element {
 					placeholder="The Venus Project Conception."
 					className="task-title__input"
 					id="taskTitle"
+				/>
+			</div>
+			<div className="task-subtasks">
+				<Textarea
+					className="task-subtasks__textarea"
+					id="taskSubtasks"
+					name="task_subtasks"
+					placeholder={'What is the Venus Project?\nAims, Proposals.\nFAQ.Free e-Books.\nRecommended books.'}
+					before={
+						<Label className="task-subtasks__label" htmlFor="taskSubtasks">
+							Subtasks
+						</Label>
+					}
 				/>
 			</div>
 		</>
