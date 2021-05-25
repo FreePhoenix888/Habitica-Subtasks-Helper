@@ -32,8 +32,8 @@ type InputProps = {
 	placeholder: string;
 	id: string;
 	name: string;
-	before?: JSX.Element;
-	after?: JSX.Element;
+	before?: JSX.Element | undefined;
+	after?: JSX.Element | undefined;
 };
 
 type InputValue = string;
@@ -60,8 +60,9 @@ function Input(props: InputProps): JSX.Element {
 	);
 }
 
-type InputWithLabelProps = {
-	className: string;
+Input.defaultProps = {
+	before: undefined,
+	after: undefined,
 };
 
 // Textarea
@@ -82,10 +83,12 @@ function App(): JSX.Element {
 		<>
 			<h1>Habitica Subtasks Maker</h1>
 			<div className="task-title">
-				<Label htmlFor="taskTitle" className="task-title__label">
-					Title:
-				</Label>
 				<Input
+					before={
+						<Label htmlFor="taskTitle" className="task-title__label">
+							Title:
+						</Label>
+					}
 					name="task_title"
 					placeholder="The Venus Project Conception."
 					className="task-title__input"
