@@ -1,14 +1,7 @@
 import React, { Fragment, useState } from 'react';
 // import { useSpring, animated } from 'react-spring';
-import {Label, Input, Textarea} from './components'
+import { Label, Input, Textarea, RadioButton } from './components';
 import './styles/App.scss';
-
-
-
-
-
-
-
 
 function App(): JSX.Element {
 	const elementsInsideContainer = (
@@ -57,7 +50,7 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-tags">
-			<Input
+				<Input
 					before={
 						<Label htmlFor="taskTags" className="task-tags__label">
 							Tags:
@@ -67,6 +60,19 @@ function App(): JSX.Element {
 					placeholder="Self-Development, Psychology"
 					className="input task-tags__input "
 					id="taskTags"
+				/>
+			</div>
+			<div className="task-difficulty">
+				<RadioButton
+					before={
+						<Label htmlFor="taskDifficulty" className="task-difficulty__label">
+							Difficulty:
+						</Label>
+					}
+					name="task_difficulty"
+					className="input task-difficulty__input"
+					id="taskDifficulty"
+					value="1"
 				/>
 			</div>
 		</>
