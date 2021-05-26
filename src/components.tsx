@@ -51,15 +51,6 @@ export function Input(props: InputProps): JSX.Element {
 		</>
 	);
 }
-
-Input.defaultProps = {
-	type: 'text',
-	placeholder: '',
-	className: '',
-	id: '',
-	before: undefined,
-	after: undefined,
-};
 // End: Input
 
 // Textarea
@@ -99,15 +90,6 @@ export function Textarea(props: TextareaProps): JSX.Element {
 		</>
 	);
 }
-
-Textarea.defaultProps = {
-	before: undefined,
-	after: undefined,
-	placeholder: '',
-	wrap: 'soft',
-	className: '',
-	id: '',
-};
 // End: Textarea
 
 // Radio button
@@ -138,14 +120,6 @@ export function RadioButton(props: RadioButtonProps): JSX.Element {
 		</>
 	);
 }
-
-RadioButton.defaultProps = {
-	before: undefined,
-	after: undefined,
-	className: '',
-	id: '',
-	value: '',
-};
 // End: Radio button
 
 // Modern radio button
@@ -180,12 +154,4 @@ export function ModernRadioButton(props: ModernRadioButtonProps) {
 		</div>
 	);
 }
-
-ModernRadioButton.defaultProps = {
-	before: undefined,
-	after: undefined,
-	className: '',
-	id: '',
-	value: '',
-};
 // End: Modern radio button
