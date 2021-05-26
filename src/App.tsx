@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 // import { useSpring, animated } from 'react-spring';
-import { Label, Input, Textarea, RadioButton } from './components';
+import { Label, Input, Textarea, ModernRadioButton } from './components';
+import {ReactComponent as StarSVG} from './media/images/star.svg'
 import './styles/App.scss';
 
 function App(): JSX.Element {
@@ -16,7 +17,7 @@ function App(): JSX.Element {
 					}
 					name="task_title"
 					placeholder="The Venus Project Conception."
-					className="input task-title__input"
+					className="task-title__input"
 					id="taskTitle"
 				/>
 			</div>
@@ -45,7 +46,7 @@ function App(): JSX.Element {
 					}
 					name="task_separator"
 					placeholder="\n"
-					className="input input--little task-separator__input "
+					className="input--little task-separator__input "
 					id="taskSeparator"
 				/>
 			</div>
@@ -58,19 +59,19 @@ function App(): JSX.Element {
 					}
 					name="task_tags"
 					placeholder="Self-Development, Psychology"
-					className="input task-tags__input "
+					className="task-tags__input "
 					id="taskTags"
 				/>
 			</div>
 			<div className="task-difficulty">
-				<RadioButton
+				<ModernRadioButton
 					before={
 						<Label htmlFor="taskDifficulty" className="task-difficulty__label">
-							Difficulty:
+							<StarSVG/>
 						</Label>
 					}
 					name="task_difficulty"
-					className="input task-difficulty__input"
+					className="task-difficulty__input"
 					id="taskDifficulty"
 					value="1"
 				/>
