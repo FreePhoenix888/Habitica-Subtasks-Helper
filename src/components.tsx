@@ -26,11 +26,21 @@ type InputProps = {
 	id?: string;
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
+	autoSize?: boolean | string | undefined;
 };
 
 type InputValue = string;
 export function Input(props: InputProps): JSX.Element {
-	const { type, placeholder, className= '', id, name, before, after } = props;
+	const {
+		type,
+		placeholder,
+		className = '',
+		id,
+		name,
+		before,
+		after,
+		autoSize = false,
+	} = props;
 	const [value, changeValue] = useState<InputValue>('');
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 		changeValue(event.target.value);
@@ -39,10 +49,11 @@ export function Input(props: InputProps): JSX.Element {
 		<>
 			{before}
 			<input
+				size={autoSize ? value.length+1  : undefined}
 				type={type}
 				name={name}
 				placeholder={placeholder}
-				className={`input ${className}`}
+				className={`input ${autoSize ? 'input--auto-size' : ''} ${className}`}
 				id={id}
 				value={value}
 				onChange={handleChange}
@@ -67,7 +78,7 @@ type TextareaProps = {
 type TextareaValue = string;
 export function Textarea(props: TextareaProps): JSX.Element {
 	const [value, changeValue] = useState<TextareaValue>('');
-	const { className='', placeholder, id, name, wrap, before, after } = props;
+	const { className = '', placeholder, id, name, wrap, before, after } = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		changeValue(event.target.value);
@@ -104,7 +115,15 @@ type RadioButtonProps = {
 };
 
 export function RadioButton(props: RadioButtonProps): JSX.Element {
-	const { className='', id, name, before, after, value, handleChange = () => {} } = props;
+	const {
+		className = '',
+		id,
+		name,
+		before,
+		after,
+		value,
+		handleChange = () => {},
+	} = props;
 	return (
 		<>
 			{before}
@@ -125,7 +144,8 @@ export function RadioButton(props: RadioButtonProps): JSX.Element {
 // Modern radio button
 type ModernRadioButtonProps = {
 	name: string;
-	className?: string;
+	radioButtonClassName?: string;
+	containerClassName?: string;
 	id?: string;
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
@@ -135,16 +155,29 @@ type ModernRadioButtonProps = {
 
 type ModernRadioButtonIsChecked = boolean;
 export function ModernRadioButton(props: ModernRadioButtonProps) {
-	const { name, className='', id, before, after, value, isCheckedByDefault = false } = props;
-	const [isChecked, changeChecked] = useState<ModernRadioButtonIsChecked>(isCheckedByDefault);
-	function handleChange(event: React.ChangeEvent<HTMLInputElement>){
-		changeChecked(event.target.checked)
+	const {
+		name,
+		radioButtonClassName = '',
+		id,
+		before,
+		after,
+		value,
+		isCheckedByDefault = false,
+		containerClassName = '',
+	} = props;
+
+	const [isChecked, changeChecked] =
+		useState<ModernRadioButtonIsChecked>(isCheckedByDefault);
+
+	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+		changeChecked(event.target.checked);
+		console.log(event.target.checked);
 	}
 	return (
-		<div className="radio-button-container">
+		<div className={`radio-button-container ${containerClassName}`}>
 			<RadioButton
 				name={name}
-				className={`radio-button-container__radio-button ${className}`}
+				className={`radio-button-container__radio-button ${radioButtonClassName}`}
 				id={id}
 				value={value}
 				before={before}

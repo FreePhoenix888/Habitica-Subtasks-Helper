@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import { Label, Input, Textarea, ModernRadioButton } from './components';
-import {ReactComponent as StarSVG} from './media/images/star.svg'
+import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
 
 function App(): JSX.Element {
@@ -48,6 +48,7 @@ function App(): JSX.Element {
 					placeholder="\n"
 					className="input--little task-separator__input "
 					id="taskSeparator"
+					autoSize
 				/>
 			</div>
 			<div className="task-tags">
@@ -67,11 +68,12 @@ function App(): JSX.Element {
 				<ModernRadioButton
 					before={
 						<Label htmlFor="taskDifficulty" className="task-difficulty__label">
-							<StarSVG/>
+							<StarSVG className="svg star-SVG radio-button-container__svg radio-button-container__star-svg" />
 						</Label>
 					}
 					name="task_difficulty"
-					className="task-difficulty__input"
+					containerClassName="radio-button-container--little"
+					radioButtonClassName="task-difficulty__input"
 					id="taskDifficulty"
 					value="1"
 				/>
