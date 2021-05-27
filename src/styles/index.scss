@@ -1,11 +1,12 @@
 :root {
-	--text-color-main-main: hsl(0, 0%, 100%);
+	--text-color-main-primary: hsl(0, 0%, 100%);
 	--text-color-main-non-active: hsla(0, 0%, 0%, 50%);
 	--text-color-main-active: hsla(0, 0%, 0%, 80%);
 	--font-family: 'Montserrat', sans-serif;
 	--font-size: 20px;
-	--background-color-main: hsl(203, 8%, 20%);
+	--background-color-primary: hsl(203, 8%, 20%);
 	--background-color-secondary: hsl(0, 0%, 77%);
+	--background-color-thirdly: hsl(204, 8%, 48%);
 	--background-color-active: hsl(203, 20%, 71%);
 }
 html {
@@ -35,7 +36,7 @@ body {
 body {
 	font-family: var(--font-family);
 	font-size: var(--font-size);
-	background: var(--background-color-main);
+	background: var(--background-color-primary);
 	text-align: center;
 	color: var(--text-color-main);
 }
@@ -121,4 +122,20 @@ label {
 	--display: flex;
 	display: var(--display);
 	place-content: var(--place-content);
+}
+
+.info {
+	--border-radius: 50px;
+	--font-size: 40px;
+	--font-weight: 700;
+	--width: 56px;
+	--height: 56px;
+	display: grid;
+	place-content: center;
+	width: var(--width);
+	height: var(--height);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	border-radius: var(--border-radius);
+	background: var(--background-color-thirdly);
 }
