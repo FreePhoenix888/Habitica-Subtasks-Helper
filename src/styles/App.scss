@@ -23,3 +23,10 @@
 		--padding: 0 15px;
 	}
 }
+
+.task-notes{
+	// .task-notes__textarea
+	&__textarea{
+		text-align: center;
+	}
+}

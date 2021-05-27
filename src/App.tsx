@@ -50,7 +50,7 @@ function App(): JSX.Element {
 				<Input
 					before={
 						<Label htmlFor="taskTitle" className="task-title__label">
-							Title:
+							Title
 						</Label>
 					}
 					name="task_title"
@@ -79,7 +79,7 @@ function App(): JSX.Element {
 				<Input
 					before={
 						<Label htmlFor="taskTitle" className="task-separator__label">
-							Separator:
+							Separator
 						</Label>
 					}
 					name="task_separator"
@@ -93,7 +93,7 @@ function App(): JSX.Element {
 				<Input
 					before={
 						<Label htmlFor="taskTags" className="task-tags__label">
-							Tags:
+							Tags
 						</Label>
 					}
 					name="task_tags"
@@ -103,10 +103,24 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-difficulty">
-			<Label htmlFor=" ">Difficulty</Label>
+				<Label htmlFor=" ">Difficulty</Label>
 				<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
 					{modernRadioButtons}
 				</ModernRadioButtonGroup>
+			</div>
+			<div className="task-notes">
+				<Textarea
+					className="textarea task-notes__textarea"
+					id="taskNotes"
+					name="task_notes"
+					placeholder="Read it without any prejudices as any new ideas."
+					before={
+						<Label className="task-notes__label" htmlFor="taskNotes">
+							Notes
+						</Label>
+					}
+					wrap="soft"
+				/>
 			</div>
 		</div>
 	);
