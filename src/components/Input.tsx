@@ -9,6 +9,7 @@ type Props = {
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
 	autoSize?: boolean | string | undefined;
+	tabIndex: number;
 };
 
 type InputValue = string;
@@ -22,6 +23,7 @@ export function Input(props: Props): JSX.Element {
 		before,
 		after,
 		autoSize = false,
+		tabIndex = 0,
 	} = props;
 	const [value, changeValue] = useState<InputValue>('');
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -32,6 +34,7 @@ export function Input(props: Props): JSX.Element {
 			{before}
 			<input
 				size={autoSize ? value.length + 1 : undefined}
+				tabIndex={tabIndex}
 				type={type}
 				name={name}
 				placeholder={placeholder}
