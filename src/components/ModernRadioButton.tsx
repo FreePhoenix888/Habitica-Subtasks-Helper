@@ -33,7 +33,7 @@ export function ModernRadioButton(props: Props) {
 			className={`radio-button-container ${
 				isChecked ? 'radio-button-container--checked' : ''
 			} ${containerClassName} ${
-				isChecked ? `${containerClassName}--active` : ''
+				isChecked ? `${containerClassName}--checked` : ''
 			}`}
 		>
 			<RadioButton

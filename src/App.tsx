@@ -6,6 +6,7 @@ import {
 	Textarea,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
+	Info,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
@@ -121,6 +122,10 @@ function App(): JSX.Element {
 					}
 					wrap="soft"
 				/>
+			</div>
+
+			<div>
+				<Info />
 			</div>
 		</div>
 	);
