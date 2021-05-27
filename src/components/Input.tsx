@@ -9,7 +9,7 @@ type Props = {
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
 	autoSize?: boolean | string | undefined;
-	tabIndex: number;
+	tabIndex?: number;
 };
 
 type InputValue = string;
