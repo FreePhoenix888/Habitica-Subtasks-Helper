@@ -34,7 +34,8 @@
 		"@typescript-eslint/no-shadow": ["off"],
 		"one-var": "off",
 		"react/require-default-props": "off",
-		"no-plusplus": "off"
+		"no-plusplus": "off",
+		"import/prefer-default-export": "off"
 	},
 	"globals": {
 		// "React": true,
