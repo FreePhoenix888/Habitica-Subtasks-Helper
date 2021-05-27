@@ -43,8 +43,8 @@ for (let i = 0; i < 4; i++) {
 }
 
 function App(): JSX.Element {
-	const elementsInsideContainer = (
-		<>
+	return (
+		<div className="container">
 			<h1>Habitica Subtasks Helper</h1>
 			<div className="task-title">
 				<Input
@@ -103,11 +103,13 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-difficulty">
-				<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">{modernRadioButtons}</ModernRadioButtonGroup>
+			<Label htmlFor=" ">Difficulty</Label>
+				<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
+					{modernRadioButtons}
+				</ModernRadioButtonGroup>
 			</div>
-		</>
+		</div>
 	);
-	return <div className="container">{elementsInsideContainer}</div>;
 }
 
 export default App;

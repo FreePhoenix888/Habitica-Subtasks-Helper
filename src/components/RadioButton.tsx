@@ -9,6 +9,8 @@ type Props = {
 	after?: JSX.Element | undefined;
 	value?: string;
 	onChange: (value: InputChangeEventType) => void;
+	tabIndex?: number;
+	hidden?: boolean;
 };
 
 export function RadioButton(props: Props): JSX.Element {
@@ -20,6 +22,8 @@ export function RadioButton(props: Props): JSX.Element {
 		after,
 		value,
 		onChange = () => {},
+		tabIndex = 0,
+		hidden = false,
 	} = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -35,6 +39,8 @@ export function RadioButton(props: Props): JSX.Element {
 				id={id}
 				value={value}
 				onChange={handleChange}
+				tabIndex={tabIndex}
+				hidden={hidden}
 			/>
 			{after}
 		</>
