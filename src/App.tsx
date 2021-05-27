@@ -125,7 +125,7 @@ function App(): JSX.Element {
 			</div>
 
 			<div>
-				<Info />
+				<Info onMouseOver={(event) => {console.log("Hovered")}} />
 			</div>
 		</div>
 	);
