@@ -1,5 +1,7 @@
 :root {
-	--text-color: hsl(0, 0%, 100%);
+	--text-color-main-main: hsl(0, 0%, 100%);
+	--text-color-main-non-active: hsla(0, 0%, 0%, 50%);
+	--text-color-main-active: hsla(0, 0%, 0%, 80%);
 	--font-family: 'Montserrat', sans-serif;
 	--font-size: 20px;
 	--background-color-main: hsl(203, 8%, 20%);
@@ -35,7 +37,7 @@ body {
 	font-size: var(--font-size);
 	background: var(--background-color-main);
 	text-align: center;
-	color: var(--text-color);
+	color: var(--text-color-main);
 }
 
 .container {
@@ -70,13 +72,17 @@ label {
 	--padding: 12px 26px;
 	--width: 100%;
 	--border-radius: 50px;
+	color: var(--text-color-main-non-active);
 	width: var(--width);
 	padding: var(--padding);
 	text-align: var(--text-align);
 	border-radius: var(--border-radius);
 	background: var(--background-color-secondary);
 	border: 0;
-	&--auto-size{
+	&--active {
+		color: var(--text-color-main-active);
+	}
+	&--auto-size {
 		--width: auto;
 		--max-width: 100%;
 		max-width: var(--max-width);
@@ -93,10 +99,11 @@ label {
 .radio-button-container {
 	--padding: 0 26px;
 	padding: var(--padding);
-	&--checked{
+	&--checked {
 		background: var(--background-color-active);
+		color: var(--text);
 	}
-	&--little{
+	&--little {
 		--width: min-content;
 	}
 	&__radio-button {
