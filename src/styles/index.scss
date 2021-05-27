@@ -72,6 +72,7 @@ label {
 	--padding: 12px 26px;
 	--width: 100%;
 	--border-radius: 50px;
+	transition: background, color 0.150s ease-in-out;
 	color: var(--text-color-main-non-active);
 	width: var(--width);
 	padding: var(--padding);
@@ -80,7 +81,6 @@ label {
 	background: var(--background-color-secondary);
 	border: 0;
 	&--active {
-		color: var(--text-color-main-active);
 	}
 	&--auto-size {
 		--width: auto;
@@ -88,6 +88,7 @@ label {
 		max-width: var(--max-width);
 	}
 	&:focus {
+		color: var(--text-color-main-active);
 		background: var(--background-color-active);
 		&::placeholder {
 			--visibility: hidden;
@@ -109,6 +110,9 @@ label {
 	&__radio-button {
 		appearance: none;
 		display: inline;
+	}
+	&__svg{
+		fill: currentColor;
 	}
 }
 .label {
