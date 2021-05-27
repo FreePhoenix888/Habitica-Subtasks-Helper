@@ -141,8 +141,10 @@ label {
 }
 
 .arrow {
-	background: var(--background-color-secondary);
-	clip-path: var(--clip-path) &--up, &--down {
+	background: var(--background-color-thirdly);
+	clip-path: var(--clip-path);
+	&--up,
+	&--down {
 		--width: 32px;
 		--height: 20px;
 		width: var(--width);

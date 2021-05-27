@@ -1,5 +1,4 @@
-import React from "react";
+import React from 'react';
 
-// export function Message(props: Props){
-
-// }
+type Props = {};
+export function Message(props: Props) {}

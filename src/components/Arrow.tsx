@@ -8,6 +8,6 @@ type Props = {
 export function Arrow(props: Props){
    const {className='', direction} = props
    return (
-      <div className={`arrow ${className} arrow--${direction}`}></div>
+      <div className={`arrow ${className} arrow--${direction}`}/>
    )
 }
