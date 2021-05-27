@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckedInputType } from './ModernRadioButtonGroup';
+import { InputChangeEventType } from './ModernRadioButtonGroup';
 
 type Props = {
 	name: string;
@@ -8,7 +8,7 @@ type Props = {
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
 	value?: string;
-	onChange: (value: CheckedInputType) => void;
+	onChange: (value: InputChangeEventType) => void;
 };
 
 export function RadioButton(props: Props): JSX.Element {

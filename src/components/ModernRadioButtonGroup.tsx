@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-declare function handleChange(value: CheckedInputType): void;
+declare function handleChange(value: InputChangeEventType): void;
 type CheckedInputContextType = {
-	checkedInput: CheckedInputType;
+	inputChangeEvent: InputChangeEventType;
 	handleChange: typeof handleChange;
 };
 export const CheckedInputContext = React.createContext<CheckedInputContextType>(
-	{ checkedInput: undefined, handleChange: () => {} }
+	{ inputChangeEvent: undefined, handleChange: () => {} }
 );
 
 type Props = {
@@ -16,9 +16,7 @@ type Props = {
 	before?: JSX.Element | JSX.Element[] | undefined;
 	after?: JSX.Element | JSX.Element[] | undefined;
 };
-export type CheckedInputType =
-	| Element
-	| JSX.Element
+export type InputChangeEventType =
 	| React.ChangeEvent<HTMLInputElement>
 	| undefined;
 
@@ -30,15 +28,15 @@ export function ModernRadioButtonGroup(props: Props) {
 		before,
 		after,
 	} = props;
-	const [checkedValue, changeChecked] = useState<CheckedInputType>(undefined);
+	const [checkedValue, changeChecked] = useState<InputChangeEventType>(undefined);
 
-	function handleChange(value: CheckedInputType) {
+	function handleChange(value: InputChangeEventType) {
 		changeChecked(value);
 	}
 
 	return (
 		<div className={`modern-radio-button-group ${groupClassName}`}>
-			<CheckedInputContext.Provider value={{ checkedInput: checkedValue, handleChange }}>
+			<CheckedInputContext.Provider value={{ inputChangeEvent: checkedValue, handleChange }}>
 				{children}
 			</CheckedInputContext.Provider>
 		</div>

@@ -25,12 +25,12 @@ export function ModernRadioButton(props: Props) {
 
 	return (
 		<CheckedInputContext.Consumer>
-			{({ checkedInput: checkedValue, handleChange }) => {
-				const isChecked = checkedValue === value;
+			{({ inputChangeEvent, handleChange }) => {
+				const isChecked = inputChangeEvent?.target.value === value;
 				return (
 					<div
 						className={`radio-button-container ${
-							isChecked ? 'radio-button-container--isChecked' : ''
+							isChecked ? 'radio-button-container--checked' : ''
 						} ${containerClassName} ${
 							isChecked ? `${containerClassName}--active` : ''
 						}`}
@@ -39,10 +39,10 @@ export function ModernRadioButton(props: Props) {
 							name={name}
 							className={`radio-button-container__radio-button ${
 								isChecked
-									? 'radio-button-container__radio-button--isChecked'
+									? 'radio-button-container__radio-button--checked'
 									: ''
 							} ${radioButtonClassName} ${
-								isChecked ? `${radioButtonClassName}--isChecked` : ''
+								isChecked ? `${radioButtonClassName}--checked` : ''
 							}`}
 							id={id}
 							value={value}
