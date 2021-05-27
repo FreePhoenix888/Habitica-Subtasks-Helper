@@ -33,11 +33,12 @@
 		"no-shadow": "off",
 		"@typescript-eslint/no-shadow": ["off"],
 		"one-var": "off",
-		"react/require-default-props": "off"
+		"react/require-default-props": "off",
+		"no-plusplus": "off"
 	},
 	"globals": {
 		// "React": true,
 		// "JSX": true
 	},
-	"ignorePatterns":["./src/reportWebVitals.js"]
+	"ignorePatterns": ["./src/reportWebVitals.js"]
 }

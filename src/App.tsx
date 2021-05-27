@@ -4,6 +4,32 @@ import { Label, Input, Textarea, ModernRadioButton } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
 
+const difficultySection: JSX.Element[] = [];
+
+for (let i = 0; i < 4; i++) {
+	const stars: JSX.Element[] = [];
+	for (let j = 1; j < i+2; j++) {
+		stars.push(
+			<StarSVG key={`${i}:${j}`} className="svg star-SVG radio-button-container__svg radio-button-container__star-svg" />
+		);
+	}
+
+	difficultySection.push(
+		<ModernRadioButton
+			before={
+				<Label htmlFor={`taskDifficulty${i+1}`} className="task-difficulty__label">
+					{stars}
+				</Label>
+			}
+			name="task_difficulty"
+			containerClassName="radio-button-container--little task-difficulty__radio-button-container"
+			radioButtonClassName="task-difficulty__input"
+			id={`taskDifficulty${i+1}`}
+			value={`${i+1}`}
+		/>
+	);
+}
+
 function App(): JSX.Element {
 	const elementsInsideContainer = (
 		<>
@@ -64,20 +90,7 @@ function App(): JSX.Element {
 					id="taskTags"
 				/>
 			</div>
-			<div className="task-difficulty">
-				<ModernRadioButton
-					before={
-						<Label htmlFor="taskDifficulty" className="task-difficulty__label">
-							<StarSVG className="svg star-SVG radio-button-container__svg radio-button-container__star-svg" />
-						</Label>
-					}
-					name="task_difficulty"
-					containerClassName="radio-button-container--little"
-					radioButtonClassName="task-difficulty__input"
-					id="taskDifficulty"
-					value="1"
-				/>
-			</div>
+			<div className="task-difficulty">{difficultySection}</div>
 		</>
 	);
 	return <div className="container">{elementsInsideContainer}</div>;

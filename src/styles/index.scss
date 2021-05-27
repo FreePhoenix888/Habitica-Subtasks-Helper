@@ -93,6 +93,9 @@ label {
 .radio-button-container {
 	--padding: 0 26px;
 	padding: var(--padding);
+	&--little{
+		--width: min-content;
+	}
 	&__radio-button {
 		appearance: none;
 		display: inline;

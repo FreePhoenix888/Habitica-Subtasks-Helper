@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 type LabelProps = {
 	className: string;
 	htmlFor: string | undefined;
-	children: string | Element | JSX.Element;
+	children: string | Element | Element[] | JSX.Element | JSX.Element[];
 };
 
 export function Label(props: LabelProps): JSX.Element {
@@ -49,7 +49,7 @@ export function Input(props: InputProps): JSX.Element {
 		<>
 			{before}
 			<input
-				size={autoSize ? value.length+1  : undefined}
+				size={autoSize ? value.length + 1 : undefined}
 				type={type}
 				name={name}
 				placeholder={placeholder}
@@ -174,10 +174,20 @@ export function ModernRadioButton(props: ModernRadioButtonProps) {
 		console.log(event.target.checked);
 	}
 	return (
-		<div className={`radio-button-container ${containerClassName}`}>
+		<div
+			className={`radio-button-container ${
+				isChecked ? 'radio-button-container--isChecked' : ''
+			} ${containerClassName} ${
+				isChecked ? `${containerClassName}--active` : ''
+			}`}
+		>
 			<RadioButton
 				name={name}
-				className={`radio-button-container__radio-button ${radioButtonClassName}`}
+				className={`radio-button-container__radio-button ${
+					isChecked ? 'radio-button-container__radio-button--isChecked' : ''
+				} ${radioButtonClassName} ${
+					isChecked ? `${radioButtonClassName}--isChecked` : ''
+				}`}
 				id={id}
 				value={value}
 				before={before}
