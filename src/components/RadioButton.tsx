@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckedValueType } from './ModernRadioButtonGroup';
+import { CheckedInputType } from './ModernRadioButtonGroup';
 
 type Props = {
 	name: string;
@@ -8,7 +8,7 @@ type Props = {
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
 	value?: string;
-	onChange: (value: CheckedValueType) => void;
+	onChange: (value: CheckedInputType) => void;
 };
 
 export function RadioButton(props: Props): JSX.Element {
@@ -23,7 +23,7 @@ export function RadioButton(props: Props): JSX.Element {
 	} = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-		onChange(event.target.value);
+		onChange(event);
 	}
 	return (
 		<>

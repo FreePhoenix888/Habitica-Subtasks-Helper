@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckedValueContext } from './ModernRadioButtonGroup';
+import { CheckedInputContext } from './ModernRadioButtonGroup';
 import { RadioButton } from './RadioButton';
 
 type Props = {
@@ -24,8 +24,8 @@ export function ModernRadioButton(props: Props) {
 	} = props;
 
 	return (
-		<CheckedValueContext.Consumer>
-			{({ checkedValue, handleChange }) => {
+		<CheckedInputContext.Consumer>
+			{({ checkedInput: checkedValue, handleChange }) => {
 				const isChecked = checkedValue === value;
 				return (
 					<div
@@ -53,6 +53,6 @@ export function ModernRadioButton(props: Props) {
 					</div>
 				);
 			}}
-		</CheckedValueContext.Consumer>
+		</CheckedInputContext.Consumer>
 	);
 }
