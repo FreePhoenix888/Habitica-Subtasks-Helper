@@ -6,7 +6,9 @@ import {
 	Textarea,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
-	InfoButton, InfoBox
+	InfoButton,
+	InfoBox,
+	Paragraph,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
@@ -125,8 +127,14 @@ function App(): JSX.Element {
 			</div>
 
 			<div>
-				<InfoButton onMouseOver={(event) => {console.log("Hovered")}} />
-				<InfoBox><p>ssssssssssssss</p></InfoBox>
+				<InfoButton
+					onMouseOver={(event) => {
+						console.log('Hovered');
+					}}
+				/>
+				<InfoBox>
+					<Paragraph>ssssssssssssss</Paragraph>
+				</InfoBox>
 			</div>
 		</div>
 	);

@@ -62,7 +62,7 @@ body {
 	font-weight: var(--font-weight);
 }
 
-.p {
+.paragraph {
 	margin: 0;
 }
 
@@ -149,7 +149,7 @@ body {
 	--max-width: 220px;
 	--padding: 10px;
 	--display: grid;
-	--width: min-content;
+	--width: fit-content;
 	width: var(--width);
 	padding: var(--padding);
 	display: var(--display);
