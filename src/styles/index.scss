@@ -140,33 +140,4 @@ label {
 	background: var(--background-color-thirdly);
 }
 
-.arrow {
-	background: var(--background-color-thirdly);
-	clip-path: var(--clip-path);
-	&--up,
-	&--down {
-		--width: 32px;
-		--height: 20px;
-		width: var(--width);
-		height: var(--height);
-	}
-	&--right,
-	&--left {
-		--width: 20px;
-		--height: 32px;
-		width: var(--width);
-		height: var(--height);
-	}
-	&--up {
-		--clip-path: polygon(50% 0, 0 100%, 100% 100%);
-	}
-	&--right {
-		--clip-path: polygon(0 0, 0 100%, 100% 50%);
-	}
-	&--down {
-		--clip-path: polygon(100% 0, 0 0, 50% 100%);
-	}
-	&--left {
-		--clip-path: polygon(100% 100%, 100% 0, 0 50%);
-	}
-}
+

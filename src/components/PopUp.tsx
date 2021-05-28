@@ -8,3 +8,4 @@ export function PopUp(props: Props) {
 	const { className, children } = props;
 	return <div className={`popup ${className}`}>{children}</div>;
 }
+

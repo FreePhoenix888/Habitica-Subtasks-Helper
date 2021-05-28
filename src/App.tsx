@@ -6,7 +6,7 @@ import {
 	Textarea,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
-	InfoButton, Arrow
+	InfoButton
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
