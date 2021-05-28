@@ -7,7 +7,7 @@ import {
 	ModernRadioButton,
 	ModernRadioButtonGroup,
 	InfoButton,
-	InfoBox,
+	Modal,
 	Paragraph,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
@@ -127,14 +127,11 @@ function App(): JSX.Element {
 			</div>
 
 			<div>
-				<InfoButton
-					onMouseOver={(event) => {
-						console.log('Hovered');
-					}}
-				/>
-				<InfoBox>
-					<Paragraph>ssssssssssssss</Paragraph>
-				</InfoBox>
+				<InfoButton>
+					<Modal>
+						<Paragraph>ssssssssssssss</Paragraph>
+					</Modal>
+				</InfoButton>
 			</div>
 		</div>
 	);
