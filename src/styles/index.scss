@@ -1,7 +1,7 @@
 :root {
-	--text-color-main-primary: hsl(0, 0%, 100%);
-	--text-color-main-non-active: hsla(0, 0%, 0%, 50%);
-	--text-color-main-active: hsla(0, 0%, 0%, 80%);
+	--text-color-primary: hsl(0, 0%, 100%);
+	--text-color-non-active: hsla(0, 0%, 0%, 50%);
+	--text-color-active: hsla(0, 0%, 0%, 80%);
 	--font-family: 'Montserrat', sans-serif;
 	--font-size: 20px;
 	--background-color-primary: hsl(203, 8%, 20%);
@@ -48,18 +48,22 @@ body {
 	margin: var(--margin);
 }
 
-h1 {
+.h1 {
 	--font-weight: 800;
 	--font-size: 1.5rem;
 	font-size: var(--font-size);
 	font-weight: var(--font-weight);
 }
 
-label {
+.label {
 	--font-weight: 600;
 	--font-size: 1.3rem;
 	font-size: var(--font-size);
 	font-weight: var(--font-weight);
+}
+
+.p {
+	margin: 0;
 }
 
 .textarea {
@@ -74,7 +78,7 @@ label {
 	--width: 100%;
 	--border-radius: 50px;
 	transition: background, color 0.15s ease-in-out;
-	color: var(--text-color-main-non-active);
+	color: var(--text-color-non-active);
 	width: var(--width);
 	padding: var(--padding);
 	text-align: var(--text-align);
@@ -89,7 +93,7 @@ label {
 		max-width: var(--max-width);
 	}
 	&:focus {
-		color: var(--text-color-main-active);
+		color: var(--text-color-active);
 		background: var(--background-color-active);
 		&::placeholder {
 			--visibility: hidden;
@@ -126,7 +130,7 @@ label {
 
 .info {
 	--border-radius: 50px;
-	--font-size: 24px;
+	--font-size: 1.2rem;
 	--font-weight: 700;
 	--width: 30px;
 	--height: 30px;
@@ -140,4 +144,18 @@ label {
 	background: var(--background-color-thirdly);
 }
 
-
+.message-box {
+	--border-radius: 10px;
+	--max-width: 220px;
+	--padding: 10px;
+	--display: grid;
+	--width: min-content;
+	width: var(--width);
+	padding: var(--padding);
+	display: var(--display);
+	place-content: start start;
+	color: var(--text-color-primary);
+	background: var(--background-color-thirdly);
+	border-radius: var(--border-radius);
+	max-width: var(--max-width);
+}
