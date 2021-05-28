@@ -66,7 +66,7 @@ function App(): JSX.Element {
 					id="taskSubtasks"
 					name="task_subtasks"
 					placeholder={
-						'What is the Venus Project?\nAims, Proposals.\nFAQ.Free e-Books.\nRecommended books.'
+						'What is the Venus Project?\nAims, Proposals.\nFAQ.\nFree e-Books.\nRecommended books.'
 					}
 					before={
 						<Label className="task-subtasks__label" htmlFor="taskSubtasks">
@@ -127,7 +127,6 @@ function App(): JSX.Element {
 			<div>
 				<InfoButton onMouseOver={(event) => {console.log("Hovered")}} />
 			</div>
-			<Arrow direction="up"/>
 		</div>
 	);
 }
