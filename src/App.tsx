@@ -79,7 +79,7 @@ function App(): JSX.Element {
 			<div className="task-separator">
 				<Input
 					before={
-						<Label htmlFor="taskTitle" className="task-separator__label">
+						<Label htmlFor="taskSeparator" className="task-separator__label">
 							Separator
 						</Label>
 					}
@@ -104,7 +104,7 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-difficulty">
-				<Label htmlFor=" ">Difficulty</Label>
+				<Label htmlFor="taskDifficulty1">Difficulty</Label>
 				<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
 					{modernRadioButtons}
 				</ModernRadioButtonGroup>
