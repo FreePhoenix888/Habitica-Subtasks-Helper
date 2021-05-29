@@ -131,18 +131,24 @@ function App(): JSX.Element {
 			<div>
 				<Message
 					renderMessage={({ isOpen, setIsOpen }) => {
+						const modalContainerOnClick = (
+							event: React.MouseEvent<HTMLElement>
+						) => {
+							const target = event.target as Element;
+							if (target.className.includes('modal-container')) {
+								setIsOpen(false);
+							}
+						};
+						const modalContainerOnKeyDown = (
+							event: React.KeyboardEvent<HTMLElement>
+						) => {
+							setIsOpen(false);
+						};
 						if (isOpen) {
 							return (
 								<Modal
-									containerOnClick={(event) => {
-										const target = event.target as Element;
-										if (target.className.includes('modal-container')) {
-											setIsOpen(false);
-										}
-									}}
-									containerOnKeyDown={(event) => {
-										setIsOpen(false);
-									}}
+									containerOnClick={modalContainerOnClick}
+									containerOnKeyDown={modalContainerOnKeyDown}
 								>
 									<Paragraph>Hello my dear friend</Paragraph>
 								</Modal>
