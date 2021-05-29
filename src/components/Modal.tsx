@@ -46,12 +46,6 @@ export function Modal(props: Props) {
 		containerRef.current?.focus();
 	}
 
-	useEffect(() => {
-		focusContainer();
-		switchBodyOverflow();
-		return switchBodyOverflow();
-	}, []);
-
 	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
 		if (containerOnClick) {
 			containerOnClick(event);
@@ -71,7 +65,6 @@ export function Modal(props: Props) {
 				onKeyDown={handleContainerKeyDown}
 				role="button"
 				tabIndex={0}
-				id="closeModal"
 				ref={containerRef}
 			>
 				<div className={`modal ${className}`} role="dialog">

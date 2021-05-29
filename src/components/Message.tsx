@@ -1,32 +1,16 @@
 import React, { useCallback, useState } from 'react';
 
-type RenderButtonType = (
-	setter: React.Dispatch<React.SetStateAction<boolean>>
-) => JSX.Element;
-
 export interface RenderMessageParameterType {
 	isOpen: boolean;
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-type RenderMessageType = {
-	(parameter: RenderMessageParameterType): JSX.Element;
-};
-
-type Props = {
-	renderButton: RenderButtonType;
-	renderMessage: RenderMessageType;
-
+interface Props {
 	className?: string;
 	buttonClassName?: string;
-};
+}
 export function Message(props: Props) {
-	const {
-		renderButton,
-		renderMessage,
-		className = '',
-		buttonClassName = '',
-	} = props;
+	const { className = '', buttonClassName = '' } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
 	const renderMessageParameter: RenderMessageParameterType = {
@@ -34,10 +18,5 @@ export function Message(props: Props) {
 		setIsOpen,
 	};
 
-	return (
-		<div>
-			{renderButton(setIsOpen)}
-			{renderMessage(renderMessageParameter)}
-		</div>
-	);
+	return <div></div>;
 }
