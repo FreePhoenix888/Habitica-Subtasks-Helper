@@ -7,6 +7,8 @@ import {
 	ModernRadioButton,
 	ModernRadioButtonGroup,
 	InfoButton,
+	Message,
+	RenderMessageParameterType,
 	Modal,
 	Paragraph,
 } from './components';
@@ -127,11 +129,35 @@ function App(): JSX.Element {
 			</div>
 
 			<div>
-				<InfoButton>
-					<Modal>
-						<Paragraph>ssssssssssssss</Paragraph>
-					</Modal>
-				</InfoButton>
+				<Message
+					renderMessage={({ isOpen, setIsOpen }) => {
+						if (isOpen) {
+							return (
+								<Modal
+									containerOnClick={(event) => {
+										const target = event.target as Element;
+										if (target.className.includes('modal-container')) {
+											setIsOpen(false);
+										}
+									}}
+									containerOnKeyDown={(event) => {
+										setIsOpen(false);
+									}}
+								>
+									<Paragraph>Hello my dear friend</Paragraph>
+								</Modal>
+							);
+						}
+						return <Paragraph> </Paragraph>;
+					}}
+					renderButton={(setIsOpen) => (
+						<InfoButton
+							onClick={(event) => {
+								setIsOpen(true);
+							}}
+						/>
+					)}
+				/>
 			</div>
 		</div>
 	);
