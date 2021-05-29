@@ -31,14 +31,14 @@ export function ModernRadioButtonGroup(props: Props) {
 	const [checkedValue, changeChecked] =
 		useState<InputChangeEventType>(undefined);
 
+	function handleChange(value: InputChangeEventType) {
+		changeChecked(value);
+	}
+
 	const CheckedInputContextValue = {
 		inputChangeEvent: checkedValue,
 		handleChange,
 	};
-
-	function handleChange(value: InputChangeEventType) {
-		changeChecked(value);
-	}
 
 	return (
 		<div className={`modern-radio-button-group ${groupClassName}`}>

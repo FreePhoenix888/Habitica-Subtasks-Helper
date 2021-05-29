@@ -1,9 +1,10 @@
 import React from 'react';
-type IsClickedContextType = {
+
+type IsActiveContextType = {
 	isActive: boolean;
 	changeIsActive: (value: boolean) => void;
 };
-const IsClickedContext = React.createContext<IsClickedContextType>({
+export const IsActiveContext = React.createContext<IsActiveContextType>({
 	isActive: false,
 	changeIsActive: (value) => {},
 });
@@ -13,6 +14,7 @@ type Props = {
 	children: JSX.Element | JSX.Element[] | Element | Element[];
 	paragraphClassName?: string;
 	hidden?: boolean;
+	htmlFor: string;
 	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 	onMouseOver?: (event: React.MouseEvent<HTMLElement>) => void;
 	onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
@@ -20,12 +22,13 @@ type Props = {
 };
 
 export function InfoButton(props: Props) {
-	type isActiveType = boolean;
-	let [isActive, changeIsActive] = React.useState<isActiveType>(false);
+	type IsActiveType = boolean;
+	const [isActive, changeIsActive] = React.useState<IsActiveType>(false);
 	const IsClickedContextValue = { isActive, changeIsActive };
 	const {
-		className = '',
 		children,
+		htmlFor,
+		className = '',
 		paragraphClassName = '',
 		hidden = false,
 		onClick = () => {},
@@ -34,22 +37,27 @@ export function InfoButton(props: Props) {
 		onKeyDown = () => {},
 	} = props;
 
+	function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+		changeIsActive(true);
+	}
+
 	return (
 		<>
 			<button
 				className={`div info ${className}`}
-				onClick={onClick}
+				onClick={handleClick}
 				onMouseOver={onMouseOver}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				hidden={hidden}
 				type="button"
+				data-for={htmlFor}
 			>
 				?
 			</button>
-			<IsClickedContext.Provider value={IsClickedContextValue}>
+			<IsActiveContext.Provider value={IsClickedContextValue}>
 				{children}
-			</IsClickedContext.Provider>
+			</IsActiveContext.Provider>
 		</>
 	);
 }
