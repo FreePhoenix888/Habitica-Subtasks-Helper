@@ -20,7 +20,7 @@ export type InputChangeEventType =
 	| React.ChangeEvent<HTMLInputElement>
 	| undefined;
 
-export function ModernRadioButtonGroup(props: Props) {
+export function ModernRadioButtonGroup(props: Props): JSX.Element {
 	const {
 		children,
 		groupClassName = '',
@@ -28,15 +28,15 @@ export function ModernRadioButtonGroup(props: Props) {
 		before,
 		after,
 	} = props;
-	const [checkedValue, changeChecked] =
+	const [inputChangeEvent, changeInputChangeEvent] =
 		useState<InputChangeEventType>(undefined);
 
 	function handleChange(value: InputChangeEventType) {
-		changeChecked(value);
+		changeInputChangeEvent(value);
 	}
 
 	const CheckedInputContextValue = {
-		inputChangeEvent: checkedValue,
+		inputChangeEvent,
 		handleChange,
 	};
 
