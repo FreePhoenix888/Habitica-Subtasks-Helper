@@ -11,10 +11,8 @@ interface Props {
 		| HTMLAnchorElement;
 	className?: string;
 	containerClassName?: string;
-	containerOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	modalOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	containerOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
-	modalOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+	onKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 let containerRef: React.RefObject<HTMLDivElement>;
@@ -25,23 +23,21 @@ export function ModalContainer(props: Props) {
 		children,
 		className = '',
 		containerClassName = '',
-		containerOnClick,
-		containerOnKeyDown,
-		modalOnClick,
-		modalOnKeyDown,
+		onClick,
+		onKeyDown,
 	} = props;
 
 	containerRef = useRef<HTMLDivElement>(null);
 
 	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
-		if (containerOnClick) {
-			containerOnClick(event);
+		if (onClick) {
+			onClick(event);
 		}
 	}
 
 	function handleContainerKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-		if (containerOnKeyDown) {
-			containerOnKeyDown(event);
+		if (onKeyDown) {
+			onKeyDown(event);
 		}
 	}
 
@@ -56,7 +52,7 @@ export function ModalContainer(props: Props) {
 						tabIndex={0}
 						ref={containerRef}
 					>
-						{isOpen ? children : null}
+						{children}
 					</div>
 				</>,
 				document.getElementById('root')!

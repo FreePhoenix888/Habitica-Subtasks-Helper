@@ -9,31 +9,33 @@ interface Props {
 		| Element[]
 		| HTMLAnchorElement;
 	className?: string;
-	containerClassName?: string;
-	containerOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	modalOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	containerOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
-	modalOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+	onKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 let containerRef: React.RefObject<HTMLDivElement>;
 
 export function Modal(props: Props) {
-	const {
-		children,
-		className = '',
-		containerClassName = '',
-		containerOnClick,
-		containerOnKeyDown,
-		modalOnClick,
-		modalOnKeyDown,
-	} = props;
+	const { children, className = '', onClick, onKeyDown } = props;
 
-	containerRef = useRef<HTMLDivElement>(null);
+	function handeClick(event: React.MouseEvent<HTMLElement>) {
+		if (onClick) {
+			onClick(event);
+		}
+	}
 
+	function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+		if (onKeyDown) {
+			onKeyDown(event);
+		}
+	}
 	return (
 		<>
-			<div className={`modal ${className}`}>
+			<div
+				onClick={handeClick}
+				onKeyDown={handleKeyDown}
+				className={`modal ${className}`}
+			>
 				<div className="modal-content">{children}</div>
 				<div className="modal-close">
 					Press any key or outside this window to close.
