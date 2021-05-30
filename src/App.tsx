@@ -68,11 +68,26 @@ function App(): JSX.Element {
 							setIsOpen(false);
 						}
 					}
+					function modalContainerOnKeyDown(
+						event: React.KeyboardEvent<HTMLElement>
+					) {
+						if (event.ctrlKey || event.metaKey || event.shiftKey) {
+							return;
+						}
+						const target = event.target as HTMLElement;
+						if (target.className.includes('modal-container')) {
+							setIsOpen(false);
+						}
+					}
 					return (
 						<>
 							<InfoButton onClick={infoButtonOnClick} />
-							<ModalContainer isOpen={isOpen}>
-								<Modal containerOnClick={modalContainerOnClick}>
+							<ModalContainer
+								isOpen={isOpen}
+								onClick={modalContainerOnClick}
+								onKeyDown={modalContainerOnKeyDown}
+							>
+								<Modal>
 									<Paragraph>Hello, it is modal</Paragraph>
 								</Modal>
 							</ModalContainer>
