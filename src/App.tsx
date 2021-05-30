@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import {
 	Label,
@@ -8,6 +8,7 @@ import {
 	ModernRadioButtonGroup,
 	InfoButton,
 	Message,
+	MessageContext,
 	Modal,
 	Paragraph,
 } from './components';
@@ -43,6 +44,20 @@ for (let i = 0; i < 4; i++) {
 			id={`taskDifficulty${i + 1}`}
 			value={`${i + 1}`}
 		/>
+	);
+}
+function message() {
+	const { isOpen, setIsOpen } = useContext(MessageContext);
+	const infoButtonOnClick = (event: React.MouseEvent<HTMLElement>) => {
+		setIsOpen(true);
+	};
+	return (
+		<Message>
+			<InfoButton onClick={infoButtonOnClick} />
+			<Modal>
+				<Paragraph>Hello, it is modal</Paragraph>
+			</Modal>
+		</Message>
 	);
 }
 
@@ -127,11 +142,7 @@ function App(): JSX.Element {
 				/>
 			</div>
 
-			<div>
-				<Message>
-					<InfoButton />
-				</Message>
-			</div>
+			<div></div>
 		</div>
 	);
 }

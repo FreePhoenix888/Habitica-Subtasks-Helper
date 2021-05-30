@@ -6,5 +6,5 @@ export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
 export { InfoButton } from './components/InfoButton';
 export { Modal } from './components/Modal';
-export { Message } from './components/Message';
+export { Message, MessageContext } from './components/Message';
 export { Paragraph } from './components/Paragraph';

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import { MessageContext } from './Message';
 
 interface Props {
 	className?: string;
@@ -23,7 +24,10 @@ export function Modal(props: Props) {
 		containerOnClick,
 		containerOnKeyDown,
 		modalOnClick,
+		modalOnKeyDown,
 	} = props;
+
+	const { isOpen, setIsOpen } = useContext(MessageContext);
 
 	const containerRef = useRef<HTMLDivElement>(null);
 	function switchBodyOverflow() {
@@ -57,22 +61,24 @@ export function Modal(props: Props) {
 			containerOnKeyDown(event);
 		}
 	}
-	const output = ReactDOM.createPortal(
-		<>
-			<div
-				className={`modal-container ${containerClassName}`}
-				onClick={handleContainerClick}
-				onKeyDown={handleContainerKeyDown}
-				role="button"
-				tabIndex={0}
-				ref={containerRef}
-			>
-				<div className={`modal ${className}`} role="dialog">
-					{children}
-				</div>
-			</div>
-		</>,
-		document.getElementById('root') as HTMLElement
-	);
-	return output;
+
+	return isOpen
+		? ReactDOM.createPortal(
+				<>
+					<div
+						className={`modal-container ${containerClassName}`}
+						onClick={handleContainerClick}
+						onKeyDown={handleContainerKeyDown}
+						role="button"
+						tabIndex={0}
+						ref={containerRef}
+					>
+						<div className={`modal ${className}`} role="dialog">
+							{children}
+						</div>
+					</div>
+				</>,
+				document.getElementById('root') as HTMLElement
+		  )
+		: null;
 }
