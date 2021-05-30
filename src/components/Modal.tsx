@@ -1,54 +1,37 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { MessageContext } from './Message';
 
 interface Props {
-	className?: string;
-	containerClassName?: string;
-	containerOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	modalOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	containerOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
-	modalOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	isOpen: boolean;
 	children:
 		| JSX.Element
 		| JSX.Element[]
 		| Element
 		| Element[]
 		| HTMLAnchorElement;
+	className?: string;
+	containerClassName?: string;
+	containerOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
+	modalOnClick?: (event: React.MouseEvent<HTMLElement>) => void;
+	containerOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	modalOnKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
 }
+
+let containerRef: React.RefObject<HTMLDivElement>;
+
 export function Modal(props: Props) {
 	const {
+		isOpen,
+		children,
 		className = '',
 		containerClassName = '',
-		children,
 		containerOnClick,
 		containerOnKeyDown,
 		modalOnClick,
 		modalOnKeyDown,
 	} = props;
 
-	const { isOpen, setIsOpen } = useContext(MessageContext);
-
-	const containerRef = useRef<HTMLDivElement>(null);
-	function switchBodyOverflow() {
-		const bodyStyle = document.body.style;
-		switch (bodyStyle.overflow) {
-			case '':
-			case 'auto':
-				bodyStyle.overflow = 'hidden';
-				break;
-			case 'hidden':
-				bodyStyle.overflow = 'auto';
-				break;
-			default:
-				bodyStyle.overflow = '';
-				break;
-		}
-	}
-
-	function focusContainer() {
-		containerRef.current?.focus();
-	}
+	containerRef = useRef<HTMLDivElement>(null);
 
 	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
 		if (containerOnClick) {
@@ -73,12 +56,34 @@ export function Modal(props: Props) {
 						tabIndex={0}
 						ref={containerRef}
 					>
-						<div className={`modal ${className}`} role="dialog">
+						<div
+							className={`modal ${className}`}
+						>
 							{children}
 						</div>
 					</div>
 				</>,
-				document.getElementById('root') as HTMLElement
+				document.getElementById('root')!
 		  )
 		: null;
 }
+
+Modal.focusContainer = function focusContainer() {
+	containerRef.current?.focus();
+};
+
+Modal.switchBodyOverflow = function switchBodyOverflow() {
+	const bodyStyle = document.body.style;
+	switch (bodyStyle.overflow) {
+		case '':
+		case 'auto':
+			bodyStyle.overflow = 'hidden';
+			break;
+		case 'hidden':
+			bodyStyle.overflow = 'auto';
+			break;
+		default:
+			bodyStyle.overflow = '';
+			break;
+	}
+};
