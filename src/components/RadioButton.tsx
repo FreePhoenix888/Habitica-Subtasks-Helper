@@ -22,14 +22,18 @@ export function RadioButton(props: Props): JSX.Element {
 		before,
 		after,
 		value,
-		onChange = () => {},
 		tabIndex = 0,
 		hidden = false,
-		onBlur = () => {}
 	} = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+		const { onChange = () => {} } = props;
 		onChange(event);
+	}
+
+	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
+		const { onBlur = () => {} } = props;
+		onBlur(event);
 	}
 	return (
 		<>
@@ -41,9 +45,9 @@ export function RadioButton(props: Props): JSX.Element {
 				id={id}
 				value={value}
 				onChange={handleChange}
+				onBlur={handleBlur}
 				tabIndex={tabIndex}
 				hidden={hidden}
-				onBlur={onBlur}
 			/>
 			{after}
 		</>
