@@ -56,7 +56,7 @@ export function ModalContainer(props: Props) {
 						tabIndex={0}
 						ref={containerRef}
 					>
-						{children}
+						{isOpen ? children : null}
 					</div>
 				</>,
 				document.getElementById('root')!

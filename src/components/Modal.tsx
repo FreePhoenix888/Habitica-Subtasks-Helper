@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
 interface Props {
-	isOpen: boolean;
 	children:
 		| JSX.Element
 		| JSX.Element[]
@@ -21,7 +20,6 @@ let containerRef: React.RefObject<HTMLDivElement>;
 
 export function Modal(props: Props) {
 	const {
-		isOpen,
 		children,
 		className = '',
 		containerClassName = '',
@@ -33,58 +31,14 @@ export function Modal(props: Props) {
 
 	containerRef = useRef<HTMLDivElement>(null);
 
-	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
-		if (containerOnClick) {
-			containerOnClick(event);
-		}
-	}
-
-	function handleContainerKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-		if (containerOnKeyDown) {
-			containerOnKeyDown(event);
-		}
-	}
-
-	return isOpen
-		? ReactDOM.createPortal(
-				<>
-					<div
-						className={`modal-container ${containerClassName}`}
-						onClick={handleContainerClick}
-						onKeyDown={handleContainerKeyDown}
-						role="button"
-						tabIndex={0}
-						ref={containerRef}
-					>
-						<div className={`modal ${className}`}>
-							<div className="modal-content">{children}</div>
-							<div className="modal-close">
-								Press any key or outside this window to close.
-							</div>
-						</div>
-					</div>
-				</>,
-				document.getElementById('root')!
-		  )
-		: null;
+	return (
+		<>
+			<div className={`modal ${className}`}>
+				<div className="modal-content">{children}</div>
+				<div className="modal-close">
+					Press any key or outside this window to close.
+				</div>
+			</div>
+		</>
+	);
 }
-
-Modal.focusContainer = function focusContainer() {
-	containerRef.current?.focus();
-};
-
-Modal.switchBodyOverflow = function switchBodyOverflow() {
-	const bodyStyle = document.body.style;
-	switch (bodyStyle.overflow) {
-		case '':
-		case 'auto':
-			bodyStyle.overflow = 'hidden';
-			break;
-		case 'hidden':
-			bodyStyle.overflow = 'auto';
-			break;
-		default:
-			bodyStyle.overflow = '';
-			break;
-	}
-};

@@ -9,6 +9,7 @@ import {
 	InfoButton,
 	MessageContainer,
 	MessageContainerContext,
+	ModalContainer,
 	Modal,
 	Paragraph,
 } from './components';
@@ -58,7 +59,7 @@ function App(): JSX.Element {
 				{({ isOpen, setIsOpen }) => {
 					function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
 						setIsOpen(true);
-						Modal.switchBodyOverflow();
+						ModalContainer.switchBodyOverflow();
 					}
 
 					function modalContainerOnClick(event: React.MouseEvent<HTMLElement>) {
@@ -70,9 +71,11 @@ function App(): JSX.Element {
 					return (
 						<>
 							<InfoButton onClick={infoButtonOnClick} />
-							<Modal isOpen={isOpen} containerOnClick={modalContainerOnClick}>
-								<Paragraph>Hello, it is modal</Paragraph>
-							</Modal>
+							<ModalContainer isOpen={isOpen}>
+								<Modal containerOnClick={modalContainerOnClick}>
+									<Paragraph>Hello, it is modal</Paragraph>
+								</Modal>
+							</ModalContainer>
 						</>
 					);
 				}}
