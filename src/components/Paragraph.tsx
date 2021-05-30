@@ -1,7 +1,11 @@
 import React from 'react';
 
-type Props = { className?: string; children: string };
+interface Props {
+	children: string | JSX.Element | JSX.Element[] | Element | Element[];
+	className?: string;
+}
+
 export function Paragraph(props: Props) {
-	const { className = '', children} = props;
+	const { children, className = '' } = props;
 	return <p className={`paragraph ${className}`}>{children}</p>;
 }
