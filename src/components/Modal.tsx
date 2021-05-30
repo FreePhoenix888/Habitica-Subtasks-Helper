@@ -56,10 +56,11 @@ export function Modal(props: Props) {
 						tabIndex={0}
 						ref={containerRef}
 					>
-						<div
-							className={`modal ${className}`}
-						>
-							{children}
+						<div className={`modal ${className}`}>
+							<div className="modal-content">{children}</div>
+							<div className="modal-close">
+								Press any key or outside this window to close.
+							</div>
 						</div>
 					</div>
 				</>,

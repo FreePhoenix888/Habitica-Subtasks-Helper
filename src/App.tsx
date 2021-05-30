@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useRef } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import {
 	Label,
@@ -15,53 +15,73 @@ import {
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
 
-const modernRadioButtons: JSX.Element[] = [];
+function App(): JSX.Element {
+	// Difficulty Section Radio Buttons
+	const modernRadioButtons: JSX.Element[] = [];
 
-for (let i = 0; i < 4; i++) {
-	const stars: JSX.Element[] = [];
-	for (let j = 1; j < i + 2; j++) {
-		stars.push(
-			<StarSVG
-				key={`${i}:${j}`}
-				className="svg star-SVG radio-button-container__svg radio-button-container__star-svg"
+	for (let i = 0; i < 4; i++) {
+		const stars: JSX.Element[] = [];
+		for (let j = 1; j < i + 2; j++) {
+			stars.push(
+				<StarSVG
+					key={`${i}:${j}`}
+					className="svg star-SVG radio-button-container__svg radio-button-container__star-svg"
+				/>
+			);
+		}
+
+		modernRadioButtons.push(
+			<ModernRadioButton
+				before={
+					<Label
+						htmlFor={`taskDifficulty${i + 1}`}
+						className="task-difficulty__label"
+					>
+						{stars}
+					</Label>
+				}
+				name="task_difficulty"
+				containerClassName="radio-button-container--little task-difficulty__radio-button-container"
+				radioButtonClassName="task-difficulty__input"
+				id={`taskDifficulty${i + 1}`}
+				value={`${i + 1}`}
 			/>
 		);
 	}
+	// End: Difficulty Section Radio Buttons
 
-	modernRadioButtons.push(
-		<ModernRadioButton
-			before={
-				<Label
-					htmlFor={`taskDifficulty${i + 1}`}
-					className="task-difficulty__label"
-				>
-					{stars}
-				</Label>
-			}
-			name="task_difficulty"
-			containerClassName="radio-button-container--little task-difficulty__radio-button-container"
-			radioButtonClassName="task-difficulty__input"
-			id={`taskDifficulty${i + 1}`}
-			value={`${i + 1}`}
-		/>
-	);
-}
-function message() {
-	const { isOpen, setIsOpen } = useContext(MessageContext);
-	const infoButtonOnClick = (event: React.MouseEvent<HTMLElement>) => {
-		setIsOpen(true);
-	};
-	return (
+	// Separator Info Button
+
+	const message = (
 		<Message>
-			<InfoButton onClick={infoButtonOnClick} />
-			<Modal>
-				<Paragraph>Hello, it is modal</Paragraph>
-			</Modal>
+			<MessageContext.Consumer>
+				{({ isOpen, setIsOpen }) => {
+					function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
+						setIsOpen(true);
+						Modal.switchBodyOverflow();
+					}
+
+					function modalContainerOnClick(event: React.MouseEvent<HTMLElement>) {
+						const target = event.target as HTMLElement;
+						if (target.className.includes('modal-container')) {
+							setIsOpen(false);
+						}
+					}
+					return (
+						<>
+							<InfoButton onClick={infoButtonOnClick} />
+							<Modal isOpen={isOpen} containerOnClick={modalContainerOnClick}>
+								<Paragraph>Hello, it is modal</Paragraph>
+							</Modal>
+						</>
+					);
+				}}
+			</MessageContext.Consumer>
 		</Message>
 	);
-}
 
-function App(): JSX.Element {
+	// End: Separator Info Button
+
 	return (
 		<div className="container">
 			<h1>Habitica Subtasks Helper</h1>
@@ -142,7 +162,7 @@ function App(): JSX.Element {
 				/>
 			</div>
 
-			<div></div>
+			<div>{message}</div>
 		</div>
 	);
 }

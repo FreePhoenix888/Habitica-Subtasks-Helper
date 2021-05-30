@@ -1,9 +1,9 @@
-import React, { Children, useState } from 'react';
+import React, { useState, createContext } from 'react';
 
-export const MessageContext = React.createContext<MessageContextType>({
+export const MessageContext = createContext<MessageContextType>({
 	isOpen: false,
 	setIsOpen: () => {},
-} as MessageContextType);
+});
 
 interface MessageContextType {
 	isOpen: boolean;
