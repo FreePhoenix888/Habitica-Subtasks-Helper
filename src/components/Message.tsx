@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { Children, useState } from 'react';
 
-const MessageContext = React.createContext<MessageContextType>(
-	{} as MessageContextType
-);
+const MessageContext = React.createContext<MessageContextType>({
+	isOpen: false,
+	setIsOpen: () => {},
+} as MessageContextType);
 
 interface MessageContextType {
 	isOpen: boolean;
@@ -10,11 +11,12 @@ interface MessageContextType {
 }
 
 interface Props {
+	children: JSX.Element | JSX.Element[] | Element | Element[];
 	className?: string;
 	buttonClassName?: string;
 }
 export function Message(props: Props) {
-	const { className = '' } = props;
+	const { children, className = '' } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
 	const renderMessageContextValue: MessageContextType = {
@@ -24,9 +26,9 @@ export function Message(props: Props) {
 
 	return (
 		<div>
-			<MessageContext.Provider
-				value={renderMessageContextValue}
-			></MessageContext.Provider>
+			<MessageContext.Provider value={renderMessageContextValue}>
+				{children}
+			</MessageContext.Provider>
 		</div>
 	);
 }
