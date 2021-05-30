@@ -1,6 +1,10 @@
 import React, { useCallback, useState } from 'react';
 
-export interface RenderMessageParameterType {
+const MessageContext = React.createContext<MessageContextType>(
+	{} as MessageContextType
+);
+
+interface MessageContextType {
 	isOpen: boolean;
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -10,13 +14,19 @@ interface Props {
 	buttonClassName?: string;
 }
 export function Message(props: Props) {
-	const { className = '', buttonClassName = '' } = props;
+	const { className = '' } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
-	const renderMessageParameter: RenderMessageParameterType = {
+	const renderMessageContextValue: MessageContextType = {
 		isOpen,
 		setIsOpen,
 	};
 
-	return <div></div>;
+	return (
+		<div>
+			<MessageContext.Provider
+				value={renderMessageContextValue}
+			></MessageContext.Provider>
+		</div>
+	);
 }
