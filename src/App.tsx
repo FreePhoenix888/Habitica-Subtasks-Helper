@@ -8,7 +8,6 @@ import {
 	ModernRadioButtonGroup,
 	InfoButton,
 	Message,
-	RenderMessageParameterType,
 	Modal,
 	Paragraph,
 } from './components';
@@ -128,7 +127,11 @@ function App(): JSX.Element {
 				/>
 			</div>
 
-			<div></div>
+			<div>
+				<Message>
+					<InfoButton />
+				</Message>
+			</div>
 		</div>
 	);
 }
