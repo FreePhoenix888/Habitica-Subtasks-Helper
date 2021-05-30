@@ -13,6 +13,7 @@ interface Props {
 	containerClassName?: string;
 	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 	onKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onUseEffect?: () => void;
 }
 
 let containerRef: React.RefObject<HTMLDivElement>;
@@ -25,9 +26,16 @@ export function ModalContainer(props: Props) {
 		containerClassName = '',
 		onClick,
 		onKeyDown,
+		onUseEffect,
 	} = props;
 
 	containerRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (onUseEffect) {
+			onUseEffect();
+		}
+	}, [isOpen]);
 
 	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
 		if (onClick) {
