@@ -7,8 +7,8 @@ import {
 	ModernRadioButton,
 	ModernRadioButtonGroup,
 	InfoButton,
-	Message,
-	MessageContext,
+	MessageContainer,
+	MessageContainerContext,
 	Modal,
 	Paragraph,
 } from './components';
@@ -53,8 +53,8 @@ function App(): JSX.Element {
 	// Separator Info Button
 
 	const message = (
-		<Message>
-			<MessageContext.Consumer>
+		<MessageContainer>
+			<MessageContainerContext.Consumer>
 				{({ isOpen, setIsOpen }) => {
 					function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
 						setIsOpen(true);
@@ -76,8 +76,8 @@ function App(): JSX.Element {
 						</>
 					);
 				}}
-			</MessageContext.Consumer>
-		</Message>
+			</MessageContainerContext.Consumer>
+		</MessageContainer>
 	);
 
 	// End: Separator Info Button
