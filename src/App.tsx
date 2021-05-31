@@ -71,7 +71,15 @@ function App(): JSX.Element {
 					function modalContainerOnKeyDown(
 						event: React.KeyboardEvent<HTMLElement>
 					) {
-						if (event.ctrlKey || event.metaKey || event.shiftKey) {
+						if (
+							event.ctrlKey ||
+							event.metaKey ||
+							event.shiftKey ||
+							event.key === 'ArrowUp' ||
+							'ArrowRight' ||
+							'ArrowDown' ||
+							'ArrowLeft'
+						) {
 							return;
 						}
 						const target = event.target as HTMLElement;
@@ -88,7 +96,18 @@ function App(): JSX.Element {
 								onKeyDown={modalContainerOnKeyDown}
 							>
 								<Modal>
-									<Paragraph>Hello, it is modal</Paragraph>
+									<Paragraph>
+										{`You can use any symbol/symbols to break your text into parts.
+
+Example:
+Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
+🞄Brush teeth
+🞄Take a bath
+🞄Training
+🞄Learning
+
+Cheatsheet`}
+									</Paragraph>
 								</Modal>
 							</ModalContainer>
 						</>
