@@ -16,7 +16,7 @@ type Props = {
 	before?: JSX.Element | JSX.Element[] | undefined;
 	after?: JSX.Element | JSX.Element[] | undefined;
 };
-export type InputChangeEventType =
+type InputChangeEventType =
 	| React.ChangeEvent<HTMLInputElement>
 	| undefined;
 
