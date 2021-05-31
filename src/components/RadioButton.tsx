@@ -1,5 +1,4 @@
 import React from 'react';
-import { InputChangeEventType } from './ModernRadioButtonGroup';
 
 type Props = {
 	name: string;
@@ -8,7 +7,7 @@ type Props = {
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
 	value?: string;
-	onChange?: (value: InputChangeEventType) => void;
+	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	tabIndex?: number;
 	hidden?: boolean;
