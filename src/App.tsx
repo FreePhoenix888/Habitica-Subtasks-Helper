@@ -36,7 +36,7 @@ function App(): JSX.Element {
 				before={
 					<Label
 						htmlFor={`taskDifficulty${i + 1}`}
-						className="task-difficulty__label"
+						className="task-difficulty__label modern-radio-button-container__label"
 					>
 						{stars}
 					</Label>
