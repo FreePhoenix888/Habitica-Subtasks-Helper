@@ -74,7 +74,7 @@ body {
 
 .textarea,
 .input,
-.radio-button-container {
+.modern-radio-button-container {
 	--padding: 12px 26px;
 	--width: 100%;
 	--border-radius: 50px;
@@ -103,9 +103,8 @@ body {
 	}
 }
 
-.radio-button-container {
-	--padding: 0 26px;
-	padding: var(--padding);
+.modern-radio-button-container {
+	padding: 0;
 	&--checked {
 		background: var(--background-color-active);
 		color: var(--text);
