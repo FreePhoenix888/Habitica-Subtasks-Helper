@@ -10,9 +10,8 @@ type Props = {
 	wrap?: 'hard' | 'soft';
 };
 
-type TextareaValue = string;
 export function Textarea(props: Props): JSX.Element {
-	const [value, changeValue] = useState<TextareaValue>('');
+	const [value, changeValue] = useState<string>('');
 	const { className = '', placeholder, id, name, wrap, before, after } = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
