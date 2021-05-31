@@ -13,8 +13,8 @@ type Props = {
 	children: JSX.Element | JSX.Element[];
 	groupClassName?: string;
 	checkedByDefault?: number | string;
-	before?: JSX.Element | JSX.Element[] | undefined;
-	after?: JSX.Element | JSX.Element[] | undefined;
+	before?: JSX.Element | JSX.Element[];
+	after?: JSX.Element | JSX.Element[];
 };
 type InputChangeEventType =
 	| React.ChangeEvent<HTMLInputElement>
