@@ -154,11 +154,24 @@ body {
 	width: var(--width);
 	padding: var(--padding);
 	display: var(--display);
+	grid-template-columns: 100%;
+	grid-auto-flow: row;
+	gap: 0.5rem;
 	place-content: start start;
 	color: var(--text-color-primary);
 	background: var(--background-color-thirdly);
 	border-radius: var(--border-radius);
 	max-width: var(--max-width);
+	min-width: 18rem;
+	white-space: pre-line;
+	text-align: left;
+	&-close {
+		color: var(--text-color-active);
+		background: var(--background-color-active);
+		padding: 10px;
+		font-size: 0.7em;
+		border-radius: 10px;
+	}
 	&-container {
 		position: absolute;
 		top: 0;
