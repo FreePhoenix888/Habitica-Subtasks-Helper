@@ -26,22 +26,20 @@ export function ModernRadioButton(props: Props) {
 		React.useContext(CheckedInputContext);
 	const isChecked = inputChangeEvent?.target.value === value;
 
-
-
 	return (
 		<div
-			className={`radio-button-container ${
-				isChecked ? 'radio-button-container--checked' : ''
-			} ${containerClassName} ${
-				isChecked ? `${containerClassName}--checked` : ''
+			className={`modern-radio-button-container ${containerClassName} ${
+				isChecked
+					? `modern-radio-button-container--checked ${containerClassName}--checked`
+					: ''
 			}`}
 		>
 			<RadioButton
 				name={name}
-				className={`radio-button-container__radio-button ${
-					isChecked ? 'radio-button-container__radio-button--checked' : ''
-				} ${radioButtonClassName} ${
-					isChecked ? `${radioButtonClassName}--checked` : ''
+				className={`modern-radio-button-container__radio-button ${radioButtonClassName} ${
+					isChecked
+						? `modern-radio-button-container__radio-button--checked ${radioButtonClassName}--checked`
+						: ''
 				}`}
 				id={id}
 				value={value}
