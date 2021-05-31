@@ -105,6 +105,12 @@ body {
 
 .modern-radio-button-container {
 	padding: 0;
+	// .modern-radio-button-container__label
+	&__label{
+		cursor: pointer;
+		padding: 0 26px;
+		border-radius: inherit;
+	}
 	&--checked {
 		background: var(--background-color-active);
 		color: var(--text);
