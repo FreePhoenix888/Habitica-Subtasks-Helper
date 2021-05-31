@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-type Props = {
+interface Props {
 	name: string;
 	className?: string;
 	placeholder?: string;
