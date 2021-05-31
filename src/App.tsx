@@ -1,6 +1,8 @@
 import React, { Fragment, useContext, useRef } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import {
+	Paragraph,
+	Anchor,
 	Label,
 	Input,
 	Textarea,
@@ -11,7 +13,6 @@ import {
 	MessageContainerContext,
 	ModalContainer,
 	Modal,
-	Paragraph,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';

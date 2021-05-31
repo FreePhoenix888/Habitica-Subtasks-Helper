@@ -1,5 +1,7 @@
-export { Input } from './components/Input';
+export { Paragraph } from './components/Paragraph';
+export { Anchor } from './components/Anchor';
 export { Label } from './components/Label';
+export { Input } from './components/Input';
 export { Textarea } from './components/Textarea';
 export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
@@ -11,4 +13,3 @@ export {
 	MessageContainer,
 	MessageContainerContext,
 } from './components/MessageContainer';
-export { Paragraph } from './components/Paragraph';
