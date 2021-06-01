@@ -103,35 +103,46 @@ body {
 	}
 }
 
-.modern-radio-button-container {
-	padding: 0;
-	// .modern-radio-button-container__label
-	&__label{
-		cursor: pointer;
-		padding: 0 26px;
-		border-radius: inherit;
-	}
-	&--checked {
-		background: var(--background-color-active);
-		color: var(--text);
-	}
-	&--little {
-		--width: min-content;
-	}
-	&__radio-button {
-		position: absolute;
-		width: 0;
-		height: 0;
-	}
-	&__svg {
-		fill: currentColor;
+.modern-radio-button {
+	&-container {
+		padding: 0;
+		&--checked {
+			background: var(--background-color-active);
+			color: var(--text);
+		}
+		&--little {
+			--width: min-content;
+		}
+		&__radio-button {
+			position: absolute;
+			width: 0;
+			height: 0;
+		}
+		&__svg {
+			fill: currentColor;
+		}
+		// .modern-radio-button-container__label
+		&__label {
+		}
+		// .modern-radio-button-container-label
+		&-label {
+			border-radius: inherit;
+			// .modern-radio-button-container-label__content
+			&__content {
+				padding: 0 26px;
+				display: flex;
+				place-content: center;
+				cursor: pointer;
+				border-radius: inherit;
+			}
+		}
 	}
 }
 .label {
-	--place-content: center center;
-	--display: flex;
-	display: var(--display);
-	place-content: var(--place-content);
+	display: block;
+	// .label__content
+	&__content {
+	}
 }
 
 .info {
