@@ -4,37 +4,41 @@ type Props = {
 	className?: string;
 	paragraphClassName?: string;
 	hidden?: boolean;
-	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	onMouseOver?: (event: React.MouseEvent<HTMLElement>) => void;
-	onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
-	onKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
+	onMouseOverHandler?: (event: React.MouseEvent<HTMLElement>) => void;
+	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
+	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
 };
 
 export function InfoButton(props: Props) {
-	const {
-		className = '',
-		paragraphClassName = '',
-		hidden = false,
-		onClick = () => {},
-		onMouseOver = () => {},
-		onFocus = () => {},
-		onKeyDown = () => {},
-	} = props;
+	const { className = '', paragraphClassName = '', hidden = false } = props;
 
 	function handleMouseOver(event: React.MouseEvent<HTMLElement>) {
-		onMouseOver(event);
+		const { onMouseOverHandler } = props;
+		if (onMouseOverHandler) {
+			onMouseOverHandler(event);
+		}
 	}
 
 	function handleClick(event: React.MouseEvent<HTMLElement>) {
-		onClick(event);
+		const { onClickHandler } = props;
+		if (onClickHandler) {
+			onClickHandler(event);
+		}
 	}
 
 	function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-		onKeyDown(event);
+		const { onKeyDownHandler } = props;
+		if (onKeyDownHandler) {
+			onKeyDownHandler(event);
+		}
 	}
 
 	function handleFocus(event: React.FocusEvent<HTMLElement>) {
-		onFocus(event);
+		const { onFocusHandler } = props;
+		if (onFocusHandler) {
+			onFocusHandler(event);
+		}
 	}
 	return (
 		<>
