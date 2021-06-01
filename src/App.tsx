@@ -108,16 +108,14 @@ function App(): JSX.Element {
 									>
 										<Modal>
 											<Paragraph>
-												{`You can use any symbol/symbols to break your text into parts.
+												{`You can use any symbol/symbols or regular expression to break your subtasks into parts.
 
 												Example:
 												Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
 												🞄Brush teeth
 												🞄Take a bath
 												🞄Training
-												🞄Learning
-
-												Cheatsheet`}
+												🞄Learning`}
 											</Paragraph>
 										</Modal>
 									</ModalContainer>
