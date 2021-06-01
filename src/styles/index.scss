@@ -81,7 +81,7 @@ body {
 .textarea,
 .input,
 .modern-radio-button-container {
-	--padding: 12px 26px;
+	--padding: ;
 	--width: 100%;
 	--border-radius: 50px;
 	transition: background, color 0.15s ease-in-out;
@@ -96,15 +96,13 @@ body {
 	}
 	&--auto-size {
 		--width: auto;
-		--max-width: 100%;
-		max-width: var(--max-width);
+		max-width: 100%;
 	}
 	&:focus {
 		color: var(--text-color-active);
 		background: var(--background-color-active);
 		&::placeholder {
-			--visibility: hidden;
-			visibility: var(--visibility);
+			visibility: hidden;
 		}
 	}
 }
