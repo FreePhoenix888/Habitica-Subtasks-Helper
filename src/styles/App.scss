@@ -14,7 +14,7 @@
 	// .task-difficulty__radio-button-container
 	&__modern-radio-button-group {
 		display: grid;
-		grid-template: '1star 2stars 2stars 3stars 3stars 3stars 4stars 4stars 4stars 4stars' auto;
+		grid-template: '1star 2stars 3stars 4stars' auto;
 		justify-content: center;
 		gap: 5px;
 	}
@@ -23,9 +23,9 @@
 	}
 }
 
-.task-notes{
+.task-notes {
 	// .task-notes__textarea
-	&__textarea{
+	&__textarea {
 		text-align: center;
 	}
 }
