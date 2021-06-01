@@ -28,11 +28,6 @@ html {
 
 // End: Disables browser default styles
 
-html,
-body {
-	min-height: 100%;
-	position: relative;
-}
 
 body {
 	font-family: var(--font-family);
@@ -149,7 +144,6 @@ body {
 		display: grid;
 		place-content: center;
 		grid-auto-flow: column;
-		gap: 5px;
 	}
 }
 
@@ -198,7 +192,7 @@ body {
 
 	}
 	&-container {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		min-width: 100%;
