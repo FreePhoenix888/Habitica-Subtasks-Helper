@@ -85,7 +85,7 @@ body {
 	--border-radius: 50px;
 	--text-align: center;
 	transition: background, color 0.15s ease-in-out;
-	color: var(--text-color-non-active);
+	color: var(--text-color-active);
 	width: var(--width);
 	padding: var(--padding);
 	text-align: var(--text-align);
@@ -95,13 +95,15 @@ body {
 	&--active {
 	}
 	&--auto-size {
-		--width: auto;
+		--width: fit-content;
+		width: var(--width);
 		max-width: 100%;
+		margin: 0 auto;
 	}
 	&:focus {
-		color: var(--text-color-active);
 		background: var(--background-color-active);
 		&::placeholder {
+			color: var(--text-color-non-active);
 			visibility: hidden;
 		}
 	}
