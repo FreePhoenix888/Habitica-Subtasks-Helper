@@ -11,41 +11,36 @@ interface Props {
 		| HTMLAnchorElement;
 	className?: string;
 	containerClassName?: string;
-	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	onKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
-	onUseEffect?: () => void;
+	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
+	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onUseEffectHandler?: () => void;
 }
 
 let containerRef: React.RefObject<HTMLDivElement>;
 
 export function ModalContainer(props: Props) {
-	const {
-		isOpen,
-		children,
-		className = '',
-		containerClassName = '',
-		onClick,
-		onKeyDown,
-		onUseEffect,
-	} = props;
+	const { isOpen, children, className = '', containerClassName = '' } = props;
 
 	containerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		if (onUseEffect) {
-			onUseEffect();
+		const { onUseEffectHandler } = props;
+		if (onUseEffectHandler) {
+			onUseEffectHandler();
 		}
 	}, [isOpen]);
 
 	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
-		if (onClick) {
-			onClick(event);
+		const { onClickHandler } = props;
+		if (onClickHandler) {
+			onClickHandler(event);
 		}
 	}
 
 	function handleContainerKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-		if (onKeyDown) {
-			onKeyDown(event);
+		const { onKeyDownHandler } = props;
+		if (onKeyDownHandler) {
+			onKeyDownHandler(event);
 		}
 	}
 
@@ -63,7 +58,7 @@ export function ModalContainer(props: Props) {
 						{children}
 					</div>
 				</>,
-				document.getElementById('root')!
+				document.body
 		  )
 		: null;
 }
