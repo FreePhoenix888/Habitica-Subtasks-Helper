@@ -1,3 +1,4 @@
+export { Span } from './components/Span';
 export { Paragraph } from './components/Paragraph';
 export { Anchor } from './components/Anchor';
 export { Label } from './components/Label';
