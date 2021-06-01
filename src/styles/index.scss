@@ -71,6 +71,11 @@ body {
 	border: none;
 }
 
+.input-section {
+	display: grid;
+	gap: 0.4em;
+}
+
 .textarea,
 .input,
 .modern-radio-button-container {
