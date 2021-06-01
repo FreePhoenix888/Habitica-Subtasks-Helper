@@ -43,7 +43,7 @@ export function InfoButton(props: Props) {
 	return (
 		<>
 			<button
-				className={`button info ${className}`}
+				className={`info-button ${className}`}
 				onMouseOver={handleMouseOver}
 				onClick={handleClick}
 				onKeyDown={handleKeyDown}
