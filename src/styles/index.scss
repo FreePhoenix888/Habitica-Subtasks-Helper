@@ -139,9 +139,13 @@ body {
 	}
 }
 .label {
-	display: block;
+	display: grid;
 	// .label__content
 	&__content {
+		display: grid;
+		place-content: center;
+		grid-auto-flow: column;
+		gap: 5px;
 	}
 }
 
@@ -197,5 +201,12 @@ body {
 		display: grid;
 		place-content: center;
 		backdrop-filter: blur(10px);
+	}
+}
+
+.message{
+	// .message-container
+	&-container{
+		display: inline-flex;
 	}
 }
