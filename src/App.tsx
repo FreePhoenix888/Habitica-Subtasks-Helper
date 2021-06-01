@@ -66,6 +66,7 @@ function App(): JSX.Element {
 							setIsOpen(false);
 						}
 					}
+
 					function modalContainerOnKeyDown(
 						event: React.KeyboardEvent<HTMLElement>
 					) {
@@ -74,9 +75,9 @@ function App(): JSX.Element {
 							event.metaKey ||
 							event.shiftKey ||
 							event.key === 'ArrowUp' ||
-							'ArrowRight' ||
-							'ArrowDown' ||
-							'ArrowLeft'
+							event.key === 'ArrowRight' ||
+							event.key === 'ArrowDown' ||
+							event.key === 'ArrowLeft'
 						) {
 							return;
 						}
@@ -85,13 +86,18 @@ function App(): JSX.Element {
 							setIsOpen(false);
 						}
 					}
+
+					function modalContainerOnUseEffectHandler() {
+						ModalContainer.focusContainer();
+					}
 					return (
 						<>
-							<InfoButton onClick={infoButtonOnClick} />
+							<InfoButton onClickHandler={infoButtonOnClick} />
 							<ModalContainer
 								isOpen={isOpen}
-								onClick={modalContainerOnClick}
-								onKeyDown={modalContainerOnKeyDown}
+								onClickHandler={modalContainerOnClick}
+								onKeyDownHandler={modalContainerOnKeyDown}
+								onUseEffectHandler={modalContainerOnUseEffectHandler}
 							>
 								<Modal>
 									<Paragraph>
