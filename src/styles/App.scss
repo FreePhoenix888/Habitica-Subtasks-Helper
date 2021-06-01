@@ -21,6 +21,13 @@
 	// .task-difficulty__modern-radio-button-container
 	&__modern-radio-button-container {
 	}
+	// .task-difficulty-label
+	&-label{
+		// .task-difficulty-label__content
+		&__content{
+			padding: 0 10px;
+		}
+	}
 }
 
 .task-notes {
