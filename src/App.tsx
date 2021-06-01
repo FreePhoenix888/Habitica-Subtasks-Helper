@@ -54,61 +54,73 @@ function App(): JSX.Element {
 				<Input
 					before={
 						<>
-						<Label htmlFor="taskAmount" className="task-separator__label">
-							<Paragraph>Separator</Paragraph>
-						<MessageContainer>
-					<MessageContainerContext.Consumer>
-						{({ isOpen, setIsOpen }) => {
-							function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
-								setIsOpen(true);
-								ModalContainer.switchBodyOverflow();
-							}
+							<Label htmlFor="taskAmount" className="task-separator__label">
+								<Paragraph>Separator</Paragraph>
+								<MessageContainer>
+									<MessageContainerContext.Consumer>
+										{({ isOpen, setIsOpen }) => {
+											function infoButtonOnClick(
+												event: React.MouseEvent<HTMLElement>
+											) {
+												setIsOpen(true);
+												ModalContainer.lockBodyOverflow();
+											}
 
-							function modalContainerOnClick(
-								event: React.MouseEvent<HTMLElement>
-							) {
-								const target = event.target as HTMLElement;
-								if (target.className.includes('modal-container')) {
-									setIsOpen(false);
-								}
-							}
+											function modalContainerOnClick(
+												event: React.MouseEvent<HTMLElement>
+											) {
+												const target = event.target as HTMLElement;
+												if (target.className.includes('modal-container')) {
+													setIsOpen(false);
+												}
+											}
 
-							function modalContainerOnKeyDown(
-								event: React.KeyboardEvent<HTMLElement>
-							) {
-								if (
-									event.ctrlKey ||
-									event.metaKey ||
-									event.shiftKey ||
-									event.key === 'ArrowUp' ||
-									event.key === 'ArrowRight' ||
-									event.key === 'ArrowDown' ||
-									event.key === 'ArrowLeft'
-								) {
-									return;
-								}
-								const target = event.target as HTMLElement;
+											function modalContainerOnKeyDown(
+												event: React.KeyboardEvent<HTMLElement>
+											) {
+												if (
+													event.ctrlKey ||
+													event.metaKey ||
+													event.shiftKey ||
+													event.key === 'ArrowUp' ||
+													event.key === 'ArrowRight' ||
+													event.key === 'ArrowDown' ||
+													event.key === 'ArrowLeft'
+												) {
+													return;
+												}
+												const target = event.target as HTMLElement;
 
-								if (target.className.includes('modal-container')) {
-									setIsOpen(false);
-								}
-							}
+												if (target.className.includes('modal-container')) {
+													setIsOpen(false);
+												}
+											}
 
-							function modalContainerOnUseEffectHandler() {
-								ModalContainer.focusContainer();
-							}
-							return (
-								<>
-									<InfoButton onClickHandler={infoButtonOnClick} />
-									<ModalContainer
-										isOpen={isOpen}
-										onClickHandler={modalContainerOnClick}
-										onKeyDownHandler={modalContainerOnKeyDown}
-										onUseEffectHandler={modalContainerOnUseEffectHandler}
-									>
-										<Modal>
-											<Paragraph>
-												{`You can use any symbols or regular expression to break your subtasks into parts.
+											function modalContainerOnUseEffectHandler() {
+												ModalContainer.lockBodyOverflow();
+											}
+
+											const modalOnAfterUseEffectHandler =
+												ModalContainer.unlockBodyOverflow;
+
+											return (
+												<>
+													<InfoButton onClickHandler={infoButtonOnClick} />
+													<ModalContainer
+														isOpen={isOpen}
+														onClickHandler={modalContainerOnClick}
+														onKeyDownHandler={modalContainerOnKeyDown}
+													>
+														<Modal
+															onUseEffectHandler={
+																modalContainerOnUseEffectHandler
+															}
+															onAfterUseEffectHandler={
+																modalOnAfterUseEffectHandler
+															}
+														>
+															<Paragraph>
+																{`You can use any symbols or regular expression to break your subtasks into parts.
 
 												Example:
 												Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
@@ -116,17 +128,16 @@ function App(): JSX.Element {
 												🞄Take a bath
 												🞄Training
 												🞄Learning`}
-											</Paragraph>
-										</Modal>
-									</ModalContainer>
-								</>
-							);
-						}}
-					</MessageContainerContext.Consumer>
-				</MessageContainer>
-
-						</Label>
+															</Paragraph>
+														</Modal>
+													</ModalContainer>
 												</>
+											);
+										}}
+									</MessageContainerContext.Consumer>
+								</MessageContainer>
+							</Label>
+						</>
 					}
 					name="task_separator"
 					placeholder="\n"
@@ -201,75 +212,77 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-amount">
+
 				<Input
 					before={
 						<>
-						<Label htmlFor="taskSeparator" className="task-amount__label">
-							<Paragraph>Amount</Paragraph>
-						<MessageContainer>
-					<MessageContainerContext.Consumer>
-						{({ isOpen, setIsOpen }) => {
-							function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
-								setIsOpen(true);
-								ModalContainer.switchBodyOverflow();
-							}
+							<Label htmlFor="taskSeparator" className="task-amount__label">
+								<Paragraph>Amount</Paragraph>
+								<MessageContainer>
+									<MessageContainerContext.Consumer>
+										{({ isOpen, setIsOpen }) => {
+											function infoButtonOnClick(
+												event: React.MouseEvent<HTMLElement>
+											) {
+												setIsOpen(true);
+												ModalContainer.lockBodyOverflow();
+											}
 
-							function modalContainerOnClick(
-								event: React.MouseEvent<HTMLElement>
-							) {
-								const target = event.target as HTMLElement;
-								if (target.className.includes('modal-container')) {
-									setIsOpen(false);
-								}
-							}
+											function modalContainerOnClick(
+												event: React.MouseEvent<HTMLElement>
+											) {
+												const target = event.target as HTMLElement;
+												if (target.className.includes('modal-container')) {
+													setIsOpen(false);
+												}
+											}
 
-							function modalContainerOnKeyDown(
-								event: React.KeyboardEvent<HTMLElement>
-							) {
-								if (
-									event.ctrlKey ||
-									event.metaKey ||
-									event.shiftKey ||
-									event.key === 'ArrowUp' ||
-									event.key === 'ArrowRight' ||
-									event.key === 'ArrowDown' ||
-									event.key === 'ArrowLeft'
-								) {
-									return;
-								}
-								const target = event.target as HTMLElement;
+											function modalContainerOnKeyDown(
+												event: React.KeyboardEvent<HTMLElement>
+											) {
+												if (
+													event.ctrlKey ||
+													event.metaKey ||
+													event.shiftKey ||
+													event.key === 'ArrowUp' ||
+													event.key === 'ArrowRight' ||
+													event.key === 'ArrowDown' ||
+													event.key === 'ArrowLeft'
+												) {
+													return;
+												}
+												const target = event.target as HTMLElement;
 
-								if (target.className.includes('modal-container')) {
-									setIsOpen(false);
-								}
-							}
+												if (target.className.includes('modal-container')) {
+													setIsOpen(false);
+												}
+											}
 
-							function modalContainerOnUseEffectHandler() {
-								ModalContainer.focusContainer();
-							}
-							return (
-								<>
-									<InfoButton onClickHandler={infoButtonOnClick} />
-									<ModalContainer
-										isOpen={isOpen}
-										onClickHandler={modalContainerOnClick}
-										onKeyDownHandler={modalContainerOnKeyDown}
-										onUseEffectHandler={modalContainerOnUseEffectHandler}
-									>
-										<Modal>
-											<Paragraph>
-												You can create a lot of tasks with the same name.
-											</Paragraph>
-										</Modal>
-									</ModalContainer>
-								</>
-							);
-						}}
-					</MessageContainerContext.Consumer>
-				</MessageContainer>
+											function modalContainerOnUseEffectHandler() {
+												ModalContainer.focusContainer();
+											}
+											return (
+												<>
+													<InfoButton onClickHandler={infoButtonOnClick} />
+													<ModalContainer
+														isOpen={isOpen}
+														onClickHandler={modalContainerOnClick}
 
-						</Label>
+													>
+														<Modal >
+															<Paragraph>
+																You can create a lot of tasks with the same
+																name.
+															</Paragraph>
+														</Modal>
+													</ModalContainer>
 												</>
+											);
+										}}
+									</MessageContainerContext.Consumer>
+								</MessageContainer>
+							</Label>
+						</>
 					}
 					name="task_amount"
 					placeholder="\n"
@@ -278,7 +291,6 @@ function App(): JSX.Element {
 					autoSize
 				/>
 			</div>
-
 		</div>
 	);
 }
