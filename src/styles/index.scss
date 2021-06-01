@@ -19,6 +19,7 @@
 	// ::-webkit-scrollbar-thumb
 	&-thumb {
 		background: var(--text-color-primary);
+		border-radius: 50px;
 		// ::-webkit-scrollbar-thumb:hover
 		&:hover {
 			background: var(--background-color-active);
