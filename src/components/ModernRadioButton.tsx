@@ -1,11 +1,16 @@
 import React from 'react';
 import { CheckedInputContext } from './ModernRadioButtonGroup';
+import { Label } from './Label';
 import { RadioButton } from './RadioButton';
 
 type Props = {
+	children: JSX.Element | JSX.Element[] | string;
 	name: string;
 	radioButtonClassName?: string;
 	containerClassName?: string;
+	labelClassName?: string;
+	labelContentClassName?: string;
+	htmlFor: string;
 	id?: string;
 	before?: JSX.Element | undefined;
 	after?: JSX.Element | undefined;
@@ -14,13 +19,17 @@ type Props = {
 
 export function ModernRadioButton(props: Props) {
 	const {
+		children,
 		name,
+		containerClassName = '',
 		radioButtonClassName = '',
+		labelClassName = '',
+		labelContentClassName = '',
+		htmlFor,
 		id,
 		before,
 		after,
 		value,
-		containerClassName = '',
 	} = props;
 	const { inputChangeEvent, handleChange } =
 		React.useContext(CheckedInputContext);
@@ -43,7 +52,15 @@ export function ModernRadioButton(props: Props) {
 				}`}
 				id={id}
 				value={value}
-				before={before}
+				before={
+					<Label
+						htmlFor={htmlFor}
+						className={`modern-radio-button-container__label modern-radio-button-container-label ${labelClassName}`}
+						contentClassName={`modern-radio-button-container-label__content ${labelContentClassName}`}
+					>
+						{children}
+					</Label>
+				}
 				after={after}
 				onChange={handleChange}
 			/>
