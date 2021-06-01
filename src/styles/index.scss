@@ -172,11 +172,10 @@ body {
 .modal {
 	--border-radius: 10px;
 	--max-width: 220px;
-	--padding: 10px;
 	--display: grid;
 	--width: fit-content;
 	width: var(--width);
-	padding: var(--padding);
+	padding: 1em;
 	display: var(--display);
 	grid-template-columns: 100%;
 	grid-auto-flow: row;
@@ -195,6 +194,8 @@ body {
 		padding: 10px;
 		font-size: 0.7em;
 		border-radius: 10px;
+		box-shadow: 0px 5px 5px -2px hsla(0, 0%, 0%, 0.2);
+
 	}
 	&-container {
 		position: absolute;
