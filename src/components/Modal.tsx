@@ -9,14 +9,26 @@ interface Props {
 		| Element[]
 		| HTMLAnchorElement;
 	className?: string;
-	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-	onKeyDown?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onUseEffectHandler?: () => void;
+	onAfterUseEffectHandler?: () => void;
 }
 
 let containerRef: React.RefObject<HTMLDivElement>;
 
 export function Modal(props: Props) {
-	const { children, className = '', onClick, onKeyDown } = props;
+	const { children, className = '' } = props;
+
+	useEffect(() => {
+		const { onUseEffectHandler, onAfterUseEffectHandler } = props;
+		if (onUseEffectHandler) {
+			onUseEffectHandler();
+		}
+
+		if (onAfterUseEffectHandler) {
+			return onAfterUseEffectHandler;
+		}
+		return undefined;
+	}, []);
 
 	return (
 		<>
