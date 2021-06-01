@@ -148,12 +148,12 @@ body {
 }
 
 .label {
-	font-size: 600;
-	font-weight: 1.3rem;
 	display: grid;
 	// .label__content
 	&__content {
 		display: grid;
+		font-size: 1.3em;
+		font-weight: 600;
 		place-content: center;
 		grid-auto-flow: column;
 		gap: 5px;
