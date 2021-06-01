@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 
 type Props = {
 	className?: string;
-	paragraphClassName?: string;
 	hidden?: boolean;
 	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 	onMouseOverHandler?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export function InfoButton(props: Props) {
-	const { className = '', paragraphClassName = '', hidden = false } = props;
+	const { className = '', hidden = false } = props;
 
 	function handleMouseOver(event: React.MouseEvent<HTMLElement>) {
 		const { onMouseOverHandler } = props;
