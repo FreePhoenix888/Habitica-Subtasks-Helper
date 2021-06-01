@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 type Props = {
 	name: string;
@@ -10,6 +10,7 @@ type Props = {
 	after?: JSX.Element | undefined;
 	autoSize?: boolean | string | undefined;
 	tabIndex?: number;
+	isChecked?: boolean;
 };
 
 type InputValue = string;
@@ -24,6 +25,7 @@ export function Input(props: Props): JSX.Element {
 		after,
 		autoSize = false,
 		tabIndex = 0,
+		isChecked = false,
 	} = props;
 	const [value, changeValue] = useState<InputValue>('');
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -42,6 +44,7 @@ export function Input(props: Props): JSX.Element {
 				id={id}
 				value={value}
 				onChange={handleChange}
+				checked={isChecked}
 			/>
 			{after}
 		</>
