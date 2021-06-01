@@ -1,6 +1,7 @@
 export { Span } from './components/Span';
 export { Paragraph } from './components/Paragraph';
 export { Anchor } from './components/Anchor';
+export { Form } from './components/Form';
 export { Label } from './components/Label';
 export { Input } from './components/Input';
 export { Textarea } from './components/Textarea';
