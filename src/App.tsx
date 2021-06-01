@@ -22,7 +22,7 @@ function App(): JSX.Element {
 	return (
 		<div className="container">
 			<h1>Habitica Subtasks Helper</h1>
-			<div className="task-title">
+			<div className="input-section task-title">
 				<Label htmlFor="taskTitle" className="task-title__label">
 					Title
 				</Label>
@@ -33,7 +33,7 @@ function App(): JSX.Element {
 					id="taskTitle"
 				/>
 			</div>
-			<div className="task-subtasks">
+			<div className="input-section task-subtasks">
 				<Label className="task-subtasks__label" htmlFor="taskSubtasks">
 					Subtasks
 				</Label>
@@ -47,7 +47,7 @@ function App(): JSX.Element {
 					wrap="soft"
 				/>
 			</div>
-			<div className="task-separator">
+			<div className="input-section task-separator">
 				<Input
 					before={
 						<>
@@ -143,7 +143,7 @@ function App(): JSX.Element {
 					autoSize
 				/>
 			</div>
-			<div className="task-tags">
+			<div className="input-section task-tags">
 				<Label htmlFor="taskTags" className="task-tags__label">
 					Tags
 				</Label>
@@ -154,7 +154,7 @@ function App(): JSX.Element {
 					id="taskTags"
 				/>
 			</div>
-			<div className="task-difficulty">
+			<div className="input-section task-difficulty">
 				<Label htmlFor="taskDifficulty1">Difficulty</Label>
 				<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
 					{(function modernRadioButtons() {
@@ -192,7 +192,7 @@ function App(): JSX.Element {
 					})()}
 				</ModernRadioButtonGroup>
 			</div>
-			<div className="task-notes">
+			<div className="input-section task-notes">
 				<Textarea
 					className="textarea task-notes__textarea"
 					id="taskNotes"
@@ -206,7 +206,7 @@ function App(): JSX.Element {
 					wrap="soft"
 				/>
 			</div>
-			<div className="task-amount">
+			<div className="input-section task-amount">
 				<Label htmlFor="taskSeparator" className="task-amount__label">
 					<Span>Amount</Span>
 					<MessageContainer>
