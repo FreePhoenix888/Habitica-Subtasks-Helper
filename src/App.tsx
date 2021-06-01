@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useRef } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import {
+	Span,
 	Paragraph,
 	Anchor,
 	Label,
@@ -22,12 +23,10 @@ function App(): JSX.Element {
 		<div className="container">
 			<h1>Habitica Subtasks Helper</h1>
 			<div className="task-title">
+				<Label htmlFor="taskTitle" className="task-title__label">
+					Title
+				</Label>
 				<Input
-					before={
-						<Label htmlFor="taskTitle" className="task-title__label">
-							Title
-						</Label>
-					}
 					name="task_title"
 					placeholder="The Venus Project Conception."
 					className="task-title__input"
@@ -35,17 +34,15 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-subtasks">
+				<Label className="task-subtasks__label" htmlFor="taskSubtasks">
+					Subtasks
+				</Label>
 				<Textarea
 					className="textarea task-subtasks__textarea"
 					id="taskSubtasks"
 					name="task_subtasks"
 					placeholder={
 						'What is the Venus Project?\nAims, Proposals.\nFAQ.\nFree e-Books.\nRecommended books.'
-					}
-					before={
-						<Label className="task-subtasks__label" htmlFor="taskSubtasks">
-							Subtasks
-						</Label>
 					}
 					wrap="soft"
 				/>
@@ -55,7 +52,7 @@ function App(): JSX.Element {
 					before={
 						<>
 							<Label htmlFor="taskAmount" className="task-separator__label">
-								<Paragraph>Separator</Paragraph>
+								<Span>Separator</Span>
 								<MessageContainer>
 									<MessageContainerContext.Consumer>
 										{({ isOpen, setIsOpen }) => {
@@ -122,12 +119,12 @@ function App(): JSX.Element {
 															<Paragraph>
 																{`You can use any symbols or regular expression to break your subtasks into parts.
 
-												Example:
-												Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
-												🞄Brush teeth
-												🞄Take a bath
-												🞄Training
-												🞄Learning`}
+																Example:
+																Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
+																🞄Brush teeth
+																🞄Take a bath
+																🞄Training
+																🞄Learning`}
 															</Paragraph>
 														</Modal>
 													</ModalContainer>
@@ -147,12 +144,10 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-tags">
+				<Label htmlFor="taskTags" className="task-tags__label">
+					Tags
+				</Label>
 				<Input
-					before={
-						<Label htmlFor="taskTags" className="task-tags__label">
-							Tags
-						</Label>
-					}
 					name="task_tags"
 					placeholder="Self-Development, Psychology"
 					className="task-tags__input "
@@ -212,12 +207,8 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-amount">
-
-				<Input
-					before={
-						<>
-							<Label htmlFor="taskSeparator" className="task-amount__label">
-								<Paragraph>Amount</Paragraph>
+			<Label htmlFor="taskSeparator" className="task-amount__label">
+								<Span>Amount</Span>
 								<MessageContainer>
 									<MessageContainerContext.Consumer>
 										{({ isOpen, setIsOpen }) => {
@@ -267,9 +258,8 @@ function App(): JSX.Element {
 													<ModalContainer
 														isOpen={isOpen}
 														onClickHandler={modalContainerOnClick}
-
 													>
-														<Modal >
+														<Modal>
 															<Paragraph>
 																You can create a lot of tasks with the same
 																name.
@@ -282,8 +272,7 @@ function App(): JSX.Element {
 									</MessageContainerContext.Consumer>
 								</MessageContainer>
 							</Label>
-						</>
-					}
+				<Input
 					name="task_amount"
 					placeholder="\n"
 					className="input--little task-amount__input "
