@@ -13,7 +13,6 @@ interface Props {
 	containerClassName?: string;
 	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
-	onUseEffectHandler?: () => void;
 }
 
 let containerRef: React.RefObject<HTMLDivElement>;
@@ -22,13 +21,6 @@ export function ModalContainer(props: Props) {
 	const { isOpen, children, className = '', containerClassName = '' } = props;
 
 	containerRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const { onUseEffectHandler } = props;
-		if (onUseEffectHandler) {
-			onUseEffectHandler();
-		}
-	}, [isOpen]);
 
 	function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
 		const { onClickHandler } = props;
@@ -64,21 +56,18 @@ export function ModalContainer(props: Props) {
 }
 
 ModalContainer.focusContainer = function focusContainer() {
-	containerRef.current?.focus();
+	if (containerRef.current) {
+		containerRef.current.focus();
+	}
 };
 
-ModalContainer.switchBodyOverflow = function switchBodyOverflow() {
+ModalContainer.lockBodyOverflow = function switchBodyOverflow() {
 	const bodyStyle = document.body.style;
-	switch (bodyStyle.overflow) {
-		case '':
-		case 'auto':
-			bodyStyle.overflow = 'hidden';
-			break;
-		case 'hidden':
-			bodyStyle.overflow = 'auto';
-			break;
-		default:
-			bodyStyle.overflow = '';
-			break;
-	}
+
+	bodyStyle.overflow = 'hidden';
+};
+ModalContainer.unlockBodyOverflow = function switchBodyOverflow() {
+	const bodyStyle = document.body.style;
+
+	bodyStyle.overflow = 'auto';
 };
