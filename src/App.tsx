@@ -34,20 +34,17 @@ function App(): JSX.Element {
 
 		modernRadioButtons.push(
 			<ModernRadioButton
-				before={
-					<Label
-						htmlFor={`taskDifficulty${i + 1}`}
-						className="task-difficulty__label modern-radio-button-container__label"
-					>
-						{stars}
-					</Label>
-				}
+				htmlFor={`taskDifficulty${i + 1}`}
 				name="task_difficulty"
 				containerClassName="radio-button-container--little task-difficulty__radio-button-container"
 				radioButtonClassName="task-difficulty__input"
+				labelClassName="task-difficulty__label"
+				labelContentClassName="task-difficulty-label__content"
 				id={`taskDifficulty${i + 1}`}
 				value={`${i + 1}`}
-			/>
+			>
+				{stars}
+			</ModernRadioButton>
 		);
 	}
 	// End: Difficulty Section Radio Buttons
