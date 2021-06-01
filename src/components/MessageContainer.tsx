@@ -24,7 +24,7 @@ export function MessageContainer(props: Props) {
 	};
 
 	return (
-		<div>
+		<div className="message-container">
 			<MessageContainerContext.Provider value={messageContainerContextValue}>
 				{children}
 			</MessageContainerContext.Provider>
