@@ -18,111 +18,6 @@ import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
 
 function App(): JSX.Element {
-	// Difficulty Section Radio Buttons
-	const modernRadioButtons: JSX.Element[] = [];
-
-	for (let i = 0; i < 4; i++) {
-		const stars: JSX.Element[] = [];
-		for (let j = 1; j < i + 2; j++) {
-			stars.push(
-				<StarSVG
-					key={`${i}:${j}`}
-					className="svg star-SVG radio-button-container__svg radio-button-container__star-svg"
-				/>
-			);
-		}
-
-		modernRadioButtons.push(
-			<ModernRadioButton
-				htmlFor={`taskDifficulty${i + 1}`}
-				name="task_difficulty"
-				containerClassName="radio-button-container--little task-difficulty__radio-button-container"
-				radioButtonClassName="task-difficulty__input"
-				labelClassName="task-difficulty__label"
-				labelContentClassName="task-difficulty-label__content"
-				id={`taskDifficulty${i + 1}`}
-				value={`${i + 1}`}
-			>
-				{stars}
-			</ModernRadioButton>
-		);
-	}
-	// End: Difficulty Section Radio Buttons
-
-	// Separator Info Button
-
-	const message = (
-		<MessageContainer>
-			<MessageContainerContext.Consumer>
-				{({ isOpen, setIsOpen }) => {
-					function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
-						setIsOpen(true);
-						ModalContainer.switchBodyOverflow();
-					}
-
-					function modalContainerOnClick(event: React.MouseEvent<HTMLElement>) {
-						const target = event.target as HTMLElement;
-						if (target.className.includes('modal-container')) {
-							setIsOpen(false);
-						}
-					}
-
-					function modalContainerOnKeyDown(
-						event: React.KeyboardEvent<HTMLElement>
-					) {
-						if (
-							event.ctrlKey ||
-							event.metaKey ||
-							event.shiftKey ||
-							event.key === 'ArrowUp' ||
-							event.key === 'ArrowRight' ||
-							event.key === 'ArrowDown' ||
-							event.key === 'ArrowLeft'
-						) {
-							return;
-						}
-						const target = event.target as HTMLElement;
-						if (target.className.includes('modal-container')) {
-							setIsOpen(false);
-						}
-					}
-
-					function modalContainerOnUseEffectHandler() {
-						ModalContainer.focusContainer();
-					}
-					return (
-						<>
-							<InfoButton onClickHandler={infoButtonOnClick} />
-							<ModalContainer
-								isOpen={isOpen}
-								onClickHandler={modalContainerOnClick}
-								onKeyDownHandler={modalContainerOnKeyDown}
-								onUseEffectHandler={modalContainerOnUseEffectHandler}
-							>
-								<Modal>
-									<Paragraph>
-										{`You can use any symbol/symbols to break your text into parts.
-
-Example:
-Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
-🞄Brush teeth
-🞄Take a bath
-🞄Training
-🞄Learning
-
-Cheatsheet`}
-									</Paragraph>
-								</Modal>
-							</ModalContainer>
-						</>
-					);
-				}}
-			</MessageContainerContext.Consumer>
-		</MessageContainer>
-	);
-
-	// End: Separator Info Button
-
 	return (
 		<div className="container">
 			<h1>Habitica Subtasks Helper</h1>
@@ -158,9 +53,82 @@ Cheatsheet`}
 			<div className="task-separator">
 				<Input
 					before={
+						<>
 						<Label htmlFor="taskSeparator" className="task-separator__label">
-							Separator
+							<Paragraph>Separator</Paragraph>
+						<MessageContainer>
+					<MessageContainerContext.Consumer>
+						{({ isOpen, setIsOpen }) => {
+							function infoButtonOnClick(event: React.MouseEvent<HTMLElement>) {
+								setIsOpen(true);
+								ModalContainer.switchBodyOverflow();
+							}
+
+							function modalContainerOnClick(
+								event: React.MouseEvent<HTMLElement>
+							) {
+								const target = event.target as HTMLElement;
+								if (target.className.includes('modal-container')) {
+									setIsOpen(false);
+								}
+							}
+
+							function modalContainerOnKeyDown(
+								event: React.KeyboardEvent<HTMLElement>
+							) {
+								if (
+									event.ctrlKey ||
+									event.metaKey ||
+									event.shiftKey ||
+									event.key === 'ArrowUp' ||
+									event.key === 'ArrowRight' ||
+									event.key === 'ArrowDown' ||
+									event.key === 'ArrowLeft'
+								) {
+									return;
+								}
+								const target = event.target as HTMLElement;
+
+								if (target.className.includes('modal-container')) {
+									setIsOpen(false);
+								}
+							}
+
+							function modalContainerOnUseEffectHandler() {
+								ModalContainer.focusContainer();
+							}
+							return (
+								<>
+									<InfoButton onClickHandler={infoButtonOnClick} />
+									<ModalContainer
+										isOpen={isOpen}
+										onClickHandler={modalContainerOnClick}
+										onKeyDownHandler={modalContainerOnKeyDown}
+										onUseEffectHandler={modalContainerOnUseEffectHandler}
+									>
+										<Modal>
+											<Paragraph>
+												{`You can use any symbol/symbols to break your text into parts.
+
+												Example:
+												Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
+												🞄Brush teeth
+												🞄Take a bath
+												🞄Training
+												🞄Learning
+
+												Cheatsheet`}
+											</Paragraph>
+										</Modal>
+									</ModalContainer>
+								</>
+							);
+						}}
+					</MessageContainerContext.Consumer>
+				</MessageContainer>
+
 						</Label>
+												</>
 					}
 					name="task_separator"
 					placeholder="\n"
@@ -185,7 +153,39 @@ Cheatsheet`}
 			<div className="task-difficulty">
 				<Label htmlFor="taskDifficulty1">Difficulty</Label>
 				<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
-					{modernRadioButtons}
+					{(function modernRadioButtons() {
+						// Difficulty Section Radio Buttons
+						const modernRadioButtons: JSX.Element[] = [];
+
+						for (let i = 0; i < 4; i++) {
+							const stars: JSX.Element[] = [];
+							for (let j = 1; j < i + 2; j++) {
+								stars.push(
+									<StarSVG
+										key={`${i}:${j}`}
+										className="svg star-SVG radio-button-container__svg radio-button-container__star-svg"
+									/>
+								);
+							}
+
+							modernRadioButtons.push(
+								<ModernRadioButton
+									htmlFor={`taskDifficulty${i + 1}`}
+									name="task_difficulty"
+									containerClassName="radio-button-container--little task-difficulty__radio-button-container"
+									radioButtonClassName="task-difficulty__input"
+									labelClassName="task-difficulty__label"
+									labelContentClassName="task-difficulty-label__content"
+									id={`taskDifficulty${i + 1}`}
+									value={`${i + 1}`}
+								>
+									{stars}
+								</ModernRadioButton>
+							);
+						}
+						// End: Difficulty Section Radio Buttons
+						return modernRadioButtons;
+					})()}
 				</ModernRadioButtonGroup>
 			</div>
 			<div className="task-notes">
@@ -203,7 +203,6 @@ Cheatsheet`}
 				/>
 			</div>
 
-			<div>{message}</div>
 		</div>
 	);
 }
