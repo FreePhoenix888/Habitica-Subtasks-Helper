@@ -176,10 +176,10 @@ function App(): JSX.Element {
 								<ModernRadioButton
 									htmlFor={`taskDifficulty${i + 1}`}
 									name="task_difficulty"
-									containerClassName="radio-button-container--little task-difficulty__radio-button-container"
-									radioButtonClassName="task-difficulty__input"
-									labelClassName="task-difficulty__label"
-									labelContentClassName="task-difficulty-label__content"
+									containerClassName="radio-button-container--little task-difficulty__modern-radio-button-container-container"
+									radioButtonClassName="task-difficulty-modern-radio-button-container__input"
+									labelClassName="task-difficulty-modern-radio-button-container__label"
+									labelContentClassName="task-difficulty-modern-radio-button-container-label__content"
 									id={`taskDifficulty${i + 1}`}
 									value={`${i + 1}`}
 								>
@@ -207,71 +207,70 @@ function App(): JSX.Element {
 				/>
 			</div>
 			<div className="task-amount">
-			<Label htmlFor="taskSeparator" className="task-amount__label">
-								<Span>Amount</Span>
-								<MessageContainer>
-									<MessageContainerContext.Consumer>
-										{({ isOpen, setIsOpen }) => {
-											function infoButtonOnClick(
-												event: React.MouseEvent<HTMLElement>
-											) {
-												setIsOpen(true);
-												ModalContainer.lockBodyOverflow();
-											}
+				<Label htmlFor="taskSeparator" className="task-amount__label">
+					<Span>Amount</Span>
+					<MessageContainer>
+						<MessageContainerContext.Consumer>
+							{({ isOpen, setIsOpen }) => {
+								function infoButtonOnClick(
+									event: React.MouseEvent<HTMLElement>
+								) {
+									setIsOpen(true);
+									ModalContainer.lockBodyOverflow();
+								}
 
-											function modalContainerOnClick(
-												event: React.MouseEvent<HTMLElement>
-											) {
-												const target = event.target as HTMLElement;
-												if (target.className.includes('modal-container')) {
-													setIsOpen(false);
-												}
-											}
+								function modalContainerOnClick(
+									event: React.MouseEvent<HTMLElement>
+								) {
+									const target = event.target as HTMLElement;
+									if (target.className.includes('modal-container')) {
+										setIsOpen(false);
+									}
+								}
 
-											function modalContainerOnKeyDown(
-												event: React.KeyboardEvent<HTMLElement>
-											) {
-												if (
-													event.ctrlKey ||
-													event.metaKey ||
-													event.shiftKey ||
-													event.key === 'ArrowUp' ||
-													event.key === 'ArrowRight' ||
-													event.key === 'ArrowDown' ||
-													event.key === 'ArrowLeft'
-												) {
-													return;
-												}
-												const target = event.target as HTMLElement;
+								function modalContainerOnKeyDown(
+									event: React.KeyboardEvent<HTMLElement>
+								) {
+									if (
+										event.ctrlKey ||
+										event.metaKey ||
+										event.shiftKey ||
+										event.key === 'ArrowUp' ||
+										event.key === 'ArrowRight' ||
+										event.key === 'ArrowDown' ||
+										event.key === 'ArrowLeft'
+									) {
+										return;
+									}
+									const target = event.target as HTMLElement;
 
-												if (target.className.includes('modal-container')) {
-													setIsOpen(false);
-												}
-											}
+									if (target.className.includes('modal-container')) {
+										setIsOpen(false);
+									}
+								}
 
-											function modalContainerOnUseEffectHandler() {
-												ModalContainer.focusContainer();
-											}
-											return (
-												<>
-													<InfoButton onClickHandler={infoButtonOnClick} />
-													<ModalContainer
-														isOpen={isOpen}
-														onClickHandler={modalContainerOnClick}
-													>
-														<Modal>
-															<Paragraph>
-																You can create a lot of tasks with the same
-																name.
-															</Paragraph>
-														</Modal>
-													</ModalContainer>
-												</>
-											);
-										}}
-									</MessageContainerContext.Consumer>
-								</MessageContainer>
-							</Label>
+								function modalContainerOnUseEffectHandler() {
+									ModalContainer.focusContainer();
+								}
+								return (
+									<>
+										<InfoButton onClickHandler={infoButtonOnClick} />
+										<ModalContainer
+											isOpen={isOpen}
+											onClickHandler={modalContainerOnClick}
+										>
+											<Modal>
+												<Paragraph>
+													You can create a lot of tasks with the same name.
+												</Paragraph>
+											</Modal>
+										</ModalContainer>
+									</>
+								);
+							}}
+						</MessageContainerContext.Consumer>
+					</MessageContainer>
+				</Label>
 				<Input
 					name="task_amount"
 					placeholder="\n"
