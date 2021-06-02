@@ -1,13 +1,14 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, MutableRefObject, RefObject } from 'react';
 
 interface Props {
+	onClickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
+	children?: JSX.Element | JSX.Element[];
+	forwardedRef?: RefObject<HTMLButtonElement>;
 	className?: string;
-	type: 'button' | 'submit' | 'reset' | undefined;
-	onClickHandler: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export function Button(props: Props) {
-	const { className, type } = props;
+	const { className = '', children, forwardedRef } = props;
 
 	function handleClick(event: MouseEvent<HTMLButtonElement>) {
 		const { onClickHandler } = props;
@@ -18,9 +19,12 @@ export function Button(props: Props) {
 
 	return (
 		<button
-			type={type}
+			type="button"
 			className={`button ${className}`}
 			onClick={handleClick}
-		></button>
+			ref={forwardedRef}
+		>
+			{children}
+		</button>
 	);
 }
