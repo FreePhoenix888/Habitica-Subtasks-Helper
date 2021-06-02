@@ -5,6 +5,8 @@ import {
 	Paragraph,
 	Anchor,
 	Form,
+	InputSectionContainer,
+	InputSection,
 	Label,
 	Input,
 	Textarea,
@@ -24,18 +26,11 @@ function App(): JSX.Element {
 		<div className="container">
 			<h1>Habitica Subtasks Helper</h1>
 			<Form action="#" className="task-form">
-				<div className="input-section task-title">
-					<Label htmlFor="taskTitle" className="task-title__label">
-						Title
-					</Label>
-					<Input
-						name="task_title"
-						placeholder="The Venus Project Conception."
-						className="task-title__input"
-						id="taskTitle"
-					/>
-				</div>
-				<div className="input-section task-subtasks">
+				<InputSection className="task-title">
+					{}
+				</InputSection>
+
+				<InputSection className="task-subtasks">
 					<Label className="task-subtasks__label" htmlFor="taskSubtasks">
 						Subtasks
 					</Label>
@@ -48,8 +43,9 @@ function App(): JSX.Element {
 						}
 						wrap="soft"
 					/>
-				</div>
-				<div className="input-section task-separator">
+				</InputSection>
+
+				<InputSection className="task-separator">
 					<Input
 						before={
 							<>
@@ -144,8 +140,9 @@ function App(): JSX.Element {
 						id="taskSeparator"
 						autoSize
 					/>
-				</div>
-				<div className="input-section task-tags">
+				</InputSection>
+
+				<InputSection className="task-tags">
 					<Label htmlFor="taskTags" className="task-tags__label">
 						Tags
 					</Label>
@@ -155,8 +152,9 @@ function App(): JSX.Element {
 						className="task-tags__input "
 						id="taskTags"
 					/>
-				</div>
-				<div className="input-section task-difficulty">
+				</InputSection>
+
+				<InputSection className="task-difficulty">
 					<Label htmlFor="taskDifficulty1">Difficulty</Label>
 					<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
 						{(function modernRadioButtons() {
@@ -193,8 +191,8 @@ function App(): JSX.Element {
 							return modernRadioButtons;
 						})()}
 					</ModernRadioButtonGroup>
-				</div>
-				<div className="input-section task-notes">
+				</InputSection>
+				<InputSection className="input-section task-notes">
 					<Textarea
 						className="textarea task-notes__textarea"
 						id="taskNotes"
@@ -207,8 +205,8 @@ function App(): JSX.Element {
 						}
 						wrap="soft"
 					/>
-				</div>
-				<div className="input-section task-amount">
+				</InputSection>
+				<InputSection className="input-section task-amount">
 					<Label htmlFor="taskSeparator" className="task-amount__label">
 						<Span>Amount</Span>
 						<MessageContainer>
@@ -280,7 +278,7 @@ function App(): JSX.Element {
 						id="taskAmount"
 						autoSize
 					/>
-				</div>
+				</InputSection>
 			</Form>
 		</div>
 	);
