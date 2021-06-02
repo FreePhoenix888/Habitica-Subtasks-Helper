@@ -12,8 +12,6 @@ type Props = {
 	labelContentClassName?: string;
 	htmlFor: string;
 	id?: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
 	value?: string;
 };
 
@@ -27,8 +25,6 @@ export function ModernRadioButton(props: Props) {
 		labelContentClassName = '',
 		htmlFor,
 		id,
-		before,
-		after,
 		value,
 	} = props;
 	const { inputChangeEvent, handleChange } =
@@ -43,6 +39,13 @@ export function ModernRadioButton(props: Props) {
 					: ''
 			}`}
 		>
+			<Label
+				htmlFor={htmlFor}
+				className={`modern-radio-button-container__label modern-radio-button-container-label ${labelClassName}`}
+				contentClassName={`modern-radio-button-container-label__content ${labelContentClassName}`}
+			>
+				{children}
+			</Label>
 			<RadioButton
 				name={name}
 				className={`modern-radio-button-container__radio-button ${radioButtonClassName} ${
@@ -52,16 +55,6 @@ export function ModernRadioButton(props: Props) {
 				}`}
 				id={id}
 				value={value}
-				before={
-					<Label
-						htmlFor={htmlFor}
-						className={`modern-radio-button-container__label modern-radio-button-container-label ${labelClassName}`}
-						contentClassName={`modern-radio-button-container-label__content ${labelContentClassName}`}
-					>
-						{children}
-					</Label>
-				}
-				after={after}
 				onChange={handleChange}
 			/>
 		</div>
