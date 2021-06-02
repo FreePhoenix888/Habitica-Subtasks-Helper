@@ -11,8 +11,8 @@ export function InputSection(props: Props): JSX.Element {
 
 	const { activeInputSectionClassName, changeActiveInputSectionClassName } =
 		useContext(FormContext);
-	const [isHovered, changeIsHovered] = useState<boolean>(false);
-	const [isFocused, changeIsFocused] = useState<boolean>(false);
+	const [isHovered, setIsHovered] = useState<boolean>(false);
+	const [isFocused, setIsFocused] = useState<boolean>(false);
 	const isActive =
 		activeInputSectionClassName &&
 		className.includes(activeInputSectionClassName);
@@ -20,26 +20,26 @@ export function InputSection(props: Props): JSX.Element {
 
 	function handleMouseOverCapture(event: React.MouseEvent<HTMLDivElement>) {
 		changeActiveInputSectionClassName(className);
-		changeIsHovered(true);
+		setIsHovered(true);
 	}
 
 	function handleMouseLeave(event: React.MouseEvent<HTMLDivElement>) {
 		if (!isFocused) {
 			changeActiveInputSectionClassName('');
 		}
-		changeIsHovered(false);
+		setIsHovered(false);
 	}
 
 	function handleFocusCapture(event: React.FocusEvent<HTMLElement>) {
 		changeActiveInputSectionClassName(className);
-		changeIsFocused(true);
+		setIsFocused(true);
 	}
 
 	function handleBlurCapture(event: React.FocusEvent<HTMLElement>) {
 		if (!isHovered) {
 			changeActiveInputSectionClassName('');
 		}
-		changeIsFocused(false);
+		setIsFocused(false);
 	}
 
 	const InputSectionContextValue = {
@@ -54,7 +54,7 @@ export function InputSection(props: Props): JSX.Element {
 			onFocusCapture={handleFocusCapture}
 			onBlurCapture={handleBlurCapture}
 			className={`div input-section ${className} ${
-				isActive ? `input-section--Active ${className}--active` : ''
+				isActive ? `input-section--active ${className}--active` : ''
 			}
 			 ${
 					isAnyActive && !isActive
