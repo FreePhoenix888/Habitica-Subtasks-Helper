@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
+import { Button } from './Button';
+import { Span } from './Span';
 
 interface Props {
 	children:
@@ -15,7 +16,7 @@ interface Props {
 
 let containerRef: React.RefObject<HTMLDivElement>;
 
-export function Modal(props: Props) {
+export function Modal(props: Props): JSX.Element {
 	const { children, className = '' } = props;
 
 	useEffect(() => {
@@ -34,9 +35,9 @@ export function Modal(props: Props) {
 		<>
 			<div className={`modal ${className}`}>
 				<div className="modal-content">{children}</div>
-				<div className="modal-close">
-					Press any key or outside this window to close.
-				</div>
+				<Button className="modal-close">
+					<Span>Press any key or outside this window to close.</Span>
+				</Button>
 			</div>
 		</>
 	);
