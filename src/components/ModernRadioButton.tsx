@@ -15,7 +15,7 @@ type Props = {
 	value?: string;
 };
 
-export function ModernRadioButton(props: Props) {
+export function ModernRadioButton(props: Props): JSX.Element {
 	const {
 		children,
 		name,
