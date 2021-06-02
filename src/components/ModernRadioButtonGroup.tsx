@@ -12,8 +12,6 @@ export const CheckedInputContext = React.createContext<CheckedInputContextType>(
 type Props = {
 	children: JSX.Element | JSX.Element[];
 	groupClassName?: string;
-	before?: JSX.Element | JSX.Element[];
-	after?: JSX.Element | JSX.Element[];
 };
 type InputChangeEventType =
 	| React.ChangeEvent<HTMLInputElement>
