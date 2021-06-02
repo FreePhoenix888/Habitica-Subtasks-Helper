@@ -5,8 +5,8 @@ interface Props {
 	className?: string;
 }
 
-export function Span(props: Props) {
-	const { children, className='' } = props;
+export function Span(props: Props): JSX.Element {
+	const { children, className = '' } = props;
 
 	return <span className={`span ${className}`}>{children}</span>;
 }
