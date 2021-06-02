@@ -12,10 +12,9 @@ interface MessageContainerContextType {
 
 interface Props {
 	children: JSX.Element | JSX.Element[] | Element | Element[];
-	className?: string;
 }
 export function MessageContainer(props: Props) {
-	const { children, className = '' } = props;
+	const { children } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
 	const messageContainerContextValue: MessageContainerContextType = {
