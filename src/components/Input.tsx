@@ -11,6 +11,8 @@ type Props = {
 	autoSize?: boolean | string | undefined;
 	tabIndex?: number;
 	isChecked?: boolean;
+	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
+	onBlurHandler?: (event: React.FocusEvent<HTMLElement>) => void;
 };
 
 type InputValue = string;
@@ -26,6 +28,8 @@ export function Input(props: Props): JSX.Element {
 		autoSize = false,
 		tabIndex = 0,
 		isChecked = false,
+		onFocusHandler,
+		onBlurHandler,
 	} = props;
 	const [value, changeValue] = useState<InputValue>('');
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -35,6 +39,8 @@ export function Input(props: Props): JSX.Element {
 		<>
 			{before}
 			<input
+				onFocus={onFocusHandler}
+				onBlur={onBlurHandler}
 				size={autoSize ? value.length + 1 : undefined}
 				tabIndex={tabIndex}
 				type={type}
