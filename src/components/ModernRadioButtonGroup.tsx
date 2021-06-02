@@ -12,7 +12,6 @@ export const CheckedInputContext = React.createContext<CheckedInputContextType>(
 type Props = {
 	children: JSX.Element | JSX.Element[];
 	groupClassName?: string;
-	checkedByDefault?: number | string;
 	before?: JSX.Element | JSX.Element[];
 	after?: JSX.Element | JSX.Element[];
 };
@@ -24,9 +23,6 @@ export function ModernRadioButtonGroup(props: Props): JSX.Element {
 	const {
 		children,
 		groupClassName = '',
-		checkedByDefault = '',
-		before,
-		after,
 	} = props;
 	const [inputChangeEvent, changeInputChangeEvent] =
 		useState<InputChangeEventType>(undefined);
