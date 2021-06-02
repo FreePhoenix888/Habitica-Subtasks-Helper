@@ -1,11 +1,10 @@
-import React, { Fragment, useContext, useRef } from 'react';
+import React, { Fragment } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import {
 	Span,
 	Paragraph,
 	Anchor,
 	Form,
-	InputSectionContainer,
 	InputSection,
 	Label,
 	Input,
@@ -15,7 +14,6 @@ import {
 	InfoButton,
 	MessageContainer,
 	MessageContainerContext,
-	ModalContainer,
 	Modal,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
@@ -27,7 +25,15 @@ function App(): JSX.Element {
 			<h1>Habitica Subtasks Helper</h1>
 			<Form action="#" className="task-form">
 				<InputSection className="task-title">
-					{}
+					<Label htmlFor="taskTitle" className="task-title__label">
+						Title
+					</Label>
+					<Input
+						name="task_title"
+						placeholder="The Venus Project Conception."
+						className="task-title__input"
+						id="taskTitle"
+					/>
 				</InputSection>
 
 				<InputSection className="task-subtasks">
@@ -46,94 +52,11 @@ function App(): JSX.Element {
 				</InputSection>
 
 				<InputSection className="task-separator">
+					<Label htmlFor="taskSeparator" className="task-separator__label">
+						<Span>Separator</Span>
+					</Label>
+
 					<Input
-						before={
-							<>
-								<Label htmlFor="taskAmount" className="task-separator__label">
-									<Span>Separator</Span>
-									<MessageContainer>
-										<MessageContainerContext.Consumer>
-											{({ isOpen, setIsOpen }) => {
-												function infoButtonOnClick(
-													event: React.MouseEvent<HTMLElement>
-												) {
-													setIsOpen(true);
-													ModalContainer.lockBodyOverflow();
-												}
-
-												function modalContainerOnClick(
-													event: React.MouseEvent<HTMLElement>
-												) {
-													const target = event.target as HTMLElement;
-													if (target.className.includes('modal-container')) {
-														setIsOpen(false);
-													}
-												}
-
-												function modalContainerOnKeyDown(
-													event: React.KeyboardEvent<HTMLElement>
-												) {
-													if (
-														event.ctrlKey ||
-														event.metaKey ||
-														event.shiftKey ||
-														event.key === 'ArrowUp' ||
-														event.key === 'ArrowRight' ||
-														event.key === 'ArrowDown' ||
-														event.key === 'ArrowLeft'
-													) {
-														return;
-													}
-													const target = event.target as HTMLElement;
-
-													if (target.className.includes('modal-container')) {
-														setIsOpen(false);
-													}
-												}
-
-												function modalContainerOnUseEffectHandler() {
-													ModalContainer.lockBodyOverflow();
-												}
-
-												const modalOnAfterUseEffectHandler =
-													ModalContainer.unlockBodyOverflow;
-
-												return (
-													<>
-														<InfoButton onClickHandler={infoButtonOnClick} />
-														<ModalContainer
-															isOpen={isOpen}
-															onClickHandler={modalContainerOnClick}
-															onKeyDownHandler={modalContainerOnKeyDown}
-														>
-															<Modal
-																onUseEffectHandler={
-																	modalContainerOnUseEffectHandler
-																}
-																onAfterUseEffectHandler={
-																	modalOnAfterUseEffectHandler
-																}
-															>
-																<Paragraph>
-																	{`You can use any symbols or regular expression to break your subtasks into parts.
-
-																Example:
-																Brush teeth, Take a bath, Training, Learning with comma separator will lead to this result:
-																🞄Brush teeth
-																🞄Take a bath
-																🞄Training
-																🞄Learning`}
-																</Paragraph>
-															</Modal>
-														</ModalContainer>
-													</>
-												);
-											}}
-										</MessageContainerContext.Consumer>
-									</MessageContainer>
-								</Label>
-							</>
-						}
 						name="task_separator"
 						placeholder="\n"
 						className="input--little task-separator__input "
@@ -209,67 +132,6 @@ function App(): JSX.Element {
 				<InputSection className="input-section task-amount">
 					<Label htmlFor="taskSeparator" className="task-amount__label">
 						<Span>Amount</Span>
-						<MessageContainer>
-							<MessageContainerContext.Consumer>
-								{({ isOpen, setIsOpen }) => {
-									function infoButtonOnClick(
-										event: React.MouseEvent<HTMLElement>
-									) {
-										setIsOpen(true);
-										ModalContainer.lockBodyOverflow();
-									}
-
-									function modalContainerOnClick(
-										event: React.MouseEvent<HTMLElement>
-									) {
-										const target = event.target as HTMLElement;
-										if (target.className.includes('modal-container')) {
-											setIsOpen(false);
-										}
-									}
-
-									function modalContainerOnKeyDown(
-										event: React.KeyboardEvent<HTMLElement>
-									) {
-										if (
-											event.ctrlKey ||
-											event.metaKey ||
-											event.shiftKey ||
-											event.key === 'ArrowUp' ||
-											event.key === 'ArrowRight' ||
-											event.key === 'ArrowDown' ||
-											event.key === 'ArrowLeft'
-										) {
-											return;
-										}
-										const target = event.target as HTMLElement;
-
-										if (target.className.includes('modal-container')) {
-											setIsOpen(false);
-										}
-									}
-
-									function modalContainerOnUseEffectHandler() {
-										ModalContainer.focusContainer();
-									}
-									return (
-										<>
-											<InfoButton onClickHandler={infoButtonOnClick} />
-											<ModalContainer
-												isOpen={isOpen}
-												onClickHandler={modalContainerOnClick}
-											>
-												<Modal>
-													<Paragraph>
-														You can create a lot of tasks with the same name.
-													</Paragraph>
-												</Modal>
-											</ModalContainer>
-										</>
-									);
-								}}
-							</MessageContainerContext.Consumer>
-						</MessageContainer>
 					</Label>
 					<Input
 						name="task_amount"
@@ -280,6 +142,23 @@ function App(): JSX.Element {
 					/>
 				</InputSection>
 			</Form>
+			<MessageContainer>
+				<MessageContainerContext.Consumer>
+					{({ isOpen, setIsOpen }) => (
+						<>
+							<InfoButton
+								onClickHandler={(event) => {
+									setIsOpen(true);
+								}}
+							/>
+
+							<Modal isOpen={isOpen}>
+								<Paragraph>Hi</Paragraph>
+							</Modal>
+						</>
+					)}
+				</MessageContainerContext.Consumer>
+			</MessageContainer>
 		</div>
 	);
 }
