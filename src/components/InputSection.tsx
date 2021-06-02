@@ -6,15 +6,6 @@ interface Props {
 	className?: string;
 }
 
-interface InputSectionContextType {
-	onFocusHandler: (event: React.FocusEvent<HTMLDivElement>) => void;
-	onBlurHandler: (event: React.FocusEvent<HTMLDivElement>) => void;
-}
-
-export const InputSectionContext = createContext<InputSectionContextType>({
-	onFocusHandler: () => {},
-	onBlurHandler: () => {},
-});
 export function InputSection(props: Props): JSX.Element {
 	const { children, className = '' } = props;
 
@@ -27,12 +18,7 @@ export function InputSection(props: Props): JSX.Element {
 		className.includes(activeInputSectionClassName);
 	const isAnyActive = Boolean(activeInputSectionClassName);
 
-	const InputSectionContextValue = {
-		onFocusHandler: handleFocus,
-		onBlurHandler: handleBlur,
-	};
-
-	function handleMouseOver(event: React.MouseEvent<HTMLDivElement>) {
+	function handleMouseOverCapture(event: React.MouseEvent<HTMLDivElement>) {
 		changeActiveInputSectionClassName(className);
 		changeIsHovered(true);
 	}
@@ -44,23 +30,29 @@ export function InputSection(props: Props): JSX.Element {
 		changeIsHovered(false);
 	}
 
-	function handleFocus(event: React.FocusEvent<HTMLDivElement>) {
+	function handleFocusCapture(event: React.FocusEvent<HTMLElement>) {
 		changeActiveInputSectionClassName(className);
 		changeIsFocused(true);
 	}
 
-	function handleBlur(event: React.FocusEvent<HTMLDivElement>) {
+	function handleBlurCapture(event: React.FocusEvent<HTMLElement>) {
 		if (!isHovered) {
 			changeActiveInputSectionClassName('');
 		}
 		changeIsFocused(false);
 	}
 
+	const InputSectionContextValue = {
+		onFocusHandler: handleFocusCapture,
+		onBlurHandler: handleBlurCapture,
+	};
+
 	return (
 		<div
-			onMouseOver={handleMouseOver}
+			onMouseOverCapture={handleMouseOverCapture}
 			onMouseLeave={handleMouseLeave}
-			onFocus={handleFocus}
+			onFocusCapture={handleFocusCapture}
+			onBlurCapture={handleBlurCapture}
 			className={`div input-section ${className} ${
 				isActive ? `input-section--Active ${className}--active` : ''
 			}
@@ -71,9 +63,7 @@ export function InputSection(props: Props): JSX.Element {
 				}
 			`}
 		>
-			<InputSectionContext.Provider value={InputSectionContextValue}>
-				{children}
-			</InputSectionContext.Provider>
+			{children}
 		</div>
 	);
 }
