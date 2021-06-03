@@ -1,47 +1,55 @@
 import React, { useState } from 'react';
 
-type Props = {
+interface Props {
 	name: string;
 	type?: string;
 	className?: string;
 	placeholder?: string;
 	id?: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
 	autoSize?: boolean | string | undefined;
 	tabIndex?: number;
 	isChecked?: boolean;
 	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
 	onBlurHandler?: (event: React.FocusEvent<HTMLElement>) => void;
-};
+}
 
-type InputValue = string;
 export function Input(props: Props): JSX.Element {
 	const {
-		type,
-		placeholder,
+		type = 'text',
+		placeholder = '',
 		className = '',
-		id,
+		id = '',
 		name,
-		before,
-		after,
 		autoSize = false,
 		tabIndex = 0,
 		isChecked = false,
 		onFocusHandler,
 		onBlurHandler,
 	} = props;
-	const [value, changeValue] = useState<InputValue>('');
+	const [value, changeValue] = useState<string>('');
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 		changeValue(event.target.value);
 	}
+
+	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
+		const { onFocusHandler } = props;
+		if (onFocusHandler) {
+			onFocusHandler(event);
+		}
+	}
+
+	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
+		const { onBlurHandler } = props;
+		if (onBlurHandler) {
+			onBlurHandler(event);
+		}
+	}
 	return (
 		<>
-			{before}
 			<input
-				onFocus={onFocusHandler}
-				onBlur={onBlurHandler}
-				size={autoSize ? value.length + 1 : undefined}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				size={autoSize ? value.length + 1 : 0}
 				tabIndex={tabIndex}
 				type={type}
 				name={name}
@@ -52,7 +60,6 @@ export function Input(props: Props): JSX.Element {
 				onChange={handleChange}
 				checked={isChecked}
 			/>
-			{after}
 		</>
 	);
 }
