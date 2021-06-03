@@ -1,5 +1,6 @@
 import React, {
 	createRef,
+	MutableRefObject,
 	RefObject,
 	useContext,
 	useEffect,
@@ -10,7 +11,6 @@ import { Button } from './Button';
 import { Span } from './Span';
 
 interface Props {
-	isOpen: boolean;
 	children:
 		| JSX.Element
 		| JSX.Element[]
@@ -22,37 +22,28 @@ interface Props {
 	// onAfterUseEffectHandler?: () => void;
 }
 
-let buttonRef: RefObject<HTMLButtonElement>;
+let buttonRef: MutableRefObject<JSX.Element | undefined>;
 
-export function Modal(props: Props): React.ReactPortal | null {
-	const { children, className = '', isOpen } = props;
+export function Modal(props: Props): JSX.Element {
+	const { children, className = '' } = props;
 
-	buttonRef = useRef() as RefObject<HTMLButtonElement>;
+	buttonRef = useRef();
 
 	useEffect(() => {
-		console.log(isOpen);
 		Modal.focusButton();
-		// console.log('FOCUS!');
-		// setInterval(() => {
-		// 	console.log(document.querySelector('*:focus'));
-		// }, 500);
-	}, [isOpen]);
+	}, []);
 
-	return isOpen
-		? createPortal(
-				<>
-					<div className="modal-container">
-						<div className={`modal ${className}`}>
-							<div className="modal-content">{children}</div>
-							<Button className="modal-close" forwardedRef={buttonRef}>
-								<Span>Press any key or outside this window to close.</Span>
-							</Button>
-						</div>
-					</div>
-				</>,
-				document.body
-		  )
-		: null;
+	return (
+		<div className={`modal ${className}`}>
+			<div className="modal-content">{children}</div>
+			<Button className="modal-close">
+				<Span>Press any key or outside this window to close.</Span>
+			</Button>
+			<Button className="modal-close">
+				<Span>Press any key or outside this window to close.</Span>
+			</Button>
+		</div>
+	);
 }
 
 Modal.lockBody = () => {
@@ -67,6 +58,6 @@ Modal.unlockBody = () => {
 
 Modal.focusButton = () => {
 	if (buttonRef.current) {
-		buttonRef.current.focus();
+		console.log(buttonRef.current);
 	}
 };
