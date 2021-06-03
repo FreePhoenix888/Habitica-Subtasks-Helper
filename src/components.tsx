@@ -10,6 +10,7 @@ export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
 export { InfoButton } from './components/InfoButton';
+export { ModalContainer } from './components/ModalContainer';
 export { Modal } from './components/Modal';
 export {
 	MessageContainer,
