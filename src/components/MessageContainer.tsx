@@ -1,11 +1,12 @@
 import React, { useState, createContext } from 'react';
 
-export const MessageContainerContext = createContext<MessageContainerContextType>({
-	isOpen: false,
-	setIsOpen: () => {},
-});
+export const MessageContainerContext =
+	createContext<ContextType>({
+		isOpen: false,
+		setIsOpen: () => {},
+	});
 
-interface MessageContainerContextType {
+interface ContextType {
 	isOpen: boolean;
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -17,7 +18,7 @@ export function MessageContainer(props: Props) {
 	const { children } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
-	const messageContainerContextValue: MessageContainerContextType = {
+	const messageContainerContextValue: ContextType = {
 		isOpen,
 		setIsOpen,
 	};
