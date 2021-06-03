@@ -5,21 +5,24 @@ interface Props {
 	className?: string;
 	placeholder?: string;
 	id?: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
 	wrap?: 'hard' | 'soft';
-};
+}
 
 export function Textarea(props: Props): JSX.Element {
 	const [value, changeValue] = useState<string>('');
-	const { className = '', placeholder, id, name, wrap, before, after } = props;
+	const {
+		className = '',
+		placeholder = '',
+		id = '',
+		name,
+		wrap = 'soft',
+	} = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		changeValue(event.target.value);
 	}
 	return (
 		<>
-			{before}
 			<textarea
 				onChange={handleChange}
 				value={value}
@@ -31,7 +34,6 @@ export function Textarea(props: Props): JSX.Element {
 				rows={10}
 				wrap={wrap}
 			/>
-			{after}
 		</>
 	);
 }
