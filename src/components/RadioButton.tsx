@@ -4,8 +4,6 @@ interface Props {
 	name: string;
 	className?: string;
 	id?: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
 	value?: string;
 	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: (value: React.FocusEvent<HTMLInputElement>) => void;
@@ -18,8 +16,6 @@ export function RadioButton(props: Props): JSX.Element {
 		className = '',
 		id,
 		name,
-		before,
-		after,
 		value,
 		tabIndex = 0,
 		hidden = false,
@@ -36,7 +32,6 @@ export function RadioButton(props: Props): JSX.Element {
 	}
 	return (
 		<>
-			{before}
 			<input
 				type="radio"
 				name={name}
@@ -48,7 +43,6 @@ export function RadioButton(props: Props): JSX.Element {
 				tabIndex={tabIndex}
 				hidden={hidden}
 			/>
-			{after}
 		</>
 	);
 }
