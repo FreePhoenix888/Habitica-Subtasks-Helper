@@ -10,8 +10,6 @@ interface Props {
 	isCheckedByDefault?: boolean;
 	placeholder?: string;
 	id?: string;
-	before?: JSX.Element | undefined;
-	after?: JSX.Element | undefined;
 	autoSize?: boolean | string | undefined;
 	tabIndex?: number;
 }
@@ -23,12 +21,10 @@ export function Checkbox(props: Props) {
 		inputClassName = '',
 		labelClassName = '',
 		isCheckedByDefault = false,
-		placeholder,
-		id,
+		placeholder = '',
+		id = '',
 		autoSize = false,
 		tabIndex = 0,
-		before,
-		after,
 	} = props;
 
 	const [isChecked, changeIsChecked] = useState<boolean>(isCheckedByDefault);
@@ -45,8 +41,6 @@ export function Checkbox(props: Props) {
 				className={`modern-checkbox ${inputClassName}`}
 				placeholder={placeholder}
 				id={id}
-				before={before}
-				after={after}
 				autoSize={autoSize}
 				tabIndex={tabIndex}
 				isChecked={isChecked}
