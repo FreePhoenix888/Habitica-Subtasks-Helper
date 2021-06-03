@@ -23,8 +23,6 @@ export function Input(props: Props): JSX.Element {
 		autoSize = false,
 		tabIndex = 0,
 		isChecked = false,
-		onFocusHandler,
-		onBlurHandler,
 	} = props;
 	const [value, changeValue] = useState<string>('');
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
