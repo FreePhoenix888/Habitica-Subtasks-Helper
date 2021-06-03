@@ -15,6 +15,7 @@ import {
 	MessageContainer,
 	MessageContainerContext,
 	Modal,
+	ModalContainer,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
@@ -116,16 +117,14 @@ function App(): JSX.Element {
 					</ModernRadioButtonGroup>
 				</InputSection>
 				<InputSection className="input-section task-notes">
+					<Label className="task-notes__label" htmlFor="taskNotes">
+						Notes
+					</Label>
 					<Textarea
 						className="textarea task-notes__textarea"
 						id="taskNotes"
 						name="task_notes"
 						placeholder="Read it without any prejudices as any new ideas."
-						before={
-							<Label className="task-notes__label" htmlFor="taskNotes">
-								Notes
-							</Label>
-						}
 						wrap="soft"
 					/>
 				</InputSection>
@@ -144,19 +143,63 @@ function App(): JSX.Element {
 			</Form>
 			<MessageContainer>
 				<MessageContainerContext.Consumer>
-					{({ isOpen, setIsOpen }) => (
-						<>
-							<InfoButton
-								onClickHandler={(event) => {
-									setIsOpen(true);
-								}}
-							/>
+					{({ isOpen, setIsOpen }) => {
+						function infoButtonOnClickHandler(
+							event: React.MouseEvent<HTMLElement>
+						) {
+							setIsOpen(true);
+						}
 
-							<Modal isOpen={isOpen}>
-								<Paragraph>Hi</Paragraph>
-							</Modal>
-						</>
-					)}
+						function modalContainerHandleClick(
+							event: React.MouseEvent<HTMLElement>
+						) {
+							const target = event.target as HTMLElement;
+
+							if (target.className.includes('modal-container')) {
+								setIsOpen(false);
+							}
+						}
+
+						function modalContainerHandleKeyDown(
+							event: React.KeyboardEvent<HTMLElement>
+						) {
+							const target = event.target as HTMLElement;
+
+							const allowedKeys =
+								event.metaKey ||
+								event.ctrlKey ||
+								event.shiftKey ||
+								event.altKey ||
+								event.key === 'ArrowUp' ||
+								event.key === 'ArrowRight' ||
+								event.key === 'ArrowDown' ||
+								event.key === 'ArrowLeft';
+
+							if (!allowedKeys) {
+								setIsOpen(false);
+							}
+						}
+						return (
+							<>
+								<InfoButton onClickHandler={infoButtonOnClickHandler} />
+
+								<ModalContainer
+									isOpen={isOpen}
+									onClickHandler={modalContainerHandleClick}
+									onKeyDownHandler={modalContainerHandleKeyDown}
+								>
+									<Modal>
+										<Paragraph>
+											Lorem ipsum dolor sit amet consectetur adipisicing elit.
+											Vero quae provident quidem impedit aperiam alias rem
+											neque. Ad cumque laboriosam est! Sint saepe inventore, quo
+											nam recusandae ratione deleniti tempora.
+										</Paragraph>
+									</Modal>
+								</ModalContainer>
+							</>
+						);
+					}}
 				</MessageContainerContext.Consumer>
 			</MessageContainer>
 		</div>
