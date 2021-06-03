@@ -1,22 +1,22 @@
 import React from 'react';
 
 interface Props {
+	value: string;
 	name: string;
 	className?: string;
 	id?: string;
-	value?: string;
 	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	tabIndex?: number;
 	hidden?: boolean;
-};
+}
 
 export function RadioButton(props: Props): JSX.Element {
 	const {
-		className = '',
-		id,
-		name,
 		value,
+		name,
+		className = '',
+		id = '',
 		tabIndex = 0,
 		hidden = false,
 	} = props;
