@@ -2,7 +2,6 @@ import React from 'react';
 import {
 	Span,
 	Paragraph,
-	Anchor,
 	Form,
 	InputSection,
 	Label,
