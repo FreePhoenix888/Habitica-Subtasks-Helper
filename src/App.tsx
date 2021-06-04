@@ -13,6 +13,7 @@ import {
 	ModernRadioButtonGroup,
 	Button,
 	InfoButton,
+	ModalInfoButton,
 	MessageContainer,
 	MessageContainerContext,
 	Modal,
@@ -142,41 +143,18 @@ function App(): JSX.Element {
 				</InputSection>
 			</Form>
 			<MessageContainer>
-				<MessageContainerContext.Consumer>
-					{({ isOpen, setIsOpen }) => {
-						function infoButtonOnClickHandler(
-							event: React.MouseEvent<HTMLElement>
-						) {
-							setIsOpen(true);
-						}
+				<>
+					<ModalInfoButton />
 
-						function modalContainerHandleClick(
-							event: React.MouseEvent<HTMLElement>
-						) {
-							
-
-							
-						}
-
-						
-						return (
-							<>
-								<InfoButton onClickHandler={infoButtonOnClickHandler} />
-
-								<Modal
-									isOpen={isOpen}
-								>
-									<Paragraph>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Vero quae provident quidem impedit aperiam alias rem neque.
-										Ad cumque laboriosam est! Sint saepe inventore, quo nam
-										recusandae ratione deleniti tempora.
-									</Paragraph>
-								</Modal>
-							</>
-						);
-					}}
-				</MessageContainerContext.Consumer>
+					<Modal>
+						<Paragraph>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quae
+							provident quidem impedit aperiam alias rem neque. Ad cumque
+							laboriosam est! Sint saepe inventore, quo nam recusandae ratione
+							deleniti tempora.
+						</Paragraph>
+					</Modal>
+				</>
 			</MessageContainer>
 		</div>
 	);
