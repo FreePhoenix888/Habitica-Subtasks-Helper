@@ -38,6 +38,7 @@ export function Modal(props: Props): React.ReactPortal | null {
 	useEffect(() => {
 		if (isOpen) {
 			Modal.lockBody();
+			Modal.addblurRoot();
 
 			if (divButtonRef.current) {
 				divButtonRef.current.focus();
@@ -126,9 +127,8 @@ Modal.unlockBody = () => {
 };
 
 Modal.addblurRoot = () => {
-	const rootStyle = document.getElementById("root")?.style;
-		if(rootStyle){
-			rootStyle.filter="blur(10px)"
-		}
-}
-
+	const rootStyle = document.getElementById('root')?.style;
+	if (rootStyle) {
+		rootStyle.filter = 'blur(10px)';
+	}
+};
