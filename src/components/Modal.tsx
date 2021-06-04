@@ -84,11 +84,12 @@ export function Modal(props: Props): React.ReactPortal | null {
 	}
 
 	return createPortal(
-		<Button
+		<div
 			className="modal-close"
-			forwardedRef={buttonRef}
-			onClickHandler={handleClick}
-			onKeyDownHandler={handleKeyDown}
+			role="button"
+			onClick={handleClick}
+			onKeyDown={handleKeyDown}
+			tabIndex={-1}
 		>
 			<div
 				className={`modal ${className}`}
@@ -98,11 +99,11 @@ export function Modal(props: Props): React.ReactPortal | null {
 				<div className="modal__content" id="modal__content">
 					{children}
 				</div>
-				<div className="modal__info-close">
+				<div className="modal__info-close modal-info-close">
 					<Span>Press any key or outside this window to close.</Span>
 				</div>
 			</div>
-		</Button>,
+		</div>,
 		document.body
 	);
 }
