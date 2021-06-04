@@ -154,30 +154,12 @@ function App(): JSX.Element {
 						function modalContainerHandleClick(
 							event: React.MouseEvent<HTMLElement>
 						) {
-							const target = event.target as HTMLElement;
+							
 
-							if (target.className.includes('modal-container')) {
-								setIsOpen(false);
-							}
+							
 						}
 
-						function modalContainerHandleKeyDown(
-							event: React.KeyboardEvent<HTMLElement>
-						) {
-							const allowedKeys =
-								event.metaKey ||
-								event.ctrlKey ||
-								event.shiftKey ||
-								event.altKey ||
-								event.key === 'ArrowUp' ||
-								event.key === 'ArrowRight' ||
-								event.key === 'ArrowDown' ||
-								event.key === 'ArrowLeft';
-
-							if (!allowedKeys) {
-								setIsOpen(false);
-							}
-						}
+						
 						return (
 							<>
 								<InfoButton onClickHandler={infoButtonOnClickHandler} />
