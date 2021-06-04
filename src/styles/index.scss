@@ -76,8 +76,8 @@ body {
 	// .input-section--active
 	&--active {
 	}
-	// .input-section--not-active
-	&--not-active {
+	// .input-section--non-active
+	&--non-active {
 		filter: blur(4px);
 	}
 }
