@@ -25,20 +25,26 @@ interface Props {
 	// onAfterUseEffectHandler?: () => void;
 }
 
-let buttonRef: RefObject<HTMLButtonElement>;
+let divButtonRef: RefObject<HTMLDivElement>;
 
 export function Modal(props: Props): React.ReactPortal | null {
 	const { children, className = '' } = props;
 
-	// Ref to the button to focus it
-	buttonRef = useRef<HTMLButtonElement>(null);
+	// Ref to the div-button to focus it
+	divButtonRef = useRef<HTMLDivElement>(null);
 
 	const { isOpen, setIsOpen } = useContext(MessageContainerContext);
 
 	useEffect(() => {
-		if (buttonRef.current) {
-			buttonRef.current.focus();
+		if (isOpen) {
+			Modal.lockBody();
+
+			if (divButtonRef.current) {
+				divButtonRef.current.focus();
+			}
 		}
+
+		return Modal.unlockBody;
 	}, [isOpen]);
 
 	if (!isOpen) {
@@ -90,6 +96,7 @@ export function Modal(props: Props): React.ReactPortal | null {
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}
 			tabIndex={-1}
+			ref={divButtonRef}
 		>
 			<div
 				className={`modal ${className}`}
