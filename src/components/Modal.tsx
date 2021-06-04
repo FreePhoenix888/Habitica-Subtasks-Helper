@@ -45,7 +45,10 @@ export function Modal(props: Props): React.ReactPortal | null {
 			}
 		}
 
-		return Modal.unlockBody;
+		return () => {
+			Modal.unlockBody();
+			Modal.removeBlurRoot();
+		};
 	}, [isOpen]);
 
 	if (!isOpen) {
