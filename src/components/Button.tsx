@@ -13,7 +13,7 @@ interface Props {
 	className?: string;
 }
 
-export function Button(props: Props) {
+export function Button(props: Props): JSX.Element {
 	const { className = '', children, forwardedRef = null } = props;
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
