@@ -107,6 +107,7 @@ function App(): JSX.Element {
 										labelContentClassName="task-difficulty-modern-radio-button-container-label__content"
 										id={`taskDifficulty${i + 1}`}
 										value={`${i + 1}`}
+										key={i}
 									>
 										{stars}
 									</ModernRadioButton>
