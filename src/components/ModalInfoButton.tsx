@@ -7,7 +7,7 @@ type Props = {
 	hidden?: boolean;
 };
 
-export function ModalInfoButton(props: Props) {
+export function ModalInfoButton(props: Props): JSX.Element {
 	const { setIsOpen } = useContext(MessageContainerContext);
 
 	function onClickHandler(event: React.MouseEvent<HTMLElement>) {
