@@ -51,10 +51,6 @@ export function Modal(props: Props): React.ReactPortal | null {
 		};
 	}, [isOpen]);
 
-	if (!isOpen) {
-		return null;
-	}
-
 	function handleClick(event: React.MouseEvent<HTMLElement>) {
 		// Default behavioir
 		const target = event.target as HTMLElement;
@@ -93,30 +89,32 @@ export function Modal(props: Props): React.ReactPortal | null {
 		}
 	}
 
-	return createPortal(
-		<div
-			className="modal-close"
-			role="button"
-			onClick={handleClick}
-			onKeyDown={handleKeyDown}
-			tabIndex={-1}
-			ref={divButtonRef}
-		>
-			<div
-				className={`modal ${className}`}
-				role="dialog"
-				aria-describedby="modal__content"
-			>
-				<div className="modal__content" id="modal__content">
-					{children}
-				</div>
-				<div className="modal__info-close modal-info-close">
-					<Span>Press any key or outside this window to close.</Span>
-				</div>
-			</div>
-		</div>,
-		document.body
-	);
+	return isOpen
+		? createPortal(
+				<div
+					className="modal-close"
+					role="button"
+					onClick={handleClick}
+					onKeyDown={handleKeyDown}
+					tabIndex={-1}
+					ref={divButtonRef}
+				>
+					<div
+						className={`modal ${className}`}
+						role="dialog"
+						aria-describedby="modal__content"
+					>
+						<div className="modal__content" id="modal__content">
+							{children}
+						</div>
+						<div className="modal__info-close modal-info-close">
+							<Span>Press any key or outside this window to close.</Span>
+						</div>
+					</div>
+				</div>,
+				document.body
+		  )
+		: null;
 }
 
 Modal.lockBody = () => {
