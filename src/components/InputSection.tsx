@@ -40,11 +40,6 @@ export function InputSection(props: Props): JSX.Element {
 		setIsFocused(false);
 	}
 
-	const InputSectionContextValue = {
-		onFocusHandler: handleFocusCapture,
-		onBlurHandler: handleBlurCapture,
-	};
-
 	function setClassName() {
 		let result = `input-section ${className} `;
 		if (isActive) {
