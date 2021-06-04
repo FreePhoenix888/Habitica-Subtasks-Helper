@@ -92,7 +92,7 @@ function App(): JSX.Element {
 									stars.push(
 										<StarSVG
 											key={`${i}:${j}`}
-											className="svg star-SVG radio-button-container__svg radio-button-container__star-svg"
+											className="svg star-SVG modern-radio-button-container__svg modern-radio-button-container__star-svg"
 										/>
 									);
 								}
@@ -112,7 +112,6 @@ function App(): JSX.Element {
 									</ModernRadioButton>
 								);
 							}
-							// End: Difficulty Section Radio Buttons
 							return modernRadioButtons;
 						})()}
 					</ModernRadioButtonGroup>
