@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, MutableRefObject, useRef } from 'react';
 // import { useSpring, animated } from 'react-spring';
 import {
 	Span,
@@ -11,6 +11,7 @@ import {
 	Textarea,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
+	Button,
 	InfoButton,
 	MessageContainer,
 	MessageContainerContext,
@@ -163,8 +164,6 @@ function App(): JSX.Element {
 						function modalContainerHandleKeyDown(
 							event: React.KeyboardEvent<HTMLElement>
 						) {
-							const target = event.target as HTMLElement;
-
 							const allowedKeys =
 								event.metaKey ||
 								event.ctrlKey ||
@@ -183,20 +182,16 @@ function App(): JSX.Element {
 							<>
 								<InfoButton onClickHandler={infoButtonOnClickHandler} />
 
-								<ModalContainer
+								<Modal
 									isOpen={isOpen}
-									onClickHandler={modalContainerHandleClick}
-									onKeyDownHandler={modalContainerHandleKeyDown}
 								>
-									<Modal>
-										<Paragraph>
-											Lorem ipsum dolor sit amet consectetur adipisicing elit.
-											Vero quae provident quidem impedit aperiam alias rem
-											neque. Ad cumque laboriosam est! Sint saepe inventore, quo
-											nam recusandae ratione deleniti tempora.
-										</Paragraph>
-									</Modal>
-								</ModalContainer>
+									<Paragraph>
+										Lorem ipsum dolor sit amet consectetur adipisicing elit.
+										Vero quae provident quidem impedit aperiam alias rem neque.
+										Ad cumque laboriosam est! Sint saepe inventore, quo nam
+										recusandae ratione deleniti tempora.
+									</Paragraph>
+								</Modal>
 							</>
 						);
 					}}
