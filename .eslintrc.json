@@ -35,7 +35,8 @@
 		"one-var": "off",
 		"react/require-default-props": "off",
 		"no-plusplus": "off",
-		"import/prefer-default-export": "off"
+		"import/prefer-default-export": "off",
+		"react/jsx-props-no-spreading": "off"
 	},
 	"globals": {
 		// "React": true,
