@@ -1,10 +1,9 @@
 import React, { useState, createContext } from 'react';
 
-export const MessageContainerContext =
-	createContext<ContextType>({
-		isOpen: false,
-		setIsOpen: () => {},
-	});
+export const MessageContainerContext = createContext<ContextType>({
+	isOpen: false,
+	setIsOpen: () => {},
+});
 
 interface ContextType {
 	isOpen: boolean;
@@ -14,7 +13,7 @@ interface ContextType {
 interface Props {
 	children: JSX.Element | JSX.Element[] | Element | Element[];
 }
-export function MessageContainer(props: Props) {
+export function MessageContainer(props: Props): JSX.Element {
 	const { children } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
