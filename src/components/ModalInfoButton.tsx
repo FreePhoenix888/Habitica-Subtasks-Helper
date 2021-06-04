@@ -10,7 +10,7 @@ type Props = {
 export function ModalInfoButton(props: Props): JSX.Element {
 	const { setIsOpen } = useContext(MessageContainerContext);
 
-	function onClickHandler(event: React.MouseEvent<HTMLElement>) {
+	function onClickHandler() {
 		setIsOpen(true);
 	}
 
