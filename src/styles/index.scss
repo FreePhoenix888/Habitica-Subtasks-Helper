@@ -205,6 +205,7 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	z-index: 2;
 	// .modal-container
 	&-container {
 		position: fixed;
@@ -215,14 +216,23 @@ body {
 		display: grid;
 		place-content: center;
 	}
-	// .modal-close
-	&-close {
+	// .modal__info-close
+	&__info-close {
 		color: var(--text-color-active);
 		background: var(--background-color-active);
 		padding: 10px;
 		font-size: 0.7em;
 		border-radius: 10px;
 		box-shadow: 0px 5px 5px -2px hsla(0, 0%, 0%, 0.2);
+	}
+	// .modal-close
+	&-close {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: grey;
 	}
 }
 
