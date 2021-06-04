@@ -9,19 +9,14 @@ export const CheckedInputContext = React.createContext<CheckedInputContextType>(
 	{ inputChangeEvent: undefined, handleChange: () => {} }
 );
 
-type Props = {
+interface Props {
 	children: JSX.Element | JSX.Element[];
 	groupClassName?: string;
-};
-type InputChangeEventType =
-	| React.ChangeEvent<HTMLInputElement>
-	| undefined;
+}
+type InputChangeEventType = React.ChangeEvent<HTMLInputElement> | undefined;
 
 export function ModernRadioButtonGroup(props: Props): JSX.Element {
-	const {
-		children,
-		groupClassName = '',
-	} = props;
+	const { children, groupClassName = '' } = props;
 	const [inputChangeEvent, changeInputChangeEvent] =
 		useState<InputChangeEventType>(undefined);
 
