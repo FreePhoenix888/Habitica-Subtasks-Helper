@@ -41,7 +41,3 @@ export function Button(props: Props): JSX.Element {
 		</button>
 	);
 }
-
-Button.focus = () => {
-	buttonRef.current?.focus();
-};
