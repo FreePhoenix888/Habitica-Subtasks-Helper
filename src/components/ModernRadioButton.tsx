@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CheckedInputContext } from './ModernRadioButtonGroup';
 import { Label } from './Label';
 import { RadioButton } from './RadioButton';
@@ -27,8 +27,7 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		id = '',
 		value,
 	} = props;
-	const { inputChangeEvent, handleChange } =
-		React.useContext(CheckedInputContext);
+	const { inputChangeEvent, handleChange } = useContext(CheckedInputContext);
 	const isChecked = inputChangeEvent?.target.value === value;
 
 	return (
