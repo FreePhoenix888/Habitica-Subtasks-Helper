@@ -6,6 +6,7 @@ export { InputSection } from './components/InputSection';
 export { Label } from './components/Label';
 export { Input } from './components/Input';
 export { Textarea } from './components/Textarea';
+export { Button } from './components/Button';
 export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
