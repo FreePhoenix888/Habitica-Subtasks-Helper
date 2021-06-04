@@ -27,7 +27,8 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		id = '',
 		value,
 	} = props;
-	const { inputChangeEvent, handleChange } = useContext(CheckedInputContext);
+	const { inputChangeEvent, handleChange = () => {} } =
+		useContext(CheckedInputContext);
 	const isChecked = inputChangeEvent?.target.value === value;
 
 	return (
