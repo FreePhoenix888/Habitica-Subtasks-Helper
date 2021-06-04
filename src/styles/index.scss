@@ -122,9 +122,10 @@ body {
 .modern-radio-button {
 	&-container {
 		padding: 0;
+		color: var(--text-color-non-active);
 		&--checked {
 			background: var(--background-color-active);
-			color: var(--text);
+			color: var(--text-color-active);
 		}
 		&--little {
 			--width: min-content;
