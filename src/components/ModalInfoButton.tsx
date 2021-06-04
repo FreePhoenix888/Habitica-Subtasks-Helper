@@ -14,5 +14,5 @@ export function ModalInfoButton(props: Props) {
 		setIsOpen(true);
 	}
 
-	return <InfoButton onClickHandler={onClickHandler} {...props}></InfoButton>;
+	return <InfoButton onClickHandler={onClickHandler} {...props} />;
 }
