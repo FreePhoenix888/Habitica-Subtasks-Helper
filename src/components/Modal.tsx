@@ -117,9 +117,3 @@ Modal.unlockBody = () => {
 	const bodyStyle = document.body.style;
 	bodyStyle.overflow = '';
 };
-
-Modal.focusButton = () => {
-	if (buttonRef.current) {
-		console.log(buttonRef.current);
-	}
-};
