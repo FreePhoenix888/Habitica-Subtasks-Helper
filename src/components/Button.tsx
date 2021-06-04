@@ -3,20 +3,20 @@ import React, {
 	MouseEvent,
 	useImperativeHandle,
 	RefObject,
+	useRef,
+	MutableRefObject,
 } from 'react';
 
 interface Props {
 	onClickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
 	children?: JSX.Element | JSX.Element[];
-	// forwardedRef?: RefObject<HTMLButtonElement>;
+	forwardedRef?: MutableRefObject<HTMLButtonElement | null>;
 	className?: string;
 }
 
-let buttonRef: RefObject<HTMLButtonElement>;
-
 export function Button(props: Props): JSX.Element {
-	const { className = '', children } = props;
+	const { className = '', children, forwardedRef = null } = props;
 
 	function handleClick(event: MouseEvent<HTMLButtonElement>) {
 		const { onClickHandler } = props;
@@ -32,15 +32,13 @@ export function Button(props: Props): JSX.Element {
 		}
 	}
 
-	buttonRef = createRef();
-
 	return (
 		<button
 			type="button"
 			className={`button ${className}`}
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}
-			ref={buttonRef}
+			ref={forwardedRef}
 		>
 			{children}
 		</button>
