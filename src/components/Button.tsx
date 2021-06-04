@@ -1,9 +1,6 @@
 import React, {
-	createRef,
 	MouseEvent,
 	useImperativeHandle,
-	RefObject,
-	useRef,
 	MutableRefObject,
 } from 'react';
 
