@@ -18,11 +18,17 @@ export function Button(props: Props): JSX.Element {
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
 
-	useImperativeHandle<HTMLButtonElement, any>(forwardedRef, () => ({
-		focus() {
-			buttonRef.current?.focus();
-		},
-	}));
+	interface UseImperativeHandleType {
+		focus(): void;
+	}
+	useImperativeHandle<UseImperativeHandleType, UseImperativeHandleType>(
+		forwardedRef,
+		() => ({
+			focus() {
+				buttonRef.current?.focus();
+			},
+		})
+	);
 
 	function handleClick(event: MouseEvent<HTMLButtonElement>) {
 		const { onClickHandler } = props;
