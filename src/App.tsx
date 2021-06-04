@@ -16,7 +16,6 @@ import {
 	MessageContainer,
 	MessageContainerContext,
 	Modal,
-	ModalContainer,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
 import './styles/App.scss';
