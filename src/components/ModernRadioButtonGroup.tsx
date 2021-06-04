@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-type CheckedInputContextType = {
+interface CheckedInputContextType {
 	inputChangeEvent: InputChangeEventType;
 	handleChange: (value: InputChangeEventType) => void;
-};
+}
 export const CheckedInputContext = React.createContext<CheckedInputContextType>(
 	{ inputChangeEvent: undefined, handleChange: () => {} }
 );
