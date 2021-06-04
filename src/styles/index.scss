@@ -188,7 +188,7 @@ body {
 
 .modal {
 	border-radius: 10px;
-	max-width: 220px;
+	max-width: 270px;
 	display: grid;
 	width: fit-content;
 	padding: 1em;
@@ -198,24 +198,13 @@ body {
 	place-content: start start;
 	color: var(--text-color-primary);
 	background: var(--background-color-thirdly);
-	min-width: 18rem;
+	min-width: 19rem;
 	white-space: pre-line;
 	text-align: left;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 2;
-	// .modal-container
-	&-container {
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100vw;
-		height: 100vh;
-		display: grid;
-		place-content: center;
-	}
 	// .modal__info-close
 	&__info-close {
 		color: var(--text-color-active);
