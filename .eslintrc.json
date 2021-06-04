@@ -42,5 +42,4 @@
 		// "React": true,
 		// "JSX": true
 	},
-	"ignorePatterns": ["./src/reportWebVitals.js"]
 }
