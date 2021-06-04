@@ -12,7 +12,6 @@ import { Span } from './Span';
 import { MessageContainerContext } from './MessageContainer';
 
 interface Props {
-	isOpen: boolean;
 	children:
 		| JSX.Element
 		| JSX.Element[]
@@ -29,15 +28,22 @@ interface Props {
 let buttonRef: RefObject<HTMLButtonElement>;
 
 export function Modal(props: Props): React.ReactPortal | null {
-	const { children, className = '', isOpen } = props;
+	const { children, className = '' } = props;
 
 	// Ref to the button to focus it
 	buttonRef = useRef<HTMLButtonElement>(null);
 
-	useEffect(() => {}, []);
+	const { isOpen, setIsOpen } = useContext(MessageContainerContext);
 
-	// Import setIsOpen to close modal
-	const { setIsOpen } = useContext(MessageContainerContext);
+	useEffect(() => {
+		if (buttonRef.current) {
+			buttonRef.current.focus();
+		}
+	}, [isOpen]);
+
+	if (!isOpen) {
+		return null;
+	}
 
 	function handleClick(event: React.MouseEvent<HTMLElement>) {
 		// Default behavioir
@@ -77,25 +83,28 @@ export function Modal(props: Props): React.ReactPortal | null {
 		}
 	}
 
-	return isOpen
-		? createPortal(
-				<>
-					<div className={`modal ${className}`}>
-						<div className="modal__content">{children}</div>
-						<div className="modal__info-close">
-							<Span>Press any key or outside this window to close.</Span>
-						</div>
-					</div>
-					<Button
-					className="modal-close"
-						forwardedRef={buttonRef}
-						onClickHandler={handleClick}
-						onKeyDownHandler={handleKeyDown}
-					/>
-				</>,
-				document.body
-		  )
-		: null;
+	return createPortal(
+		<Button
+			className="modal-close"
+			forwardedRef={buttonRef}
+			onClickHandler={handleClick}
+			onKeyDownHandler={handleKeyDown}
+		>
+			<div
+				className={`modal ${className}`}
+				role="dialog"
+				aria-describedby="modal__content"
+			>
+				<div className="modal__content" id="modal__content">
+					{children}
+				</div>
+				<div className="modal__info-close">
+					<Span>Press any key or outside this window to close.</Span>
+				</div>
+			</div>
+		</Button>,
+		document.body
+	);
 }
 
 Modal.lockBody = () => {
