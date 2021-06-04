@@ -42,6 +42,7 @@ export function Input(props: Props): JSX.Element {
 			onBlurHandler(event);
 		}
 	}
+	
 	return (
 		<>
 			<input
@@ -52,7 +53,7 @@ export function Input(props: Props): JSX.Element {
 				type={type}
 				name={name}
 				placeholder={placeholder}
-				className={`input ${autoSize ? 'input--auto-size' : ''} ${className}`}
+				className={`input ${autoSize ? `input--auto-size className--auto-size` : ''} ${className}`}
 				id={id}
 				value={value}
 				onChange={handleChange}
