@@ -132,3 +132,10 @@ Modal.addblurRoot = () => {
 		rootStyle.filter = 'blur(10px)';
 	}
 };
+
+Modal.removeBlurRoot = () => {
+	const rootStyle = document.getElementById('root')?.style;
+	if (rootStyle) {
+		rootStyle.filter = '';
+	}
+};
