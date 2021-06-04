@@ -148,10 +148,14 @@ function App(): JSX.Element {
 
 					<Modal>
 						<Paragraph>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quae
-							provident quidem impedit aperiam alias rem neque. Ad cumque
-							laboriosam est! Sint saepe inventore, quo nam recusandae ratione
-							deleniti tempora.
+							{`You can use any symbols or regular expression to break your text into parts.
+
+								Example:
+								Brush teeth, Take a bath, Training, Learning with separator , will lead to this result:
+								🞄Brush teeth
+								🞄Take a bath
+								🞄Training
+								🞄Learning`}
 						</Paragraph>
 					</Modal>
 				</>
