@@ -9,16 +9,12 @@ interface Props {
 	onClickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
 	children?: JSX.Element | JSX.Element[];
-	forwardedRef?: MutableRefObject<any>;
+	forwardedRef?: MutableRefObject<HTMLButtonElement>;
 	className?: string;
 }
 
 export function Button(props: Props) {
-	const {
-		className = '',
-		children,
-		forwardedRef = null,
-	} = props;
+	const { className = '', children, forwardedRef = null } = props;
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
 
