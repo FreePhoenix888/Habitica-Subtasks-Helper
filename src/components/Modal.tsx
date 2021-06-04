@@ -124,3 +124,11 @@ Modal.unlockBody = () => {
 	const bodyStyle = document.body.style;
 	bodyStyle.overflow = '';
 };
+
+Modal.addblurRoot = () => {
+	const rootStyle = document.getElementById("root")?.style;
+		if(rootStyle){
+			rootStyle.filter="blur(10px)"
+		}
+}
+
