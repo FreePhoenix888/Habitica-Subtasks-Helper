@@ -46,11 +46,11 @@ export function InputSection(props: Props): JSX.Element {
 	};
 
 	function setClassName() {
-		let result = className;
+		let result = `input-section ${className} `;
 		if (isActive) {
-			result += ` input-section--active ${className}--active`;
+			result += `input-section--active ${className}--active `;
 		} else if (isAnyActive && !isActive) {
-			result += ` input-section--non-active ${className}--non-active`;
+			result += `input-section--non-active ${className}--non-active `;
 		}
 		return result;
 	}
