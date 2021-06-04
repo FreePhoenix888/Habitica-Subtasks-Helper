@@ -13,10 +13,8 @@ export function InputSection(props: Props): JSX.Element {
 		useContext(FormContext);
 	const [isHovered, setIsHovered] = useState<boolean>(false);
 	const [isFocused, setIsFocused] = useState<boolean>(false);
-	const isActive =
-		activeInputSectionClassName &&
-		className.includes(activeInputSectionClassName);
-	const isAnyActive = Boolean(activeInputSectionClassName);
+	const isActive = isHovered || isFocused;
+	const isAnyActive = activeInputSectionClassName !== '';
 
 	function handleMouseOverCapture(event: React.MouseEvent<HTMLDivElement>) {
 		changeActiveInputSectionClassName(className);
@@ -47,21 +45,23 @@ export function InputSection(props: Props): JSX.Element {
 		onBlurHandler: handleBlurCapture,
 	};
 
+	function setClassName() {
+		let result = className;
+		if (isActive) {
+			result += ` input-section--active ${className}--active`;
+		} else if (isAnyActive && !isActive) {
+			result += ` input-section--non-active ${className}--non-active`;
+		}
+		return result;
+	}
+
 	return (
 		<div
 			onMouseOverCapture={handleMouseOverCapture}
 			onMouseLeave={handleMouseLeave}
 			onFocusCapture={handleFocusCapture}
 			onBlurCapture={handleBlurCapture}
-			className={`div input-section ${className} ${
-				isActive ? `input-section--active ${className}--active` : ''
-			}
-			 ${
-					isAnyActive && !isActive
-						? `input-section--not-active ${className}--not-active`
-						: ''
-				}
-			`}
+			className={setClassName()}
 		>
 			{children}
 		</div>
