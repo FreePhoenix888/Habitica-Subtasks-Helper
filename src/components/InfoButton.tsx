@@ -9,7 +9,7 @@ type Props = {
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
 };
 
-export function InfoButton(props: Props) {
+export function InfoButton(props: Props): JSX.Element {
 	const { className = '', hidden = false } = props;
 
 	function handleMouseOver(event: React.MouseEvent<HTMLElement>) {
