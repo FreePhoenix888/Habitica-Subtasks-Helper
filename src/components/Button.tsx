@@ -2,9 +2,7 @@ import React, {
 	MouseEvent,
 	useImperativeHandle,
 	MutableRefObject,
-	forwardRef,
 	useRef,
-	ForwardRefRenderFunction,
 } from 'react';
 
 interface Props {
