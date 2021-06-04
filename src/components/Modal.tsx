@@ -5,7 +5,6 @@ import React, {
 	useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { Button } from './Button';
 import { Span } from './Span';
 import { MessageContainerContext } from './MessageContainer';
 
