@@ -72,7 +72,7 @@ body {
 .input-section {
 	display: grid;
 	gap: 0.4em;
-	transition: filter 150ms ease-in-out;
+	transition: filter 300ms ease-in-out;
 	// .input-section--active
 	&--active {
 	}
