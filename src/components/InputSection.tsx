@@ -16,24 +16,24 @@ export function InputSection(props: Props): JSX.Element {
 	const isActive = isHovered || isFocused;
 	const isAnyActive = activeInputSectionClassName !== '';
 
-	function handleMouseOverCapture(event: React.MouseEvent<HTMLDivElement>) {
+	function handleMouseOverCapture() {
 		changeActiveInputSectionClassName(className);
 		setIsHovered(true);
 	}
 
-	function handleMouseLeave(event: React.MouseEvent<HTMLDivElement>) {
+	function handleMouseLeave() {
 		if (!isFocused) {
 			changeActiveInputSectionClassName('');
 		}
 		setIsHovered(false);
 	}
 
-	function handleFocusCapture(event: React.FocusEvent<HTMLElement>) {
+	function handleFocusCapture() {
 		changeActiveInputSectionClassName(className);
 		setIsFocused(true);
 	}
 
-	function handleBlurCapture(event: React.FocusEvent<HTMLElement>) {
+	function handleBlurCapture() {
 		if (!isHovered) {
 			changeActiveInputSectionClassName('');
 		}
