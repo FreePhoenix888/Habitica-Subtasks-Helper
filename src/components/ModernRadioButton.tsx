@@ -12,7 +12,7 @@ type Props = {
 	labelContentClassName?: string;
 	htmlFor: string;
 	id?: string;
-	value?: string;
+	value: string;
 };
 
 export function ModernRadioButton(props: Props): JSX.Element {
@@ -24,7 +24,7 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		labelClassName = '',
 		labelContentClassName = '',
 		htmlFor,
-		id,
+		id = '',
 		value,
 	} = props;
 	const { inputChangeEvent, handleChange } =
