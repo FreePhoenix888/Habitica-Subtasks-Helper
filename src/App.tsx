@@ -1,5 +1,4 @@
-import React, { Fragment, MutableRefObject, useRef } from 'react';
-// import { useSpring, animated } from 'react-spring';
+import React from 'react';
 import {
 	Span,
 	Paragraph,
@@ -11,11 +10,8 @@ import {
 	Textarea,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
-	Button,
-	InfoButton,
 	ModalInfoButton,
 	MessageContainer,
-	MessageContainerContext,
 	Modal,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star.svg';
