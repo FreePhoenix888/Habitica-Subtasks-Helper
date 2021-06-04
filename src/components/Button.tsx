@@ -13,7 +13,6 @@ interface Props {
 	children?: JSX.Element | JSX.Element[];
 	forwardedRef?: MutableRefObject<any>;
 	className?: string;
-	autoFocus?: boolean;
 }
 
 export function Button(props: Props) {
@@ -21,7 +20,6 @@ export function Button(props: Props) {
 		className = '',
 		children,
 		forwardedRef = null,
-		autoFocus = false,
 	} = props;
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
@@ -53,7 +51,6 @@ export function Button(props: Props) {
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}
 			ref={buttonRef}
-			autoFocus={autoFocus}
 		>
 			{children}
 		</button>
