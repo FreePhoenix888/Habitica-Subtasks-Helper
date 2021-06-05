@@ -18,3 +18,4 @@ export {
 	MessageContainerContext,
 } from './components/MessageContainer';
 export { Header } from './components/Header';
+export { ToggleSwitch } from './components/ToggleSwitch';
