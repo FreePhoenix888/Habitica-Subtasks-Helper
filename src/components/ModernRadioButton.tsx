@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CheckedInputContext } from './ModernRadioButtonGroup';
 import { Label } from './Label';
 import { RadioButton } from './RadioButton';
@@ -7,8 +7,8 @@ type Props = {
 	children: JSX.Element | JSX.Element[] | string;
 	name: string;
 	radioButtonClassName?: string;
-	containerClassName?: string;
 	labelClassName?: string;
+	inputClassName?: string;
 	htmlFor: string;
 	id?: string;
 	value: string;
@@ -18,9 +18,9 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	const {
 		children,
 		name,
-		containerClassName = '',
 		radioButtonClassName = '',
 		labelClassName = '',
+		inputClassName = '',
 		htmlFor,
 		id = '',
 		value,
@@ -29,41 +29,43 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		useContext(CheckedInputContext);
 	const isChecked = inputChangeEvent?.target.value === value;
 
-	function setModernRadioButtonClassName() {
-		let outputClassName = `modern-radio-button ${containerClassName} `;
-		if (isChecked) {
-			outputClassName += `modern-radio-button--checked ${containerClassName}--checked`;
-		}
-		return outputClassName;
+	const [isFocused, changeIsFocused] = useState<boolean>(false);
+
+	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
+		changeIsFocused(true);
 	}
 
-	function setLabelClassName() {
-		let outputClassName = `modern-radio-button__label ${labelClassName} `;
-		if (isChecked) {
-			outputClassName += `modern-radio-button__label--checked ${labelClassName}--checked `;
-		}
-		return outputClassName;
+	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
+		changeIsFocused(false);
 	}
 
-	function setRadioButtonClassName() {
-		let outputClassName = `modern-radio-button__radio-button ${radioButtonClassName} `;
+	function setClassName(defaultClassName: string, customClassName: string) {
+		let outputClassName = `${defaultClassName} ${customClassName}`;
 		if (isChecked) {
-			outputClassName += `modern-radio-button__radio-button--checked ${radioButtonClassName}--checked`;
+			outputClassName += `${defaultClassName}--checked ${customClassName}--checked`;
+		}
+		if (isFocused) {
+			outputClassName += `${defaultClassName}--focus ${customClassName}--focus`;
 		}
 		return outputClassName;
 	}
 
 	return (
-		<div className={setModernRadioButtonClassName()}>
-			<Label htmlFor={htmlFor} className={setLabelClassName()}>
+		<div className={setClassName('modern-radio-button', radioButtonClassName)}>
+			<Label
+				htmlFor={htmlFor}
+				className={setClassName('modern-radio-button__label', labelClassName)}
+			>
 				{children}
 			</Label>
 			<RadioButton
 				name={name}
-				className={setRadioButtonClassName()}
+				className={setClassName('modern-radio-button__input', inputClassName)}
 				id={id}
 				value={value}
 				onChange={handleChange}
+				onFocusHandler={handleFocus}
+				onBlurHandler={handleBlur}
 			/>
 		</div>
 	);
