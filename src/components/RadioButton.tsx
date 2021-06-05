@@ -31,13 +31,17 @@ export function RadioButton(props: Props): JSX.Element {
 	}
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-		const { onChange = () => {} } = props;
-		onChange(event);
+		const { onChange } = props;
+		if (onChange) {
+			onChange(event);
+		}
 	}
 
 	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
-		const { onBlur = () => {} } = props;
-		onBlur(event);
+		const { onBlur } = props;
+		if (onBlur) {
+			onBlur(event);
+		}
 	}
 	return (
 		<>
