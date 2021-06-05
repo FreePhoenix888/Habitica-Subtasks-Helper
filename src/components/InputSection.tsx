@@ -40,14 +40,18 @@ export function InputSection(props: Props): JSX.Element {
 		setIsFocused(false);
 	}
 
-	function setClassName() {
-		let result = `input-section ${className} `;
-		if (isActive) {
-			result += `input-section--active ${className}--active `;
-		} else if (isAnyActive && !isActive) {
-			result += `input-section--non-active ${className}--non-active `;
+	function setClassName(
+		defaultClassName: string,
+		customClassName = ''
+	) {
+		let outputClassName = `${defaultClassName} ${customClassName} `;
+		if (isHovered) {
+			outputClassName += `${defaultClassName}--hover ${customClassName}--hover `;
 		}
-		return result;
+		if (isFocused) {
+			outputClassName += `${defaultClassName}--focus ${customClassName}--focus `;
+		}
+		return outputClassName;
 	}
 
 	return (
@@ -56,7 +60,7 @@ export function InputSection(props: Props): JSX.Element {
 			onMouseLeave={handleMouseLeave}
 			onFocusCapture={handleFocusCapture}
 			onBlurCapture={handleBlurCapture}
-			className={setClassName()}
+			className={setClassName('input-section')}
 		>
 			{children}
 		</div>

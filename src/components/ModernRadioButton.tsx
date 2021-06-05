@@ -39,7 +39,7 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		changeIsFocused(false);
 	}
 
-	function setClassName(defaultClassName: string, customClassName: string) {
+	function setClassName(defaultClassName: string, customClassName = '') {
 		let outputClassName = `${defaultClassName} ${customClassName} `;
 		if (isChecked) {
 			outputClassName += `${defaultClassName}--checked ${customClassName}--checked `;
