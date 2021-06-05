@@ -31,26 +31,36 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		useContext(CheckedInputContext);
 	const isChecked = inputChangeEvent?.target.value === value;
 
+	function setModernRadioButtonClassName() {
+		let outputClassName = `modern-radio-button ${containerClassName} `;
+		if (isChecked) {
+			outputClassName += `modern-radio-button--checked ${containerClassName}--checked`;
+		}
+		return outputClassName;
+	}
+
+	function setLabelClassName() {
+		let outputClassName = `modern-radio-button__label ${labelClassName} `;
+		if (isChecked) {
+			outputClassName += `modern-radio-button__label--checked ${labelClassName}--checked `;
+		}
+		return outputClassName;
+	}
+
 	return (
-		<div
-			className={`modern-radio-button-container ${containerClassName} ${
-				isChecked
-					? `modern-radio-button-container--checked ${containerClassName}--checked`
-					: ''
-			}`}
-		>
+		<div className={setModernRadioButtonClassName()}>
 			<Label
 				htmlFor={htmlFor}
-				className={`modern-radio-button-container__label modern-radio-button-container-label ${labelClassName}`}
-				contentClassName={`modern-radio-button-container-label__content ${labelContentClassName}`}
+				className={`modern-radio-button__label ${labelClassName}`}
+				contentClassName={setLabelClassName()}
 			>
 				{children}
 			</Label>
 			<RadioButton
 				name={name}
-				className={`modern-radio-button-container__radio-button ${radioButtonClassName} ${
+				className={`modern-radio-button__radio-button ${radioButtonClassName} ${
 					isChecked
-						? `modern-radio-button-container__radio-button--checked ${radioButtonClassName}--checked`
+						? `modern-radio-button__radio-button--checked ${radioButtonClassName}--checked`
 						: ''
 				}`}
 				id={id}
