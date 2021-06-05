@@ -89,7 +89,7 @@ body {
 
 .textarea,
 .input,
-.modern-radio-button-container {
+.modern-radio-button {
 	--padding: 12px 26px;
 	--width: 100%;
 	--border-radius: 50px;
@@ -120,38 +120,38 @@ body {
 }
 
 .modern-radio-button {
-	&-container {
-		padding: 0;
-		color: var(--text-color-non-active);
-		&--checked {
-			background: var(--background-color-active);
-			color: var(--text-color-active);
-		}
-		&--little {
-			--width: min-content;
-		}
-		&__radio-button {
-			position: absolute;
-			width: 0;
-			height: 0;
-		}
-		&__svg {
-			fill: currentColor;
-		}
-		// .modern-radio-button-container__label
-		&__label {
-		}
-		// .modern-radio-button-container-label
-		&-label {
+	padding: 0;
+	color: var(--text-color-non-active);
+	&--checked {
+		background: var(--background-color-active);
+		color: var(--text-color-active);
+	}
+	&--little {
+		--width: min-content;
+	}
+	&__radio-button {
+		position: absolute;
+		width: 0;
+		height: 0;
+	}
+	&__svg {
+		fill: currentColor;
+	}
+	// .modern-radio-button__label
+	&__label {
+		padding: 0 12px;
+		cursor: pointer;
+	}
+	// .modern-radio-button-label
+	&-label {
+		border-radius: inherit;
+		// .modern-radio-buttonlabel__content
+		&__content {
+			padding: 0 26px;
+			display: grid;
+			place-content: center;
+			cursor: pointer;
 			border-radius: inherit;
-			// .modern-radio-button-container-label__content
-			&__content {
-				padding: 0 26px;
-				display: grid;
-				place-content: center;
-				cursor: pointer;
-				border-radius: inherit;
-			}
 		}
 	}
 }
@@ -163,16 +163,13 @@ body {
 
 .label {
 	display: grid;
-	// .label__content
-	&__content {
-		display: grid;
-		font-size: 1.3em;
-		font-weight: 600;
-		place-content: center;
-		grid-auto-flow: column;
-		gap: 5px;
-		align-items: center;
-	}
+
+	font-size: 1.3em;
+	font-weight: 600;
+	place-content: center;
+	grid-auto-flow: column;
+	gap: 5px;
+	align-items: center;
 }
 
 .button {
