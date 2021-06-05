@@ -43,12 +43,12 @@ export function InfoButton(props: Props): JSX.Element {
 		<>
 			<button
 				className={`button info-button ${className}`}
-				onMouseOver={handleMouseOver}
-				onClick={handleClick}
-				onKeyDown={handleKeyDown}
-				onFocus={handleFocus}
 				hidden={hidden}
 				type="button"
+				onClick={handleClick}
+				onFocus={handleFocus}
+				onKeyDown={handleKeyDown}
+				onMouseOver={handleMouseOver}
 			>
 				?
 			</button>
