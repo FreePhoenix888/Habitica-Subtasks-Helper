@@ -36,7 +36,18 @@
 		"react/require-default-props": "off",
 		"no-plusplus": "off",
 		"import/prefer-default-export": "off",
-		"react/jsx-props-no-spreading": "off"
+		"react/jsx-props-no-spreading": "off",
+		"react/jsx-sort-props": [
+			1,
+			{
+				"callbacksLast": true,
+				"shorthandFirst": false,
+				"shorthandLast": true,
+				"ignoreCase": true,
+				"noSortAlphabetically": false,
+				"reservedFirst": false
+			}
+		]
 	},
 	"globals": {
 		// "React": true,
