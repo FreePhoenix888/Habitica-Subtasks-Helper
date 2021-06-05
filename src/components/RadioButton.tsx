@@ -6,6 +6,7 @@ interface Props {
 	className?: string;
 	id?: string;
 	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
+	onFocusHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	onBlur?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	tabIndex?: number;
 	hidden?: boolean;
@@ -20,6 +21,14 @@ export function RadioButton(props: Props): JSX.Element {
 		tabIndex = 0,
 		hidden = false,
 	} = props;
+
+	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
+		const { onFocusHandler } = props;
+
+		if (onFocusHandler) {
+			onFocusHandler(event);
+		}
+	}
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 		const { onChange = () => {} } = props;
