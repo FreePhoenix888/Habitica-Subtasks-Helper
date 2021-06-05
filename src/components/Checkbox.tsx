@@ -34,17 +34,17 @@ export function Checkbox(props: Props) {
 	}
 
 	return (
-		<Label htmlFor={id} className={`modern-checkbox__label ${labelClassName}`}>
+		<Label className={`modern-checkbox__label ${labelClassName}`} htmlFor={id}>
 			<Input
-				name={name}
-				type="checkbox"
-				className={`modern-checkbox ${inputClassName}`}
-				placeholder={placeholder}
-				id={id}
 				autoSize={autoSize}
-				tabIndex={tabIndex}
+				className={`modern-checkbox ${inputClassName}`}
+				id={id}
 				isChecked={isChecked}
-			></Input>
+				name={name}
+				placeholder={placeholder}
+				tabIndex={tabIndex}
+				type="checkbox"
+			 />
 		</Label>
 	);
 }
