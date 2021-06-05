@@ -48,6 +48,7 @@ export function RadioButton(props: Props): JSX.Element {
 				id={id}
 				value={value}
 				onChange={handleChange}
+				onFocus={handleFocus}
 				onBlur={handleBlur}
 				tabIndex={tabIndex}
 				hidden={hidden}
