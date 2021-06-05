@@ -53,19 +53,19 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	return (
 		<div className={setClassName('modern-radio-button', radioButtonClassName)}>
 			<Label
-				htmlFor={htmlFor}
 				className={setClassName('modern-radio-button__label', labelClassName)}
+				htmlFor={htmlFor}
 			>
 				{children}
 			</Label>
 			<RadioButton
-				name={name}
 				className={setClassName('modern-radio-button__input', inputClassName)}
 				id={id}
+				name={name}
 				value={value}
+				onBlurHandler={handleBlur}
 				onChange={handleChange}
 				onFocusHandler={handleFocus}
-				onBlurHandler={handleBlur}
 			/>
 		</div>
 	);
