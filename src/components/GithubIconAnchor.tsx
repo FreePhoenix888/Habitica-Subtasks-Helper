@@ -11,8 +11,8 @@ interface Props {
 export function GithubIconAnchor(props: Props): JSX.Element {
 	const {
 		href = 'https://github.com/FreePhoenix888',
-		anchorClassName,
-		iconClassName,
+		anchorClassName = '',
+		iconClassName = '',
 	} = props;
 
 	return (

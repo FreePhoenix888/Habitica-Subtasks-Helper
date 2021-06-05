@@ -9,7 +9,11 @@ interface Props {
 }
 
 export function BlurIconButton(props: Props): JSX.Element {
-	const { buttonClassName, iconClassName, onClickHandler = () => {} } = props;
+	const {
+		buttonClassName = '',
+		iconClassName = '',
+		onClickHandler = () => {},
+	} = props;
 
 	return (
 		<Button

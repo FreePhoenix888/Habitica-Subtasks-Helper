@@ -6,6 +6,6 @@ interface Props {
 }
 
 export function GithubIcon(props: Props) {
-	const { className } = props;
+	const { className = '' } = props;
 	return <GithubIconSVG className={`icon github-icon ${className}`} />;
 }
