@@ -40,12 +40,12 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	}
 
 	function setClassName(defaultClassName: string, customClassName: string) {
-		let outputClassName = `${defaultClassName} ${customClassName}`;
+		let outputClassName = `${defaultClassName} ${customClassName} `;
 		if (isChecked) {
-			outputClassName += `${defaultClassName}--checked ${customClassName}--checked`;
+			outputClassName += `${defaultClassName}--checked ${customClassName}--checked `;
 		}
 		if (isFocused) {
-			outputClassName += `${defaultClassName}--focus ${customClassName}--focus`;
+			outputClassName += `${defaultClassName}--focus ${customClassName}--focus `;
 		}
 		return outputClassName;
 	}
