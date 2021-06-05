@@ -46,18 +46,18 @@ export function Input(props: Props): JSX.Element {
 	return (
 		<>
 			<input
-				onFocus={handleFocus}
-				onBlur={handleBlur}
+				checked={isChecked}
+				className={`input ${autoSize ? `input--auto-size className--auto-size` : ''} ${className}`}
+				id={id}
+				name={name}
+				placeholder={placeholder}
 				size={autoSize ? value.length + 1 : 0}
 				tabIndex={tabIndex}
 				type={type}
-				name={name}
-				placeholder={placeholder}
-				className={`input ${autoSize ? `input--auto-size className--auto-size` : ''} ${className}`}
-				id={id}
 				value={value}
+				onBlur={handleBlur}
 				onChange={handleChange}
-				checked={isChecked}
+				onFocus={handleFocus}
 			/>
 		</>
 	);
