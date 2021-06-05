@@ -59,8 +59,7 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		<div className={setModernRadioButtonClassName()}>
 			<Label
 				htmlFor={htmlFor}
-				className={`modern-radio-button__label ${labelClassName}`}
-				contentClassName={setLabelClassName()}
+				className={setLabelClassName()}
 			>
 				{children}
 			</Label>
