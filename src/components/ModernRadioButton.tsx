@@ -47,6 +47,14 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		return outputClassName;
 	}
 
+	function setRadioButtonClassName() {
+		let outputClassName = `modern-radio-button__radio-button ${radioButtonClassName} `;
+		if (isChecked) {
+			outputClassName += `modern-radio-button__radio-button--checked ${radioButtonClassName}--checked`;
+		}
+		return outputClassName;
+	}
+
 	return (
 		<div className={setModernRadioButtonClassName()}>
 			<Label
@@ -58,11 +66,7 @@ export function ModernRadioButton(props: Props): JSX.Element {
 			</Label>
 			<RadioButton
 				name={name}
-				className={`modern-radio-button__radio-button ${radioButtonClassName} ${
-					isChecked
-						? `modern-radio-button__radio-button--checked ${radioButtonClassName}--checked`
-						: ''
-				}`}
+				className={setRadioButtonClassName()}
 				id={id}
 				value={value}
 				onChange={handleChange}
