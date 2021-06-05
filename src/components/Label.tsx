@@ -1,6 +1,6 @@
 import React from 'react';
 
-type Props = {
+interface Props {
 	className?: string;
 	htmlFor: string;
 	children?: string | Element | Element[] | JSX.Element | JSX.Element[];
