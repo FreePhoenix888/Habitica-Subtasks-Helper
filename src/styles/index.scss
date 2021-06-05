@@ -3,7 +3,6 @@
 	--text-color-non-active: hsla(0, 0%, 0%, 50%);
 	--text-color-active: hsla(0, 0%, 0%, 80%);
 	--font-family: 'Montserrat', sans-serif;
-	--font-size: 20px;
 	--background-color-primary: hsl(203, 8%, 20%);
 	--background-color-secondary: hsl(0, 0%, 77%);
 	--background-color-thirdly: hsl(204, 13%, 36%);
@@ -29,7 +28,6 @@
 
 html {
 	box-sizing: border-box;
-	font-size: var(--font-size);
 }
 
 *,
@@ -44,7 +42,6 @@ html {
 
 body {
 	font-family: var(--font-family);
-	font-size: var(--font-size);
 	background: var(--background-color-primary);
 	text-align: center;
 	color: var(--text-color-primary);
