@@ -17,3 +17,4 @@ export {
 	MessageContainer,
 	MessageContainerContext,
 } from './components/MessageContainer';
+export { Header } from './components/Header';
