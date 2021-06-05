@@ -7,6 +7,7 @@ import { ReactComponent as SVG } from '../media/images/lens_blur_icon.svg';
 interface Props {
 	className?: string;
 	isCheckedByDefault?: boolean;
+	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export function ToggleSwitch(props: Props): JSX.Element {
@@ -14,16 +15,30 @@ export function ToggleSwitch(props: Props): JSX.Element {
 
 	const [isChecked, changeIsChecked] = useState<boolean>(isCheckedByDefault);
 
+	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+		// Defaul behavior
+		const target = event.target as HTMLInputElement;
+		changeIsChecked(target.checked);
+
+		// Custom behavior
+		const { onChangeHandler } = props;
+
+		if (onChangeHandler) {
+			onChangeHandler(event);
+		}
+	}
+
 	return (
 		<Label htmlFor="toggle-switch-blur" className="toggle-switch-blur">
 			<div className="togle-switch-slider">
 				<SVG />
 			</div>
-			<Input
+			<input
 				className="toggle-switch-blur__input"
 				type="checkbox"
 				name="blur"
 				id="toggle-switch-blur"
+				onChange={handleChange}
 			/>
 		</Label>
 	);
