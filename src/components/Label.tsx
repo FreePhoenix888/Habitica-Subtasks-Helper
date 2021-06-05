@@ -10,7 +10,7 @@ export function Label(props: Props): JSX.Element {
 	const { htmlFor, children, className = '' } = props;
 
 	return (
-		<label htmlFor={htmlFor} className={`label ${className}`}>
+		<label className={`label ${className}`} htmlFor={htmlFor}>
 			{children}
 		</label>
 	);
