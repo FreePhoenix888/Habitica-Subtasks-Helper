@@ -1,0 +1,34 @@
+.toggle-switch-blur {
+   border-radius: 50px;
+	display: grid;
+	padding: 0.1em 0.4em;
+   width: 6em;
+	cursor: pointer;
+	transition: place-content 300ms ease-in-out;
+	place-content: center start;
+	background: var(--background-color-secondary);
+	&--checked{
+		transition: all 300ms ease-in-out;
+		place-content: center end;
+		background: #000;
+	}
+}
+
+.togle-switch-slider {
+   width: 2.5em;
+   height: 2.5em;
+	display: grid;
+padding: 0.3em;
+	border-radius: 50px;
+	border: 3px solid var(--background-color-secondary);
+	place-content: center;
+	background: var(--background-color-primary);
+	color: var(--text-color-primary);
+}
+
+.toggle-switch-blur__input {
+	appearance: none;
+	width: 0;
+	height: 0;
+	padding: 0;
+}
