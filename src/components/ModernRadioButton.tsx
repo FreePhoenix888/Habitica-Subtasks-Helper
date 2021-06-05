@@ -9,7 +9,6 @@ type Props = {
 	radioButtonClassName?: string;
 	containerClassName?: string;
 	labelClassName?: string;
-	labelContentClassName?: string;
 	htmlFor: string;
 	id?: string;
 	value: string;
@@ -22,7 +21,6 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		containerClassName = '',
 		radioButtonClassName = '',
 		labelClassName = '',
-		labelContentClassName = '',
 		htmlFor,
 		id = '',
 		value,
@@ -57,10 +55,7 @@ export function ModernRadioButton(props: Props): JSX.Element {
 
 	return (
 		<div className={setModernRadioButtonClassName()}>
-			<Label
-				htmlFor={htmlFor}
-				className={setLabelClassName()}
-			>
+			<Label htmlFor={htmlFor} className={setLabelClassName()}>
 				{children}
 			</Label>
 			<RadioButton
