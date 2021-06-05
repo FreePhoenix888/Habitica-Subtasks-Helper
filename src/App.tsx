@@ -87,7 +87,7 @@ function App(): JSX.Element {
 									stars.push(
 										<StarSVG
 											key={`${i}:${j}`}
-											className="svg star-SVG modern-radio-button-container__svg modern-radio-button-container__star-svg"
+											className="svg star-SVG modern-radio-button__svg modern-radio-button__star-svg"
 										/>
 									);
 								}
@@ -96,10 +96,10 @@ function App(): JSX.Element {
 									<ModernRadioButton
 										htmlFor={`taskDifficulty${i + 1}`}
 										name="task_difficulty"
-										containerClassName="radio-button-container--little task-difficulty__modern-radio-button-container-container"
-										radioButtonClassName="task-difficulty-modern-radio-button-container__input"
-										labelClassName="task-difficulty-modern-radio-button-container__label"
-										labelContentClassName="task-difficulty-modern-radio-button-container-label__content"
+										containerClassName="radio-button-container--little task-difficulty__modern-radio-button-container"
+										radioButtonClassName="task-difficulty-modern-radio-button__input"
+										labelClassName="task-difficulty-modern-radio-button__label"
+										labelContentClassName="task-difficulty-modern-radio-button-label__content"
 										id={`taskDifficulty${i + 1}`}
 										value={`${i + 1}`}
 										key={i}
