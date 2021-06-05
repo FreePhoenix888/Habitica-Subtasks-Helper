@@ -56,11 +56,11 @@ export function InputSection(props: Props): JSX.Element {
 
 	return (
 		<div
-			onMouseOverCapture={handleMouseOverCapture}
-			onMouseLeave={handleMouseLeave}
-			onFocusCapture={handleFocusCapture}
-			onBlurCapture={handleBlurCapture}
 			className={setClassName('input-section')}
+			onBlurCapture={handleBlurCapture}
+			onFocusCapture={handleFocusCapture}
+			onMouseLeave={handleMouseLeave}
+			onMouseOverCapture={handleMouseOverCapture}
 		>
 			{children}
 		</div>
