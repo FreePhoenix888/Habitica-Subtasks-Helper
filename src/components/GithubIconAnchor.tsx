@@ -16,7 +16,7 @@ export function GithubIconAnchor(props: Props): JSX.Element {
 	} = props;
 
 	return (
-		<Anchor href={href} className={`anchor ${anchorClassName}`}>
+		<Anchor className={`anchor ${anchorClassName}`} href={href}>
 			<GithubIcon className={`${iconClassName}`} />
 		</Anchor>
 	);
