@@ -74,6 +74,9 @@ body {
 .button {
 	border: none;
 	cursor: pointer;
+	&:focus {
+		box-shadow: 0px 0px 0px 4px var(--text-color-active);
+	}
 }
 
 .input-section {
@@ -140,6 +143,10 @@ body {
 	}
 	&--little {
 		width: min-content;
+	}
+	// .modern-radio-button--focus
+	&--focus {
+		box-shadow: 0px 0px 0px 4px var(--text-color-active);
 	}
 	&__input {
 		position: absolute;
