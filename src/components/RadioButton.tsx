@@ -7,7 +7,7 @@ interface Props {
 	id?: string;
 	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	onFocusHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
-	onBlur?: (value: React.FocusEvent<HTMLInputElement>) => void;
+	onBlurHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	tabIndex?: number;
 	hidden?: boolean;
 }
@@ -38,9 +38,9 @@ export function RadioButton(props: Props): JSX.Element {
 	}
 
 	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
-		const { onBlur } = props;
-		if (onBlur) {
-			onBlur(event);
+		const { onBlurHandler } = props;
+		if (onBlurHandler) {
+			onBlurHandler(event);
 		}
 	}
 	return (
