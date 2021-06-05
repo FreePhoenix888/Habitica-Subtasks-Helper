@@ -90,16 +90,16 @@ export function Modal(props: Props): React.ReactPortal | null {
 		? createPortal(
 				<div
 					className="modal-close"
+					ref={divButtonRef}
 					role="button"
+					tabIndex={-1}
 					onClick={handleClick}
 					onKeyDown={handleKeyDown}
-					tabIndex={-1}
-					ref={divButtonRef}
 				>
 					<div
+						aria-describedby="modal__content"
 						className={`modal ${className}`}
 						role="dialog"
-						aria-describedby="modal__content"
 					>
 						<div className="modal__content" id="modal__content">
 							{children}
