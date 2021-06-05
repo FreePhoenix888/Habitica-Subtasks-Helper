@@ -24,15 +24,15 @@ export function Textarea(props: Props): JSX.Element {
 	return (
 		<>
 			<textarea
-				onChange={handleChange}
-				value={value}
 				className={`textarea ${className}`}
-				placeholder={placeholder}
+				cols={30}
 				id={id}
 				name={name}
-				cols={30}
+				placeholder={placeholder}
 				rows={10}
+				value={value}
 				wrap={wrap}
+				onChange={handleChange}
 			/>
 		</>
 	);
