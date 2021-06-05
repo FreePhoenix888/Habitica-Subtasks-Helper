@@ -46,11 +46,11 @@ export function Button(props: Props): JSX.Element {
 
 	return (
 		<button
-			type="button"
 			className={`button ${className}`}
+			ref={buttonRef}
+			type="button"
 			onClick={handleClick}
 			onKeyDown={handleKeyDown}
-			ref={buttonRef}
 		>
 			{children}
 		</button>
