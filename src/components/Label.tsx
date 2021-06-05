@@ -3,7 +3,7 @@ import React from 'react';
 type Props = {
 	className?: string;
 	contentClassName?: string;
-	htmlFor?: string | undefined;
+	htmlFor: string;
 	children?: string | Element | Element[] | JSX.Element | JSX.Element[];
 	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
