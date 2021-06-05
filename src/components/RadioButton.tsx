@@ -46,16 +46,16 @@ export function RadioButton(props: Props): JSX.Element {
 	return (
 		<>
 			<input
-				type="radio"
-				name={name}
 				className={`radio-button ${className}`}
+				hidden={hidden}
 				id={id}
+				name={name}
+				tabIndex={tabIndex}
+				type="radio"
 				value={value}
+				onBlur={handleBlur}
 				onChange={handleChange}
 				onFocus={handleFocus}
-				onBlur={handleBlur}
-				tabIndex={tabIndex}
-				hidden={hidden}
 			/>
 		</>
 	);
