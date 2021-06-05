@@ -95,6 +95,10 @@ body {
 	gap: 15px;
 }
 
+.svg {
+	fill: currentColor;
+}
+
 .textarea,
 .input,
 .modern-radio-button {
@@ -135,15 +139,12 @@ body {
 		color: var(--text-color-active);
 	}
 	&--little {
-		--width: min-content;
+		width: min-content;
 	}
-	&__radio-button {
+	&__input {
 		position: absolute;
 		width: 0;
 		height: 0;
-	}
-	&__svg {
-		fill: currentColor;
 	}
 	// .modern-radio-button__label
 	&__label {
@@ -153,7 +154,7 @@ body {
 	// .modern-radio-button-label
 	&-label {
 		border-radius: inherit;
-		// .modern-radio-buttonlabel__content
+		// .modern-radio-button-label__content
 		&__content {
 			padding: 0 26px;
 			display: grid;
