@@ -28,15 +28,7 @@ export function Label(props: Props): JSX.Element {
 
 	return (
 		<label htmlFor={htmlFor} className={`label ${className}`}>
-			<div
-				onClick={handleClick}
-				onKeyDown={handleKeyDown}
-				role="button"
-				tabIndex={-1}
-				className={`label__content ${contentClassName}`}
-			>
-				{children}
-			</div>
+			{children}
 		</label>
 	);
 }
