@@ -1,0 +1,13 @@
+.input-section {
+	display: grid;
+	gap: 0.4em;
+	transition: filter 300ms ease-in-out;
+	place-items: center;
+	// .input-section--active
+	&--active {
+	}
+	// .input-section--non-active
+	&--non-active {
+		filter: blur(4px);
+	}
+}

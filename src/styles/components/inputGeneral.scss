@@ -1,0 +1,26 @@
+.textarea,
+.input,
+.modern-radio-button {
+	padding: 12px 26px;
+	width: 100%;
+	border-radius: 50px;
+	text-align: center;
+	transition: background, color 0.15s ease-in-out;
+	color: var(--text-color-active);
+	background: var(--background-color-secondary);
+	border: 0;
+	&--active {
+	}
+	&--auto-size {
+		width: fit-content;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	&:focus {
+		background: var(--background-color-active);
+		&::placeholder {
+			color: var(--text-color-non-active);
+			visibility: hidden;
+		}
+	}
+}

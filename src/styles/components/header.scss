@@ -1,0 +1,18 @@
+.header {
+	padding: 5px 0;
+	place-content: center;
+	place-items: center;
+	border-bottom: 1px solid var(--background-color-secondary);
+	display: grid;
+	// grid-template-rows: ;
+	grid-template-columns: min-content;
+	grid-template-rows: minmax(35px, min-content);
+	grid-auto-flow: column;
+	// .header__toggle-switch
+	&__toggle-switch {
+		// .header__toggle-switch-blur
+		&-blur {
+			transform: scale(0.615);
+		}
+	}
+}

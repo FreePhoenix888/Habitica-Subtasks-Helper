@@ -1,0 +1,9 @@
+.button {
+	border: none;
+	cursor: pointer;
+	color: inherit;
+	background: inherit;
+	&:focus {
+		box-shadow: 0px 0px 0px 4px var(--text-color-active);
+	}
+}
