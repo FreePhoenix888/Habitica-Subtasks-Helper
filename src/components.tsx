@@ -10,7 +10,7 @@ export { Button } from './components/Button';
 export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
-export { InfoButton } from './components/InfoButton';
+export { ButtonInfo } from './components/ButtonInfo';
 export { ModalInfoButton } from './components/ModalInfoButton';
 export { Modal } from './components/Modal';
 export {
@@ -19,4 +19,5 @@ export {
 } from './components/MessageContainer';
 export { Header } from './components/Header';
 export { ToggleSwitch } from './components/ToggleSwitch';
-export { BlurIcon } from './components/BlurIcon';
+export { IconBlur } from './components/IconBlur';
+export { ToggleSwitchBlur } from './components/ToggleSwitchBlur';
