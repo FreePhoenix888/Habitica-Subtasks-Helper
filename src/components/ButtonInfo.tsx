@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/buttonInfo.scss';
 
 type Props = {
 	className?: string;
@@ -9,7 +10,7 @@ type Props = {
 	onMouseOverHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-export function InfoButton(props: Props): JSX.Element {
+export function ButtonInfo(props: Props): JSX.Element {
 	const { className = '', hidden = false } = props;
 
 	function handleMouseOver(event: React.MouseEvent<HTMLElement>) {
@@ -42,7 +43,7 @@ export function InfoButton(props: Props): JSX.Element {
 	return (
 		<>
 			<button
-				className={`button info-button ${className}`}
+				className={`button button-info ${className}`}
 				hidden={hidden}
 				type="button"
 				onClick={handleClick}
