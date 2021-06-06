@@ -14,7 +14,7 @@ import {
 	Modal,
 	Header,
 } from './components';
-import { ReactComponent as StarSVG } from './media/images/star.svg';
+import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
 
 function App(): JSX.Element {
