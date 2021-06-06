@@ -1,5 +1,5 @@
 import React from 'react';
-import { GithubIcon } from './GithubIcon';
+import { IconGithub } from './IconGithub';
 import { Button } from './Button';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 	onClickHandler?: (event: React.MouseEvent) => void;
 }
 
-export function BlurIconButton(props: Props): JSX.Element {
+export function ButtonBlurIcon(props: Props): JSX.Element {
 	const {
 		buttonClassName = '',
 		iconClassName = '',
@@ -20,7 +20,7 @@ export function BlurIconButton(props: Props): JSX.Element {
 		className={`anchor ${buttonClassName}`}
 		onClickHandler={onClickHandler}
 		>
-			<GithubIcon className={`${iconClassName}`} />
+			<IconGithub className={`${iconClassName}`} />
 		</Button>
 	);
 }
