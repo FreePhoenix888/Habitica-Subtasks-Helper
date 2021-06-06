@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import '../styles/components/form.scss';
 
 interface Props {
 	action: string;

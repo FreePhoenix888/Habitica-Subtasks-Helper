@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/paragraph.scss';
 
 interface Props {
 	children: string | JSX.Element | JSX.Element[] | Element | Element[];

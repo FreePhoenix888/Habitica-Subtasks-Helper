@@ -1,4 +1,5 @@
 import React, { useState, createContext } from 'react';
+import '../styles/components/messageContainer.scss';
 
 export const MessageContainerContext = createContext<ContextType>({
 	isOpen: false,

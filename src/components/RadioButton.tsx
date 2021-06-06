@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/inputGeneral.scss';
 
 interface Props {
 	className?: string;

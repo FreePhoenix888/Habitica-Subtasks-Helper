@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { CheckedInputContext } from './ModernRadioButtonGroup';
 import { Label } from './Label';
 import { RadioButton } from './RadioButton';
+import '../styles/components/modernRadioButton.scss';
 
 type Props = {
 	children: JSX.Element | JSX.Element[] | string;

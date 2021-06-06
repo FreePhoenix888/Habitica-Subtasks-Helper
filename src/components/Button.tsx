@@ -4,6 +4,7 @@ import React, {
 	MutableRefObject,
 	useRef,
 } from 'react';
+import '../styles/components/button.scss';
 
 interface Props {
 	children?: JSX.Element | JSX.Element[];

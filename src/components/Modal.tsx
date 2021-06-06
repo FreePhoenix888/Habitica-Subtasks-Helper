@@ -1,12 +1,8 @@
-import React, {
-	RefObject,
-	useContext,
-	useEffect,
-	useRef,
-} from 'react';
+import React, { RefObject, useContext, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Span } from './Span';
 import { MessageContainerContext } from './MessageContainer';
+import '../styles/components/modal.scss';
 
 interface Props {
 	children:

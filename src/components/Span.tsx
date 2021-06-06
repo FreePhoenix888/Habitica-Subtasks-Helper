@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/components/span.scss'
 
 interface Props {
 	children: string | JSX.Element | JSX.Element[];

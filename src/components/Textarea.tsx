@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../styles/components/inputGeneral.scss';
+import '../styles/components/textarea.scss';
 
 interface Props {
 	className?: string;
