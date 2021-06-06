@@ -99,9 +99,9 @@ function App(): JSX.Element {
 										<ModernRadioButton
 											htmlFor={`taskDifficulty${i + 1}`}
 											name="task_difficulty"
-											containerClassName="radio-button-container--little task-difficulty__modern-radio-button-container"
-											radioButtonClassName="task-difficulty-modern-radio-button__input"
+											radioButtonClassName="radio-button-container--little task-difficulty__modern-radio-button-container"
 											labelClassName="task-difficulty-modern-radio-button__label"
+											inputClassName="task-difficulty-modern-radio-button__input"
 											id={`taskDifficulty${i + 1}`}
 											value={`${i + 1}`}
 											key={i}
