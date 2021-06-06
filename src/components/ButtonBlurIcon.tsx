@@ -17,7 +17,7 @@ export function ButtonBlurIcon(props: Props): JSX.Element {
 
 	return (
 		<Button
-		className={`anchor ${buttonClassName}`}
+		className={`${buttonClassName}`}
 		onClickHandler={onClickHandler}
 		>
 			<IconGithub className={`${iconClassName}`} />
