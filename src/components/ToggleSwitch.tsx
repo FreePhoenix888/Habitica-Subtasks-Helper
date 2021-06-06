@@ -11,6 +11,7 @@ interface Props {
 	labelClassName?: string;
 	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	sliderClassName?: string;
+	text?: string;
 }
 
 export function ToggleSwitch(props: Props): JSX.Element {
@@ -19,6 +20,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 		labelClassName = '',
 		sliderClassName = '',
 		inputClassName = '',
+		text = '',
 		isCheckedByDefault = false,
 	} = props;
 
@@ -53,6 +55,10 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			<div className={setClassName('togle-switch-slider', sliderClassName)}>
 				{children}
 			</div>
+			<div className={setClassName('togle-switch-text', sliderClassName)}>
+				{text}
+			</div>
+
 			<input
 				className={setClassName('toggle-switch__input', inputClassName)}
 				id="toggle-switch"
