@@ -24,6 +24,8 @@
 		"serve": "yarn serve -s build",
 		"start": "yarn react-scripts start",
 		"build": "yarn react-scripts build",
+		"predeploy": "yarn build",
+		"deploy": "gh-pages -d build",
 		"buildFromTsx": "yarn tsc",
 		"test": "yarn react-scripts test",
 		"eject": "yarn react-scripts eject",
