@@ -6,13 +6,21 @@ import { ReactComponent as SVG } from '../media/images/lens_blur_icon.svg';
 
 interface Props {
 	children?: JSX.Element;
-	className?: string;
+	inputClassName?: string;
 	isCheckedByDefault?: boolean;
+	labelClassName?: string;
 	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	sliderClassName?: string;
 }
 
 export function ToggleSwitch(props: Props): JSX.Element {
-	const { children, className, isCheckedByDefault = false } = props;
+	const {
+		children,
+		labelClassName = '',
+		sliderClassName = '',
+		inputClassName = '',
+		isCheckedByDefault = false,
+	} = props;
 
 	const [isChecked, changeIsChecked] = useState<boolean>(isCheckedByDefault);
 
@@ -39,14 +47,15 @@ export function ToggleSwitch(props: Props): JSX.Element {
 
 	return (
 		<Label
-			className={setClassName('toggle-switch-blur')}
-			htmlFor="toggle-switch-blur"
+			className={setClassName('toggle-switch', labelClassName)}
+			htmlFor="toggle-switch"
 		>
-			<div className={setClassName('togle-switch-slider')}>{children}</div>
+			<div className={setClassName('togle-switch-slider', sliderClassName)}>
+				{children}
+			</div>
 			<input
-				className={setClassName('toggle-switch-blur__input')}
-				id="toggle-switch-blur"
-				name="blur"
+				className={setClassName('toggle-switch__input', inputClassName)}
+				id="toggle-switch"
 				type="checkbox"
 				onChange={handleChange}
 			/>
