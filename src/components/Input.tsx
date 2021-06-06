@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/components/inputGeneral.scss';
 
 interface Props {
 	autoSize?: boolean | string | undefined;
@@ -42,12 +43,14 @@ export function Input(props: Props): JSX.Element {
 			onBlurHandler(event);
 		}
 	}
-	
+
 	return (
 		<>
 			<input
 				checked={isChecked}
-				className={`input ${autoSize ? `input--auto-size className--auto-size` : ''} ${className}`}
+				className={`input ${
+					autoSize ? `input--auto-size className--auto-size` : ''
+				} ${className}`}
 				id={id}
 				name={name}
 				placeholder={placeholder}
