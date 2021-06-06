@@ -3,15 +3,15 @@ import { Input } from './Input';
 import { Label } from './Label';
 
 interface Props {
-	name: string;
-	type?: string;
-	inputClassName?: string;
-	labelClassName?: string;
-	isCheckedByDefault?: boolean;
-	placeholder?: string;
-	id?: string;
 	autoSize?: boolean | string | undefined;
+	id?: string;
+	inputClassName?: string;
+	isCheckedByDefault?: boolean;
+	labelClassName?: string;
+	name: string;
+	placeholder?: string;
 	tabIndex?: number;
+	type?: string;
 }
 
 export function Checkbox(props: Props) {

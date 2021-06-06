@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface Props {
+	children?: string | Element | Element[] | JSX.Element | JSX.Element[];
 	className?: string;
 	htmlFor: string;
-	children?: string | Element | Element[] | JSX.Element | JSX.Element[];
 };
 
 export function Label(props: Props): JSX.Element {

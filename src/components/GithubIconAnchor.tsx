@@ -3,8 +3,8 @@ import { GithubIcon } from './GithubIcon';
 import { Anchor } from './Anchor';
 
 interface Props {
-	href?: string;
 	anchorClassName?: string;
+	href?: string;
 	iconClassName?: string;
 }
 

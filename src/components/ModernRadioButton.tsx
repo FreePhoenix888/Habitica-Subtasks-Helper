@@ -5,12 +5,12 @@ import { RadioButton } from './RadioButton';
 
 type Props = {
 	children: JSX.Element | JSX.Element[] | string;
-	name: string;
-	radioButtonClassName?: string;
-	labelClassName?: string;
-	inputClassName?: string;
 	htmlFor: string;
 	id?: string;
+	inputClassName?: string;
+	labelClassName?: string;
+	name: string;
+	radioButtonClassName?: string;
 	value: string;
 };
 

@@ -1,15 +1,15 @@
 import React from 'react';
 
 interface Props {
-	value: string;
-	name: string;
 	className?: string;
+	hidden?: boolean;
 	id?: string;
+	name: string;
+	onBlurHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	onFocusHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
-	onBlurHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	tabIndex?: number;
-	hidden?: boolean;
+	value: string;
 }
 
 export function RadioButton(props: Props): JSX.Element {

@@ -4,9 +4,9 @@ type Props = {
 	className?: string;
 	hidden?: boolean;
 	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
-	onMouseOverHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onMouseOverHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 export function InfoButton(props: Props): JSX.Element {

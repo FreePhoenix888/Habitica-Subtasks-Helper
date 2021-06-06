@@ -25,14 +25,14 @@ function App(): JSX.Element {
 				<h1>Habitica Subtasks Helper</h1>
 				<Form action="#" className="task-form">
 					<InputSection className="task-title">
-						<Label htmlFor="taskTitle" className="task-title__label">
+						<Label className="task-title__label" htmlFor="taskTitle">
 							Title
 						</Label>
 						<Input
-							name="task_title"
-							placeholder="The Venus Project Conception."
 							className="task-title__input"
 							id="taskTitle"
+							name="task_title"
+							placeholder="The Venus Project Conception."
 						/>
 					</InputSection>
 
@@ -52,28 +52,28 @@ function App(): JSX.Element {
 					</InputSection>
 
 					<InputSection className="task-separator">
-						<Label htmlFor="taskSeparator" className="task-separator__label">
+						<Label className="task-separator__label" htmlFor="taskSeparator">
 							<Span>Separator</Span>
 						</Label>
 
 						<Input
-							name="task_separator"
-							placeholder="\n"
 							className="input--little task-separator__input "
 							id="taskSeparator"
+							name="task_separator"
+							placeholder="\n"
 							autoSize
 						/>
 					</InputSection>
 
 					<InputSection className="task-tags">
-						<Label htmlFor="taskTags" className="task-tags__label">
+						<Label className="task-tags__label" htmlFor="taskTags">
 							Tags
 						</Label>
 						<Input
-							name="task_tags"
-							placeholder="Self-Development, Psychology"
 							className="task-tags__input "
 							id="taskTags"
+							name="task_tags"
+							placeholder="Self-Development, Psychology"
 						/>
 					</InputSection>
 
@@ -89,8 +89,8 @@ function App(): JSX.Element {
 									for (let j = 1; j < i + 2; j++) {
 										stars.push(
 											<StarSVG
-												key={`${i}:${j}`}
 												className="svg star-SVG modern-radio-button__svg modern-radio-button__star-svg"
+												key={`${i}:${j}`}
 											/>
 										);
 									}
@@ -98,13 +98,13 @@ function App(): JSX.Element {
 									modernRadioButtons.push(
 										<ModernRadioButton
 											htmlFor={`taskDifficulty${i + 1}`}
+											id={`taskDifficulty${i + 1}`}
+											inputClassName="task-difficulty-modern-radio-button__input"
+											key={i}
+											labelClassName="task-difficulty-modern-radio-button__label"
 											name="task_difficulty"
 											radioButtonClassName="radio-button-container--little task-difficulty__modern-radio-button-container"
-											labelClassName="task-difficulty-modern-radio-button__label"
-											inputClassName="task-difficulty-modern-radio-button__input"
-											id={`taskDifficulty${i + 1}`}
 											value={`${i + 1}`}
-											key={i}
 										>
 											{stars}
 										</ModernRadioButton>
@@ -127,14 +127,14 @@ function App(): JSX.Element {
 						/>
 					</InputSection>
 					<InputSection className="input-section task-amount">
-						<Label htmlFor="taskSeparator" className="task-amount__label">
+						<Label className="task-amount__label" htmlFor="taskSeparator">
 							<Span>Amount</Span>
 						</Label>
 						<Input
-							name="task_amount"
-							placeholder="\n"
 							className="input--little task-amount__input "
 							id="taskAmount"
+							name="task_amount"
+							placeholder="\n"
 							autoSize
 						/>
 					</InputSection>

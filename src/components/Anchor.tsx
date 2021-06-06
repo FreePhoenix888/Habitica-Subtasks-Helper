@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface Props {
-	href: string;
 	children?: JSX.Element | JSX.Element[];
 	className?: string;
+	href: string;
 }
 
 export function Anchor(props: Props): JSX.Element {

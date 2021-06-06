@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 interface Props {
-	name: string;
 	className?: string;
-	placeholder?: string;
 	id?: string;
+	name: string;
+	placeholder?: string;
 	wrap?: 'hard' | 'soft';
 }
 

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 type InputChangeEventType = React.ChangeEvent<HTMLInputElement> | undefined;
 
 interface CheckedInputContextType {
-	inputChangeEvent: InputChangeEventType;
 	handleChange: (value: InputChangeEventType) => void;
+	inputChangeEvent: InputChangeEventType;
 }
 export const CheckedInputContext = React.createContext<
 	Partial<CheckedInputContextType>

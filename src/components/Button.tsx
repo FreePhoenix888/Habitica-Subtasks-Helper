@@ -6,11 +6,11 @@ import React, {
 } from 'react';
 
 interface Props {
+	children?: JSX.Element | JSX.Element[];
+	className?: string;
+	forwardedRef?: MutableRefObject<HTMLButtonElement>;
 	onClickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
-	children?: JSX.Element | JSX.Element[];
-	forwardedRef?: MutableRefObject<HTMLButtonElement>;
-	className?: string;
 }
 
 export function Button(props: Props): JSX.Element {

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
 interface Props {
-	name: string;
-	type?: string;
-	className?: string;
-	placeholder?: string;
-	id?: string;
 	autoSize?: boolean | string | undefined;
-	tabIndex?: number;
+	className?: string;
+	id?: string;
 	isChecked?: boolean;
-	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
+	name: string;
 	onBlurHandler?: (event: React.FocusEvent<HTMLElement>) => void;
+	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
+	placeholder?: string;
+	tabIndex?: number;
+	type?: string;
 }
 
 export function Input(props: Props): JSX.Element {

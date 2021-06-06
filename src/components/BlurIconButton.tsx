@@ -3,9 +3,9 @@ import { GithubIcon } from './GithubIcon';
 import { Button } from './Button';
 
 interface Props {
-	onClickHandler?: (event: React.MouseEvent) => void;
 	buttonClassName?: string;
 	iconClassName?: string;
+	onClickHandler?: (event: React.MouseEvent) => void;
 }
 
 export function BlurIconButton(props: Props): JSX.Element {
