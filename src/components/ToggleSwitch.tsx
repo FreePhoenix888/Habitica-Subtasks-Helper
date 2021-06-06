@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input } from './Input';
 import { Label } from './Label';
-import '../styles/componentsStyles/toggle-switch.scss';
+import '../styles/components/toggle-switch.scss';
 import { ReactComponent as SVG } from '../media/images/lens_blur_icon.svg';
 
 interface Props {
