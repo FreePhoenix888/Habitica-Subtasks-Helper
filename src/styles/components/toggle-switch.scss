@@ -25,7 +25,6 @@
 	transition: all 300ms ease-in-out;
 	// .togle-switch-slider--checked
 	&--checked {
-		transition: all 300ms ease-in-out;
 		transform: translate(103%);
 	}
 }
