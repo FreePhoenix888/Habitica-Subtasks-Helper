@@ -40,27 +40,62 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		changeIsFocused(false);
 	}
 
-	function setClassName(defaultClassName: string, customClassName = '') {
-		let outputClassName = `${defaultClassName} ${customClassName} `;
+	function setClassName(defaultClassNames = [''], customClassNames = ['']) {
+		// Concatenate default class names with custom class names
+		let outputClassName = `${defaultClassNames.join(
+			' '
+		)} ${customClassNames.join(' ')} `;
+
 		if (isChecked) {
-			outputClassName += `${defaultClassName}--checked ${customClassName}--checked `;
+			// Add modifier to every default class name
+			const modifiedDefaultClassNames = defaultClassNames.map(
+				(className) => `${className}--checked `
+			);
+			// Add modifier to every custom class name
+			const modifiedCustomClassNames = customClassNames.map(
+				(className) => `${className}--checked `
+			);
+			// Concatenate modified default class names with modified custom class names
+			outputClassName += `${modifiedDefaultClassNames.join(
+				' '
+			)} ${modifiedCustomClassNames.join(' ')} `;
 		}
 		if (isFocused) {
-			outputClassName += `${defaultClassName}--focus ${customClassName}--focus `;
+			// Add modifier to every default class name
+			const modifiedDefaultClassNames = defaultClassNames.map(
+				(className) => `${className}--focus `
+			);
+			// Add modifier to every custom class name
+			const modifiedCustomClassNames = customClassNames.map(
+				(className) => `${className}--focus `
+			);
+			// Concatenate modified default class names with modified custom class names
+			outputClassName += `${modifiedDefaultClassNames.join(
+				' '
+			)} ${modifiedCustomClassNames.join(' ')} `;
 		}
+
 		return outputClassName;
 	}
 
 	return (
-		<div className={setClassName('modern-radio-button', radioButtonClassName)}>
+		<div
+			className={setClassName(['modern-radio-button'], [radioButtonClassName])}
+		>
 			<Label
-				className={setClassName('modern-radio-button__label', labelClassName)}
+				className={setClassName(
+					['modern-radio-button__label'],
+					[labelClassName]
+				)}
 				htmlFor={htmlFor}
 			>
 				{children}
 			</Label>
 			<RadioButton
-				className={setClassName('modern-radio-button__input', inputClassName)}
+				className={setClassName(
+					['modern-radio-button__input'],
+					[inputClassName]
+				)}
 				id={id}
 				name={name}
 				value={value}

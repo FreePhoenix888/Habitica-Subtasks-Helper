@@ -41,19 +41,46 @@ export function InputSection(props: Props): JSX.Element {
 		setIsFocused(false);
 	}
 
-	function setClassName(defaultClassName: string, customClassName = '') {
-		let outputClassName = `${defaultClassName} ${customClassName} `;
+	function setClassName(defaultClassNames = [''], customClassNames = ['']) {
+		// Concatenate default class names with custom class names
+		let outputClassName = `${defaultClassNames.join(
+			' '
+		)} ${customClassNames.join(' ')} `;
+
 		if (isActive) {
-			outputClassName += `${defaultClassName}--active ${customClassName}--active `;
+			// Add modifier to every default class name
+			const modifiedDefaultClassNames = defaultClassNames.map(
+				(className) => `${className}--active `
+			);
+			// Add modifier to every custom class name
+			const modifiedCustomClassNames = customClassNames.map(
+				(className) => `${className}--active `
+			);
+			// Concatenate modified default class names with modified custom class names
+			outputClassName += `${modifiedDefaultClassNames.join(
+				' '
+			)} ${modifiedCustomClassNames.join(' ')} `;
 		} else if (isAnyActive && !isActive) {
-			outputClassName += `${defaultClassName}--non-active ${customClassName}--non-active `;
+			// Add modifier to every default class name
+			const modifiedDefaultClassNames = defaultClassNames.map(
+				(className) => `${className}--non-active `
+			);
+			// Add modifier to every custom class name
+			const modifiedCustomClassNames = customClassNames.map(
+				(className) => `${className}--non-active `
+			);
+			// Concatenate modified default class names with modified custom class names
+			outputClassName += `${modifiedDefaultClassNames.join(
+				' '
+			)} ${modifiedCustomClassNames.join(' ')} `;
 		}
+
 		return outputClassName;
 	}
 
 	return (
 		<div
-			className={setClassName('input-section')}
+			className={setClassName(['input-section'], [className])}
 			onBlurCapture={handleBlurCapture}
 			onFocusCapture={handleFocusCapture}
 			onMouseLeave={handleMouseLeave}

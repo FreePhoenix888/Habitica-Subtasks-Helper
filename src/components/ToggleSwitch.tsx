@@ -39,28 +39,54 @@ export function ToggleSwitch(props: Props): JSX.Element {
 		}
 	}
 
-	function setClassName(defaultClassName: string, customClassName = '') {
-		let outputClassName = `${defaultClassName} ${customClassName} `;
+	function setClassName(defaultClassNames = [''], customClassNames = ['']) {
+		// Concatenate default class names with custom class names
+		let outputClassName = `${defaultClassNames.join(
+			' '
+		)} ${customClassNames.join(' ')} `;
+
 		if (isChecked) {
-			outputClassName += `${defaultClassName}--checked ${customClassName}--checked `;
+			// Add modifier to every default class name
+			const modifiedDefaultClassNames = defaultClassNames.map(
+				(className) => `${className}--checked `
+			);
+			// Add modifier to every custom class name
+			const modifiedCustomClassNames = customClassNames.map(
+				(className) => `${className}--checked `
+			);
+			// Concatenate modified default class names with modified custom class names
+			outputClassName += `${modifiedDefaultClassNames.join(
+				' '
+			)} ${modifiedCustomClassNames.join(' ')} `;
 		}
+
 		return outputClassName;
 	}
 
 	return (
 		<Label
-			className={setClassName('toggle-switch', labelClassName)}
+			className={setClassName(['toggle-switch'], [labelClassName])}
 			htmlFor="toggle-switch"
 		>
-			<div className={setClassName('togle-switch-slider', sliderClassName)}>
+			<div
+				className={setClassName(
+					['togle-switch-slider', 'togle-switch__slider'],
+					[sliderClassName]
+				)}
+			>
 				{children}
 			</div>
-			<div className={setClassName('togle-switch-text', sliderClassName)}>
+			<div
+				className={setClassName(
+					['togle-switch-text', 'togle-switch__text'],
+					[sliderClassName]
+				)}
+			>
 				{text}
 			</div>
 
 			<input
-				className={setClassName('toggle-switch__input', inputClassName)}
+				className={setClassName(['toggle-switch__input'], [inputClassName])}
 				id="toggle-switch"
 				type="checkbox"
 				onChange={handleChange}
