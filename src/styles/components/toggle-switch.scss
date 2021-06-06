@@ -14,8 +14,8 @@
 }
 
 .togle-switch-slider {
-	width: 2.5em;
-	height: 2.5em;
+	width: 50%;
+	height: 90%;
 	display: grid;
 	padding: 0.3em;
 	border-radius: 50px;
@@ -26,7 +26,7 @@
 	// .togle-switch-slider--checked
 	&--checked {
 		transition: all 300ms ease-in-out;
-		transform: translate(107%);
+		transform: translate(103%);
 	}
 }
 
