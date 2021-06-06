@@ -12,7 +12,8 @@
 	&__toggle-switch {
 		// .header__toggle-switch-blur
 		&-blur {
-			transform: scale(0.615);
+			grid-template-rows: 100%;
+			max-width: 3.74em;
 		}
 	}
 }
