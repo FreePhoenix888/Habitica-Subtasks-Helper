@@ -45,11 +45,10 @@ export function InputSection(props: Props): JSX.Element {
 		customClassName = ''
 	) {
 		let outputClassName = `${defaultClassName} ${customClassName} `;
-		if (isHovered) {
-			outputClassName += `${defaultClassName}--hover ${customClassName}--hover `;
-		}
-		if (isFocused) {
-			outputClassName += `${defaultClassName}--focus ${customClassName}--focus `;
+		if (isActive) {
+			outputClassName += `${defaultClassName}--active ${customClassName}--active `;
+		} else if (isAnyActive && !isActive){
+			outputClassName += `${defaultClassName}--non-active ${customClassName}--non-active `
 		}
 		return outputClassName;
 	}
