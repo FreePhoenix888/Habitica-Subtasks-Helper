@@ -13,6 +13,8 @@ import {
 	MessageContainer,
 	Modal,
 	Header,
+	ToggleSwitch,
+	BlurIcon,
 } from './components';
 import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
@@ -20,6 +22,9 @@ import './styles/App.scss';
 function App(): JSX.Element {
 	return (
 		<>
+			<ToggleSwitch>
+				<BlurIcon />
+			</ToggleSwitch>
 			<Header />
 			<div className="container">
 				<h1>Habitica Subtasks Helper</h1>
