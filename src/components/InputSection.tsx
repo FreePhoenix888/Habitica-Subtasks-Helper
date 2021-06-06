@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FormContext } from './Form';
+import '../styles/components/inputSection.scss';
 
 interface Props {
 	children: JSX.Element | JSX.Element[];
@@ -40,15 +41,12 @@ export function InputSection(props: Props): JSX.Element {
 		setIsFocused(false);
 	}
 
-	function setClassName(
-		defaultClassName: string,
-		customClassName = ''
-	) {
+	function setClassName(defaultClassName: string, customClassName = '') {
 		let outputClassName = `${defaultClassName} ${customClassName} `;
 		if (isActive) {
 			outputClassName += `${defaultClassName}--active ${customClassName}--active `;
-		} else if (isAnyActive && !isActive){
-			outputClassName += `${defaultClassName}--non-active ${customClassName}--non-active `
+		} else if (isAnyActive && !isActive) {
+			outputClassName += `${defaultClassName}--non-active ${customClassName}--non-active `;
 		}
 		return outputClassName;
 	}
