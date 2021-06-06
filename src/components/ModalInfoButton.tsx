@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { MessageContainerContext } from './MessageContainer';
-import { InfoButton } from './InfoButton';
+import { ButtonInfo } from './ButtonInfo';
 
 type Props = {
 	className?: string;
@@ -14,5 +14,5 @@ export function ModalInfoButton(props: Props): JSX.Element {
 		setIsOpen(true);
 	}
 
-	return <InfoButton onClickHandler={onClickHandler} {...props} />;
+	return <ButtonInfo onClickHandler={onClickHandler} {...props} />;
 }
