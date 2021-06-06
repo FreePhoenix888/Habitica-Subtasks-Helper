@@ -3,6 +3,7 @@ import { Input } from './Input';
 import { Label } from './Label';
 import '../styles/components/toggle-switch.scss';
 import { ReactComponent as SVG } from '../media/images/lens_blur_icon.svg';
+import { setClassName } from '../helpers';
 
 interface Props {
 	children?: JSX.Element;
@@ -38,40 +39,23 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			onChangeHandler(event);
 		}
 	}
-
-	function setClassName(defaultClassNames = [''], customClassNames = ['']) {
-		// Concatenate default class names with custom class names
-		let outputClassName = `${defaultClassNames.join(
-			' '
-		)} ${customClassNames.join(' ')} `;
-
-		if (isChecked) {
-			// Add modifier to every default class name
-			const modifiedDefaultClassNames = defaultClassNames.map(
-				(className) => `${className}--checked `
-			);
-			// Add modifier to every custom class name
-			const modifiedCustomClassNames = customClassNames.map(
-				(className) => `${className}--checked `
-			);
-			// Concatenate modified default class names with modified custom class names
-			outputClassName += `${modifiedDefaultClassNames.join(
-				' '
-			)} ${modifiedCustomClassNames.join(' ')} `;
-		}
-
-		return outputClassName;
-	}
-
+	const modifiers = ['checked' as const];
 	return (
 		<Label
-			className={setClassName(['toggle-switch'], [labelClassName])}
+			className={setClassName(
+				['toggle-switch'],
+				[labelClassName],
+				[isChecked],
+				modifiers
+			)}
 			htmlFor="toggle-switch"
 		>
 			<div
 				className={setClassName(
 					['togle-switch-slider', 'togle-switch__slider'],
-					[sliderClassName]
+					[sliderClassName],
+					[isChecked],
+					modifiers
 				)}
 			>
 				{children}
@@ -86,7 +70,12 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			</div>
 
 			<input
-				className={setClassName(['toggle-switch__input'], [inputClassName])}
+				className={setClassName(
+					['toggle-switch__input'],
+					[inputClassName],
+					[isChecked],
+					modifiers
+				)}
 				id="toggle-switch"
 				type="checkbox"
 				onChange={handleChange}

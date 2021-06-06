@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { CheckedInputContext } from './ModernRadioButtonGroup';
 import { Label } from './Label';
 import { RadioButton } from './RadioButton';
+import { setClassName } from '../helpers';
 import '../styles/components/modernRadioButton.scss';
 
 type Props = {
@@ -39,53 +40,24 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
 		changeIsFocused(false);
 	}
-
-	function setClassName(defaultClassNames = [''], customClassNames = ['']) {
-		// Concatenate default class names with custom class names
-		let outputClassName = `${defaultClassNames.join(
-			' '
-		)} ${customClassNames.join(' ')} `;
-
-		if (isChecked) {
-			// Add modifier to every default class name
-			const modifiedDefaultClassNames = defaultClassNames.map(
-				(className) => `${className}--checked `
-			);
-			// Add modifier to every custom class name
-			const modifiedCustomClassNames = customClassNames.map(
-				(className) => `${className}--checked `
-			);
-			// Concatenate modified default class names with modified custom class names
-			outputClassName += `${modifiedDefaultClassNames.join(
-				' '
-			)} ${modifiedCustomClassNames.join(' ')} `;
-		}
-		if (isFocused) {
-			// Add modifier to every default class name
-			const modifiedDefaultClassNames = defaultClassNames.map(
-				(className) => `${className}--focus `
-			);
-			// Add modifier to every custom class name
-			const modifiedCustomClassNames = customClassNames.map(
-				(className) => `${className}--focus `
-			);
-			// Concatenate modified default class names with modified custom class names
-			outputClassName += `${modifiedDefaultClassNames.join(
-				' '
-			)} ${modifiedCustomClassNames.join(' ')} `;
-		}
-
-		return outputClassName;
-	}
-
+	
+	const classNameConditions = [isChecked, isFocused];
+	const classNameModifiers = ['checked' as const, 'focus' as const];
 	return (
 		<div
-			className={setClassName(['modern-radio-button'], [radioButtonClassName])}
+			className={setClassName(
+				['modern-radio-button'],
+				[radioButtonClassName],
+				classNameConditions,
+				classNameModifiers
+			)}
 		>
 			<Label
 				className={setClassName(
 					['modern-radio-button__label'],
-					[labelClassName]
+					[labelClassName],
+					classNameConditions,
+					classNameModifiers
 				)}
 				htmlFor={htmlFor}
 			>
@@ -94,7 +66,9 @@ export function ModernRadioButton(props: Props): JSX.Element {
 			<RadioButton
 				className={setClassName(
 					['modern-radio-button__input'],
-					[inputClassName]
+					[inputClassName],
+					classNameConditions,
+					classNameModifiers
 				)}
 				id={id}
 				name={name}
