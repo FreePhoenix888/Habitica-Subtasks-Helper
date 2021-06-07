@@ -18,25 +18,33 @@ export function InputSection(props: Props): JSX.Element {
 	const isAnyActive = activeInputSectionClassName !== '';
 
 	function handleMouseOverCapture() {
-		changeActiveInputSectionClassName(className);
+		if (changeActiveInputSectionClassName) {
+			changeActiveInputSectionClassName(className);
+		}
 		setIsHovered(true);
 	}
 
 	function handleMouseLeave() {
 		if (!isFocused) {
-			changeActiveInputSectionClassName('');
+			if (changeActiveInputSectionClassName) {
+				changeActiveInputSectionClassName('');
+			}
 		}
 		setIsHovered(false);
 	}
 
 	function handleFocusCapture() {
-		changeActiveInputSectionClassName(className);
+		if (changeActiveInputSectionClassName) {
+			changeActiveInputSectionClassName(className);
+		}
 		setIsFocused(true);
 	}
 
 	function handleBlurCapture() {
 		if (!isHovered) {
-			changeActiveInputSectionClassName('');
+			if (changeActiveInputSectionClassName) {
+				changeActiveInputSectionClassName('');
+			}
 		}
 		setIsFocused(false);
 	}
