@@ -9,7 +9,7 @@ interface CheckedInputContextType {
 	checkedInputChangeEvent: CheckedInputChangeEventType;
 }
 
-export const CheckedInputContext = React.createContext<
+export const CheckedInputContext = createContext<
 	Partial<CheckedInputContextType>
 >({});
 
