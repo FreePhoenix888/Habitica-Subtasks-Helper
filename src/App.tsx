@@ -20,22 +20,31 @@ import {
 	IconBlur,
 	ToggleSwitchBlur,
 } from './components';
+import { useLocalStorage } from './helpers';
 import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
 
 function App(): JSX.Element {
+	const toggleSwitchBlurName = 'input_sections_blur';
+	const [localStorageToggleSwitchChecked, setlLocalStorageToggleSwitchChecked] =
+		useLocalStorage<boolean>(toggleSwitchBlurName, true);
+
 	const [isToggleSwitchBlurChecked, setIsToggleSwitchBlurChecked] =
-		useState<boolean>(true);
+		useState<boolean>(localStorageToggleSwitchChecked);
 
 	function toggleSwitchBlurOnChangeHandler(
 		event: ChangeEvent<HTMLInputElement>
 	) {
-		setIsToggleSwitchBlurChecked(event.target.checked);
+		const { target } = event;
+		const { checked } = target;
+		setIsToggleSwitchBlurChecked(checked);
+		setlLocalStorageToggleSwitchChecked(checked);
 	}
 	return (
 		<>
 			<Header>
 				<ToggleSwitchBlur
+					name={toggleSwitchBlurName}
 					onChangeHandler={toggleSwitchBlurOnChangeHandler}
 					isChecked={isToggleSwitchBlurChecked}
 					labelClassName="header__toggle-switch header__toggle-switch-blur"
