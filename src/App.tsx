@@ -6,7 +6,9 @@ import {
 	InputSection,
 	Label,
 	Input,
+	InputPreservingValue,
 	Textarea,
+	TextareaPreservingValue,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
 	ModalInfoButton,
@@ -49,7 +51,7 @@ function App(): JSX.Element {
 						<Label className="task-title__label" htmlFor="taskTitle">
 							Title
 						</Label>
-						<Input
+						<InputPreservingValue
 							className="task-title__input"
 							id="taskTitle"
 							name="task_title"
@@ -61,7 +63,7 @@ function App(): JSX.Element {
 						<Label className="task-subtasks__label" htmlFor="taskSubtasks">
 							Subtasks
 						</Label>
-						<Textarea
+						<TextareaPreservingValue
 							className="textarea task-subtasks__textarea"
 							id="taskSubtasks"
 							name="task_subtasks"
@@ -77,7 +79,7 @@ function App(): JSX.Element {
 							<Span>Separator</Span>
 						</Label>
 
-						<Input
+						<InputPreservingValue
 							className="input--little task-separator__input "
 							id="taskSeparator"
 							name="task_separator"
@@ -90,7 +92,7 @@ function App(): JSX.Element {
 						<Label className="task-tags__label" htmlFor="taskTags">
 							Tags
 						</Label>
-						<Input
+						<InputPreservingValue
 							className="task-tags__input "
 							id="taskTags"
 							name="task_tags"
@@ -139,7 +141,7 @@ function App(): JSX.Element {
 						<Label className="task-notes__label" htmlFor="taskNotes">
 							Notes
 						</Label>
-						<Textarea
+						<TextareaPreservingValue
 							className="textarea task-notes__textarea"
 							id="taskNotes"
 							name="task_notes"
