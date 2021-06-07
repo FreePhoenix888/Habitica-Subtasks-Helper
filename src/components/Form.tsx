@@ -1,4 +1,10 @@
-import React, { createContext, useState } from 'react';
+import React, {
+	createContext,
+	Dispatch,
+	SetStateAction,
+	useContext,
+	useState,
+} from 'react';
 import '../styles/components/form.scss';
 
 interface Props {
@@ -9,14 +15,14 @@ interface Props {
 
 interface FormContextType {
 	activeInputSectionClassName: string;
-	changeActiveInputSectionClassName: React.Dispatch<
-		React.SetStateAction<string>
-	>;
+	changeActiveInputSectionClassName:
+		| Dispatch<SetStateAction<string>>
+		| undefined;
 }
 
 export const FormContext = createContext<FormContextType>({
 	activeInputSectionClassName: '',
-	changeActiveInputSectionClassName: () => {},
+	changeActiveInputSectionClassName: undefined,
 });
 
 export function Form(props: Props): JSX.Element {
@@ -24,6 +30,7 @@ export function Form(props: Props): JSX.Element {
 
 	const [activeInputSectionClassName, changeActiveInputSectionClassName] =
 		useState<string>('');
+
 	const FormContextValue = {
 		activeInputSectionClassName,
 		changeActiveInputSectionClassName,
