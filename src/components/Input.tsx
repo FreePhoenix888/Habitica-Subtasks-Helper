@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FocusEvent, useState } from 'react';
 import '../styles/components/inputGeneral.scss';
 
 interface Props {
@@ -7,8 +7,9 @@ interface Props {
 	id?: string;
 	isChecked?: boolean;
 	name: string;
-	onBlurHandler?: (event: React.FocusEvent<HTMLElement>) => void;
-	onFocusHandler?: (event: React.FocusEvent<HTMLElement>) => void;
+	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
+	onBlurHandler?: (event: FocusEvent<HTMLInputElement>) => void;
+	onFocusHandler?: (event: FocusEvent<HTMLInputElement>) => void;
 	placeholder?: string;
 	tabIndex?: number;
 	type?: string;
@@ -26,18 +27,27 @@ export function Input(props: Props): JSX.Element {
 		isChecked = false,
 	} = props;
 	const [value, changeValue] = useState<string>('');
-	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+
+	function handleChange(event: ChangeEvent<HTMLInputElement>) {
+		// Default behavior
 		changeValue(event.target.value);
+		// Custom behavior
+		const { onChangeHandler } = props;
+		if (onChangeHandler) {
+			onChangeHandler(event);
+		}
 	}
 
-	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
+	function handleFocus(event: FocusEvent<HTMLInputElement>) {
+		// Custom behavior
 		const { onFocusHandler } = props;
 		if (onFocusHandler) {
 			onFocusHandler(event);
 		}
 	}
 
-	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
+	function handleBlur(event: FocusEvent<HTMLInputElement>) {
+		// Custom behavior
 		const { onBlurHandler } = props;
 		if (onBlurHandler) {
 			onBlurHandler(event);
