@@ -8,6 +8,7 @@ interface Props {
 	isChecked: boolean;
 	isCheckedByDefault?: boolean;
 	labelClassName?: string;
+	name?: string;
 	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	sliderClassName?: string;
 	sliderContent?: JSX.Element;
