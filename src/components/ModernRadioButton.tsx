@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { CheckedInputContext } from './ModernRadioButtonGroup';
+import React, { ChangeEvent, useContext, useState } from 'react';
+import { CheckedRadioContext, NameContext } from './ModernRadioButtonGroup';
 import { Label } from './Label';
 import { RadioButton } from './RadioButton';
 import { setClassName } from '../helpers';
@@ -11,15 +11,13 @@ interface Props {
 	id?: string;
 	inputClassName?: string;
 	labelClassName?: string;
-	name: string;
 	radioButtonClassName?: string;
 	value: string;
-};
+}
 
 export function ModernRadioButton(props: Props): JSX.Element {
 	const {
 		children,
-		name,
 		radioButtonClassName = '',
 		labelClassName = '',
 		inputClassName = '',
@@ -27,10 +25,18 @@ export function ModernRadioButton(props: Props): JSX.Element {
 		id = '',
 		value,
 	} = props;
-	const { inputChangeEvent, handleChange = () => {} } =
-		useContext(CheckedInputContext);
-	const isChecked = inputChangeEvent?.target.value === value;
+	// Checked state
+	const { checkedRadioValue, setCheckedRadioValue } =
+		useContext(CheckedRadioContext);
+	const isChecked = checkedRadioValue === value;
 
+	function handleChange(event: ChangeEvent<HTMLInputElement>) {
+		if (setCheckedRadioValue) {
+			setCheckedRadioValue(event);
+		}
+	}
+
+	// Focused state
 	const [isFocused, changeIsFocused] = useState<boolean>(false);
 
 	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
@@ -40,7 +46,10 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
 		changeIsFocused(false);
 	}
-	
+
+	// Name
+	const name = useContext(NameContext);
+
 	const classNameConditions = [isChecked, isFocused];
 	const classNameModifiers = ['checked' as const, 'focus' as const];
 	return (
