@@ -5,7 +5,7 @@ import { RadioButton } from './RadioButton';
 import { setClassName } from '../helpers';
 import '../styles/components/modernRadioButton.scss';
 
-type Props = {
+interface Props {
 	children: JSX.Element | JSX.Element[] | string;
 	htmlFor: string;
 	id?: string;

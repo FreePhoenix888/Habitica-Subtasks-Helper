@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/components/buttonInfo.scss';
 
-type Props = {
+interface Props {
 	className?: string;
 	hidden?: boolean;
 	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;

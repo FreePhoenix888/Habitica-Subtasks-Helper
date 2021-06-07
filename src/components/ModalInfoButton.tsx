@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { MessageContainerContext } from './MessageContainer';
 import { ButtonInfo } from './ButtonInfo';
 
-type Props = {
+interface Props {
 	className?: string;
 	hidden?: boolean;
 };
