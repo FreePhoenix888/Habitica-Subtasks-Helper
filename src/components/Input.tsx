@@ -4,11 +4,12 @@ import '../styles/components/inputGeneral.scss';
 interface Props {
 	autoSize?: boolean | string | undefined;
 	className?: string;
+	defaultValue?: string;
 	id?: string;
 	isChecked?: boolean;
 	name: string;
-	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
 	onBlurHandler?: (event: FocusEvent<HTMLInputElement>) => void;
+	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
 	onFocusHandler?: (event: FocusEvent<HTMLInputElement>) => void;
 	placeholder?: string;
 	tabIndex?: number;
@@ -25,8 +26,10 @@ export function Input(props: Props): JSX.Element {
 		autoSize = false,
 		tabIndex = 0,
 		isChecked = false,
+		defaultValue = '',
 	} = props;
-	const [value, changeValue] = useState<string>('');
+
+	const [value, changeValue] = useState<string>(defaultValue);
 
 	function handleChange(event: ChangeEvent<HTMLInputElement>) {
 		// Default behavior
