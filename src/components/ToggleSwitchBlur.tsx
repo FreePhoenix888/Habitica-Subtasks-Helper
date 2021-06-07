@@ -18,8 +18,11 @@ export function ToggleSwitchBlur(props: Props): JSX.Element {
 	const { iconClassName = '', ...rest } = props;
 
 	return (
-		<ToggleSwitch {...rest}>
-			<IconBlur className={`toggle-switch-blur__icon ${iconClassName}`} />
-		</ToggleSwitch>
+		<ToggleSwitch
+			{...rest}
+			sliderContent={
+				<IconBlur className={`toggle-switch-blur__icon ${iconClassName}`} />
+			}
+		/>
 	);
 }
