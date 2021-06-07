@@ -5,6 +5,7 @@ export { Form } from './components/Form';
 export { InputSection } from './components/InputSection';
 export { Label } from './components/Label';
 export { Input } from './components/Input';
+export { InputPreservingValue } from './components/InputPreservingValue';
 export { Textarea } from './components/Textarea';
 export { Button } from './components/Button';
 export { RadioButton } from './components/RadioButton';
