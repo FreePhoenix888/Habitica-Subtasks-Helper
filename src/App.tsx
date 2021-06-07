@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import {
 	Span,
 	Paragraph,
@@ -21,9 +21,23 @@ import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
 
 function App(): JSX.Element {
+	const [isToggleSwitchBlurChecked, setIsToggleSwitchBlurChecked] =
+		useState<boolean>(false);
+
+	function toggleSwitchBlurOnChangeHandler(
+		event: ChangeEvent<HTMLInputElement>
+	) {
+		setIsToggleSwitchBlurChecked(event.target.checked);
+	}
 	return (
 		<>
-			<Header />
+			<Header>
+				<ToggleSwitchBlur
+					onChangeHandler={toggleSwitchBlurOnChangeHandler}
+					isChecked={isToggleSwitchBlurChecked}
+					labelClassName="header__toggle-switch header__toggle-switch-blur"
+				/>
+			</Header>
 			<div className="container">
 				<h1>Habitica Subtasks Helper</h1>
 				<Form action="#" className="task-form">
