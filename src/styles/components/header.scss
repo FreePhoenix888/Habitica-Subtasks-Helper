@@ -4,7 +4,7 @@
 	place-items: center;
 	border-bottom: 1px solid var(--background-color-secondary);
 	display: grid;
-	// grid-template-rows: ;
+	gap: 0.4em;
 	grid-template-columns: min-content;
 	grid-template-rows: minmax(35px, min-content);
 	grid-auto-flow: column;
