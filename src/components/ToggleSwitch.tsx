@@ -7,6 +7,7 @@ interface Props {
 	inputClassName?: string;
 	isChecked: boolean;
 	labelClassName?: string;
+	name?: string;
 	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	sliderClassName?: string;
 	sliderContent?: JSX.Element;
@@ -21,6 +22,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 		sliderClassName = '',
 		inputClassName = '',
 		text = '',
+		name = '',
 	} = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -61,6 +63,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			</div>
 
 			<input
+				checked={isChecked}
 				className={setClassName(
 					['toggle-switch__input'],
 					[inputClassName],
@@ -68,9 +71,9 @@ export function ToggleSwitch(props: Props): JSX.Element {
 					modifiers
 				)}
 				id="toggle-switch"
+				name={name}
 				type="checkbox"
 				onChange={handleChange}
-				checked={isChecked}
 			/>
 		</Label>
 	);
