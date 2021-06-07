@@ -11,6 +11,7 @@ interface Props {
 	action: string;
 	children?: JSX.Element | JSX.Element[];
 	className?: string;
+	isBlurOn?: boolean;
 }
 
 interface FormContextType {
@@ -26,14 +27,16 @@ export const FormContext = createContext<FormContextType>({
 });
 
 export function Form(props: Props): JSX.Element {
-	const { action, children, className = '' } = props;
+	const { action, children, className = '', isBlurOn = false } = props;
 
 	const [activeInputSectionClassName, changeActiveInputSectionClassName] =
 		useState<string>('');
 
 	const FormContextValue = {
 		activeInputSectionClassName,
-		changeActiveInputSectionClassName,
+		changeActiveInputSectionClassName: isBlurOn
+			? changeActiveInputSectionClassName
+			: undefined,
 	};
 
 	return (
