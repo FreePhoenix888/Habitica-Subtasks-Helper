@@ -1,39 +1,46 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 
-type InputChangeEventType = React.ChangeEvent<HTMLInputElement> | undefined;
+type CheckedInputChangeEventType =
+	| React.ChangeEvent<HTMLInputElement>
+	| undefined;
 
 interface CheckedInputContextType {
-	handleChange: (value: InputChangeEventType) => void;
-	inputChangeEvent: InputChangeEventType;
+	handleChange: (value: CheckedInputChangeEventType) => void;
+	checkedInputChangeEvent: CheckedInputChangeEventType;
 }
+
 export const CheckedInputContext = React.createContext<
 	Partial<CheckedInputContextType>
 >({});
 
 interface Props {
+	name: string;
 	children: JSX.Element | JSX.Element[];
 	groupClassName?: string;
 }
 
+export const NameContext = createContext<string>('');
 export function ModernRadioButtonGroup(props: Props): JSX.Element {
-	const { children, groupClassName = '' } = props;
-	const [inputChangeEvent, changeInputChangeEvent] =
-		useState<InputChangeEventType>(undefined);
+	const { children, groupClassName = '', name } = props;
+	const [checkedInputChangeEvent, changeCheckedInputChangeEvent] =
+		useState<CheckedInputChangeEventType>(undefined);
 
-	function handleChange(value: InputChangeEventType) {
-		changeInputChangeEvent(value);
+	function handleChange(value: CheckedInputChangeEventType) {
+		changeCheckedInputChangeEvent(value);
 	}
 
 	const CheckedInputContextValue = {
-		inputChangeEvent,
+		checkedInputChangeEvent,
 		handleChange,
 	};
 
 	return (
 		<div className={`modern-radio-button-group ${groupClassName}`}>
-			<CheckedInputContext.Provider value={CheckedInputContextValue}>
-				{children}
-			</CheckedInputContext.Provider>
+			<NameContext.Provider value={name}>
+				<CheckedInputContext.Provider value={CheckedInputContextValue}>
+					{children}
+				</CheckedInputContext.Provider>
+			</NameContext.Provider>
 		</div>
 	);
 }
