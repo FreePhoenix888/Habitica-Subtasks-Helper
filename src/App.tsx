@@ -22,7 +22,7 @@ import './styles/App.scss';
 
 function App(): JSX.Element {
 	const [isToggleSwitchBlurChecked, setIsToggleSwitchBlurChecked] =
-		useState<boolean>(false);
+		useState<boolean>(true);
 
 	function toggleSwitchBlurOnChangeHandler(
 		event: ChangeEvent<HTMLInputElement>
@@ -40,7 +40,11 @@ function App(): JSX.Element {
 			</Header>
 			<div className="container">
 				<h1>Habitica Subtasks Helper</h1>
-				<Form action="#" className="task-form">
+				<Form
+					action="#"
+					className="task-form"
+					isBlurOn={isToggleSwitchBlurChecked}
+				>
 					<InputSection className="task-title">
 						<Label className="task-title__label" htmlFor="taskTitle">
 							Title
