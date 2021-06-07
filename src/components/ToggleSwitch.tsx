@@ -6,7 +6,6 @@ import { setClassName } from '../helpers';
 interface Props {
 	inputClassName?: string;
 	isChecked: boolean;
-	isCheckedByDefault?: boolean;
 	labelClassName?: string;
 	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	sliderClassName?: string;
@@ -22,7 +21,6 @@ export function ToggleSwitch(props: Props): JSX.Element {
 		sliderClassName = '',
 		inputClassName = '',
 		text = '',
-		isCheckedByDefault = false,
 	} = props;
 
 	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
