@@ -7,6 +7,7 @@ export { Label } from './components/Label';
 export { Input } from './components/Input';
 export { InputPreservingValue } from './components/InputPreservingValue';
 export { Textarea } from './components/Textarea';
+export { TextareaPreservingValue } from './components/TextareaPreservingValue';
 export { Button } from './components/Button';
 export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
