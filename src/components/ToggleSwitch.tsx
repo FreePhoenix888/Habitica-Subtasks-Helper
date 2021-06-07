@@ -70,6 +70,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 				id="toggle-switch"
 				type="checkbox"
 				onChange={handleChange}
+				checked={isChecked}
 			/>
 		</Label>
 	);
