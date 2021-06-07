@@ -12,6 +12,7 @@ export { Button } from './components/Button';
 export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
+export { ModernRadioButtonGroupPreservingValue } from './components/ModernRadioButtonGroupPreservingValue';
 export { ButtonInfo } from './components/ButtonInfo';
 export { ModalInfoButton } from './components/ModalInfoButton';
 export { Modal } from './components/Modal';
