@@ -165,7 +165,7 @@ function App(): JSX.Element {
 						<Label className="task-amount__label" htmlFor="taskSeparator">
 							<Span>Amount</Span>
 						</Label>
-						<Input
+						<InputPreservingValue
 							className="input--little task-amount__input "
 							id="taskAmount"
 							name="task_amount"
