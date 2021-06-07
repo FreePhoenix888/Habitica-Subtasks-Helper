@@ -11,6 +11,7 @@ import {
 	TextareaPreservingValue,
 	ModernRadioButton,
 	ModernRadioButtonGroup,
+	ModernRadioButtonGroupPreservingValue,
 	ModalInfoButton,
 	MessageContainer,
 	Modal,
@@ -102,7 +103,10 @@ function App(): JSX.Element {
 
 					<InputSection className="task-difficulty">
 						<Label htmlFor="taskDifficulty1">Difficulty</Label>
-						<ModernRadioButtonGroup groupClassName="task-difficulty__modern-radio-button-group">
+						<ModernRadioButtonGroupPreservingValue
+							name="task_difficulty"
+							groupClassName="task-difficulty__modern-radio-button-group"
+						>
 							{(function modernRadioButtons() {
 								// Difficulty Section Radio Buttons
 								const modernRadioButtons: JSX.Element[] = [];
@@ -125,7 +129,6 @@ function App(): JSX.Element {
 											inputClassName="task-difficulty-modern-radio-button__input"
 											key={i}
 											labelClassName="task-difficulty-modern-radio-button__label"
-											name="task_difficulty"
 											radioButtonClassName="radio-button-container--little task-difficulty__modern-radio-button-container"
 											value={`${i + 1}`}
 										>
@@ -135,7 +138,7 @@ function App(): JSX.Element {
 								}
 								return modernRadioButtons;
 							})()}
-						</ModernRadioButtonGroup>
+						</ModernRadioButtonGroupPreservingValue>
 					</InputSection>
 					<InputSection className="input-section task-notes">
 						<Label className="task-notes__label" htmlFor="taskNotes">
