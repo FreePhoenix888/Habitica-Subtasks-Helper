@@ -3,15 +3,22 @@ import { ToggleSwitch } from './ToggleSwitch';
 import { IconBlur } from './IconBlur';
 
 interface Props {
-	className?: string;
 	iconClassName?: string;
+	inputClassName?: string;
+	isChecked: boolean;
+	isCheckedByDefault?: boolean;
+	labelClassName?: string;
+	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	sliderClassName?: string;
+	sliderContent?: JSX.Element;
+	text?: string;
 }
 
 export function ToggleSwitchBlur(props: Props): JSX.Element {
-	const { className = '', iconClassName = '' } = props;
+	const { iconClassName = '', ...rest } = props;
 
 	return (
-		<ToggleSwitch labelClassName={`toggle-switch-blur ${className}`}>
+		<ToggleSwitch {...rest}>
 			<IconBlur className={`toggle-switch-blur__icon ${iconClassName}`} />
 		</ToggleSwitch>
 	);
