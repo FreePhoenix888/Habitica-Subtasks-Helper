@@ -6,18 +6,19 @@ import { ReactComponent as SVG } from '../media/images/lens_blur_icon.svg';
 import { setClassName } from '../helpers';
 
 interface Props {
-	children?: JSX.Element;
+	sliderContent?: JSX.Element;
 	inputClassName?: string;
 	isCheckedByDefault?: boolean;
 	labelClassName?: string;
 	onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	sliderClassName?: string;
 	text?: string;
+	for?: JSX.Element;
 }
 
 export function ToggleSwitch(props: Props): JSX.Element {
 	const {
-		children,
+		sliderContent,
 		labelClassName = '',
 		sliderClassName = '',
 		inputClassName = '',
@@ -58,7 +59,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 					modifiers
 				)}
 			>
-				{children}
+				{sliderContent}
 			</div>
 			<div
 				className={setClassName(
