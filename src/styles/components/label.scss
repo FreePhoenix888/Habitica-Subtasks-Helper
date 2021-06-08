@@ -1,11 +1,16 @@
 .label {
 	width: min-content;
 	display: grid;
-
 	font-size: 1.3em;
 	font-weight: 600;
 	place-content: center;
 	grid-auto-flow: column;
 	gap: 5px;
 	align-items: center;
+	// .label__section
+	&__section {
+		display: grid;
+		grid-auto-flow: column;
+		gap: 5px;
+	}
 }
