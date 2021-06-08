@@ -15,28 +15,27 @@ interface Props {
 }
 
 interface FormContextType {
-	activeInputSectionClassName: string;
-	changeActiveInputSectionClassName:
-		| Dispatch<SetStateAction<string>>
+	activeInputSections: EventTarget[];
+	changeActiveInputSections:
+		| Dispatch<SetStateAction<EventTarget[]>>
 		| undefined;
 }
 
 export const FormContext = createContext<FormContextType>({
-	activeInputSectionClassName: '',
-	changeActiveInputSectionClassName: undefined,
+	activeInputSections: [] as EventTarget[],
+	changeActiveInputSections: undefined,
 });
 
 export function Form(props: Props): JSX.Element {
 	const { action, children, className = '', isBlurOn = false } = props;
 
-	const [activeInputSectionClassName, changeActiveInputSectionClassName] =
-		useState<string>('');
+	const [activeInputSections, changeActiveInputSections] = useState<
+		EventTarget[]
+	>([]);
 
 	const FormContextValue = {
-		activeInputSectionClassName,
-		changeActiveInputSectionClassName: isBlurOn
-			? changeActiveInputSectionClassName
-			: undefined,
+		activeInputSections,
+		changeActiveInputSections: isBlurOn ? changeActiveInputSections : undefined,
 	};
 
 	return (
