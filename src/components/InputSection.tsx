@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { FocusEvent, MouseEvent, useContext, useState } from 'react';
 import { FormContext } from './Form';
 import '../styles/components/inputSection.scss';
 
@@ -10,89 +10,61 @@ interface Props {
 export function InputSection(props: Props): JSX.Element {
 	const { children, className = '' } = props;
 
-	const { activeInputSectionClassName, changeActiveInputSectionClassName } =
+	const { activeInputSections, changeActiveInputSections } =
 		useContext(FormContext);
-	const [isHovered, setIsHovered] = useState<boolean>(false);
-	const [isFocused, setIsFocused] = useState<boolean>(false);
-	const isActive = isHovered || isFocused;
-	const isAnyActive = activeInputSectionClassName !== '';
+	// const isAnyActive =  !== '';
 
-	function handleMouseOverCapture() {
-		if (changeActiveInputSectionClassName) {
-			changeActiveInputSectionClassName(className);
+	function handleMouseEnter(event: MouseEvent<EventTarget>) {
+		if (changeActiveInputSections) {
+			changeActiveInputSections((prevState: EventTarget[]) => {
+				prevState.push(event.target);
+				console.log(activeInputSections);
+				return prevState;
+			});
 		}
-		setIsHovered(true);
 	}
 
-	function handleMouseLeave() {
-		if (!isFocused) {
-			if (changeActiveInputSectionClassName) {
-				changeActiveInputSectionClassName('');
-			}
+	function handleMouseLeave(event: MouseEvent<HTMLElement>) {
+		if (changeActiveInputSections) {
+
+
+			changeActiveInputSections((prevState: EventTarget[]) => {
+				for (let i = 0, n = prevState.length; i < n; i++) {
+					const element = prevState[i];
+					if (element === event.target) {
+						prevState.splice(i, 1);
+						return prevState;
+					}
+				}
+				return prevState;
+			});
 		}
-		setIsHovered(false);
 	}
 
-	function handleFocusCapture() {
-		if (changeActiveInputSectionClassName) {
-			changeActiveInputSectionClassName(className);
-		}
-		setIsFocused(true);
+	function handleFocusCapture(event: FocusEvent<HTMLElement>) {
+		/* if (changeActiveInputSections) {
+			changeActiveInputSections((prevState: typeof activeInputSections) => {
+				if (prevState) {
+					return [...prevState, event.currentTarget];
+				}
+				return [];
+			});
+		} */
 	}
 
-	function handleBlurCapture() {
-		if (!isHovered) {
-			if (changeActiveInputSectionClassName) {
-				changeActiveInputSectionClassName('');
-			}
-		}
-		setIsFocused(false);
-	}
-
-	function setClassName(defaultClassNames = [''], customClassNames = ['']) {
-		// Concatenate default class names with custom class names
-		let outputClassName = `${defaultClassNames.join(
-			' '
-		)} ${customClassNames.join(' ')} `;
-
-		if (isActive) {
-			// Add modifier to every default class name
-			const modifiedDefaultClassNames = defaultClassNames.map(
-				(className) => `${className}--active `
-			);
-			// Add modifier to every custom class name
-			const modifiedCustomClassNames = customClassNames.map(
-				(className) => `${className}--active `
-			);
-			// Concatenate modified default class names with modified custom class names
-			outputClassName += `${modifiedDefaultClassNames.join(
-				' '
-			)} ${modifiedCustomClassNames.join(' ')} `;
-		} else if (isAnyActive && !isActive) {
-			// Add modifier to every default class name
-			const modifiedDefaultClassNames = defaultClassNames.map(
-				(className) => `${className}--non-active `
-			);
-			// Add modifier to every custom class name
-			const modifiedCustomClassNames = customClassNames.map(
-				(className) => `${className}--non-active `
-			);
-			// Concatenate modified default class names with modified custom class names
-			outputClassName += `${modifiedDefaultClassNames.join(
-				' '
-			)} ${modifiedCustomClassNames.join(' ')} `;
-		}
-
-		return outputClassName;
+	function handleBlurCapture(event: FocusEvent<HTMLElement>) {
+		// if (changeActiveInputSections) {
+		// 	changeActiveInputSections([]);
+		// }
 	}
 
 	return (
 		<div
-			className={setClassName(['input-section'], [className])}
+			className="input-section"
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 			onBlurCapture={handleBlurCapture}
 			onFocusCapture={handleFocusCapture}
-			onMouseLeave={handleMouseLeave}
-			onMouseOverCapture={handleMouseOverCapture}
 		>
 			{children}
 		</div>
