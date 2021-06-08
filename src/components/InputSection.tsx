@@ -15,25 +15,26 @@ export function InputSection(props: Props): JSX.Element {
 	// const isAnyActive =  !== '';
 
 	function handleMouseEnter(event: MouseEvent<EventTarget>) {
+		const { currentTarget } = event;
+
 		if (changeActiveInputSections) {
-			changeActiveInputSections((prevState: EventTarget[]) => {
-				prevState.push(event.target);
-				console.log(activeInputSections);
-				return prevState;
-			});
+			changeActiveInputSections((prevState: EventTarget[]) => [
+				...prevState,
+				currentTarget,
+			]);
 		}
 	}
 
 	function handleMouseLeave(event: MouseEvent<HTMLElement>) {
+		const { currentTarget } = event;
+
 		if (changeActiveInputSections) {
-
-
 			changeActiveInputSections((prevState: EventTarget[]) => {
 				for (let i = 0, n = prevState.length; i < n; i++) {
 					const element = prevState[i];
-					if (element === event.target) {
-						prevState.splice(i, 1);
-						return prevState;
+					if (element === currentTarget) {
+						const newState = prevState.slice(i, -1);
+						return newState;
 					}
 				}
 				return prevState;
@@ -63,8 +64,8 @@ export function InputSection(props: Props): JSX.Element {
 			className="input-section"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			onBlurCapture={handleBlurCapture}
-			onFocusCapture={handleFocusCapture}
+			onBlur={handleBlurCapture}
+			onFocus={handleFocusCapture}
 		>
 			{children}
 		</div>
