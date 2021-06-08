@@ -34,7 +34,7 @@ export function ModernRadioButtonGroupPreservingValue(
 	return (
 		<ModernRadioButtonGroup
 			{...props}
-			defaultChecked={localStorageCheckedRadio}
+			defaultCheckedValue={localStorageCheckedRadio}
 			onChangeHandler={handleChange}
 		>
 			{children}
