@@ -43,14 +43,20 @@ export function InputSection(props: Props): JSX.Element {
 	}
 
 	function handleFocusCapture(event: FocusEvent<HTMLElement>) {
-		/* if (changeActiveInputSections) {
-			changeActiveInputSections((prevState: typeof activeInputSections) => {
-				if (prevState) {
-					return [...prevState, event.currentTarget];
+		const { currentTarget } = event;
+
+		if (changeActiveInputSections) {
+			changeActiveInputSections((prevState: EventTarget[]) => {
+				for (let i = 0, n = prevState.length; i < n; i++) {
+					const element = prevState[i];
+					if (element === currentTarget) {
+						const newState = prevState.slice(i, -1);
+						return newState;
+					}
 				}
-				return [];
+				return prevState;
 			});
-		} */
+		}
 	}
 
 	function handleBlurCapture(event: FocusEvent<HTMLElement>) {
