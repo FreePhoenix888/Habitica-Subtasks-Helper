@@ -60,9 +60,14 @@ export function InputSection(props: Props): JSX.Element {
 	}
 
 	function handleBlurCapture(event: FocusEvent<HTMLElement>) {
-		// if (changeActiveInputSections) {
-		// 	changeActiveInputSections([]);
-		// }
+		const { currentTarget } = event;
+
+		if (changeActiveInputSections) {
+			changeActiveInputSections((prevState: EventTarget[]) => [
+				...prevState,
+				currentTarget,
+			]);
+		}
 	}
 
 	return (
