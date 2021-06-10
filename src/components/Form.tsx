@@ -19,7 +19,9 @@ interface StateType {
 	eventType: string;
 	target: EventTarget;
 }
-interface ActionType extends StateType {
+interface ActionType {
+	eventType?: string;
+	target?: EventTarget;
 	type: string;
 }
 
@@ -27,10 +29,7 @@ interface ContextType {
 	activeInputSections: StateType[];
 	changeActiveInputSections: Dispatch<SetStateAction<ActionType>> | undefined;
 }
-export const FormContext = createContext<ContextType>({
-	activeInputSections: [],
-	changeActiveInputSections: undefined,
-});
+export const FormContext = createContext<ContextType>(null);
 
 export function Form(props: Props): JSX.Element {
 	const { action, children, className = '', isBlurOn = false } = props;
@@ -38,6 +37,8 @@ export function Form(props: Props): JSX.Element {
 	const [activeInputSections, changeActiveInputSections] = useReducer(
 		(state: StateType[], action: ActionType) => {
 			switch (action.type) {
+				case 'reset':
+					return [];
 				case '+':
 					return [
 						...state,
