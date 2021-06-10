@@ -96,12 +96,12 @@ function App(): JSX.Element {
 									<Paragraph>
 										{`You can use any symbols or regular expression to break your text into parts.
 
-								Example:
-								Brush teeth, Take a bath, Training, Learning with separator , will lead to this result:
-								🞄Brush teeth
-								🞄Take a bath
-								🞄Training
-								🞄Learning`}
+										Example:
+										Brush teeth, Take a bath, Training, Learning with separator , will lead to this result:
+										🞄Brush teeth
+										🞄Take a bath
+										🞄Training
+										🞄Learning`}
 									</Paragraph>
 								</Modal>
 							</MessageContainer>
