@@ -4,6 +4,10 @@ import React, {
 	useContext,
 	useState,
 	createRef,
+	useImperativeHandle,
+	RefObject,
+	MutableRefObject,
+	Ref,
 } from 'react';
 import { FormContext } from './Form';
 import { setClassName } from '../helpers/setClassName';
@@ -12,10 +16,11 @@ import '../styles/components/inputSection.scss';
 interface Props {
 	children: JSX.Element | JSX.Element[];
 	className?: string;
+	forwardedRef?: RefObject<unknown>;
 }
 
 export function InputSection(props: Props): JSX.Element {
-	const { children, className = '' } = props;
+	const { children, className = '', forwardedRef } = props;
 
 	const inputSectionRef = createRef<HTMLDivElement>();
 
@@ -30,6 +35,12 @@ export function InputSection(props: Props): JSX.Element {
 		}
 	}
 	const isAnyActive = activeInputSections.length !== 0;
+
+	useImperativeHandle(forwardedRef, () => ({
+		reset() {
+			changeActiveInputSections({ type: 'reset' });
+		},
+	}));
 
 	function handleMouseEnter(event: MouseEvent<EventTarget>) {
 		const { currentTarget } = event;
