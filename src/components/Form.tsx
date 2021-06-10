@@ -3,6 +3,7 @@ import React, {
 	Dispatch,
 	SetStateAction,
 	useContext,
+	useReducer,
 	useState,
 } from 'react';
 import '../styles/components/form.scss';
@@ -14,24 +15,45 @@ interface Props {
 	isBlurOn?: boolean;
 }
 
-interface FormContextType {
-	activeInputSections: EventTarget[];
-	changeActiveInputSections:
-		| Dispatch<SetStateAction<EventTarget[]>>
-		| undefined;
+interface StateType {
+	eventType: string;
+	target: EventTarget;
+}
+interface ActionType extends StateType {
+	type: string;
 }
 
-export const FormContext = createContext<FormContextType>({
-	activeInputSections: [] as EventTarget[],
+interface ContextType {
+	activeInputSections: StateType[];
+	changeActiveInputSections: Dispatch<SetStateAction<ActionType>> | undefined;
+}
+export const FormContext = createContext<ContextType>({
+	activeInputSections: [],
 	changeActiveInputSections: undefined,
 });
 
 export function Form(props: Props): JSX.Element {
 	const { action, children, className = '', isBlurOn = false } = props;
 
-	const [activeInputSections, changeActiveInputSections] = useState<
-		EventTarget[]
-	>([]);
+	const [activeInputSections, changeActiveInputSections] = useReducer(
+		(state: StateType[], action: ActionType) => {
+			switch (action.type) {
+				case '+':
+					return [
+						...state,
+						{ eventType: action.eventType, target: action.target },
+					];
+				case '-':
+					return state.filter(
+						(element) => action.eventType !== element.eventType
+					);
+				default:
+					throw new Error('No such action type.');
+			}
+		},
+		[],
+		() => []
+	);
 
 	const FormContextValue = {
 		activeInputSections,

@@ -1,5 +1,12 @@
-import React, { FocusEvent, MouseEvent, useContext, useState } from 'react';
+import React, {
+	FocusEvent,
+	MouseEvent,
+	useContext,
+	useState,
+	createRef,
+} from 'react';
 import { FormContext } from './Form';
+import { setClassName } from '../helpers/setClassName';
 import '../styles/components/inputSection.scss';
 
 interface Props {
@@ -10,18 +17,29 @@ interface Props {
 export function InputSection(props: Props): JSX.Element {
 	const { children, className = '' } = props;
 
+	const inputSectionRef = createRef<HTMLDivElement>();
+
 	const { activeInputSections, changeActiveInputSections } =
 		useContext(FormContext);
-	// const isAnyActive =  !== '';
+	let isActive = false;
+	for (let i = 0, n = activeInputSections.length; i < n; i++) {
+		const element = activeInputSections[i];
+
+		if (element.target === inputSectionRef.current) {
+			isActive = true;
+		}
+	}
+	const isAnyActive = activeInputSections.length !== 0;
 
 	function handleMouseEnter(event: MouseEvent<EventTarget>) {
 		const { currentTarget } = event;
 
 		if (changeActiveInputSections) {
-			changeActiveInputSections((prevState: EventTarget[]) => [
-				...prevState,
-				currentTarget,
-			]);
+			changeActiveInputSections({
+				eventType: 'Mouse',
+				target: currentTarget,
+				type: '+',
+			});
 		}
 	}
 
@@ -29,15 +47,10 @@ export function InputSection(props: Props): JSX.Element {
 		const { currentTarget } = event;
 
 		if (changeActiveInputSections) {
-			changeActiveInputSections((prevState: EventTarget[]) => {
-				for (let i = 0, n = prevState.length; i < n; i++) {
-					const element = prevState[i];
-					if (element === currentTarget) {
-						const newState = prevState.slice(i, -1);
-						return newState;
-					}
-				}
-				return prevState;
+			changeActiveInputSections({
+				eventType: 'Mouse',
+				target: currentTarget,
+				type: '-',
 			});
 		}
 	}
@@ -46,15 +59,10 @@ export function InputSection(props: Props): JSX.Element {
 		const { currentTarget } = event;
 
 		if (changeActiveInputSections) {
-			changeActiveInputSections((prevState: EventTarget[]) => {
-				for (let i = 0, n = prevState.length; i < n; i++) {
-					const element = prevState[i];
-					if (element === currentTarget) {
-						const newState = prevState.slice(i, -1);
-						return newState;
-					}
-				}
-				return prevState;
+			changeActiveInputSections({
+				eventType: 'Focus',
+				target: currentTarget,
+				type: '+',
 			});
 		}
 	}
@@ -63,20 +71,22 @@ export function InputSection(props: Props): JSX.Element {
 		const { currentTarget } = event;
 
 		if (changeActiveInputSections) {
-			changeActiveInputSections((prevState: EventTarget[]) => [
-				...prevState,
-				currentTarget,
-			]);
+			changeActiveInputSections({
+				eventType: 'Focus',
+				target: currentTarget,
+				type: '-',
+			});
 		}
 	}
 
 	return (
 		<div
+			ref={inputSectionRef}
 			className="input-section"
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			onBlur={handleBlurCapture}
-			onFocus={handleFocusCapture}
+			onBlurCapture={handleBlurCapture}
+			onFocusCapture={handleFocusCapture}
 		>
 			{children}
 		</div>
