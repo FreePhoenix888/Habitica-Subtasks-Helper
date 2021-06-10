@@ -77,9 +77,11 @@ function App(): JSX.Element {
 							className="textarea task-subtasks__textarea"
 							id="taskSubtasks"
 							name="task_subtasks"
-							placeholder={
-								'What is the Venus Project?\nAims, Proposals.\nFAQ.\nFree e-Books.\nRecommended books.'
-							}
+							placeholder={`What is the Venus Project?
+								Aims, Proposals.
+								FAQ.
+								Free e-Books.
+								Recommended books.`}
 							wrap="soft"
 						/>
 					</InputSection>
