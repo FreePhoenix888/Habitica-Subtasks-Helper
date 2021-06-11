@@ -35,7 +35,7 @@ function App(): JSX.Element {
 		<>
 			<Header>
 				<ToggleSwitchBlur
-					name={'input_sections_blur'}
+					name="input_sections_blur"
 					onChangeHandler={(event) => {
 						const { target } = event;
 						const { checked } = target;
