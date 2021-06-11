@@ -16,10 +16,6 @@ export { ModernRadioButtonGroupPreservingValue } from './components/ModernRadioB
 export { ButtonInfo } from './components/ButtonInfo';
 export { ModalButtonInfo } from './components/ModalButtonInfo';
 export { Modal } from './components/Modal';
-export {
-	MessageContainer,
-	Context as MessageContainerContext,
-} from './components/MessageContainer';
 export { Header } from './components/Header';
 export { ToggleSwitch } from './components/ToggleSwitch';
 export { IconBlur } from './components/IconBlur';
