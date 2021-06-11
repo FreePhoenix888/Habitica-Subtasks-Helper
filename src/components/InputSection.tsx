@@ -13,10 +13,14 @@ import { FormContext } from './Form';
 import { setClassName } from '../helpers/setClassName';
 import '../styles/components/inputSection.scss';
 
+interface UseImperativeHandleType {
+	reset(): void;
+}
+
 interface Props {
 	children: JSX.Element | JSX.Element[];
 	className?: string;
-	forwardedRef?: RefObject<unknown>;
+	forwardedRef?: RefObject<UseImperativeHandleType>;
 }
 
 export function InputSection(props: Props): JSX.Element {
