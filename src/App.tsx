@@ -31,22 +31,18 @@ function App(): JSX.Element {
 	const [isToggleSwitchBlurChecked, setIsToggleSwitchBlurChecked] =
 		useState<boolean>(localStorageToggleSwitchChecked);
 
-	function toggleSwitchBlurOnChangeHandler(
-		event: ChangeEvent<HTMLInputElement>
-	) {
-		const { target } = event;
-		const { checked } = target;
-		setIsToggleSwitchBlurChecked(checked);
-		setlLocalStorageToggleSwitchChecked(checked);
-	}
-
 	const [isSeparatorModalOpen, setIsSeparatorModalOpen] = useState(false);
 	return (
 		<>
 			<Header>
 				<ToggleSwitchBlur
 					name={toggleSwitchBlurName}
-					onChangeHandler={toggleSwitchBlurOnChangeHandler}
+					onChangeHandler={(event) => {
+						const { target } = event;
+						const { checked } = target;
+						setIsToggleSwitchBlurChecked(checked);
+						setlLocalStorageToggleSwitchChecked(checked);
+					}}
 					isChecked={isToggleSwitchBlurChecked}
 					labelClassName="header__toggle-switch header__toggle-switch-blur"
 				/>
