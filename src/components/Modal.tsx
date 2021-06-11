@@ -1,7 +1,13 @@
-import React, { RefObject, useContext, useEffect, useRef } from 'react';
+import React, {
+	Dispatch,
+	RefObject,
+	SetStateAction,
+	useContext,
+	useEffect,
+	useRef,
+} from 'react';
 import { createPortal } from 'react-dom';
 import { Span } from './Span';
-import { Context as MessageContainerContext } from './MessageContainer';
 import '../styles/components/modal.scss';
 
 interface Props {
@@ -12,8 +18,10 @@ interface Props {
 		| Element[]
 		| HTMLAnchorElement;
 	className?: string;
+	isOpen?: boolean;
 	onClickHandler?: (event: React.MouseEvent<HTMLElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	setIsOpen?: Dispatch<SetStateAction<boolean>>;
 	// onUseEffectHandler?: () => void;
 	// onAfterUseEffectHandler?: () => void;
 }
@@ -21,12 +29,10 @@ interface Props {
 let divButtonRef: RefObject<HTMLDivElement>;
 
 export function Modal(props: Props): React.ReactPortal | null {
-	const { children, className = '' } = props;
+	const { children, className = '', isOpen, setIsOpen } = props;
 
 	// Ref to the div-button to focus it
 	divButtonRef = useRef<HTMLDivElement>(null);
-
-	const { isOpen, setIsOpen } = useContext(MessageContainerContext);
 
 	useEffect(() => {
 		if (isOpen) {
