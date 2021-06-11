@@ -1,7 +1,7 @@
 import React, { useState, createContext } from 'react';
 import '../styles/components/messageContainer.scss';
 
-export const MessageContainerContext = createContext<ContextType>({
+export const Context = createContext<ContextType>({
 	isOpen: false,
 	setIsOpen: () => {},
 });
@@ -12,7 +12,7 @@ interface ContextType {
 }
 
 interface Props {
-	children: JSX.Element | JSX.Element[] | Element | Element[];
+	children?: JSX.Element | JSX.Element[] | Element | Element[];
 }
 export function MessageContainer(props: Props): JSX.Element {
 	const { children } = props;
@@ -25,9 +25,9 @@ export function MessageContainer(props: Props): JSX.Element {
 
 	return (
 		<div className="message-container">
-			<MessageContainerContext.Provider value={messageContainerContextValue}>
+			<Context.Provider value={messageContainerContextValue}>
 				{children}
-			</MessageContainerContext.Provider>
+			</Context.Provider>
 		</div>
 	);
 }

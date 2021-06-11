@@ -14,11 +14,11 @@ export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
 export { ModernRadioButtonGroupPreservingValue } from './components/ModernRadioButtonGroupPreservingValue';
 export { ButtonInfo } from './components/ButtonInfo';
-export { ModalInfoButton } from './components/ModalInfoButton';
+export { ModalButtonInfo } from './components/ModalButtonInfo';
 export { Modal } from './components/Modal';
 export {
 	MessageContainer,
-	MessageContainerContext,
+	Context as MessageContainerContext,
 } from './components/MessageContainer';
 export { Header } from './components/Header';
 export { ToggleSwitch } from './components/ToggleSwitch';
