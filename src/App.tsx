@@ -24,9 +24,8 @@ import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
 
 function App(): JSX.Element {
-	const toggleSwitchBlurName = 'input_sections_blur';
 	const [localStorageToggleSwitchChecked, setlLocalStorageToggleSwitchChecked] =
-		useLocalStorage<boolean>(toggleSwitchBlurName, true);
+		useLocalStorage<boolean>('input_sections_blur', true);
 
 	const [isToggleSwitchBlurChecked, setIsToggleSwitchBlurChecked] =
 		useState<boolean>(localStorageToggleSwitchChecked);
@@ -36,7 +35,7 @@ function App(): JSX.Element {
 		<>
 			<Header>
 				<ToggleSwitchBlur
-					name={toggleSwitchBlurName}
+					name={'input_sections_blur'}
 					onChangeHandler={(event) => {
 						const { target } = event;
 						const { checked } = target;
