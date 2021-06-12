@@ -10,6 +10,7 @@ export { InputPreservingValue } from './components/InputPreservingValue';
 export { Textarea } from './components/Textarea';
 export { TextareaPreservingValue } from './components/TextareaPreservingValue';
 export { Button } from './components/Button';
+export { ButtonSubmit } from './components/ButtonSubmit';
 export { RadioButton } from './components/RadioButton';
 export { ModernRadioButton } from './components/ModernRadioButton';
 export { ModernRadioButtonGroup } from './components/ModernRadioButtonGroup';
