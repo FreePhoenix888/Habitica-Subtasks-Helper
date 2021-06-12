@@ -2,7 +2,7 @@
 	width: 2.18em;
 	height: 2.18em;
 	border-radius: 50px;
-	fill: var(--text-color-primary);
+	color: inherit;
 	&:focus {
 		filter: invert(100%);
 	}
