@@ -182,8 +182,10 @@ function App(): JSX.Element {
 							autoSize
 						/>
 					</InputSection>
+					<InputSection className="task-amount">
+						<ButtonSubmit>Create</ButtonSubmit>
+					</InputSection>
 				</TaskForm>
-				<ButtonSubmit>Create</ButtonSubmit>
 			</div>
 			<Modal
 				className="task-separator__modal"
