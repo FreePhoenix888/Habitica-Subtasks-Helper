@@ -10,7 +10,7 @@
 	}
 	// .modern-radio-button--focus
 	&--focus {
-		box-shadow: 0px 0px 0px 4px var(--text-color-active);
+		box-shadow:  0px 6px 19px -4px var(--text-color-active) inset;
 	}
 	&__input {
 		position: absolute;
