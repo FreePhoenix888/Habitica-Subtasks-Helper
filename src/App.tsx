@@ -17,7 +17,6 @@ import {
 	Header,
 	ToggleSwitch,
 	TaskForm,
-	TaskPreview,
 	FormDataContext,
 	IconBlur,
 	ToggleSwitchBlur,
@@ -182,7 +181,6 @@ function App(): JSX.Element {
 							autoSize
 						/>
 					</InputSection>
-					<TaskPreview />
 				</TaskForm>
 			</div>
 			<Modal
