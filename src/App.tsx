@@ -16,6 +16,9 @@ import {
 	Modal,
 	Header,
 	ToggleSwitch,
+	TaskForm,
+	TaskPreview,
+	FormDataContext,
 	IconBlur,
 	ToggleSwitchBlur,
 } from './components';
@@ -31,6 +34,7 @@ function App(): JSX.Element {
 		useState<boolean>(localStorageToggleSwitchChecked);
 
 	const [isSeparatorModalOpen, setIsSeparatorModalOpen] = useState(false);
+
 	return (
 		<>
 			<Header>
@@ -48,7 +52,7 @@ function App(): JSX.Element {
 			</Header>
 			<div className="container">
 				<h1>Habitica Subtasks Helper</h1>
-				<Form
+				<TaskForm
 					action="#"
 					className="task-form"
 					isBlurOn={isToggleSwitchBlurChecked}
@@ -120,7 +124,7 @@ function App(): JSX.Element {
 							name="task_difficulty"
 							groupClassName="task-difficulty__modern-radio-button-group"
 						>
-							{(function modernRadioButtons() {
+							{(() => {
 								// Difficulty Section Radio Buttons
 								const modernRadioButtons: JSX.Element[] = [];
 
@@ -149,6 +153,7 @@ function App(): JSX.Element {
 										</ModernRadioButton>
 									);
 								}
+
 								return modernRadioButtons;
 							})()}
 						</ModernRadioButtonGroupPreservingValue>
@@ -177,7 +182,8 @@ function App(): JSX.Element {
 							autoSize
 						/>
 					</InputSection>
-				</Form>
+					<TaskPreview />
+				</TaskForm>
 			</div>
 			<Modal
 				className="task-separator__modal"
