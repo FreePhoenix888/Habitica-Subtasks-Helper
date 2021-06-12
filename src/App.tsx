@@ -158,7 +158,7 @@ function App(): JSX.Element {
 							})()}
 						</ModernRadioButtonGroupPreservingValue>
 					</InputSection>
-					<InputSection className="input-section task-notes">
+					<InputSection className=" task-notes">
 						<Label className="task-notes__label" htmlFor="taskNotes">
 							Notes
 						</Label>
@@ -170,7 +170,7 @@ function App(): JSX.Element {
 							wrap="soft"
 						/>
 					</InputSection>
-					<InputSection className="input-section task-amount">
+					<InputSection className="task-amount">
 						<Label className="task-amount__label" htmlFor="taskSeparator">
 							<Span>Amount</Span>
 						</Label>
