@@ -1,5 +1,6 @@
 import React, { ChangeEvent, createRef, useRef, useState } from 'react';
 import {
+	ButtonSubmit,
 	Span,
 	Paragraph,
 	Form,
@@ -182,6 +183,7 @@ function App(): JSX.Element {
 						/>
 					</InputSection>
 				</TaskForm>
+				<ButtonSubmit>Create</ButtonSubmit>
 			</div>
 			<Modal
 				className="task-separator__modal"
