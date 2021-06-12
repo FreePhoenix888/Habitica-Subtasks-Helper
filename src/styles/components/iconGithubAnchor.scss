@@ -1,4 +1,9 @@
 .anchor-github {
 	width: 2.18em;
 	height: 2.18em;
+	border-radius: 50px;
+	fill: var(--text-color-primary);
+	&:focus {
+		filter: invert(100%);
+	}
 }
