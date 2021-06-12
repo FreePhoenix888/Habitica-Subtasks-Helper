@@ -1,6 +1,10 @@
 import React, {
+	ChangeEvent,
 	createContext,
 	Dispatch,
+	FormEvent,
+	FormEventHandler,
+	RefObject,
 	SetStateAction,
 	useContext,
 	useReducer,
@@ -12,7 +16,9 @@ interface Props {
 	action: string;
 	children?: JSX.Element | JSX.Element[];
 	className?: string;
+	forwardedRef?: RefObject<HTMLFormElement>;
 	isBlurOn?: boolean;
+	onChangeCapture?: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 interface StateType {
@@ -32,7 +38,14 @@ interface ContextType {
 export const FormContext = createContext<ContextType>(null);
 
 export function Form(props: Props): JSX.Element {
-	const { action, children, className = '', isBlurOn = false } = props;
+	const {
+		action,
+		children,
+		className = '',
+		isBlurOn = false,
+		onChangeCapture,
+		forwardedRef,
+	} = props;
 
 	const [activeInputSections, changeActiveInputSections] = useReducer(
 		(state: StateType[], action: ActionType) => {
@@ -62,7 +75,12 @@ export function Form(props: Props): JSX.Element {
 	};
 
 	return (
-		<form action={action} className={`form ${className}`}>
+		<form
+			action={action}
+			className={`form ${className}`}
+			ref={forwardedRef}
+			onChangeCapture={onChangeCapture}
+		>
 			<FormContext.Provider value={FormContextValue}>
 				{children}
 			</FormContext.Provider>
