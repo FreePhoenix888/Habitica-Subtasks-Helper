@@ -50,22 +50,22 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	// Name
 	const name = useContext(NameContext);
 
-	const classNameConditions = [isChecked, isFocused];
-	const classNameModifiers = ['checked' as const, 'focus' as const];
+	const classNameModifiers = {
+		checked: isChecked,
+		focus: isFocused,
+	};
 	return (
 		<div
 			className={setClassName(
-				['modern-radio-button'],
-				[radioButtonClassName],
-				classNameConditions,
+				'modern-radio-button',
+				radioButtonClassName,
 				classNameModifiers
 			)}
 		>
 			<Label
 				className={setClassName(
-					['modern-radio-button__label'],
-					[labelClassName],
-					classNameConditions,
+					'modern-radio-button__label',
+					labelClassName,
 					classNameModifiers
 				)}
 				htmlFor={htmlFor}
@@ -74,9 +74,8 @@ export function ModernRadioButton(props: Props): JSX.Element {
 			</Label>
 			<RadioButton
 				className={setClassName(
-					['modern-radio-button__input'],
-					[inputClassName],
-					classNameConditions,
+					'modern-radio-button__input',
+					inputClassName,
 					classNameModifiers
 				)}
 				id={id}
