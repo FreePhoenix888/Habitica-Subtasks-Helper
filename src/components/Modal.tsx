@@ -52,45 +52,6 @@ export function Modal(props: Props): React.ReactPortal | null {
 		};
 	}, [isOpen]);
 
-	function handleClick(event: React.MouseEvent<HTMLElement>) {
-		// Default behavioir
-		const target = event.target as HTMLElement;
-
-		if (target.className.includes('modal-close')) {
-			setIsOpen(false);
-		}
-
-		// Custom behavior
-		const { onClickHandler } = props;
-		if (onClickHandler) {
-			onClickHandler(event);
-		}
-	}
-
-	function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-		// Default behavior
-		const allowedKeys =
-			event.metaKey ||
-			event.ctrlKey ||
-			event.shiftKey ||
-			event.altKey ||
-			event.code === 'ArrowUp' ||
-			event.code === 'ArrowRight' ||
-			event.code === 'ArrowDown' ||
-			event.code === 'ArrowLeft';
-
-		if (!allowedKeys) {
-			if (event.code === 'Space') event.preventDefault();
-			setIsOpen(false);
-		}
-
-		// Custom behavior
-		const { onKeyDownHandler } = props;
-		if (onKeyDownHandler) {
-			onKeyDownHandler(event);
-		}
-	}
-
 	return isOpen
 		? createPortal(
 				<div
@@ -98,8 +59,43 @@ export function Modal(props: Props): React.ReactPortal | null {
 					ref={divButtonRef}
 					role="button"
 					tabIndex={-1}
-					onClick={handleClick}
-					onKeyDown={handleKeyDown}
+					onClick={(event) => {
+						// Default behavioir
+						const target = event.target as HTMLElement;
+
+						if (target.className.includes('modal-close')) {
+							setIsOpen(false);
+						}
+
+						// Custom behavior
+						const { onClickHandler } = props;
+						if (onClickHandler) {
+							onClickHandler(event);
+						}
+					}}
+					onKeyDown={(event) => {
+						// Default behavior
+						const allowedKeys =
+							event.metaKey ||
+							event.ctrlKey ||
+							event.shiftKey ||
+							event.altKey ||
+							event.code === 'ArrowUp' ||
+							event.code === 'ArrowRight' ||
+							event.code === 'ArrowDown' ||
+							event.code === 'ArrowLeft';
+
+						if (!allowedKeys) {
+							if (event.code === 'Space') event.preventDefault();
+							setIsOpen(false);
+						}
+
+						// Custom behavior
+						const { onKeyDownHandler } = props;
+						if (onKeyDownHandler) {
+							onKeyDownHandler(event);
+						}
+					}}
 					onFocus={(event) => {
 						relatedTarget.current = event.relatedTarget as HTMLElement;
 					}}
