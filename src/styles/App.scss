@@ -1,46 +1,43 @@
-/*.task-title {
-	&__label {
-	}
-	&__input {
-		
-	}
-	&__textarea {
-		
-	}
-}*/
-
-.task-difficulty {
-	// grid-auto-flow: column;
-	// .task-difficulty__radio-button-container
-	&__modern-radio-button-group {
-		display: grid;
-		grid-template: '1star 2stars 3stars 4stars' auto;
-		justify-content: center;
-		gap: 5px;
-	}
-	// .task-difficulty__modern-radio-button-container
-	&__modern-radio-button-container {
-	}
-	// .task-difficulty-label
-	&-label {
-		// .task-difficulty-label__content
-		&__content {
-			padding: 0 10px;
+.task {
+	&-difficulty {
+		// grid-auto-flow: column;
+		// .task-difficulty__radio-button-container
+		&__modern-radio-button-group {
+			display: grid;
+			grid-template: '1star 2stars 3stars 4stars' auto;
+			justify-content: center;
+			gap: 5px;
+		}
+		// .task-difficulty__modern-radio-button-container
+		&__modern-radio-button-container {
+		}
+		// .task-difficulty-label
+		&-label {
+			// .task-difficulty-label__content
+			&__content {
+				padding: 0 10px;
+			}
+		}
+		// .task-difficulty-modern-radio-button-container-label
+		&-modern-radio-button-container-label {
+			// .task-difficulty-modern-radio-button-container-label__content
+			&__content {
+				padding: 0 16px;
+				gap: 0;
+			}
 		}
 	}
-	// .task-difficulty-modern-radio-button-container-label
-	&-modern-radio-button-container-label {
-		// .task-difficulty-modern-radio-button-container-label__content
-		&__content {
-			padding: 0 16px;
-			gap: 0;
+
+	// .task-notes
+	&-notes {
+		// .task-notes__textarea
+		&__textarea {
+			text-align: center;
 		}
 	}
-}
 
-.task-notes {
-	// .task-notes__textarea
-	&__textarea {
-		text-align: center;
+	// .task-amount
+	&-amount{
+		padding-top: 1em;
 	}
 }
