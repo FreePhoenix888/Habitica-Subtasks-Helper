@@ -32,31 +32,33 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			onChangeHandler(event);
 		}
 	}
-	const modifiers = ['checked' as const];
+
+	const classNameModifiers = {
+		checked: isChecked,
+	};
 	return (
 		<Label
 			className={setClassName(
-				['toggle-switch'],
-				[labelClassName],
-				[isChecked],
-				modifiers
+				'toggle-switch',
+				labelClassName,
+				classNameModifiers
 			)}
 			htmlFor="toggle-switch"
 		>
 			<div
 				className={setClassName(
-					['togle-switch-slider', 'togle-switch__slider'],
-					[sliderClassName],
-					[isChecked],
-					modifiers
+					'togle-switch-slider togle-switch__slider',
+					sliderClassName,
+					classNameModifiers
 				)}
 			>
 				{sliderContent}
 			</div>
 			<div
 				className={setClassName(
-					['togle-switch-text', 'togle-switch__text'],
-					[sliderClassName]
+					'togle-switch-text togle-switch__text',
+					sliderClassName,
+					classNameModifiers
 				)}
 			>
 				{text}
@@ -65,10 +67,9 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			<input
 				checked={isChecked}
 				className={setClassName(
-					['toggle-switch__input'],
-					[inputClassName],
-					[isChecked],
-					modifiers
+					'toggle-switch__input',
+					inputClassName,
+					classNameModifiers
 				)}
 				id="toggle-switch"
 				name={name}
