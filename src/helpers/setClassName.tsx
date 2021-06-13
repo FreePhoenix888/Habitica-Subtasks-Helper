@@ -1,31 +1,20 @@
-enum ClassNameModifiers {
-	active,
-	checked,
-	focus,
-	hover,
-};
+interface ModifiersType {
+	[key: string]: boolean;
+}
 
 export function setClassName(
-	defaultClassNames = [''],
-	customClassNames = [''],
-	conditions?: boolean[],
-	modifiers?: (keyof typeof ClassNameModifiers)[]
+	defaultClassName = '',
+	customClassName = '',
+	modifiers?: ModifiersType
 ) {
+	// Get every class name
+	const defaultClassNames = defaultClassName.split(' ');
+	const customClassNames = customClassName.split(' ');
 	// Concatenate default class names with custom class names
-	let outputClassName = `${defaultClassNames.join(' ')} ${customClassNames.join(
-		' '
-	)} `;
+	let outputClassName = `${defaultClassName} ${customClassName} `;
 
-	if (conditions && modifiers) {
-		// Checks
-		const conditionsLength = conditions.length;
-		if (conditionsLength !== modifiers.length)
-			throw new Error('Conditions length is not equal modifier length.');
-
-		for (let i = 0; i < conditionsLength; i++) {
-			const condition = conditions[i];
-			const modifier = modifiers[i];
-
+	if (modifiers) {
+		Object.entries(modifiers).forEach(([modifier, condition]) => {
 			// Check if class name need modifier
 			if (condition) {
 				// Add modifier to every default class name
@@ -41,7 +30,7 @@ export function setClassName(
 					' '
 				)} ${modifiedCustomClassNames.join(' ')} `;
 			}
-		}
+		});
 	}
 
 	return outputClassName;
