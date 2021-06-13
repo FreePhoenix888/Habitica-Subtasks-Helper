@@ -1,10 +1,5 @@
-import React, {
-	ChangeEvent,
-	createContext,
-	Dispatch,
-	SetStateAction,
-	useState,
-} from 'react';
+import React, { ChangeEvent, createContext, useState } from 'react';
+import '../styles/components/modernRadioGroup.scss';
 
 interface CheckedRadioContextType {
 	checkedRadioValue: string;
