@@ -22,21 +22,16 @@ interface Props {
 	onSubmitHandler?: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-interface StateType {
-	eventType: string;
-	target: EventTarget;
-}
-interface ActionType {
-	eventType?: string;
-	target?: EventTarget;
-	type: string;
-}
-
 interface ContextType {
-	activeInputSections: StateType[];
-	changeActiveInputSections: Dispatch<SetStateAction<ActionType>> | undefined;
+	activeInputSections: Set<HTMLDivElement>;
+	changeActiveInputSections:
+		| Dispatch<SetStateAction<Set<HTMLDivElement>>>
+		| undefined;
 }
-export const FormContext = createContext<ContextType>(null);
+export const FormContext = createContext<ContextType>({
+	activeInputSections: new Set(),
+	changeActiveInputSections: undefined,
+});
 
 export function Form(props: Props): JSX.Element {
 	const {
@@ -49,27 +44,9 @@ export function Form(props: Props): JSX.Element {
 		forwardedRef,
 	} = props;
 
-	const [activeInputSections, changeActiveInputSections] = useReducer(
-		(state: StateType[], action: ActionType) => {
-			switch (action.type) {
-				case 'reset':
-					return [];
-				case '+':
-					return [
-						...state,
-						{ eventType: action.eventType, target: action.target },
-					];
-				case '-':
-					return state.filter(
-						(element) => action.eventType !== element.eventType
-					);
-				default:
-					throw new Error('No such action type.');
-			}
-		},
-		[],
-		() => []
-	);
+	const [activeInputSections, changeActiveInputSections] = useState<
+		Set<HTMLDivElement>
+	>(new Set());
 
 	const FormContextValue = {
 		activeInputSections,
