@@ -20,6 +20,7 @@ import {
 	TaskForm,
 	FormDataContext,
 	IconBlur,
+	IconCheckMark,
 	ToggleSwitchBlur,
 } from './components';
 import { useLocalStorage } from './helpers';
@@ -177,13 +178,16 @@ function App(): JSX.Element {
 							className="task-type__modern-radio-group task-type-modery-radio-group"
 						>
 							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
-								To-do
+								<IconCheckMark />
+								<Span>To-do</Span>
 							</ModernRadioButton>
-							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
-								Daily
+							<ModernRadioButton value="daily" htmlFor="daily" id="daily">
+								<IconCheckMark />
+								<Span>Daily</Span>
 							</ModernRadioButton>
-							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
-								Habit
+							<ModernRadioButton value="habit" htmlFor="habit" id="habit">
+								<IconCheckMark />
+								<Span>Habit</Span>
 							</ModernRadioButton>
 						</ModernRadioButtonGroupPreservingValue>
 					</InputSection>
