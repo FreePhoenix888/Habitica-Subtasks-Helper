@@ -45,8 +45,6 @@ export function InputSection(props: Props): JSX.Element {
 				setIsActive(false);
 			}
 		}
-
-		console.log(activeInputSections);
 	}, [activeInputSections]);
 
 	useImperativeHandle(forwardedRef, () => ({
@@ -106,13 +104,10 @@ export function InputSection(props: Props): JSX.Element {
 	return (
 		<div
 			ref={inputSectionRef}
-			className={(() => {
-				console.log('From className:', isActive);
-				return setClassName('input-section', className, {
-					active: isActive,
-					'non-active': !isActive,
-				});
-			})()}
+			className={setClassName('input-section', className, {
+				active: isActive,
+				'non-active': !isActive,
+			})}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onBlurCapture={handleBlurCapture}
