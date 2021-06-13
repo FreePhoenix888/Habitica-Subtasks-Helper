@@ -4,7 +4,7 @@ import { useLocalStorage } from '../helpers/useLocalStorage';
 
 interface Props {
 	children: JSX.Element | JSX.Element[];
-	groupClassName?: string;
+	className?: string;
 	name: string;
 	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -12,7 +12,7 @@ interface Props {
 export function ModernRadioButtonGroupPreservingValue(
 	props: Props
 ): JSX.Element {
-	const { children, groupClassName = '', name } = props;
+	const { children, className = '', name } = props;
 
 	const [localStorageCheckedRadio, setLocalStorageCheckedRadio] =
 		useLocalStorage<string>(name, '');
