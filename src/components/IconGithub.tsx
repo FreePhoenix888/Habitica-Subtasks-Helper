@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactComponent as IconGithubSVG } from '../media/images/github_icon.svg';
+import { IconSVG } from './IconSVG';
 import '../styles/components/icon.scss';
 
 interface Props {
@@ -8,5 +9,7 @@ interface Props {
 
 export function IconGithub(props: Props) {
 	const { className = '' } = props;
-	return <IconGithubSVG className={`icon icon-github ${className}`} />;
+	return (
+		<IconSVG className={`icon-github ${className}`} Icon={IconGithubSVG} />
+	);
 }
