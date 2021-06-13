@@ -10,9 +10,8 @@ import {
 	InputPreservingValue,
 	Textarea,
 	TextareaPreservingValue,
-	ModernRadioButton,
-	ModernRadioButtonGroup,
-	ModernRadioButtonGroupPreservingValue,
+	ModernRadio,
+	ModernRadioGroupPreservingValue,
 	ModalButtonInfo,
 	Modal,
 	Header,
@@ -133,9 +132,9 @@ function App(): JSX.Element {
 					</InputSection>
 					<InputSection className="task-difficulty">
 						<Label htmlFor="taskDifficulty1">Difficulty</Label>
-						<ModernRadioButtonGroupPreservingValue
+						<ModernRadioGroupPreservingValue
 							name="difficulty"
-							className="task-difficulty__modern-radio-button-group"
+							className="task-difficulty__modern-radio-group"
 						>
 							{(() => {
 								// Difficulty Section Radio Buttons
@@ -146,50 +145,50 @@ function App(): JSX.Element {
 									for (let j = 1; j < i + 2; j++) {
 										stars.push(
 											<StarSVG
-												className="svg star-SVG modern-radio-button__svg modern-radio-button__star-svg"
+												className="svg star-SVG modern-radio__svg modern-radio__star-svg"
 												key={`${i}:${j}`}
 											/>
 										);
 									}
 
 									modernRadioButtons.push(
-										<ModernRadioButton
+										<ModernRadio
 											htmlFor={`taskDifficulty${i + 1}`}
 											id={`taskDifficulty${i + 1}`}
-											inputClassName="task-difficulty-modern-radio-button__input"
+											inputClassName="task-difficulty-modern-radio__input"
 											key={i}
-											labelClassName="task-difficulty-modern-radio-button__label"
-											radioButtonClassName="radio-button-container--little task-difficulty__modern-radio-button-container"
+											labelClassName="task-difficulty-modern-radio__label"
+											radioButtonClassName="radio-container--little task-difficulty__modern-radio-container"
 											value={`${i + 1}`}
 										>
 											{stars}
-										</ModernRadioButton>
+										</ModernRadio>
 									);
 								}
 
 								return modernRadioButtons;
 							})()}
-						</ModernRadioButtonGroupPreservingValue>
+						</ModernRadioGroupPreservingValue>
 					</InputSection>
 					<InputSection>
 						<Label htmlFor="todo">Type</Label>
-						<ModernRadioButtonGroupPreservingValue
+						<ModernRadioGroupPreservingValue
 							name="type"
 							className="task-type__modern-radio-group task-type-modery-radio-group"
 						>
-							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
+							<ModernRadio value="todo" htmlFor="todo" id="todo">
 								<IconCheckMark />
 								<Span>To-do</Span>
-							</ModernRadioButton>
-							<ModernRadioButton value="daily" htmlFor="daily" id="daily">
+							</ModernRadio>
+							<ModernRadio value="daily" htmlFor="daily" id="daily">
 								<IconCheckMark />
 								<Span>Daily</Span>
-							</ModernRadioButton>
-							<ModernRadioButton value="habit" htmlFor="habit" id="habit">
+							</ModernRadio>
+							<ModernRadio value="habit" htmlFor="habit" id="habit">
 								<IconCheckMark />
 								<Span>Habit</Span>
-							</ModernRadioButton>
-						</ModernRadioButtonGroupPreservingValue>
+							</ModernRadio>
+						</ModernRadioGroupPreservingValue>
 					</InputSection>
 					<InputSection className="task-amount">
 						<Label className="task-amount__label" htmlFor="taskSeparator">

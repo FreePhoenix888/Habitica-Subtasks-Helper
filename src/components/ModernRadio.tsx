@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
-import { CheckedRadioContext, NameContext } from './ModernRadioButtonGroup';
+import { CheckedRadioContext, NameContext } from './ModernRadioGroup';
 import { Label } from './Label';
-import { RadioButton } from './RadioButton';
+import { Radio } from './Radio';
 import { setClassName } from '../helpers';
-import '../styles/components/modernRadioButton.scss';
+import '../styles/components/modernRadio.scss';
 
 interface Props {
 	children: JSX.Element | JSX.Element[] | string;
@@ -15,7 +15,7 @@ interface Props {
 	value: string;
 }
 
-export function ModernRadioButton(props: Props): JSX.Element {
+export function ModernRadio(props: Props): JSX.Element {
 	const {
 		children,
 		radioButtonClassName = '',
@@ -57,14 +57,14 @@ export function ModernRadioButton(props: Props): JSX.Element {
 	return (
 		<div
 			className={setClassName(
-				'modern-radio-button',
+				'modern-radio',
 				radioButtonClassName,
 				classNameModifiers
 			)}
 		>
 			<Label
 				className={setClassName(
-					'modern-radio-button__label',
+					'modern-radio__label',
 					labelClassName,
 					classNameModifiers
 				)}
@@ -72,9 +72,9 @@ export function ModernRadioButton(props: Props): JSX.Element {
 			>
 				{children}
 			</Label>
-			<RadioButton
+			<Radio
 				className={setClassName(
-					'modern-radio-button__input',
+					'modern-radio__input',
 					inputClassName,
 					classNameModifiers
 				)}

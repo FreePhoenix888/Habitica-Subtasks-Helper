@@ -13,7 +13,7 @@ interface Props {
 	value: string;
 }
 
-export function RadioButton(props: Props): JSX.Element {
+export function Radio(props: Props): JSX.Element {
 	const {
 		value,
 		name,

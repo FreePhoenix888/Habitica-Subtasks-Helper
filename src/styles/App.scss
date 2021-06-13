@@ -1,15 +1,15 @@
 .task {
 	&-difficulty {
 		// grid-auto-flow: column;
-		// .task-difficulty__radio-button-container
-		&__modern-radio-button-group {
+		// .task-difficulty__radio-container
+		&__modern-radio-group {
 			display: grid;
 			grid-template: '1star 2stars 3stars 4stars' auto;
 			justify-content: center;
 			gap: 5px;
 		}
-		// .task-difficulty__modern-radio-button-container
-		&__modern-radio-button-container {
+		// .task-difficulty__modern-radio-container
+		&__modern-radio-container {
 		}
 		// .task-difficulty-label
 		&-label {
@@ -18,9 +18,9 @@
 				padding: 0 10px;
 			}
 		}
-		// .task-difficulty-modern-radio-button-container-label
-		&-modern-radio-button-container-label {
-			// .task-difficulty-modern-radio-button-container-label__content
+		// .task-difficulty-modern-radio-container-label
+		&-modern-radio-container-label {
+			// .task-difficulty-modern-radio-container-label__content
 			&__content {
 				padding: 0 16px;
 				gap: 0;

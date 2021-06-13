@@ -1,6 +1,7 @@
-.modern-radio-button {
+.modern-radio {
 	padding: 0;
 	color: var(--text-color-non-active);
+	// .modern-radio--checked
 	&--checked {
 		background: var(--background-color-active);
 		color: var(--text-color-active);
@@ -8,24 +9,25 @@
 	&--little {
 		width: min-content;
 	}
-	// .modern-radio-button--focus
-	&--focus {
-		box-shadow:  0px 6px 19px -4px var(--text-color-active) inset;
+	// .modern-radio--focus, .modern-radio--checked
+	&--focus,
+	&--checked {
+		box-shadow: 0px 6px 19px -4px var(--text-color-active) inset;
 	}
 	&__input {
 		position: absolute;
 		width: 0;
 		height: 0;
 	}
-	// .modern-radio-button__label
+	// .modern-radio__label
 	&__label {
 		padding: 0 12px;
 		cursor: pointer;
 	}
-	// .modern-radio-button-label
+	// .modern-radio-label
 	&-label {
 		border-radius: inherit;
-		// .modern-radio-button-label__content
+		// .modern-radio-label__content
 		&__content {
 			padding: 0 26px;
 			display: grid;

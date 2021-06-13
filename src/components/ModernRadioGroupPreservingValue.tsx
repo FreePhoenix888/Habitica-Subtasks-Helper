@@ -1,5 +1,5 @@
 import React, { ChangeEvent, createContext, useState } from 'react';
-import { ModernRadioButtonGroup } from './ModernRadioButtonGroup';
+import { ModernRadioGroup } from './ModernRadioGroup';
 import { useLocalStorage } from '../helpers/useLocalStorage';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function ModernRadioButtonGroupPreservingValue(
+export function ModernRadioGroupPreservingValue(
 	props: Props
 ): JSX.Element {
 	const { children, className = '', name } = props;
@@ -32,12 +32,12 @@ export function ModernRadioButtonGroupPreservingValue(
 	}
 
 	return (
-		<ModernRadioButtonGroup
+		<ModernRadioGroup
 			{...props}
 			defaultCheckedValue={localStorageCheckedRadio}
 			onChangeHandler={handleChange}
 		>
 			{children}
-		</ModernRadioButtonGroup>
+		</ModernRadioGroup>
 	);
 }

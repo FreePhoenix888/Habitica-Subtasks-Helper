@@ -27,7 +27,7 @@ interface Props {
 }
 
 export const NameContext = createContext<string>('');
-export function ModernRadioButtonGroup(props: Props): JSX.Element {
+export function ModernRadioGroup(props: Props): JSX.Element {
 	const { name, children, className = '', defaultCheckedValue = '' } = props;
 	const [checkedRadioValue, setCheckedRadioValue] =
 		useState<string>(defaultCheckedValue);
@@ -51,7 +51,7 @@ export function ModernRadioButtonGroup(props: Props): JSX.Element {
 	};
 
 	return (
-		<div className={`modern-radio-button-group ${className}`}>
+		<div className={`modern-radio-group ${className}`}>
 			<NameContext.Provider value={name}>
 				<CheckedRadioContext.Provider value={CheckedInputContextValue}>
 					{children}
