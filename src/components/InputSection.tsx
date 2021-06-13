@@ -34,17 +34,13 @@ export function InputSection(props: Props): JSX.Element {
 		useContext(FormContext);
 
 	const [isActive, setIsActive] = useState(false);
+
 	useEffect(() => {
-		const activeInputSectionsLength = activeInputSections.length;
-		if (activeInputSectionsLength === 0) setIsActive(true);
-		for (let i = 0; i < activeInputSectionsLength; i++) {
-			const element = activeInputSections[i];
-			if (element.target === inputSectionRef.current) {
-				setIsActive(true);
-			} else {
-				setIsActive(false);
-			}
-		}
+		setIsActive(
+			activeInputSections.filter(
+				(inputSection) => inputSection.target === inputSectionRef.current
+			).length !== 0
+		);
 	}, [activeInputSections]);
 
 	useImperativeHandle(forwardedRef, () => ({
