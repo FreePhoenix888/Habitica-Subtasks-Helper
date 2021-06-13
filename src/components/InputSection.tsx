@@ -39,7 +39,7 @@ export function InputSection(props: Props): JSX.Element {
 		setIsActive(
 			activeInputSections.filter(
 				(inputSection) => inputSection.target === inputSectionRef.current
-			).length !== 0
+			).length !== 0 || activeInputSections.length === 0
 		);
 	}, [activeInputSections]);
 
