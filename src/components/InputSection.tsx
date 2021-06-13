@@ -33,66 +33,59 @@ export function InputSection(props: Props): JSX.Element {
 	const { activeInputSections, changeActiveInputSections } =
 		useContext(FormContext);
 
-	const [isActive, setIsActive] = useState(false);
-
-	useEffect(() => {
-		setIsActive(
-			activeInputSections.filter(
-				(inputSection) => inputSection.target === inputSectionRef.current
-			).length !== 0 || activeInputSections.length === 0
-		);
-	}, [activeInputSections]);
-
-	useImperativeHandle(forwardedRef, () => ({
-		reset() {
-			changeActiveInputSections({ type: 'reset' });
-		},
-	}));
+	const [isHovered, setIsHovered] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
 
 	function handleMouseEnter(event: MouseEvent<EventTarget>) {
 		const { currentTarget } = event;
 
+		setIsHovered(true);
 		if (changeActiveInputSections) {
-			changeActiveInputSections({
-				eventType: 'Mouse',
-				target: currentTarget,
-				type: '+',
+			changeActiveInputSections((prevState) => {
+				const newState = new Set(prevState);
+				newState.add(currentTarget as HTMLDivElement);
+				return newState;
 			});
 		}
 	}
 
 	function handleMouseLeave(event: MouseEvent<HTMLElement>) {
-		const { currentTarget } = event;
+		const currentTarget = event.currentTarget as HTMLDivElement;
 
-		if (changeActiveInputSections) {
-			changeActiveInputSections({
-				eventType: 'Mouse',
-				target: currentTarget,
-				type: '-',
+		setIsHovered(false);
+		if (changeActiveInputSections && !isFocused) {
+			changeActiveInputSections((prevState) => {
+				const newState = new Set(prevState);
+				newState.delete(currentTarget);
+				return newState;
 			});
 		}
 	}
 
 	function handleFocusCapture(event: FocusEvent<HTMLElement>) {
-		const { currentTarget } = event;
+		const currentTarget = event.currentTarget as HTMLDivElement;
+
+		setIsFocused(true);
 
 		if (changeActiveInputSections) {
-			changeActiveInputSections({
-				eventType: 'Focus',
-				target: currentTarget,
-				type: '+',
+			changeActiveInputSections((prevState) => {
+				const newState = new Set(prevState);
+				newState.add(currentTarget);
+				return newState;
 			});
 		}
 	}
 
 	function handleBlurCapture(event: FocusEvent<HTMLElement>) {
-		const { currentTarget } = event;
+		const currentTarget = event.currentTarget as HTMLDivElement;
 
-		if (changeActiveInputSections) {
-			changeActiveInputSections({
-				eventType: 'Focus',
-				target: currentTarget,
-				type: '-',
+		setIsFocused(false);
+
+		if (changeActiveInputSections && !isHovered) {
+			changeActiveInputSections((prevState) => {
+				const newState = new Set(prevState);
+				newState.delete(currentTarget);
+				return newState;
 			});
 		}
 	}
@@ -101,8 +94,11 @@ export function InputSection(props: Props): JSX.Element {
 		<div
 			ref={inputSectionRef}
 			className={setClassName('input-section', className, {
-				active: isActive,
-				'non-active': !isActive,
+				active:
+					activeInputSections.size === 0 ||
+					((isHovered || isFocused) && activeInputSections.size !== 0),
+				'non-active':
+					activeInputSections.size !== 0 && !(isHovered || isFocused),
 			})}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
