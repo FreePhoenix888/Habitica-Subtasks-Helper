@@ -31,8 +31,9 @@ let divButtonRef: RefObject<HTMLDivElement>;
 export function Modal(props: Props): React.ReactPortal | null {
 	const { children, className = '', isOpen, setIsOpen } = props;
 
-	// Ref to the div-button to focus it
 	divButtonRef = useRef<HTMLDivElement>(null);
+
+	const relatedTarget = useRef<HTMLElement>();
 
 	useEffect(() => {
 		if (isOpen) {
@@ -47,6 +48,7 @@ export function Modal(props: Props): React.ReactPortal | null {
 		return () => {
 			Modal.unlockBody();
 			Modal.removeBlurRoot();
+			relatedTarget?.current?.focus();
 		};
 	}, [isOpen]);
 
@@ -72,12 +74,13 @@ export function Modal(props: Props): React.ReactPortal | null {
 			event.ctrlKey ||
 			event.shiftKey ||
 			event.altKey ||
-			event.key === 'ArrowUp' ||
-			event.key === 'ArrowRight' ||
-			event.key === 'ArrowDown' ||
-			event.key === 'ArrowLeft';
+			event.code === 'ArrowUp' ||
+			event.code === 'ArrowRight' ||
+			event.code === 'ArrowDown' ||
+			event.code === 'ArrowLeft';
 
 		if (!allowedKeys) {
+			if (event.code === 'Space') event.preventDefault();
 			setIsOpen(false);
 		}
 
@@ -97,6 +100,9 @@ export function Modal(props: Props): React.ReactPortal | null {
 					tabIndex={-1}
 					onClick={handleClick}
 					onKeyDown={handleKeyDown}
+					onFocus={(event) => {
+						relatedTarget.current = event.relatedTarget as HTMLElement;
+					}}
 				>
 					<div
 						aria-describedby="modal__content"
