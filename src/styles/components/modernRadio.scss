@@ -1,6 +1,7 @@
 .modern-radio {
 	padding: 0;
 	color: var(--text-color-non-active);
+	white-space: nowrap;
 	// .modern-radio--checked
 	&--checked {
 		background: var(--background-color-active);
