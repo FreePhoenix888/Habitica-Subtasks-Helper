@@ -118,7 +118,7 @@ function App(): JSX.Element {
 						/>
 					</InputSection>
 
-					<InputSection className=" task-notes">
+					<InputSection className="task-notes">
 						<Label className="task-notes__label" htmlFor="taskNotes">
 							Notes
 						</Label>
@@ -170,7 +170,7 @@ function App(): JSX.Element {
 							})()}
 						</ModernRadioGroupPreservingValue>
 					</InputSection>
-					<InputSection>
+					<InputSection className="task-type">
 						<Label htmlFor="todo">Type</Label>
 						<ModernRadioGroupPreservingValue
 							name="type"
@@ -203,7 +203,9 @@ function App(): JSX.Element {
 						/>
 					</InputSection>
 					<InputSection className="task-submit">
-						<ButtonSubmit>Create</ButtonSubmit>
+						<ButtonSubmit className="task-submit__button-submit">
+							Create
+						</ButtonSubmit>
 					</InputSection>
 				</TaskForm>
 			</div>
