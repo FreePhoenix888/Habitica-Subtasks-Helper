@@ -35,16 +35,19 @@ export function InputSection(props: Props): JSX.Element {
 
 	const [isActive, setIsActive] = useState(false);
 	useEffect(() => {
-		const prev = activeInputSections;
-		activeInputSections.filter(
-			(inputSection) => inputSection.target === inputSectionRef.current
-		);
-		console.log(prev === activeInputSections);
+		const activeInputSectionsLength = activeInputSections.length;
+		if (activeInputSectionsLength === 0) setIsActive(true);
+		for (let i = 0; i < activeInputSectionsLength; i++) {
+			const element = activeInputSections[i];
+			if (element.target === inputSectionRef.current) {
+				setIsActive(true);
+			} else {
+				setIsActive(false);
+			}
+		}
 
-		setIsActive(activeInputSections.length > 0);
-
-		console.log('New value in useEffect:', isActive);
-	}, []);
+		console.log(activeInputSections);
+	}, [activeInputSections]);
 
 	useImperativeHandle(forwardedRef, () => ({
 		reset() {
