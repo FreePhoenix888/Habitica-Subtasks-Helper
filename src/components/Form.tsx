@@ -19,6 +19,7 @@ interface Props {
 	forwardedRef?: RefObject<HTMLFormElement>;
 	isBlurOn?: boolean;
 	onChangeCapture?: (event: FormEvent<HTMLFormElement>) => void;
+	onSubmitHandler?: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 interface StateType {
@@ -44,6 +45,7 @@ export function Form(props: Props): JSX.Element {
 		className = '',
 		isBlurOn = false,
 		onChangeCapture,
+		onSubmitHandler,
 		forwardedRef,
 	} = props;
 
@@ -80,6 +82,7 @@ export function Form(props: Props): JSX.Element {
 			className={`form ${className}`}
 			ref={forwardedRef}
 			onChangeCapture={onChangeCapture}
+			onSubmit={onSubmitHandler}
 		>
 			<FormContext.Provider value={FormContextValue}>
 				{children}
