@@ -16,7 +16,13 @@ interface Props {
 }
 
 export function ButtonSubmit(props: Props): JSX.Element {
-	const { className = '', children, forwardedRef = null } = props;
+	const {
+		className = '',
+		children,
+		forwardedRef = null,
+		onClickHandler,
+		onKeyDownHandler,
+	} = props;
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -32,27 +38,13 @@ export function ButtonSubmit(props: Props): JSX.Element {
 		})
 	);
 
-	function handleClick(event: MouseEvent<HTMLButtonElement>) {
-		const { onClickHandler } = props;
-		if (onClickHandler) {
-			onClickHandler(event);
-		}
-	}
-
-	function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
-		const { onKeyDownHandler } = props;
-		if (onKeyDownHandler) {
-			onKeyDownHandler(event);
-		}
-	}
-
 	return (
 		<button
 			className={`button ${className}`}
 			ref={buttonRef}
 			type="submit"
-			onClick={handleClick}
-			onKeyDown={handleKeyDown}
+			onClick={onClickHandler}
+			onKeyDown={onKeyDownHandler}
 		>
 			{children}
 		</button>
