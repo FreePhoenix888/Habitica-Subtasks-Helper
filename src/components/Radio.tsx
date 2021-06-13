@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import '../styles/components/inputGeneral.scss';
 
 interface Props {
 	className?: string;
+	forwardedRef?: RefObject<HTMLInputElement>;
 	hidden?: boolean;
 	id?: string;
 	name: string;
@@ -21,6 +22,7 @@ export function Radio(props: Props): JSX.Element {
 		id = '',
 		tabIndex = 0,
 		hidden = false,
+		forwardedRef,
 	} = props;
 
 	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
@@ -51,6 +53,7 @@ export function Radio(props: Props): JSX.Element {
 				hidden={hidden}
 				id={id}
 				name={name}
+				ref={forwardedRef}
 				tabIndex={tabIndex}
 				type="radio"
 				value={value}
