@@ -32,16 +32,16 @@ export function ModernRadio(props: Props): JSX.Element {
 		id = '',
 		value,
 	} = props;
-	// Checked state
+	// Every radio should know when another is selected
 	const { checkedRadioValue, setCheckedRadioValue } =
 		useContext(CheckedRadioContext);
 
 	const radioRef = createRef<HTMLInputElement>();
-	const isChecked = useRef<boolean>();
+
+	const [isChecked, setIsState] = useState<boolean>();
 
 	useEffect(() => {
-		isChecked.current = checkedRadioValue === value;
-		radioRef.current.checked = isChecked.current;
+		setIsState(radioRef.current.checked);
 	}, [checkedRadioValue]);
 
 	function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -50,22 +50,11 @@ export function ModernRadio(props: Props): JSX.Element {
 		}
 	}
 
-	// Focused state
-	const [isFocused, changeIsFocused] = useState<boolean>(false);
-
-	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
-		changeIsFocused(true);
-	}
-
-	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
-		changeIsFocused(false);
-	}
-
 	// Name
 	const name = useContext(NameContext);
 
 	const classNameModifiers = {
-		checked: isChecked.current,
+		checked: isChecked,
 	};
 	return (
 		<div
@@ -95,9 +84,7 @@ export function ModernRadio(props: Props): JSX.Element {
 				id={id}
 				name={name}
 				value={value}
-				onBlurHandler={handleBlur}
 				onChange={handleChange}
-				onFocusHandler={handleFocus}
 			/>
 		</div>
 	);
