@@ -64,7 +64,7 @@ function App(): JSX.Element {
 						<InputPreservingValue
 							className="task-title__input"
 							id="taskTitle"
-							name="task_title"
+							name="title"
 							placeholder="The Venus Project Conception."
 						/>
 					</InputSection>
@@ -76,7 +76,7 @@ function App(): JSX.Element {
 						<TextareaPreservingValue
 							className="textarea task-subtasks__textarea"
 							id="taskSubtasks"
-							name="task_subtasks"
+							name="subtasks"
 							placeholder={`What is the Venus Project?
 								Aims, Proposals.
 								FAQ.
@@ -100,7 +100,7 @@ function App(): JSX.Element {
 						<InputPreservingValue
 							className="input--little task-separator__input "
 							id="taskSeparator"
-							name="task_separator"
+							name="separator"
 							placeholder="\n"
 							autoSize
 						/>
@@ -113,16 +113,28 @@ function App(): JSX.Element {
 						<InputPreservingValue
 							className="task-tags__input "
 							id="taskTags"
-							name="task_tags"
+							name="tags"
 							placeholder="Self-Development, Psychology"
 						/>
 					</InputSection>
 
+					<InputSection className=" task-notes">
+						<Label className="task-notes__label" htmlFor="taskNotes">
+							Notes
+						</Label>
+						<TextareaPreservingValue
+							className="textarea task-notes__textarea"
+							id="taskNotes"
+							name="notes"
+							placeholder="Read it without any prejudices as any new ideas."
+							wrap="soft"
+						/>
+					</InputSection>
 					<InputSection className="task-difficulty">
 						<Label htmlFor="taskDifficulty1">Difficulty</Label>
 						<ModernRadioButtonGroupPreservingValue
-							name="task_difficulty"
-							groupClassName="task-difficulty__modern-radio-button-group"
+							name="difficulty"
+							className="task-difficulty__modern-radio-button-group"
 						>
 							{(() => {
 								// Difficulty Section Radio Buttons
@@ -158,17 +170,22 @@ function App(): JSX.Element {
 							})()}
 						</ModernRadioButtonGroupPreservingValue>
 					</InputSection>
-					<InputSection className=" task-notes">
-						<Label className="task-notes__label" htmlFor="taskNotes">
-							Notes
-						</Label>
-						<TextareaPreservingValue
-							className="textarea task-notes__textarea"
-							id="taskNotes"
-							name="task_notes"
-							placeholder="Read it without any prejudices as any new ideas."
-							wrap="soft"
-						/>
+					<InputSection>
+						<Label htmlFor="todo">Type</Label>
+						<ModernRadioButtonGroupPreservingValue
+							name="type"
+							className="task-type__modern-radio-group task-type-modery-radio-group"
+						>
+							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
+								To-do
+							</ModernRadioButton>
+							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
+								Daily
+							</ModernRadioButton>
+							<ModernRadioButton value="todo" htmlFor="todo" id="todo">
+								Habit
+							</ModernRadioButton>
+						</ModernRadioButtonGroupPreservingValue>
 					</InputSection>
 					<InputSection className="task-amount">
 						<Label className="task-amount__label" htmlFor="taskSeparator">
@@ -177,12 +194,12 @@ function App(): JSX.Element {
 						<InputPreservingValue
 							className="input--little task-amount__input "
 							id="taskAmount"
-							name="task_amount"
+							name="amount"
 							placeholder="\n"
 							autoSize
 						/>
 					</InputSection>
-					<InputSection className="task-amount">
+					<InputSection className="task-submit">
 						<ButtonSubmit>Create</ButtonSubmit>
 					</InputSection>
 				</TaskForm>
