@@ -8,6 +8,8 @@ import React, {
 	RefObject,
 	MutableRefObject,
 	Ref,
+	useEffect,
+	useRef,
 } from 'react';
 import { FormContext } from './Form';
 import { setClassName } from '../helpers/setClassName';
@@ -30,15 +32,19 @@ export function InputSection(props: Props): JSX.Element {
 
 	const { activeInputSections, changeActiveInputSections } =
 		useContext(FormContext);
-	let isActive = false;
-	for (let i = 0, n = activeInputSections.length; i < n; i++) {
-		const element = activeInputSections[i];
 
-		if (element.target === inputSectionRef.current) {
-			isActive = true;
-		}
-	}
-	const isAnyActive = activeInputSections.length !== 0;
+	const [isActive, setIsActive] = useState(false);
+	useEffect(() => {
+		const prev = activeInputSections;
+		activeInputSections.filter(
+			(inputSection) => inputSection.target === inputSectionRef.current
+		);
+		console.log(prev === activeInputSections);
+
+		setIsActive(activeInputSections.length > 0);
+
+		console.log('New value in useEffect:', isActive);
+	}, []);
 
 	useImperativeHandle(forwardedRef, () => ({
 		reset() {
@@ -97,7 +103,13 @@ export function InputSection(props: Props): JSX.Element {
 	return (
 		<div
 			ref={inputSectionRef}
-			className="input-section"
+			className={(() => {
+				console.log('From className:', isActive);
+				return setClassName('input-section', className, {
+					active: isActive,
+					'non-active': !isActive,
+				});
+			})()}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onBlurCapture={handleBlurCapture}
