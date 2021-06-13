@@ -37,7 +37,17 @@
 	}
 
 	// .task-amount
-	&-amount{
-		padding-top: 1em;
+	&-amount {
+	}
+
+	// .task-submit
+	&-submit {
+		padding-top: 1.5em;
+		// .task-submit__button-submit
+		&__button-submit{
+			width: 50%;
+			font-size: 2em;
+			background-color: var(--background-color-active);
+		}
 	}
 }
