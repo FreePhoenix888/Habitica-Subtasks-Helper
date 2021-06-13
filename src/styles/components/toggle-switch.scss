@@ -6,14 +6,15 @@
 	width: 6em;
 	cursor: pointer;
 	place-content: center start;
-	background: var(--background-color-secondary);
+	background-color: var(--background-color-secondary);
 	box-shadow: var(--box-shadow-primary);
 	// .toggle-switch--checked
 	&--checked {
-		background: var(--background-color-active);
+		background-color: var(--background-color-active);
 	}
-	// .toggle-switch:focus-within
-	&:focus-within{
+	// .toggle-switch:focus-within, .toggle-switch:active
+	&:focus-within,
+	&:active {
 		box-shadow: var(--box-shadow-active);
 	}
 }
