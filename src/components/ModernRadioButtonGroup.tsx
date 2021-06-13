@@ -20,8 +20,8 @@ export const CheckedRadioContext = createContext<CheckedRadioContextType>({
 
 interface Props {
 	children: JSX.Element | JSX.Element[];
-	defaultCheckedValue?: string;
 	className?: string;
+	defaultCheckedValue?: string;
 	name: string;
 	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
