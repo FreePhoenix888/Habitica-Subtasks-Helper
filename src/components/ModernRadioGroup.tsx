@@ -8,7 +8,7 @@ interface CheckedRadioContextType {
 		| undefined;
 }
 
-export const CheckedRadioContext = createContext<CheckedRadioContextType>({
+export const CheckedRadioValueContext = createContext<CheckedRadioContextType>({
 	checkedRadioValue: '',
 	setCheckedRadioValue: undefined,
 });
@@ -48,9 +48,9 @@ export function ModernRadioGroup(props: Props): JSX.Element {
 	return (
 		<div className={`modern-radio-group ${className}`}>
 			<NameContext.Provider value={name}>
-				<CheckedRadioContext.Provider value={CheckedInputContextValue}>
+				<CheckedRadioValueContext.Provider value={CheckedInputContextValue}>
 					{children}
-				</CheckedRadioContext.Provider>
+				</CheckedRadioValueContext.Provider>
 			</NameContext.Provider>
 		</div>
 	);
