@@ -1,12 +1,12 @@
 import React, {
 	ChangeEvent,
 	createRef,
+	Dispatch,
 	useContext,
 	useEffect,
 	useRef,
 	useState,
 } from 'react';
-import { CheckedRadioContext, NameContext } from './ModernRadioGroup';
 import { Label } from './Label';
 import { Radio } from './Radio';
 import { setClassName } from '../helpers';
@@ -17,8 +17,11 @@ interface Props {
 	htmlFor: string;
 	id?: string;
 	inputClassName?: string;
+	isChecked: boolean;
 	labelClassName?: string;
+	name: string;
 	radioButtonClassName?: string;
+	setCheckedRadioValue: Dispatch<ChangeEvent<HTMLInputElement>>;
 	value: string;
 }
 
@@ -31,27 +34,18 @@ export function ModernRadio(props: Props): JSX.Element {
 		htmlFor,
 		id = '',
 		value,
+		isChecked,
+		setCheckedRadioValue,
+		name = '',
 	} = props;
-	// Every radio should know when another is selected
-	const { checkedRadioValue, setCheckedRadioValue } =
-		useContext(CheckedRadioContext);
 
 	const radioRef = createRef<HTMLInputElement>();
-
-	const [isChecked, setIsState] = useState<boolean>();
-
-	useEffect(() => {
-		setIsState(radioRef.current.checked);
-	}, [checkedRadioValue]);
 
 	function handleChange(event: ChangeEvent<HTMLInputElement>) {
 		if (setCheckedRadioValue) {
 			setCheckedRadioValue(event);
 		}
 	}
-
-	// Name
-	const name = useContext(NameContext);
 
 	const classNameModifiers = {
 		checked: isChecked,
@@ -75,12 +69,12 @@ export function ModernRadio(props: Props): JSX.Element {
 				{children}
 			</Label>
 			<Radio
-				forwardedRef={radioRef}
 				className={setClassName(
 					'modern-radio__input',
 					inputClassName,
 					classNameModifiers
 				)}
+				forwardedRef={radioRef}
 				id={id}
 				name={name}
 				value={value}
