@@ -1,4 +1,12 @@
-import React, { ChangeEvent, createRef, useRef, useState } from 'react';
+import React, {
+	ChangeEvent,
+	createRef,
+	useCallback,
+	useContext,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import {
 	ButtonSubmit,
 	Span,
@@ -12,6 +20,8 @@ import {
 	TextareaPreservingValue,
 	ModernRadio,
 	ModernRadioGroupPreservingValue,
+	ModernRadioGroupNameContext,
+	CheckedRadioValueContext,
 	ModalButtonInfo,
 	Modal,
 	Header,
@@ -25,6 +35,103 @@ import {
 import { useLocalStorage } from './helpers';
 import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
+
+function useRadioGroupNameContext() {
+	return useContext(ModernRadioGroupNameContext);
+}
+
+function useCheckedRadioValueContext() {
+	return useContext(CheckedRadioValueContext);
+}
+
+function TaskDifficultyRadios() {
+	const modernRadioButtons: JSX.Element[] = [];
+
+	const { checkedRadioValue, setCheckedRadioValue } = useContext(
+		CheckedRadioValueContext
+	);
+
+	const name = useRadioGroupNameContext();
+
+	const addContent = useCallback(() => {
+		for (let i = 0; i < 4; i++) {
+			const stars: JSX.Element[] = [];
+			for (let j = 1; j < i + 2; j++) {
+				stars.push(
+					<StarSVG
+						className="svg star-SVG modern-radio__svg modern-radio__star-svg"
+						key={`${i}:${j}`}
+					/>
+				);
+			}
+
+			modernRadioButtons.push(
+				<ModernRadio
+					name={name}
+					isChecked={Number(checkedRadioValue) === i + 1}
+					setCheckedRadioValue={setCheckedRadioValue}
+					htmlFor={`taskDifficulty${i + 1}`}
+					id={`taskDifficulty${i + 1}`}
+					inputClassName="task-difficulty-modern-radio__input"
+					key={i}
+					labelClassName="task-difficulty-modern-radio__label"
+					radioButtonClassName="radio-container--little task-difficulty__modern-radio-container"
+					value={`${i + 1}`}
+				>
+					{stars}
+				</ModernRadio>
+			);
+		}
+	}, [checkedRadioValue]);
+	addContent();
+
+	return <>{modernRadioButtons}</>;
+}
+
+function TaskTypeRadios() {
+	const { checkedRadioValue, setCheckedRadioValue } = useContext(
+		CheckedRadioValueContext
+	);
+
+	const name = useRadioGroupNameContext();
+	return (
+		<>
+			<ModernRadio
+				name={name}
+				setCheckedRadioValue={setCheckedRadioValue}
+				isChecked={checkedRadioValue === 'todo'}
+				value="todo"
+				htmlFor="todo"
+				id="todo"
+			>
+				<IconCheckMark />
+				<Span>To-do</Span>
+			</ModernRadio>
+			<ModernRadio
+				name={name}
+				setCheckedRadioValue={setCheckedRadioValue}
+				isChecked={checkedRadioValue === 'daily'}
+				value="daily"
+				htmlFor="daily"
+				id="daily"
+			>
+				<IconCheckMark />
+				<Span>Daily</Span>
+			</ModernRadio>
+			<ModernRadio
+				name={name}
+				setCheckedRadioValue={setCheckedRadioValue}
+				isChecked={checkedRadioValue === 'habit'}
+				value="habit"
+				htmlFor="habit"
+				id="habit"
+			>
+				<IconCheckMark />
+				<Span>Habit</Span>
+			</ModernRadio>
+		</>
+	);
+}
 
 function App(): JSX.Element {
 	const [localStorageToggleSwitchChecked, setlLocalStorageToggleSwitchChecked] =
@@ -136,38 +243,7 @@ function App(): JSX.Element {
 							name="difficulty"
 							className="task-difficulty__modern-radio-group"
 						>
-							{(() => {
-								// Difficulty Section Radio Buttons
-								const modernRadioButtons: JSX.Element[] = [];
-
-								for (let i = 0; i < 4; i++) {
-									const stars: JSX.Element[] = [];
-									for (let j = 1; j < i + 2; j++) {
-										stars.push(
-											<StarSVG
-												className="svg star-SVG modern-radio__svg modern-radio__star-svg"
-												key={`${i}:${j}`}
-											/>
-										);
-									}
-
-									modernRadioButtons.push(
-										<ModernRadio
-											htmlFor={`taskDifficulty${i + 1}`}
-											id={`taskDifficulty${i + 1}`}
-											inputClassName="task-difficulty-modern-radio__input"
-											key={i}
-											labelClassName="task-difficulty-modern-radio__label"
-											radioButtonClassName="radio-container--little task-difficulty__modern-radio-container"
-											value={`${i + 1}`}
-										>
-											{stars}
-										</ModernRadio>
-									);
-								}
-
-								return modernRadioButtons;
-							})()}
+							<TaskDifficultyRadios />
 						</ModernRadioGroupPreservingValue>
 					</InputSection>
 					<InputSection className="task-type">
@@ -176,18 +252,7 @@ function App(): JSX.Element {
 							name="type"
 							className="task-type__modern-radio-group task-type-modery-radio-group"
 						>
-							<ModernRadio value="todo" htmlFor="todo" id="todo">
-								<IconCheckMark />
-								<Span>To-do</Span>
-							</ModernRadio>
-							<ModernRadio value="daily" htmlFor="daily" id="daily">
-								<IconCheckMark />
-								<Span>Daily</Span>
-							</ModernRadio>
-							<ModernRadio value="habit" htmlFor="habit" id="habit">
-								<IconCheckMark />
-								<Span>Habit</Span>
-							</ModernRadio>
+							<TaskTypeRadios />
 						</ModernRadioGroupPreservingValue>
 					</InputSection>
 					<InputSection className="task-amount">
