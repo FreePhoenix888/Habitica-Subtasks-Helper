@@ -50,6 +50,7 @@ export function ModernRadio(props: Props): JSX.Element {
 	const classNameModifiers = {
 		checked: isChecked,
 	};
+
 	return (
 		<div
 			className={setClassName(
@@ -69,16 +70,12 @@ export function ModernRadio(props: Props): JSX.Element {
 				{children}
 			</Label>
 			<Radio
+				{...props}
 				className={setClassName(
 					'modern-radio__input',
 					inputClassName,
 					classNameModifiers
 				)}
-				forwardedRef={radioRef}
-				id={id}
-				name={name}
-				value={value}
-				onChange={handleChange}
 			/>
 		</div>
 	);
