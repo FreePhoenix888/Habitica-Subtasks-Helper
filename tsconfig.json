@@ -1,40 +1,29 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "sourceRoot": "/src",
-    "outDir": "build",
-    "rootDir": ".",
-    "noImplicitAny": false,
-    "removeComments": true,
-    "jsx": "react-jsx",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "target": "es2015",
-    "lib": [
-      "dom",
-      "es6",
-      "es7"
-    ],
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "noFallthroughCasesInSwitch": true,
-    "noEmit": true
-  },
-  "exclude": [
-    "./node_modules",
-    "./.next",
-    "./.meteor",
-    "./build"
-  ],
-  "include": [
-    "./"
-  ]
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"sourceMap": true,
+		"inlineSources": true,
+		"sourceRoot": "/src",
+		"outDir": "build",
+		"rootDir": ".",
+		"noImplicitAny": false,
+		"removeComments": true,
+		"jsx": "react-jsx",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"target": "es6",
+		"lib": ["dom", "dom.iterable", "es6", "es7"],
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": false,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"noFallthroughCasesInSwitch": true,
+		"noEmit": true
+	},
+	"exclude": ["./node_modules", "./.next", "./.meteor", "./build"],
+	"include": ["./"]
 }
