@@ -13,7 +13,11 @@ export { Button } from './components/Button';
 export { ButtonSubmit } from './components/ButtonSubmit';
 export { Radio } from './components/Radio';
 export { ModernRadio } from './components/ModernRadio';
-export { ModernRadioGroup as ModernRadioButtonGroup } from './components/ModernRadioGroup';
+export {
+	ModernRadioGroup,
+	NameContext as ModernRadioGroupNameContext,
+	CheckedRadioValueContext,
+} from './components/ModernRadioGroup';
 export { ModernRadioGroupPreservingValue } from './components/ModernRadioGroupPreservingValue';
 export { ButtonInfo } from './components/ButtonInfo';
 export { ModalButtonInfo } from './components/ModalButtonInfo';
