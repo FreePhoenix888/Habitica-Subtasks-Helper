@@ -1,11 +1,11 @@
-import React, { RefObject } from 'react';
+import React, { createRef, useEffect } from 'react';
 import '../styles/components/inputGeneral.scss';
 
 interface Props {
 	className?: string;
-	forwardedRef?: RefObject<HTMLInputElement>;
 	hidden?: boolean;
 	id?: string;
+	isChecked: boolean;
 	name: string;
 	onBlurHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
@@ -22,8 +22,14 @@ export function Radio(props: Props): JSX.Element {
 		id = '',
 		tabIndex = 0,
 		hidden = false,
-		forwardedRef,
+		isChecked,
 	} = props;
+
+	const radioRef = createRef<HTMLInputElement>();
+
+	useEffect(() => {
+		radioRef.current.checked = true;
+	}, [isChecked]);
 
 	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
 		const { onFocusHandler } = props;
@@ -53,7 +59,7 @@ export function Radio(props: Props): JSX.Element {
 				hidden={hidden}
 				id={id}
 				name={name}
-				ref={forwardedRef}
+				ref={radioRef}
 				tabIndex={tabIndex}
 				type="radio"
 				value={value}
