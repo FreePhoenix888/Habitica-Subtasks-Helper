@@ -1,12 +1,4 @@
-import React, {
-	ChangeEvent,
-	createRef,
-	Dispatch,
-	useContext,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import React, { ChangeEvent, createRef, Dispatch } from 'react';
 import { Label } from './Label';
 import { Radio } from './Radio';
 import { setClassName } from '../helpers';
@@ -32,11 +24,8 @@ export function ModernRadio(props: Props): JSX.Element {
 		labelClassName = '',
 		inputClassName = '',
 		htmlFor,
-		id = '',
-		value,
 		isChecked,
 		setCheckedRadioValue,
-		name = '',
 	} = props;
 
 	const radioRef = createRef<HTMLInputElement>();
@@ -71,6 +60,7 @@ export function ModernRadio(props: Props): JSX.Element {
 			</Label>
 			<Radio
 				{...props}
+				onChangeHandler={handleChange}
 				className={setClassName(
 					'modern-radio__input',
 					inputClassName,
