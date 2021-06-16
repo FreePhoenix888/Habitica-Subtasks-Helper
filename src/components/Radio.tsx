@@ -8,7 +8,7 @@ interface Props {
 	isChecked: boolean;
 	name: string;
 	onBlurHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
-	onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
+	onChangeHandler?: (value: React.ChangeEvent<HTMLInputElement>) => void;
 	onFocusHandler?: (value: React.FocusEvent<HTMLInputElement>) => void;
 	tabIndex?: number;
 	value: string;
@@ -23,6 +23,9 @@ export function Radio(props: Props): JSX.Element {
 		tabIndex = 0,
 		hidden = false,
 		isChecked,
+		onChangeHandler,
+		onFocusHandler,
+		onBlurHandler,
 	} = props;
 
 	const radioRef = createRef<HTMLInputElement>();
@@ -30,28 +33,6 @@ export function Radio(props: Props): JSX.Element {
 	useEffect(() => {
 		radioRef.current.checked = true;
 	}, [isChecked]);
-
-	function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
-		const { onFocusHandler } = props;
-
-		if (onFocusHandler) {
-			onFocusHandler(event);
-		}
-	}
-
-	function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-		const { onChange } = props;
-		if (onChange) {
-			onChange(event);
-		}
-	}
-
-	function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
-		const { onBlurHandler } = props;
-		if (onBlurHandler) {
-			onBlurHandler(event);
-		}
-	}
 	return (
 		<>
 			<input
@@ -63,9 +44,9 @@ export function Radio(props: Props): JSX.Element {
 				tabIndex={tabIndex}
 				type="radio"
 				value={value}
-				onBlur={handleBlur}
-				onChange={handleChange}
-				onFocus={handleFocus}
+				onBlur={onBlurHandler}
+				onChange={onChangeHandler}
+				onFocus={onFocusHandler}
 			/>
 		</>
 	);
