@@ -33,8 +33,8 @@ export function TextareaPreservingValue(props: Props): JSX.Element {
 		<>
 			<Textarea
 				{...props}
-				onChangeHandler={handleChange}
 				defaultValue={localStorageValue}
+				onChangeHandler={handleChange}
 			/>
 		</>
 	);
