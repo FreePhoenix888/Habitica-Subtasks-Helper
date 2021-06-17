@@ -1,72 +1,34 @@
-import React, { ChangeEvent, createRef, Dispatch } from 'react';
+import React from 'react';
 import { Label } from './Label';
 import { Radio } from './Radio';
-import { setClassName } from '../helpers';
-import '../styles/components/modernRadio.scss';
 
 interface Props {
-	children: JSX.Element | JSX.Element[] | string;
-	htmlFor: string;
-	id?: string;
+	children?: JSX.Element;
+	containerClassName?: string;
+	defaultChecked?: boolean;
+	id: string;
 	inputClassName?: string;
-	isChecked: boolean;
+	isChecked?: boolean;
 	labelClassName?: string;
 	name: string;
-	radioButtonClassName?: string;
-	setCheckedRadioValue: Dispatch<ChangeEvent<HTMLInputElement>>;
 	value: string;
 }
 
-export function ModernRadio(props: Props): JSX.Element {
+export function ModernRadio(props: Props) {
 	const {
+		id,
+		containerClassName,
+		labelClassName,
+		inputClassName,
 		children,
-		radioButtonClassName = '',
-		labelClassName = '',
-		inputClassName = '',
-		htmlFor,
-		isChecked,
-		setCheckedRadioValue,
+		...rest
 	} = props;
-
-	const radioRef = createRef<HTMLInputElement>();
-
-	function handleChange(event: ChangeEvent<HTMLInputElement>) {
-		if (setCheckedRadioValue) {
-			setCheckedRadioValue(event);
-		}
-	}
-
-	const classNameModifiers = {
-		checked: isChecked,
-	};
-
 	return (
-		<div
-			className={setClassName(
-				'modern-radio',
-				radioButtonClassName,
-				classNameModifiers
-			)}
-		>
-			<Label
-				className={setClassName(
-					'modern-radio__label',
-					labelClassName,
-					classNameModifiers
-				)}
-				htmlFor={htmlFor}
-			>
+		<div className={`modern-radio ${containerClassName}`}>
+			<Label className={`modern-radio__label ${labelClassName}`} htmlFor={id}>
 				{children}
+				<Radio className={`modern-radio__input ${inputClassName}`} {...rest} />
 			</Label>
-			<Radio
-				{...props}
-				onChangeHandler={handleChange}
-				className={setClassName(
-					'modern-radio__input',
-					inputClassName,
-					classNameModifiers
-				)}
-			/>
 		</div>
 	);
 }

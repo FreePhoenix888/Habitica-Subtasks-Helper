@@ -1,57 +1,47 @@
-import React, { ChangeEvent, createContext, useState } from 'react';
-import '../styles/components/modernRadioGroup.scss';
+import React, {
+	ChangeEvent,
+	ChangeEventHandler,
+	createContext,
+	FormEventHandler,
+	useState,
+} from 'react';
 
-interface CheckedRadioContextType {
-	checkedRadioValue: string;
-	setCheckedRadioValue:
-		| ((event: ChangeEvent<HTMLInputElement>) => void)
-		| undefined;
-}
-
-export const CheckedRadioValueContext = createContext<CheckedRadioContextType>({
-	checkedRadioValue: '',
-	setCheckedRadioValue: undefined,
-});
+const CheckedValueContext = createContext('');
+const NameContext = createContext<string>('');
 
 interface Props {
-	children: JSX.Element | JSX.Element[];
+	children: JSX.Element;
 	className?: string;
 	defaultCheckedValue?: string;
 	name: string;
-	onChangeHandler?: (event: ChangeEvent<HTMLInputElement>) => void;
+	onChangeHandler: FormEventHandler<HTMLDivElement>;
 }
 
-export const NameContext = createContext<string>('');
 export function ModernRadioGroup(props: Props): JSX.Element {
-	const { name, children, className = '', defaultCheckedValue = '' } = props;
-	const [checkedRadioValue, setCheckedRadioValue] =
-		useState<string>(defaultCheckedValue);
+	const { className, name, children, defaultCheckedValue = '' } = props;
 
-	function handleChange(event: ChangeEvent<HTMLInputElement>) {
-		const { target } = event;
-		const { value } = target;
-		// Default behavior
-		setCheckedRadioValue(value);
-
-		// Custom behavior
-		const { onChangeHandler } = props;
-		if (onChangeHandler) {
-			onChangeHandler(event);
-		}
-	}
-
-	const CheckedInputContextValue: CheckedRadioContextType = {
-		checkedRadioValue,
-		setCheckedRadioValue: handleChange,
-	};
-
+	const [checkedValue, setCheckedValue] = useState<string>(defaultCheckedValue);
 	return (
-		<div className={`modern-radio-group ${className}`}>
-			<NameContext.Provider value={name}>
-				<CheckedRadioValueContext.Provider value={CheckedInputContextValue}>
-					{children}
-				</CheckedRadioValueContext.Provider>
-			</NameContext.Provider>
+		<div
+			className={className}
+			onChangeCapture={(event) => {
+				// Default behavior
+				const target = event.target as HTMLInputElement;
+				setCheckedValue(target.value);
+
+				// Custom behavior
+				const { onChangeHandler } = props;
+				if (onChangeHandler) onChangeHandler(event);
+			}}
+		>
+			<CheckedValueContext.Provider value={checkedValue}>
+				{children}
+			</CheckedValueContext.Provider>
 		</div>
 	);
 }
+
+export {
+	CheckedValueContext as CheckedRadioValueContext,
+	NameContext as ModernRadioGroupNameContext,
+};
