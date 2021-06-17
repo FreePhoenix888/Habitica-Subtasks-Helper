@@ -73,6 +73,9 @@ export function Modal(props: Props): React.ReactPortal | null {
 							onClickHandler(event);
 						}
 					}}
+					onFocus={(event) => {
+						relatedTarget.current = event.relatedTarget as HTMLElement;
+					}}
 					onKeyDown={(event) => {
 						// Default behavior
 						const allowedKeys =
@@ -95,9 +98,6 @@ export function Modal(props: Props): React.ReactPortal | null {
 						if (onKeyDownHandler) {
 							onKeyDownHandler(event);
 						}
-					}}
-					onFocus={(event) => {
-						relatedTarget.current = event.relatedTarget as HTMLElement;
 					}}
 				>
 					<div
