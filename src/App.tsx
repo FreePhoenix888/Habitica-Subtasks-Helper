@@ -36,22 +36,12 @@ import { useLocalStorage } from './helpers';
 import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
 import './styles/App.scss';
 
-function useRadioGroupNameContext() {
-	return useContext(ModernRadioGroupNameContext);
-}
-
-function useCheckedRadioValueContext() {
-	return useContext(CheckedRadioValueContext);
-}
-
 function TaskDifficultyRadios() {
 	const modernRadioButtons: JSX.Element[] = [];
 
-	const { checkedRadioValue, setCheckedRadioValue } = useContext(
-		CheckedRadioValueContext
-	);
+	const checkedRadioValue = useContext(CheckedRadioValueContext);
 
-	const name = useRadioGroupNameContext();
+	const name = useContext(ModernRadioGroupNameContext);
 
 	const addContent = useCallback(() => {
 		for (let i = 0; i < 4; i++) {
@@ -67,67 +57,71 @@ function TaskDifficultyRadios() {
 
 			modernRadioButtons.push(
 				<ModernRadio
-					name={name}
-					isChecked={Number(checkedRadioValue) === i + 1}
-					setCheckedRadioValue={setCheckedRadioValue}
-					htmlFor={`taskDifficulty${i + 1}`}
+					containerClassName="radio-container--little task-difficulty__modern-radio-container"
+					// isChecked={Number(checkedRadioValue) === i + 1}
 					id={`taskDifficulty${i + 1}`}
 					inputClassName="task-difficulty-modern-radio__input"
 					key={i}
 					labelClassName="task-difficulty-modern-radio__label"
-					radioButtonClassName="radio-container--little task-difficulty__modern-radio-container"
+					name={name}
 					value={`${i + 1}`}
 				>
-					{stars}
+					<>{stars}</>
 				</ModernRadio>
 			);
 		}
 	}, [checkedRadioValue]);
 	addContent();
 
-	return <>{modernRadioButtons}</>;
+	return (
+		<ModernRadioGroupPreservingValue name="difficulty">
+			<>{modernRadioButtons}</>
+		</ModernRadioGroupPreservingValue>
+	);
 }
 
 function TaskTypeRadios() {
-	const { checkedRadioValue, setCheckedRadioValue } = useContext(
-		CheckedRadioValueContext
-	);
+	const checkedRadioValue = useContext(CheckedRadioValueContext);
 
-	const name = useRadioGroupNameContext();
+	const name = useContext(ModernRadioGroupNameContext);
+
 	return (
 		<>
 			<ModernRadio
-				name={name}
-				setCheckedRadioValue={setCheckedRadioValue}
-				isChecked={checkedRadioValue === 'todo'}
-				value="todo"
-				htmlFor="todo"
 				id="todo"
+				// setCheckedRadioValue={setCheckedRadioValue}
+				isChecked={checkedRadioValue === 'todo'}
+				name={name}
+				value="todo"
 			>
-				<IconCheckMark />
-				<Span>To-do</Span>
+				<>
+					<IconCheckMark />
+					<Span>To-do</Span>
+				</>
 			</ModernRadio>
 			<ModernRadio
-				name={name}
-				setCheckedRadioValue={setCheckedRadioValue}
-				isChecked={checkedRadioValue === 'daily'}
-				value="daily"
-				htmlFor="daily"
 				id="daily"
+				// setCheckedRadioValue={setCheckedRadioValue}
+				isChecked={checkedRadioValue === 'daily'}
+				name={name}
+				value="daily"
 			>
-				<IconCheckMark />
-				<Span>Daily</Span>
+				<>
+					<IconCheckMark />
+					<Span>Daily</Span>
+				</>
 			</ModernRadio>
 			<ModernRadio
-				name={name}
-				setCheckedRadioValue={setCheckedRadioValue}
-				isChecked={checkedRadioValue === 'habit'}
-				value="habit"
-				htmlFor="habit"
 				id="habit"
+				// setCheckedRadioValue={setCheckedRadioValue}
+				isChecked={checkedRadioValue === 'habit'}
+				name={name}
+				value="habit"
 			>
-				<IconCheckMark />
-				<Span>Habit</Span>
+				<>
+					<IconCheckMark />
+					<Span>Habit</Span>
+				</>
 			</ModernRadio>
 		</>
 	);
@@ -146,6 +140,8 @@ function App(): JSX.Element {
 		<>
 			<Header>
 				<ToggleSwitchBlur
+					isChecked={isToggleSwitchBlurChecked}
+					labelClassName="header__toggle-switch header__toggle-switch-blur"
 					name="input_sections_blur"
 					onChangeHandler={(event) => {
 						const { target } = event;
@@ -153,8 +149,6 @@ function App(): JSX.Element {
 						setIsToggleSwitchBlurChecked(checked);
 						setlLocalStorageToggleSwitchChecked(checked);
 					}}
-					isChecked={isToggleSwitchBlurChecked}
-					labelClassName="header__toggle-switch header__toggle-switch-blur"
 				/>
 			</Header>
 			<div className="container">
@@ -240,8 +234,8 @@ function App(): JSX.Element {
 					<InputSection className="task-difficulty">
 						<Label htmlFor="taskDifficulty1">Difficulty</Label>
 						<ModernRadioGroupPreservingValue
-							name="difficulty"
 							className="task-difficulty__modern-radio-group"
+							name="difficulty"
 						>
 							<TaskDifficultyRadios />
 						</ModernRadioGroupPreservingValue>
@@ -249,8 +243,8 @@ function App(): JSX.Element {
 					<InputSection className="task-type">
 						<Label htmlFor="todo">Type</Label>
 						<ModernRadioGroupPreservingValue
-							name="type"
 							className="task-type__modern-radio-group task-type-modery-radio-group"
+							name="type"
 						>
 							<TaskTypeRadios />
 						</ModernRadioGroupPreservingValue>
