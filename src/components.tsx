@@ -15,7 +15,7 @@ export { Radio } from './components/Radio';
 export { ModernRadio } from './components/ModernRadio';
 export {
 	ModernRadioGroup,
-	NameContext as ModernRadioGroupNameContext,
+	ModernRadioGroupNameContext,
 	CheckedRadioValueContext,
 } from './components/ModernRadioGroup';
 export { ModernRadioGroupPreservingValue } from './components/ModernRadioGroupPreservingValue';
