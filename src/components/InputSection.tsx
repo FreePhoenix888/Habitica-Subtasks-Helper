@@ -92,7 +92,6 @@ export function InputSection(props: Props): JSX.Element {
 
 	return (
 		<div
-			ref={inputSectionRef}
 			className={setClassName('input-section', className, {
 				active:
 					activeInputSections.size === 0 ||
@@ -100,10 +99,11 @@ export function InputSection(props: Props): JSX.Element {
 				'non-active':
 					activeInputSections.size !== 0 && !(isHovered || isFocused),
 			})}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
+			ref={inputSectionRef}
 			onBlurCapture={handleBlurCapture}
 			onFocusCapture={handleFocusCapture}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 		>
 			{children}
 		</div>
