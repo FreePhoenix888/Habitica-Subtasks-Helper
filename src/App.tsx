@@ -69,11 +69,7 @@ function TaskDifficultyRadios() {
 		);
 	}
 
-	return (
-		<ModernRadioGroupPreservingValue name="difficulty">
-			<>{modernRadioButtons}</>
-		</ModernRadioGroupPreservingValue>
-	);
+	return <>{modernRadioButtons}</>;
 }
 
 function TaskTypeRadios() {
