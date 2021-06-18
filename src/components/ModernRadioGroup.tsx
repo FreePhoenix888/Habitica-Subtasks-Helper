@@ -5,6 +5,7 @@ import React, {
 	FormEventHandler,
 	useState,
 } from 'react';
+import '../styles/components/modernRadioGroup.scss';
 
 const CheckedValueContext = createContext('');
 const NameContext = createContext<string>('');
@@ -18,12 +19,12 @@ interface Props {
 }
 
 export function ModernRadioGroup(props: Props): JSX.Element {
-	const { className, name, children, defaultCheckedValue = '' } = props;
+	const { className = '', name, children, defaultCheckedValue = '' } = props;
 
 	const [checkedValue, setCheckedValue] = useState<string>(defaultCheckedValue);
 	return (
 		<div
-			className={className}
+			className={`modern-radio-group ${className}`}
 			onChangeCapture={(event) => {
 				// Default behavior
 				const target = event.target as HTMLInputElement;

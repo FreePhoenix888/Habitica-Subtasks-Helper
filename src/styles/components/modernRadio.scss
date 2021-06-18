@@ -1,40 +1,22 @@
 .modern-radio {
-	padding: 0;
+	padding: 0.2em 0.7em;
 	color: var(--text-color-non-active);
-	white-space: nowrap;
-	// .modern-radio--checked
+	display: grid;
+	justify-content: center;
+	width: fit-content;
+	cursor: pointer;
+	// .modern-radio__input
+	&__input {
+		appearance: none;
+		position: absolute;
+	}
+	// .moderm-radio--checked
 	&--checked {
 		background: var(--background-color-active);
-		color: var(--text-color-active);
+		color: var(--text-color-active)
 	}
-	&--little {
-		width: min-content;
-	}
-	// .modern-radio:focus-within, .modern-radio--checked
-	&:focus-within,
-	&--checked {
-		box-shadow: 0px 6px 19px -4px var(--text-color-active) inset;
-	}
-	&__input {
-		position: absolute;
-		width: 0;
-		height: 0;
-	}
-	// .modern-radio__label
-	&__label {
-		padding: 0 12px;
-		cursor: pointer;
-	}
-	// .modern-radio-label
-	&-label {
-		border-radius: inherit;
-		// .modern-radio-label__content
-		&__content {
-			padding: 0 26px;
-			display: grid;
-			place-content: center;
-			cursor: pointer;
-			border-radius: inherit;
-		}
+	// .modern-radio--focus
+	&--focus{
+		box-shadow: var(--box-shadow-active)
 	}
 }
