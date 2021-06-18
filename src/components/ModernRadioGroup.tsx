@@ -35,9 +35,11 @@ export function ModernRadioGroup(props: Props): JSX.Element {
 				if (onChangeHandler) onChangeHandler(event);
 			}}
 		>
-			<CheckedValueContext.Provider value={checkedValue}>
-				{children}
-			</CheckedValueContext.Provider>
+			<NameContext.Provider value={name}>
+				<CheckedValueContext.Provider value={checkedValue}>
+					{children}
+				</CheckedValueContext.Provider>
+			</NameContext.Provider>
 		</div>
 	);
 }
