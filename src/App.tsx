@@ -33,7 +33,7 @@ import {
 	ToggleSwitchBlur,
 } from './components';
 import { useLocalStorage } from './helpers';
-import { ReactComponent as StarSVG } from './media/images/star_icon.svg';
+import { ReactComponent as StarSVG } from './media/images/icons/star.svg';
 import './styles/App.scss';
 
 function TaskDifficultyRadios() {
@@ -57,12 +57,11 @@ function TaskDifficultyRadios() {
 
 			modernRadioButtons.push(
 				<ModernRadio
-					containerClassName="radio-container--little task-difficulty__modern-radio-container"
-					// isChecked={Number(checkedRadioValue) === i + 1}
+					isChecked={Number(checkedRadioValue) === i + 1}
 					id={`taskDifficulty${i + 1}`}
 					inputClassName="task-difficulty-modern-radio__input"
 					key={i}
-					labelClassName="task-difficulty-modern-radio__label"
+					className="task-difficulty-modern-radio task-difficulty__modern-radio"
 					name={name}
 					value={`${i + 1}`}
 				>
