@@ -43,34 +43,31 @@ function TaskDifficultyRadios() {
 
 	const name = useContext(ModernRadioGroupNameContext);
 
-	const addContent = useCallback(() => {
-		for (let i = 0; i < 4; i++) {
-			const stars: JSX.Element[] = [];
-			for (let j = 1; j < i + 2; j++) {
-				stars.push(
-					<StarSVG
-						className="svg star-SVG modern-radio__svg modern-radio__star-svg"
-						key={`${i}:${j}`}
-					/>
-				);
-			}
-
-			modernRadioButtons.push(
-				<ModernRadio
-					isChecked={Number(checkedRadioValue) === i + 1}
-					id={`taskDifficulty${i + 1}`}
-					inputClassName="task-difficulty-modern-radio__input"
-					key={i}
-					className="task-difficulty-modern-radio task-difficulty__modern-radio"
-					name={name}
-					value={`${i + 1}`}
-				>
-					<>{stars}</>
-				</ModernRadio>
+	for (let i = 0; i < 4; i++) {
+		const stars: JSX.Element[] = [];
+		for (let j = 1; j < i + 2; j++) {
+			stars.push(
+				<StarSVG
+					className="svg star-SVG modern-radio__svg modern-radio__star-svg"
+					key={`${i}:${j}`}
+				/>
 			);
 		}
-	}, [checkedRadioValue]);
-	addContent();
+
+		modernRadioButtons.push(
+			<ModernRadio
+				isChecked={Number(checkedRadioValue) === i + 1}
+				id={`taskDifficulty${i + 1}`}
+				inputClassName="task-difficulty-modern-radio__input"
+				key={i}
+				className="task-difficulty-modern-radio task-difficulty__modern-radio"
+				name={name}
+				value={`${i + 1}`}
+			>
+				<>{stars}</>
+			</ModernRadio>
+		);
+	}
 
 	return (
 		<ModernRadioGroupPreservingValue name="difficulty">
