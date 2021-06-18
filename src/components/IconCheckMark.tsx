@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as IconCheckMarkSVG } from '../media/images/check_mark.svg';
+import { ReactComponent as IconCheckMarkSVG } from '../media/images/icons/check_mark.svg';
 import { IconSVG } from './IconSVG';
 import '../styles/components/icon.scss';
 

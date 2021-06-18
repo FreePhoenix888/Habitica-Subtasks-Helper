@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as IconBlurSVG } from '../media/images/lens_blur_icon.svg';
+import { ReactComponent as IconBlurSVG } from '../media/images/icons/lens_blur.svg';
 import { IconSVG } from './IconSVG';
 import '../styles/components/icon.scss';
 
