@@ -210,7 +210,7 @@ function App(): JSX.Element {
 					</InputSection>
 
 					<InputSection className="separator">
-						<div className="label-section label__section">
+						<div className="label-section">
 							<Label className="separator__label" htmlFor="separator">
 								<Span>Separator</Span>
 							</Label>
@@ -282,6 +282,12 @@ function App(): JSX.Element {
 							placeholder="1"
 							autoSize
 						/>
+					</InputSection>
+					<InputSection>
+						<Label htmlFor="userId">
+							<Span>User ID</Span>
+						</Label>
+						<InputPreservingValue name="user_id" id="userId" />
 					</InputSection>
 					<InputSection className="submit">
 						<ButtonSubmit className="submit__button-submit">
