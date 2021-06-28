@@ -7,7 +7,7 @@
 
 .type {
 	// .type__radio
-	&__radio{
+	&__radio {
 		padding: 0.5em 1em;
 	}
 }
@@ -20,4 +20,8 @@
 		font-size: 2em;
 		background-color: var(--background-color-active);
 	}
+}
+
+.label-section {
+	position: relative;
 }
