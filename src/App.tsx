@@ -249,7 +249,7 @@ function App(): JSX.Element {
 							className="input--little amount__input "
 							id="amount"
 							name="amount"
-							placeholder="\n"
+							placeholder="1"
 							autoSize
 						/>
 					</InputSection>
