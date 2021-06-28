@@ -27,7 +27,6 @@ import {
 	Header,
 	ToggleSwitch,
 	TaskForm,
-	FormDataContext,
 	IconBlur,
 	IconCheckMark,
 	ToggleSwitchBlur,
@@ -36,41 +35,71 @@ import { useLocalStorage } from './helpers';
 import { ReactComponent as StarSVG } from './media/images/icons/star.svg';
 import './styles/App.scss';
 
-function TaskDifficultyRadios() {
+function TaskPriorityRadios() {
 	const modernRadioButtons: JSX.Element[] = [];
 
 	const checkedRadioValue = useContext(CheckedRadioValueContext);
 
 	const name = useContext(ModernRadioGroupNameContext);
 
-	const difficulties = [0.1, 1, 1.5, 2];
-	for (let i = 0; i < 4; i++) {
-		const stars: JSX.Element[] = [];
-		for (let j = 1; j < i + 2; j++) {
-			stars.push(
-				<StarSVG
-					className="svg star-SVG modern-radio__svg modern-radio__star-svg"
-					key={`${i}:${j}`}
-				/>
-			);
-		}
-
-		modernRadioButtons.push(
+	return (
+		<>
 			<ModernRadio
-				isChecked={Number(checkedRadioValue) === i + 1}
-				id={`taskDifficulty${i + 1}`}
-				inputClassName="difficulty-modern-radio__input"
-				key={i}
-				className="difficulty-modern-radio difficulty__modern-radio"
+				isChecked={Number(checkedRadioValue) === 0.1}
+				id="priority0.1"
+				inputClassName="priority-modern-radio__input"
+				className="priority-modern-radio priority__modern-radio"
 				name={name}
-				value={`${difficulties[i]}`}
+				value="0.1"
 			>
-				<>{stars}</>
+				<>
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+				</>
 			</ModernRadio>
-		);
-	}
-
-	return <>{modernRadioButtons}</>;
+			<ModernRadio
+				isChecked={Number(checkedRadioValue) === 1}
+				id="priority1"
+				inputClassName="priority-modern-radio__input"
+				className="priority-modern-radio priority__modern-radio"
+				name={name}
+				value="1"
+			>
+				<>
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+				</>
+			</ModernRadio>
+			<ModernRadio
+				isChecked={Number(checkedRadioValue) === 1.5}
+				id="priority1.5"
+				inputClassName="priority-modern-radio__input"
+				className="priority-modern-radio priority__modern-radio"
+				name={name}
+				value="1.5"
+			>
+				<>
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+				</>
+			</ModernRadio>
+			<ModernRadio
+				isChecked={Number(checkedRadioValue) === 2}
+				id="priority2"
+				inputClassName="priority-modern-radio__input"
+				className="priority-modern-radio priority__modern-radio"
+				name={name}
+				value="2"
+			>
+				<>
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+					<StarSVG className="svg star-SVG modern-radio__svg modern-radio__star-svg" />
+				</>
+			</ModernRadio>
+		</>
+	);
 }
 
 function TaskTypeRadios() {
@@ -224,13 +253,13 @@ function App(): JSX.Element {
 							wrap="soft"
 						/>
 					</InputSection>
-					<InputSection className="difficulty">
-						<Label htmlFor="difficulty1">Difficulty</Label>
+					<InputSection className="priority">
+						<Label htmlFor="priority1">Difficulty</Label>
 						<ModernRadioGroupPreservingValue
-							className="difficulty__modern-radio-group"
-							name="difficulty"
+							className="priority__modern-radio-group"
+							name="priority"
 						>
-							<TaskDifficultyRadios />
+							<TaskPriorityRadios />
 						</ModernRadioGroupPreservingValue>
 					</InputSection>
 					<InputSection className="type">
