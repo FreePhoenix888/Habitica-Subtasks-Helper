@@ -289,6 +289,12 @@ function App(): JSX.Element {
 						</Label>
 						<InputPreservingValue name="user_id" id="userId" />
 					</InputSection>
+					<InputSection>
+						<Label htmlFor="APIToken">
+							<Span>API Token:</Span>
+						</Label>
+						<InputPreservingValue name="API_token" id="APIToken" />
+					</InputSection>
 					<InputSection className="submit">
 						<ButtonSubmit className="submit__button-submit">
 							Create
