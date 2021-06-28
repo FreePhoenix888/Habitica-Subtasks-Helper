@@ -1,53 +1,23 @@
-.task {
-	&-difficulty {
-		// grid-auto-flow: column;
-		// .task-difficulty__radio-container
-		&__modern-radio-group {
-			display: grid;
-			grid-template: '1star 2stars 3stars 4stars' auto;
-			justify-content: center;
-			gap: 5px;
-		}
-		// .task-difficulty__modern-radio-container
-		&__modern-radio-container {
-		}
-		// .task-difficulty-label
-		&-label {
-			// .task-difficulty-label__content
-			&__content {
-				padding: 0 10px;
-			}
-		}
-		// .task-difficulty-modern-radio-container-label
-		&-modern-radio-container-label {
-			// .task-difficulty-modern-radio-container-label__content
-			&__content {
-				padding: 0 16px;
-				gap: 0;
-			}
-		}
+.notes {
+	// .task-notes__textarea
+	&__textarea {
+		text-align: center;
 	}
+}
 
-	// .task-notes
-	&-notes {
-		// .task-notes__textarea
-		&__textarea {
-			text-align: center;
-		}
+.type {
+	// .type__radio
+	&__radio{
+		padding: 0.5em 1em;
 	}
+}
 
-	// .task-amount
-	&-amount {
-	}
-
-	// .task-submit
-	&-submit {
-		padding-top: 1.5em;
-		// .task-submit__button-submit
-		&__button-submit{
-			width: 50%;
-			font-size: 2em;
-			background-color: var(--background-color-active);
-		}
+.submit {
+	padding-top: 1.5em;
+	// .task-submit__button-submit
+	&__button-submit {
+		width: 50%;
+		font-size: 2em;
+		background-color: var(--background-color-active);
 	}
 }
