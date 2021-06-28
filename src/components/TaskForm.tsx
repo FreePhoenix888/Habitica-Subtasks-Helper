@@ -3,6 +3,7 @@ import React, {
 	createRef,
 	Dispatch,
 	SetStateAction,
+	useCallback,
 	useContext,
 	useEffect,
 	useReducer,
@@ -24,20 +25,15 @@ export const FormDataContext = createContext<FormData>(undefined);
 export function TaskForm(props: Props): JSX.Element {
 	const [formData, setFormData] = useState<FormData>();
 
-	const formRef = createRef<HTMLFormElement>();
+	const processDifficultyValue = useCallback((value) => {
+		const difficulties = [0.1, 1, 1.5, 2];
 
-	useEffect(() => {
-		setFormData(new FormData(formRef.current));
+		return difficulties[value - 1];
 	}, []);
+
 	return (
 		<FormDataContext.Provider value={formData}>
-			<Form
-				{...props}
-				forwardedRef={formRef}
-				onChangeCapture={() => {
-					setFormData(new FormData(formRef.current));
-				}}
-			/>
+			<Form {...props} onSubmitHandler={() => {}} />
 		</FormDataContext.Provider>
 	);
 }
