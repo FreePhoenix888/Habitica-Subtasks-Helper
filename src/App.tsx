@@ -43,6 +43,7 @@ function TaskDifficultyRadios() {
 
 	const name = useContext(ModernRadioGroupNameContext);
 
+	const difficulties = [0.1, 1, 1.5, 2];
 	for (let i = 0; i < 4; i++) {
 		const stars: JSX.Element[] = [];
 		for (let j = 1; j < i + 2; j++) {
@@ -62,7 +63,7 @@ function TaskDifficultyRadios() {
 				key={i}
 				className="difficulty-modern-radio difficulty__modern-radio"
 				name={name}
-				value={`${i + 1}`}
+				value={`${difficulties[i]}`}
 			>
 				<>{stars}</>
 			</ModernRadio>
