@@ -2,7 +2,7 @@ export { Span } from './components/Span';
 export { Paragraph } from './components/Paragraph';
 export { Anchor } from './components/Anchor';
 export { Form } from './components/Form';
-export { TaskForm, FormDataContext } from './components/TaskForm';
+export { TaskForm } from './components/TaskForm';
 export { InputSection } from './components/InputSection';
 export { Label } from './components/Label';
 export { Input } from './components/Input';
