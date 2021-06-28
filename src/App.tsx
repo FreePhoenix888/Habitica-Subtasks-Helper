@@ -58,9 +58,9 @@ function TaskDifficultyRadios() {
 			<ModernRadio
 				isChecked={Number(checkedRadioValue) === i + 1}
 				id={`taskDifficulty${i + 1}`}
-				inputClassName="task-difficulty-modern-radio__input"
+				inputClassName="difficulty-modern-radio__input"
 				key={i}
-				className="task-difficulty-modern-radio task-difficulty__modern-radio"
+				className="difficulty-modern-radio difficulty__modern-radio"
 				name={name}
 				value={`${i + 1}`}
 			>
@@ -80,8 +80,8 @@ function TaskTypeRadios() {
 	return (
 		<>
 			<ModernRadio
+				className="type-radio type__radio"
 				id="todo"
-				// setCheckedRadioValue={setCheckedRadioValue}
 				isChecked={checkedRadioValue === 'todo'}
 				name={name}
 				value="todo"
@@ -92,8 +92,8 @@ function TaskTypeRadios() {
 				</>
 			</ModernRadio>
 			<ModernRadio
+				className="type-radio type__radio"
 				id="daily"
-				// setCheckedRadioValue={setCheckedRadioValue}
 				isChecked={checkedRadioValue === 'daily'}
 				name={name}
 				value="daily"
@@ -104,8 +104,8 @@ function TaskTypeRadios() {
 				</>
 			</ModernRadio>
 			<ModernRadio
+				className="type-radio type__radio"
 				id="habit"
-				// setCheckedRadioValue={setCheckedRadioValue}
 				isChecked={checkedRadioValue === 'habit'}
 				name={name}
 				value="habit"
@@ -147,28 +147,28 @@ function App(): JSX.Element {
 				<h1>Habitica Subtasks Helper</h1>
 				<TaskForm
 					action="#"
-					className="task-form"
+					className="form"
 					isBlurOn={isToggleSwitchBlurChecked}
 				>
-					<InputSection className="task-title">
-						<Label className="task-title__label" htmlFor="taskTitle">
+					<InputSection className="title">
+						<Label className="title__label" htmlFor="title">
 							Title
 						</Label>
 						<InputPreservingValue
-							className="task-title__input"
-							id="taskTitle"
+							className="title__input"
+							id="title"
 							name="title"
 							placeholder="The Venus Project Conception."
 						/>
 					</InputSection>
 
-					<InputSection className="task-subtasks">
-						<Label className="task-subtasks__label" htmlFor="taskSubtasks">
+					<InputSection className="subtasks">
+						<Label className="subtasks__label" htmlFor="subtasks">
 							Subtasks
 						</Label>
 						<TextareaPreservingValue
-							className="textarea task-subtasks__textarea"
-							id="taskSubtasks"
+							className="textarea subtasks__textarea"
+							id="subtasks"
 							name="subtasks"
 							placeholder={`What is the Venus Project?
 								Aims, Proposals.
@@ -179,89 +179,89 @@ function App(): JSX.Element {
 						/>
 					</InputSection>
 
-					<InputSection className="task-separator">
+					<InputSection className="separator">
 						<div className="label-section label__section">
-							<Label className="task-separator__label" htmlFor="taskSeparator">
+							<Label className="separator__label" htmlFor="separator">
 								<Span>Separator</Span>
 							</Label>
 							<ModalButtonInfo
-								className="task-separator__modal"
+								className="separator__modal"
 								setIsOpen={setIsSeparatorModalOpen}
 							/>
 						</div>
 
 						<InputPreservingValue
-							className="input--little task-separator__input "
-							id="taskSeparator"
+							className="input--little separator__input "
+							id="separator"
 							name="separator"
 							placeholder="\n"
 							autoSize
 						/>
 					</InputSection>
 
-					<InputSection className="task-tags">
-						<Label className="task-tags__label" htmlFor="taskTags">
+					<InputSection className="tags">
+						<Label className="tags__label" htmlFor="tags">
 							Tags
 						</Label>
 						<InputPreservingValue
-							className="task-tags__input "
-							id="taskTags"
+							className="tags__input "
+							id="tags"
 							name="tags"
 							placeholder="Self-Development, Psychology"
 						/>
 					</InputSection>
 
-					<InputSection className="task-notes">
-						<Label className="task-notes__label" htmlFor="taskNotes">
+					<InputSection className="notes">
+						<Label className="notes__label" htmlFor="notes">
 							Notes
 						</Label>
 						<TextareaPreservingValue
-							className="textarea task-notes__textarea"
-							id="taskNotes"
+							className="textarea notes__textarea"
+							id="notes"
 							name="notes"
 							placeholder="Read it without any prejudices as any new ideas."
 							wrap="soft"
 						/>
 					</InputSection>
-					<InputSection className="task-difficulty">
-						<Label htmlFor="taskDifficulty1">Difficulty</Label>
+					<InputSection className="difficulty">
+						<Label htmlFor="difficulty1">Difficulty</Label>
 						<ModernRadioGroupPreservingValue
-							className="task-difficulty__modern-radio-group"
+							className="difficulty__modern-radio-group"
 							name="difficulty"
 						>
 							<TaskDifficultyRadios />
 						</ModernRadioGroupPreservingValue>
 					</InputSection>
-					<InputSection className="task-type">
+					<InputSection className="type">
 						<Label htmlFor="todo">Type</Label>
 						<ModernRadioGroupPreservingValue
-							className="task-type__modern-radio-group task-type-modery-radio-group"
+							className="type__modern-radio-group type-modery-radio-group"
 							name="type"
 						>
 							<TaskTypeRadios />
 						</ModernRadioGroupPreservingValue>
 					</InputSection>
-					<InputSection className="task-amount">
-						<Label className="task-amount__label" htmlFor="taskSeparator">
+					<InputSection className="amount">
+						<Label className="amount__label" htmlFor="separator">
 							<Span>Amount</Span>
 						</Label>
 						<InputPreservingValue
-							className="input--little task-amount__input "
-							id="taskAmount"
+							className="input--little amount__input "
+							id="amount"
 							name="amount"
 							placeholder="\n"
 							autoSize
 						/>
 					</InputSection>
-					<InputSection className="task-submit">
-						<ButtonSubmit className="task-submit__button-submit">
+					<InputSection className="submit">
+						<ButtonSubmit className="submit__button-submit">
 							Create
 						</ButtonSubmit>
 					</InputSection>
 				</TaskForm>
 			</div>
 			<Modal
-				className="task-separator__modal"
+				className="separator__modal"
 				isOpen={isSeparatorModalOpen}
 				setIsOpen={setIsSeparatorModalOpen}
 			>
