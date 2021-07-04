@@ -25,3 +25,14 @@
 .label-section {
 	position: relative;
 }
+
+.submit {
+	position: relative;
+	// .submit-result
+	&-result {
+		opacity: 0;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+}
