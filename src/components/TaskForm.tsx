@@ -45,23 +45,40 @@ export function TaskForm(props: Props): JSX.Element {
 					'x-api-user': formData.get('user_id') as string,
 					'x-api-key': formData.get('API_token') as string,
 				};
-				fetch('https://habitica.com/api/v3/tasks/user', {
-					headers,
-					method: 'POST',
-					body: JSON.stringify({
-						text: formData.get('title'),
-						type: formData.get('type'),
-						notes: formData.get('notes'),
-					}),
-				})
-					.then((response) => response.json())
-					.then((responseData: Response & { success: boolean }) => {
-						if (responseData.success) {
-							setSubmitResult(0);
-						} else {
-							setSubmitResult(1);
-							throw new Error(responseData.statusText);
-						}
+				let amount = Number(formData.get('amount'));
+				if (amount > 30) {
+					amount = 30;
+				}
+				const fetchPromises = [];
+				for (let i = 0; i < amount; i++) {
+					const fetchPromise = new Promise((resolve, reject) => {
+						fetch('https://habitica.com/api/v3/tasks/user', {
+							headers,
+							method: 'POST',
+							body: JSON.stringify({
+								text: formData.get('title'),
+								type: formData.get('type'),
+								notes: formData.get('notes'),
+							}),
+						})
+							.then((response) => response.json())
+							.then((responseData: Response & { success: boolean }) => {
+								if (responseData.success) {
+									resolve(responseData);
+								} else {
+									reject(responseData.statusText);
+								}
+							})
+							.catch((error) => {
+								reject(error);
+							});
+					});
+					fetchPromises.push(fetchPromise);
+				}
+
+				Promise.all(fetchPromises)
+					.then(() => {
+						setSubmitResult(0);
 					})
 					.catch((error) => {
 						setSubmitResult(1);
