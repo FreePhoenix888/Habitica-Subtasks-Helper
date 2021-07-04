@@ -27,3 +27,4 @@ export { ToggleSwitch } from './components/ToggleSwitch';
 export { IconBlur } from './components/IconBlur';
 export { IconCheckMark } from './components/IconCheckMark';
 export { ToggleSwitchBlur } from './components/ToggleSwitchBlur';
+export { SubmitResult } from './components/SubmitResult';
