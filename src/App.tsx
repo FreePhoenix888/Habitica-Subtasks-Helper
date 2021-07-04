@@ -30,6 +30,7 @@ import {
 	IconBlur,
 	IconCheckMark,
 	ToggleSwitchBlur,
+	SubmitResult,
 } from './components';
 import { useLocalStorage } from './helpers';
 import { ReactComponent as StarSVG } from './media/images/icons/star.svg';
@@ -158,6 +159,8 @@ function App(): JSX.Element {
 
 	const [isSeparatorModalOpen, setIsSeparatorModalOpen] = useState(false);
 
+	const [submitResult, setSubmitResult] = useState<number>(-1);
+
 	return (
 		<>
 			<Header>
@@ -179,6 +182,7 @@ function App(): JSX.Element {
 					action="#"
 					className="form"
 					isBlurOn={isToggleSwitchBlurChecked}
+					setSubmitResult={setSubmitResult}
 				>
 					<InputSection className="title">
 						<Label className="title__label" htmlFor="title">
@@ -299,6 +303,7 @@ function App(): JSX.Element {
 						<ButtonSubmit className="submit__button-submit">
 							Create
 						</ButtonSubmit>
+						<SubmitResult submitResult={submitResult} />
 					</InputSection>
 				</TaskForm>
 			</div>
