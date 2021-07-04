@@ -18,22 +18,56 @@ interface Props {
 	children?: JSX.Element | JSX.Element[];
 	className?: string;
 	isBlurOn?: boolean;
+	setSubmitResult?: Dispatch<SetStateAction<number>>;
 }
 
-export const FormDataContext = createContext<FormData>(undefined);
-
 export function TaskForm(props: Props): JSX.Element {
-	const [formData, setFormData] = useState<FormData>();
+	const { setSubmitResult } = props;
+	const formRef = createRef<HTMLFormElement>();
 
-	const processDifficultyValue = useCallback((value) => {
-		const difficulties = [0.1, 1, 1.5, 2];
-
-		return difficulties[value - 1];
-	}, []);
+	const getSubtasks = useCallback(
+		(subtasks: string, separator: string) =>
+			subtasks.split(new RegExp(separator)).map((subtask) => subtask.trim()),
+		[]
+	);
 
 	return (
-		<FormDataContext.Provider value={formData}>
-			<Form {...props} onSubmitHandler={() => {}} />
-		</FormDataContext.Provider>
+		<Form
+			{...props}
+			forwardedRef={formRef}
+			onSubmitHandler={(event) => {
+				event.preventDefault();
+				const formData = new FormData(formRef.current);
+				const headers = {
+					'Content-Type': 'application/json',
+					'x-client':
+						'59322894-0bd9-45f1-af35-4ceffcd76fac-HabiticaSubtasksEditor',
+					'x-api-user': formData.get('user_id') as string,
+					'x-api-key': formData.get('API_token') as string,
+				};
+				fetch('https://habitica.com/api/v3/tasks/user', {
+					headers,
+					method: 'POST',
+					body: JSON.stringify({
+						text: formData.get('title'),
+						type: formData.get('type'),
+						notes: formData.get('notes'),
+					}),
+				})
+					.then((response) => response.json())
+					.then((responseData: Response & { success: boolean }) => {
+						if (responseData.success) {
+							setSubmitResult(0);
+						} else {
+							setSubmitResult(1);
+							throw new Error(responseData.statusText);
+						}
+					})
+					.catch((error) => {
+						setSubmitResult(1);
+						console.log(error);
+					});
+			}}
+		/>
 	);
 }
