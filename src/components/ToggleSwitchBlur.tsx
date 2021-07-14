@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToggleSwitch } from './ToggleSwitch';
-import { IconBlur } from './IconBlur';
+import { IconBlur } from './icons/IconBlur';
 
 interface Props {
 	iconClassName?: string;

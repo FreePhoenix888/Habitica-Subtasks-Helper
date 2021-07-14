@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconGithub } from './IconGithub';
+import { IconGithub } from './icons/IconGithub';
 import { Button } from './Button';
 
 interface Props {
