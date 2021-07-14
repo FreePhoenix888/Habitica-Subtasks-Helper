@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as IconBlurSVG } from '../media/images/icons/lens_blur.svg';
-import { IconSVG } from './IconSVG';
-import '../styles/components/icon.scss';
+import { ReactComponent as IconBlurSVG } from '../../media/images/icons/lens_blur.svg';
+import { IconSVG } from '../IconSVG';
+import '../../styles/components/icon.scss';
 
 interface Props {
 	className?: string;

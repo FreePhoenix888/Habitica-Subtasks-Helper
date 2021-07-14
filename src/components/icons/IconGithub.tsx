@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as IconGithubSVG } from '../media/images/icons/github.svg';
-import { IconSVG } from './IconSVG';
-import '../styles/components/icon.scss';
+import { ReactComponent as IconGithubSVG } from '../../media/images/icons/github.svg';
+import { IconSVG } from '../IconSVG';
+import '../../styles/components/icon.scss';
 
 interface Props {
 	className?: string;
