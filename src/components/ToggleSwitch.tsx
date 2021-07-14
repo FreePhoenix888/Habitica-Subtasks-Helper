@@ -39,16 +39,16 @@ export function ToggleSwitch(props: Props): JSX.Element {
 	return (
 		<Label
 			className={setClassName(
-				'toggle-switch',
-				labelClassName,
+				`toggle-switch ${labelClassName}`,
+
 				classNameModifiers
 			)}
 			htmlFor="toggle-switch"
 		>
 			<div
 				className={setClassName(
-					'togle-switch-slider togle-switch__slider',
-					sliderClassName,
+					`togle-switch-slider togle-switch__slider ${sliderClassName}`,
+
 					classNameModifiers
 				)}
 			>
@@ -56,8 +56,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			</div>
 			<div
 				className={setClassName(
-					'togle-switch-text togle-switch__text',
-					sliderClassName,
+					`togle-switch-text togle-switch__text ${sliderClassName}`,
 					classNameModifiers
 				)}
 			>
@@ -67,8 +66,7 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			<input
 				checked={isChecked}
 				className={setClassName(
-					'toggle-switch__input',
-					inputClassName,
+					`toggle-switch__input ${inputClassName}`,
 					classNameModifiers
 				)}
 				id="toggle-switch"

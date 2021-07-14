@@ -19,29 +19,28 @@ interface Props {
 export function ModernRadio(props: Props) {
 	const { className, inputClassName, children, ...rest } = props;
 	const { id, isChecked } = props;
-
 	const [isFocused, setIsFocused] = useState(false);
-
+	const classNameModifiers = {
+		focus: isFocused,
+		checked: isChecked,
+	};
 	return (
 		<Label
 			onFocusHandler={() => {
 				setIsFocused(true);
 			}}
 			onBlurHandler={() => {
-				setIsFocused(false);
+				setIsFocused(false);	
 			}}
-			className={setClassName('modern-radio', className, {
-				focus: isFocused,
-				checked: isChecked,
-			})}
+			className={setClassName(`modern-radio ${className}`, classNameModifiers)}
 			htmlFor={id}
 		>
 			{children}
 			<Radio
-				className={setClassName('modern-radio__input', inputClassName, {
-					focus: isFocused,
-					checked: isChecked,
-				})}
+				className={setClassName(
+					`modern-radio__input ${inputClassName}`,
+					classNameModifiers
+				)}
 				{...rest}
 			/>
 		</Label>

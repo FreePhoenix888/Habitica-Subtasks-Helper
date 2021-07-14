@@ -92,7 +92,7 @@ export function InputSection(props: Props): JSX.Element {
 
 	return (
 		<div
-			className={setClassName('input-section', className, {
+			className={setClassName(`input-section ${className}`, {
 				active:
 					activeInputSections.size === 0 ||
 					((isHovered || isFocused) && activeInputSections.size !== 0),
