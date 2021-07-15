@@ -6,11 +6,11 @@ interface Props {
 	className?: string;
 }
 
-export function IconCheckMark(props: Props) {
+export function IconCheck(props: Props) {
 	const { className = '' } = props;
 	return (
 		<IconSVG
-			className={`icon-checkmark ${className}`}
+			className={`icon-check ${className}`}
 			Icon={SVG}
 		/>
 	);
