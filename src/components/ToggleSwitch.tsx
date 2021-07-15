@@ -36,11 +36,11 @@ export function ToggleSwitch(props: Props): JSX.Element {
 	const classNameModifiers = {
 		checked: isChecked,
 	};
+
 	return (
 		<Label
 			className={setClassName(
 				`toggle-switch ${labelClassName}`,
-
 				classNameModifiers
 			)}
 			htmlFor="toggle-switch"
@@ -48,7 +48,6 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			<div
 				className={setClassName(
 					`togle-switch-slider togle-switch__slider ${sliderClassName}`,
-
 					classNameModifiers
 				)}
 			>
@@ -62,7 +61,6 @@ export function ToggleSwitch(props: Props): JSX.Element {
 			>
 				{text}
 			</div>
-
 			<input
 				checked={isChecked}
 				className={setClassName(
