@@ -24,7 +24,5 @@ export { ModalButtonInfo } from './components/ModalButtonInfo';
 export { Modal } from './components/Modal';
 export { Header } from './components/Header';
 export { ToggleSwitch } from './components/ToggleSwitch';
-export { IconBlur } from './components/icons/IconBlur';
-export { IconCheckMark } from './components/icons/IconCheckMark';
 export { ToggleSwitchBlur } from './components/ToggleSwitchBlur';
-export { Notification } from './components/Notification';
+export { Toast } from './components/Toast';
