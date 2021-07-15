@@ -27,11 +27,11 @@ import {
 	Header,
 	ToggleSwitch,
 	TaskForm,
-	IconBlur,
-	IconCheckMark,
 	ToggleSwitchBlur,
-	SubmitResult,
+	Toast,
 } from './components';
+import { IconCheck } from './iconComponents';
+import { IconWarning } from './components/icons/IconWarning';
 import { useLocalStorage } from './helpers';
 import { ReactComponent as StarSVG } from './media/images/icons/star.svg';
 import './styles/App.scss';
@@ -118,7 +118,7 @@ function TaskTypeRadios() {
 				value="todo"
 			>
 				<>
-					<IconCheckMark />
+					<IconCheck />
 					<Span>To-do</Span>
 				</>
 			</ModernRadio>
@@ -130,7 +130,7 @@ function TaskTypeRadios() {
 				value="daily"
 			>
 				<>
-					<IconCheckMark />
+					<IconCheck />
 					<Span>Daily</Span>
 				</>
 			</ModernRadio>
@@ -142,7 +142,7 @@ function TaskTypeRadios() {
 				value="habit"
 			>
 				<>
-					<IconCheckMark />
+					<IconCheck />
 					<Span>Habit</Span>
 				</>
 			</ModernRadio>
@@ -163,6 +163,7 @@ function App(): JSX.Element {
 
 	return (
 		<>
+			<Toast type={Toast.Type.SUCCESS} position={Toast.Position.BOTTOM_LEFT} title="Success!" text="Task is added." />
 			<Header>
 				<ToggleSwitchBlur
 					isChecked={isToggleSwitchBlurChecked}
@@ -303,7 +304,6 @@ function App(): JSX.Element {
 						<ButtonSubmit className="submit__button-submit">
 							Create
 						</ButtonSubmit>
-						<SubmitResult submitResult={submitResult} />
 					</InputSection>
 				</TaskForm>
 			</div>
