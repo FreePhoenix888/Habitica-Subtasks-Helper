@@ -9,7 +9,7 @@ interface Props {
 	iconClassName?: string;
 }
 
-export function IconGithubAnchor(props: Props): JSX.Element {
+export function GithubAnchor(props: Props): JSX.Element {
 	const {
 		href = 'https://github.com/FreePhoenix888',
 		anchorClassName = '',
