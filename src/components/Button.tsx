@@ -7,7 +7,7 @@ import React, {
 import '../styles/components/button.scss';
 
 interface Props {
-	children?: JSX.Element | JSX.Element[];
+	children?: JSX.Element | JSX.Element[] | string;
 	className?: string;
 	forwardedRef?: MutableRefObject<HTMLButtonElement>;
 	onClickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
