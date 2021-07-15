@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as IconBlurSVG } from '../../media/images/icons/lens_blur.svg';
+import { ReactComponent as IconBlurSVG } from '../../media/images/icons/success.svg';
 import { IconSVG } from '../IconSVG';
 import '../../styles/components/icon.scss';
 
@@ -10,5 +10,5 @@ interface Props {
 export function IconBlur(props: Props) {
 	const { className = '' } = props;
 
-	return <IconSVG className={`icon-blur ${className}`} Icon={IconBlurSVG} />;
+	return <IconSVG className={`icon-success ${className}`} Icon={IconBlurSVG} />;
 }
