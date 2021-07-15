@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as IconInfoSVG } from '../../media/images/icons/info.svg';
+import { ReactComponent as SVG } from '../../media/images/icons/info.svg';
 import { IconSVG } from '../IconSVG';
 
 interface Props {
@@ -8,5 +8,5 @@ interface Props {
 
 export function IconInfo(props: Props) {
 	const { className = '' } = props;
-	return <IconSVG className={`icon-info ${className}`} Icon={IconInfoSVG} />;
+	return <IconSVG className={`icon-info ${className}`} Icon={SVG} />;
 }
