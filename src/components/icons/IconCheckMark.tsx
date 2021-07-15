@@ -1,7 +1,6 @@
 import React from 'react';
 import { ReactComponent as IconCheckMarkSVG } from '../../media/images/icons/check.svg';
 import { IconSVG } from '../IconSVG';
-import '../../styles/components/icon.scss';
 
 interface Props {
 	className?: string;
