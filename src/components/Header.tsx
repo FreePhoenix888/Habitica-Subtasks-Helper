@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Context, createContext, useState } from 'react';
 import { ToggleSwitchBlur } from './ToggleSwitchBlur';
-import { IconGithubAnchor } from './IconGithubAnchor';
+import { GithubAnchor } from './GithubAnchor';
 import '../styles/components/header.scss';
 
 interface Props {
@@ -13,7 +13,7 @@ export function Header(props: Props): JSX.Element {
 
 	return (
 		<div className={`header ${className}`}>
-			<IconGithubAnchor anchorClassName="header__anchor-github" />
+			<GithubAnchor anchorClassName="header__anchor-github" />
 			{children}
 		</div>
 	);
