@@ -1,29 +1,23 @@
 import React, {
-	createContext,
 	createRef,
-	Dispatch,
-	SetStateAction,
 	useCallback,
-	useContext,
-	useEffect,
 	useLayoutEffect,
-	useReducer,
 	useRef,
 	useState,
 } from 'react';
+import {toast} from "react-toastify";
 import { Form } from './Form';
 import '../styles/components/form.scss';
+
 
 interface Props {
 	action: string;
 	children?: JSX.Element | JSX.Element[];
 	className?: string;
-	isBlurOn?: boolean;
-	setSubmitResult?: Dispatch<SetStateAction<number>>;
+	isBlurOn?: boolean
 }
 
 export function TaskForm(props: Props): JSX.Element {
-	const { setSubmitResult } = props;
 	const formRef = createRef<HTMLFormElement>();
 
 	const [formData, setFormData] = useState<FormData>();
@@ -40,8 +34,13 @@ export function TaskForm(props: Props): JSX.Element {
 
 	const getSubtasks = useCallback(
 		(subtasks: string, separator: string) =>
-			subtasks.split(new RegExp(separator)).map((subtask) => subtask.trim()),
-		[formData]
+		{
+			if(!separator){
+				return [subtasks];
+			}
+			return subtasks.split(new RegExp(separator)).map((subtask) => subtask.trim())
+		},
+		[]
 	);
 
 	const createSubtask = useCallback(
@@ -62,7 +61,7 @@ export function TaskForm(props: Props): JSX.Element {
 						reject(error);
 					});
 			}),
-		[formData]
+		[getHeaders]
 	);
 
 	const createSubtasks = useCallback(
@@ -71,13 +70,13 @@ export function TaskForm(props: Props): JSX.Element {
 				formData.get('subtasks') as string,
 				formData.get('separator') as string
 			);
-			const fetchPromises: Promise<any>[] = [];
+			const fetchPromises: Promise<unknown>[] = [];
 			subtasks.forEach((subtask) => {
 				fetchPromises.push(createSubtask(taskId, subtask));
 			});
 			return fetchPromises;
 		},
-		[formData]
+		[createSubtask, formData, getSubtasks]
 	);
 
 	const createTask = useCallback(
@@ -104,30 +103,20 @@ export function TaskForm(props: Props): JSX.Element {
 								reject(responseData.statusText);
 							}
 							const taskId = responseData.data.id;
-							Promise.all(createSubtasks(taskId))
-								.then(() => {
-									setSubmitResult(0);
-								})
-								.catch((error) => {
-									setSubmitResult(1);
-									console.log(error);
-								});
+							Promise.all(createSubtasks(taskId)).catch((error) => {reject(error)});
+							resolve(responseData);
 						}
 					)
 					.catch((error) => {
 						reject(error);
 					});
 			}),
-		[formData]
+		[createSubtasks, formData, getHeaders]
 	);
 
 	const isFirstUseEffect = useRef(true);
 	useLayoutEffect(() => {
 		if (!isFirstUseEffect.current) {
-			[...formData.entries()].forEach((element) => {
-				console.log(element);
-			});
-
 			let amount = Number(formData.get('amount'));
 			if (amount > 30) {
 				amount = 30;
@@ -140,15 +129,14 @@ export function TaskForm(props: Props): JSX.Element {
 
 			Promise.all(fetchPromises)
 				.then(() => {
-					setSubmitResult(0);
+					toast("Task is added.", {type: 'success'});
 				})
-				.catch((error) => {
-					setSubmitResult(1);
-					console.log(error);
+				.catch((error: Error) => {
+					toast(`Task is not added. Reason: ${error.message}`, {type: 'error'})
 				});
 		}
 		if (isFirstUseEffect.current) isFirstUseEffect.current = false;
-	}, [formData]);
+	}, [createTask, formData]);
 
 	return (
 		<Form
