@@ -1,3 +1,5 @@
+@import '~react-toastify/dist/ReactToastify.css';
+
 :root {
 	--text-color-primary: hsl(0, 0%, 100%);
 	--text-color-non-active: hsla(0, 0%, 0%, 50%);
@@ -30,6 +32,7 @@
 
 html {
 	box-sizing: border-box;
+	position: relative;
 }
 
 *,
@@ -62,3 +65,4 @@ body {
 .svg {
 	fill: currentColor;
 }
+
