@@ -1,7 +1,8 @@
-import React, { ChangeEvent, Context, createContext, useState } from 'react';
-import { ToggleSwitchBlur } from './ToggleSwitchBlur';
+import React from 'react';
+import {ToastContainer} from "react-toastify";
 import { GithubAnchor } from './GithubAnchor';
 import '../styles/components/header.scss';
+
 
 interface Props {
 	children?: JSX.Element | JSX.Element[];
@@ -13,6 +14,7 @@ export function Header(props: Props): JSX.Element {
 
 	return (
 		<div className={`header ${className}`}>
+			<ToastContainer/>
 			<GithubAnchor anchorClassName="header__anchor-github" />
 			{children}
 		</div>
