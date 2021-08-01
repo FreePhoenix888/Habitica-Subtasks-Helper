@@ -25,4 +25,6 @@ export { Modal } from './components/Modal';
 export { Header } from './components/Header';
 export { ToggleSwitch } from './components/ToggleSwitch';
 export { ToggleSwitchBlur } from './components/ToggleSwitchBlur';
-export { Toast } from './components/Toast';
+export { ToastContainer, toast } from 'react-toastify';
+
+
