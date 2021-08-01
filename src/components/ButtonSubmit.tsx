@@ -13,6 +13,8 @@ interface Props {
 	forwardedRef?: MutableRefObject<HTMLButtonElement>;
 	onClickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
 	onKeyDownHandler?: (event: React.KeyboardEvent<HTMLElement>) => void;
+	onSubmitHandler?: (event: React.SyntheticEvent) => void;
+
 }
 
 export function ButtonSubmit(props: Props): JSX.Element {
@@ -22,6 +24,7 @@ export function ButtonSubmit(props: Props): JSX.Element {
 		forwardedRef = null,
 		onClickHandler,
 		onKeyDownHandler,
+		onSubmitHandler,
 	} = props;
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
@@ -45,6 +48,7 @@ export function ButtonSubmit(props: Props): JSX.Element {
 			type="submit"
 			onClick={onClickHandler}
 			onKeyDown={onKeyDownHandler}
+			onSubmit={onSubmitHandler}
 		>
 			{children}
 		</button>
