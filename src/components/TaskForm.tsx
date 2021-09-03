@@ -1,4 +1,6 @@
-import React, {
+export {};
+
+/* import React, {
 	createRef,
 	useCallback,
 	useLayoutEffect,
@@ -6,8 +8,8 @@ import React, {
 	useState,
 } from 'react';
 import {toast} from "react-toastify";
-import { Form } from './Form';
-import '../styles/components/form.scss';
+import { Form } from './Form/Form';
+import './Form/form.scss';
 
 
 interface Props {
@@ -19,9 +21,7 @@ interface Props {
 
 export function TaskForm(props: Props): JSX.Element {
 	const formRef = createRef<HTMLFormElement>();
-
 	const [formData, setFormData] = useState<FormData>();
-
 	const getHeaders = useCallback(
 		() => ({
 			'Content-Type': 'application/json',
@@ -31,7 +31,6 @@ export function TaskForm(props: Props): JSX.Element {
 		}),
 		[formData]
 	);
-
 	const getSubtasks = useCallback(
 		(subtasks: string, separator: string) =>
 		{
@@ -42,7 +41,6 @@ export function TaskForm(props: Props): JSX.Element {
 		},
 		[]
 	);
-
 	const createSubtask = useCallback(
 		(taskId: string, subtask: string) =>
 			new Promise((resolve, reject) => {
@@ -96,11 +94,12 @@ export function TaskForm(props: Props): JSX.Element {
 						(
 							responseData: Response & {
 								data: { id: string };
+								message: string;
 								success: boolean;
 							}
 						) => {
 							if (!responseData.success) {
-								reject(responseData.statusText);
+								reject(responseData);
 							}
 							const taskId = responseData.data.id;
 							Promise.all(createSubtasks(taskId)).catch((error) => {reject(error)});
@@ -129,10 +128,10 @@ export function TaskForm(props: Props): JSX.Element {
 
 			Promise.all(fetchPromises)
 				.then(() => {
-					toast("Task is added.", {type: 'success'});
+					toast(<b>Task is added.</b>, {type: 'success'});
 				})
 				.catch((error: Error) => {
-					toast(`Task is not added. Reason: ${error.message}`, {type: 'error'})
+					toast(<><b>Task is not added.</b> Reason: {error.message}</>, {type: 'error'})
 				});
 		}
 		if (isFirstUseEffect.current) isFirstUseEffect.current = false;
@@ -148,4 +147,4 @@ export function TaskForm(props: Props): JSX.Element {
 			}}
 		/>
 	);
-}
+} */
