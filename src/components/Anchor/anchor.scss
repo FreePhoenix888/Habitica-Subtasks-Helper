@@ -1,0 +1,6 @@
+.habitica-subtasks-helper-anchor {
+  color: var(--background-color-active);
+  &:hover, &:focus {
+    opacity: 0.5;
+  }
+}
