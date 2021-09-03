@@ -1,0 +1,12 @@
+.habitica-subtasks-helper-form {
+	display: grid;
+	grid-template-columns: 100%;
+	gap: 15px;
+}
+
+.habitica-subtasks-helper-form__section {
+	display: grid;
+	grid-auto-flow: row;
+	gap: 5px;
+	grid-template-columns: 100%;
+}
