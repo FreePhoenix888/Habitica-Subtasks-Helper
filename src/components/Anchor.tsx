@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components/anchor.scss';
+import './Anchor/anchor.scss';
 
 enum TargetValues {
 	'_self',
