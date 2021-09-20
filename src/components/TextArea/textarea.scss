@@ -1,18 +1,23 @@
 .habitica-subtasks-helper-textarea {
-	white-space: pre-line;
-	resize: none;
-	padding: 12px 26px;
-	border-radius: 50px;
-	text-align: center;
-	transition: background, color 0.15s ease-in-out;
-	color: var(--text-color-active);
-	background: var(--background-color-secondary);
-	border: none;
-	box-shadow: var(--box-shadow-primary);
-	max-width: 100%;
-	&:focus {
-		background: var(--background-color-active);
-		color: var(--text-color-active);
-		box-shadow: var(--box-shadow-active);
-	}
+  max-width: 100%;
+  padding: 12px 26px;
+  resize: none;
+  transition: background, color 0.15s ease-in-out;
+  text-align: center;
+  white-space: pre-line;
+  color: var(--text-color-active);
+  border: none;
+  border-radius: 50px;
+  background: var(--background-color-secondary);
+  box-shadow: var(--box-shadow-primary);
+  // .habitica-subtasks-helper-textarea:focus
+  &:focus {
+    color: var(--text-color-active);
+    background: var(--background-color-active);
+    box-shadow: var(--box-shadow-active);
+  }
+  // .habitica-subtasks-helper-textarea::placeholder
+  &::placeholder {
+    color: var(--text-color-non-active);
+  }
 }
