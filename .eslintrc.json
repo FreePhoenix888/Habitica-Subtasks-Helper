@@ -5,8 +5,6 @@
 	},
 	"extends": [
 		"eslint:recommended",
-		"airbnb-typescript",
-		"airbnb/hooks",
 		"plugin:typescript-sort-keys/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -43,13 +41,7 @@
 				"noSortAlphabetically": false,
 				"reservedFirst": false
 			}
-		],
-		"jsx-a11y/label-has-associated-control": [ 2, {
-			"labelComponents": ["CustomInputLabel"],
-			"labelAttributes": ["label"],
-			"controlComponents": ["InputPreservingValue, TextareaPreservingValue"],
-			"depth": 3
-		}]
+		]
 	},
 	"globals": {
 		// "React": true,
