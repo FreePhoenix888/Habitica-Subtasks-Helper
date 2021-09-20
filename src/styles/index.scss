@@ -1,63 +1,62 @@
 @import '~react-toastify/dist/ReactToastify.css';
 
 :root {
-	--text-color-primary: hsl(0, 0%, 100%);
-	--text-color-non-active: hsla(0, 0%, 0%, 50%);
-	--text-color-active: hsla(0, 0%, 0%, 80%);
-	--font-family: 'Montserrat', sans-serif;
-	--background-color-primary: hsl(203, 8%, 20%);
-	--background-color-secondary: hsl(0, 0%, 77%);
-	--background-color-thirdly: hsl(204, 13%, 36%);
-	--background-color-active: hsl(203, 20%, 71%);
-	--box-shadow-primary: 0px 7px 30px 13px hsla(0, 0%, 0%, 0.25);
-	--box-shadow-active: 0px 6px 19px -4px var(--text-color-active) inset;
+  box-sizing: border-box;
+  --text-color-primary: hsla(0, 0%, 100%, 0.9);
+  --text-color-non-active: hsla(0, 0%, 0%, .3);
+  --text-color-active: hsla(0, 0%, 0%, 80%);
+  --font-family: 'Montserrat', sans-serif;
+  --background-color-primary: hsl(203, 8%, 20%);
+  --background-color-secondary: hsl(0, 0%, 77%);
+  --background-color-thirdly: hsl(204, 13%, 36%);
+  --background-color-active: hsl(203, 20%, 71%);
+  --box-shadow-primary: 0px 7px 30px 13px hsla(0, 0%, 0%, 0.25);
+  --box-shadow-active: 0px 6px 19px -4px var(--text-color-active) inset;
+  font-size: 16px;
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
-	// ::-webkit-scrollbar-track
-	&-track {
-		background: var(--background-color-primary);
-	}
-	// ::-webkit-scrollbar-thumb
-	&-thumb {
-		background: var(--text-color-primary);
-		border-radius: 50px;
-		// ::-webkit-scrollbar-thumb:hover
-		&:hover {
-			background: var(--background-color-active);
-		}
-	}
-}
+  width: 10px;
+  // ::-webkit-scrollbar-track
+  &-track {
+    background: var(--background-color-primary);
+  }
 
-html {
-	box-sizing: border-box;
-	position: relative;
+  // ::-webkit-scrollbar-thumb
+  &-thumb {
+    border-radius: 50px;
+    background: var(--text-color-primary);
+    // ::-webkit-scrollbar-thumb:hover
+    &:hover {
+      background: var(--background-color-active);
+    }
+  }
 }
 
 *,
 *:before,
 *:after {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 *:focus {
-	outline: none;
+  outline: none;
 }
 
 body {
-	font-family: var(--font-family);
-	background: var(--background-color-primary);
-	text-align: center;
-	color: var(--text-color-primary);
+  font-family: var(--font-family);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-color-primary);
+  background: var(--background-color-primary);
 }
 
 .container {
-	max-width: 700px;
-	margin: 0 auto;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.h1 {
+/* .h1 {
 	font-size: 1.5em;
 	font-weight: 800;
 }
@@ -66,3 +65,47 @@ body {
 	fill: currentColor;
 }
 
+p {
+	margin: 0;
+}
+
+button {
+	border: 0;
+	cursor: pointer;
+	&:focus,
+	&:active {
+		box-shadow: 0px 6px 19px -4px var(--text-color-active) inset;
+	}
+	&:active {
+		background-color: var(--background-color-primary);
+	}
+}
+
+ textarea,
+input,
+button,
+.modern-radio {
+	padding: 12px 26px;
+	width: 100%;
+	border-radius: 50px;
+	text-align: center;
+	transition: background, color 0.15s ease-in-out;
+	color: var(--text-color-active);
+	background: var(--background-color-secondary);
+	border: none;
+	box-shadow: var(--box-shadow-primary);
+	&--auto-size {
+		width: fit-content;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	&:focus {
+		background: var(--background-color-active);
+		color: var(--text-color-active);
+		box-shadow: var(--box-shadow-active);
+		&::placeholder {
+			color: var(--text-color-non-active);
+			visibility: hidden;
+		}
+	}
+} */
