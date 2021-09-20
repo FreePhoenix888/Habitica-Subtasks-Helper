@@ -1,0 +1,30 @@
+.habitica-subtasks-helper-radio {
+  display: grid;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  transition: background, color 0.15s ease-in-out;
+  color: var(--text-color-non-active);
+  border: none;
+  border-radius: 50px;
+  background: var(--background-color-secondary);
+  box-shadow: var(--box-shadow-primary);
+  grid-auto-flow: column;
+  gap: 5px;
+  // .habitica-subtasks-helper-radio__input
+  &__input {
+    position: absolute;
+    appearance: none;
+  }
+
+  // .habitica-subtasks-helper-radio--checked
+  &--checked {
+    color: var(--text-color-active);
+    background: var(--background-color-active);
+  }
+
+  // .habitica-subtasks-helper-radio--focus-within
+  &:focus-within {
+    box-shadow: var(--box-shadow-active);
+  }
+}
