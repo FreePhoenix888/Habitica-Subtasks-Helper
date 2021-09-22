@@ -5,7 +5,6 @@ import {ReactComponent as GithubIcon} from '../../media/images/icons/github.svg'
 import './header.scss';
 
 
-
 type IProps = HTMLProps<HTMLDivElement>;
 
 export const Header: FC = ({children, className = '', ...rest}: IProps) =>

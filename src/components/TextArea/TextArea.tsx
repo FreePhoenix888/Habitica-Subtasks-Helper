@@ -3,7 +3,8 @@ import './textarea.scss';
 
 type IProps = HTMLProps<HTMLTextAreaElement>;
 
-export const TextArea = forwardRef<HTMLTextAreaElement, IProps>(({className = '', ...rest}: IProps, ref): JSX.Element => <textarea
-    className={`habitica-subtasks-helper-textarea ${className}`} {...rest} ref={ref}/>)
+export const TextArea = forwardRef<HTMLTextAreaElement, IProps>(({className = '', ...rest}: IProps, ref): JSX.Element =>
+    <textarea
+        className={`habitica-subtasks-helper-textarea ${className}`} {...rest} ref={ref}/>)
 TextArea.displayName = "HabiticaSubtasksHelperTextArea"
 

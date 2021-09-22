@@ -1,11 +1,11 @@
 .header {
-	padding: 5px 0;
-	border-bottom: 1px solid var(--background-color-secondary);
-	display: grid;
-	gap: 0.4em;
-	grid-template-rows: 50px;
-	grid-template-columns: 50px;
-	justify-content: center;
-	justify-items: center;
-	overflow: hidden;
+  display: grid;
+  overflow: hidden;
+  justify-content: center;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--background-color-secondary);
+  gap: 0.4em;
+  grid-template-rows: 50px;
+  grid-template-columns: 50px;
+  justify-items: center;
 }

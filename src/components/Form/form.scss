@@ -1,47 +1,48 @@
 .habitica-subtasks-helper-form {
-	display: grid;
-	grid-template-columns: 100%;
-	gap: 30px;
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 30px;
 }
 
 .habitica-subtasks-helper-form__section {
-	position: relative;
-	display: grid;
-	grid-auto-flow: row;
-	gap: 5px;
-	grid-template-columns: 100%;
+  position: relative;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 5px;
+  grid-template-columns: 100%;
 
 }
 
 .habitica-subtasks-helper-form-section {
-	// .habitica-subtasks-helper-form-section__invalid-input-error
-	&__invalid-input-error {
-		--background-color: hsl(337, 90%, 46%);
-		color: var(--text-color-primary);
-		font-weight: 600;
-		background: var(--background-color);
-		z-index: 1;
-		padding: 15px;
-		border-radius: 5px;
-		position: absolute;
-		left: 50%;
-		bottom: 0;
-		transform: translate(-50%, 110%);
-		box-shadow: var(--box-shadow-primary);
-	}
-	// .habitica-subtasks-helper-form-section-invalid-input-error
-	&-invalid-input-error {
-		// .habitica-subtasks-helper-form-section-invalid-input-error__triangle-up
-		&__triangle-up {
-			position: absolute;
-			top: 0;
-			left: 50%;
-			transform: translate(-50%, -95%);
-			width: 0;
-			height: 0;
-			border-left: 5px solid transparent;
-			border-right: 5px solid transparent;
-			border-bottom: 5px solid var(--background-color);
-		}
-	}
+  // .habitica-subtasks-helper-form-section__invalid-input-error
+  &__invalid-input-error {
+    font-weight: 600;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 50%;
+    padding: 15px;
+    transform: translate(-50%, 110%);
+    color: var(--text-color-primary);
+    border-radius: 5px;
+    background: var(--background-color);
+    box-shadow: var(--box-shadow-primary);
+    --background-color: hsl(337, 90%, 46%);
+  }
+
+  // .habitica-subtasks-helper-form-section-invalid-input-error
+  &-invalid-input-error {
+    // .habitica-subtasks-helper-form-section-invalid-input-error__triangle-up
+    &__triangle-up {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: translate(-50%, -95%);
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid var(--background-color);
+      border-left: 5px solid transparent;
+    }
+  }
 }

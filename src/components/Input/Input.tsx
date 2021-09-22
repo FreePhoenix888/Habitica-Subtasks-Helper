@@ -7,10 +7,10 @@ interface IProps extends HTMLProps<HTMLInputElement> {
 }
 
 export const Input = forwardRef<HTMLInputElement, IProps>(({
-                                                       className = '',
-                                                       classNameModifiers,
-                                                       ...rest
-                                                   }: IProps, ref): JSX.Element => <input
+                                                               className = '',
+                                                               classNameModifiers,
+                                                               ...rest
+                                                           }: IProps, ref): JSX.Element => <input
     className={setClassName(`habitica-subtasks-helper-input ${className}`, classNameModifiers)}
     ref={ref}
     {...rest} />)

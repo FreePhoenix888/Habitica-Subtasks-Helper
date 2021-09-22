@@ -1,7 +1,7 @@
 .habitica-subtasks-helper-radio-group {
-	display: grid;
-	gap: 10px;
-	grid-auto-flow: column;
-	grid-auto-columns: fit-content(100%);
-	justify-content: center;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  grid-auto-flow: column;
+  grid-auto-columns: fit-content(100%);
 }
