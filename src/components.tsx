@@ -9,8 +9,6 @@ export {Input} from './components/Input/Input';
 export {TextArea} from './components/TextArea/TextArea';
 export {Radio} from './components/Radio/Radio';
 export {RadioGroup} from './components/Radio/RadioGroup';
-export {ButtonInfo} from './components/ButtonInfo';
-export {ModalButtonInfo} from './components/ModalButtonInfo';
 export {ModalsStorage, modalsStorageApi} from './components/Modal/ModalsStorage';
 export {Header} from './components/Header/Header';
 export {ToastContainer, toast} from 'react-toastify';
