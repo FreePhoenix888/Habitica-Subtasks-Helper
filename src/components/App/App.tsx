@@ -16,11 +16,11 @@ import {
     TextArea,
     toast,
     useForm
-} from './components';
-import {ReactComponent as StarSVG} from './media/images/icons/star.svg';
-import './styles/App.scss';
-import {InputAutoSize} from "./components/Input/InputAutoSize";
-import {useLocalStorage} from "./helpers";
+} from '../../components';
+import {ReactComponent as StarSVG} from '../../media/images/icons/star.svg';
+import './App.scss';
+import {InputAutoSize} from "../Input/InputAutoSize";
+import {useLocalStorage} from "../../helpers";
 
 const App: FC = () => {
     const [isPersonalDataUsingAccepted, setIsPersonalDataUsingAccepted] = useLocalStorage('isPersonalDataUsingAccepted', false);
