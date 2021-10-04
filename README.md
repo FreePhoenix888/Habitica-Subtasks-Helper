@@ -1,4 +1,4 @@
-# Habitica Subtasks Helper #
+# [Habitica Subtasks Helper](https://freephoenix888.github.io/Habitica-Subtasks-Helper/) #
 
 ---
 
