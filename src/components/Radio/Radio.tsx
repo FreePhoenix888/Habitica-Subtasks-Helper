@@ -7,7 +7,7 @@ type IProps = HTMLProps<HTMLInputElement> & {
 }
 
 export function Radio(props: IProps): JSX.Element {
-    const {labelClassName, className = '', children, ...rest} = props;
+    const {labelClassName = '', className = '', children, ...rest} = props;
     const {id, checked} = props;
     const classNameModifiers = {
         checked,
