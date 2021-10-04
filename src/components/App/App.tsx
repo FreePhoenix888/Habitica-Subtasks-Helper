@@ -336,27 +336,4 @@ const App: FC = () => {
         </div>
     </div>;
 }
-
-/*
-<ModalButtonInfo
-    className="separator__modal"
-    setIsOpen={() => {
-        api.add({
-            children: <>
-                You can use any symbols or regular expression to break your text into
-                parts.<br/>
-                Example:<br/>
-                <b>Subtasks:</b> Brush teeth, Take a bath, Training, Learning<br/>
-                <b>Separator:</b> <code>,</code><br/>
-                <b>Result:</b>
-                <ul style={{margin: 0}}>
-                    <li>Brush teeth</li>
-                    <li>Take a bath</li>
-                    <li>Training</li>
-                    <li>Learning</li>
-                </ul>
-            </>
-        })
-    }}
-/> */
 export default App;
