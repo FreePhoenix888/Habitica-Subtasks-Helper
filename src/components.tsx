@@ -10,6 +10,7 @@ export {TextArea} from './components/TextArea/TextArea';
 export {Radio} from './components/Radio/Radio';
 export {RadioGroup} from './components/Radio/RadioGroup';
 export {ModalsStorage, modalsStorageApi} from './components/Modal/ModalsStorage';
+export {default as Tooltip} from 'react-tooltip';
 export {Header} from './components/Header/Header';
 export {ToastContainer, toast} from 'react-toastify';
 export {Button} from './components/Button/Button';
