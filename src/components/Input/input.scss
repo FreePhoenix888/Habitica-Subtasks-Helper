@@ -1,0 +1,41 @@
+.habitica-subtasks-helper-input {
+  box-sizing: inherit;
+  padding: 12px 26px;
+  transition: background, color 0.15s ease-in-out;
+  text-align: center;
+  color: var(--text-color-active);
+  border: none;
+  border-radius: 50px;
+  background: var(--background-color-secondary);
+  box-shadow: var(--box-shadow-primary);
+  // .habitica-subtasks-helper-input--auto-size
+  &--auto-size {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  &::placeholder {
+    color: var(--text-color-non-active);
+  }
+
+  // .habitica-subtasks-helper-input:focus
+  &:focus {
+    color: var(--text-color-active);
+    background: var(--background-color-active);
+    box-shadow: var(--box-shadow-active);
+  }
+
+  // Remove arrows for type=number
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+
+  /* Firefox */
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
