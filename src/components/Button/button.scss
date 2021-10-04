@@ -1,0 +1,30 @@
+.habitica-subtasks-helper-button {
+  font-size: 1.3em;
+  font-weight: 900;
+  padding: 12px 26px;
+  cursor: pointer;
+  color: var(--text-color-primary);
+  border: none;
+  border-radius: 50px;
+  background: var(--background-color-thirdly);
+  box-shadow: var(--box-shadow-primary);
+  // .habitica-subtasks-helper-button:focus
+  &:focus {
+    box-shadow: 0 0 7px 5px var(--background-color-active);
+  }
+
+  // .habitica-subtasks-helper-button:active
+  &:active {
+    color: var(--text-color-active);
+    background: var(--background-color-active);
+  }
+  // .habitica-subtasks-helper-button:disabled
+  &:disabled, &[data-disabled = true] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.habitica-subtasks-helper-info-button {
+  padding: 4px 9px;
+}
