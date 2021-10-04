@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import {
     Code,
     Controller,
@@ -15,14 +15,17 @@ import {
     SubmitButton,
     TextArea,
     toast,
+    Tooltip,
     useForm
 } from '../../components';
 import {ReactComponent as StarSVG} from '../../media/images/icons/star.svg';
 import './App.scss';
 import {InputAutoSize} from "../Input/InputAutoSize";
 import {useLocalStorage} from "../../helpers";
+import {Response} from "express";
 
 const App: FC = () => {
+    const [remainedRequestsLimit, setRemainedRequestsLimit] = useState(30);
     const [isPersonalDataUsingAccepted, setIsPersonalDataUsingAccepted] = useLocalStorage('isPersonalDataUsingAccepted', false);
     useEffect(() => {
         if (!isPersonalDataUsingAccepted) {
@@ -64,6 +67,7 @@ const App: FC = () => {
 
     return <div className="app">
         <ModalsStorage/>
+        <Tooltip/>
         <Header/>
         <div className="container">
             <h1>Habitica Subtasks Helper</h1>
@@ -71,8 +75,7 @@ const App: FC = () => {
                 console.log('change')
             }}
                   onSubmit={handleSubmit((data) => {
-
-                      const {userId, apiToken, title: text, type, notes, priority, subtasks, separator} = data;
+                      const {userId, apiToken, title: text, type, notes, priority, subtasks, separator, amount} = data;
                       setUserId(userId);
                       setApiToken(apiToken);
                       const headers = {
@@ -89,19 +92,49 @@ const App: FC = () => {
                           notes,
                           checklist: processedSubtasks
                       });
-                      fetch('https://habitica.com/api/v3/tasks/user', {
-                          method: 'POST',
-                          headers,
-                          body
-                      })
-                          .then(response => response.json())
-                          .then((responseData: { success: boolean }) => {
-                              if (!responseData.success) throw responseData;
-                              toast(<p>Task is successfully added</p>, {type: 'success'})
+                      const promises: Promise<Response>[] = [];
+                      let successfullRequests = 0;
+                      for (let i = 0; i < amount; i++) {
+                          promises.push(new Promise((resolve, reject) => {
+                              void fetch('https://habitica.com/api/v3/tasks/user', {
+                                  method: 'POST',
+                                  headers,
+                                  body
+                              })
+                                  .then(async (response) => {
+                                      const responseBody = await response.json() as { data: { message: string }, success: string };
+                                      if (!response.ok) reject(responseBody);
+                                      const remainingRequestsAmount = Number(response.headers.get('X-RateLimit-Remaining'));
+                                      const remainingRequestsAmountResetDate = new Date(response.headers.get('X-RateLimit-Reset'));
+                                      setRemainedRequestsLimit(remainingRequestsAmount);
+                                      setTimeout(() => {
+                                          setRemainedRequestsLimit(30)
+                                      }, remainingRequestsAmountResetDate.getTime() - new Date().getTime())
+                                      successfullRequests++;
+                                      resolve(responseBody);
+                                  })
+                          }));
+                      }
+                      Promise.all(promises)
+                          .then(() => {
+                              toast(<p>Success</p>, {type: 'success'});
                           })
-                          .catch((error: { message: string }) => {
-                              toast(<div>{error.message}</div>, {type: 'error'});
+                          .catch((error: { error: string; message: string }) => {
+                              console.log(error);
+                              if (error.error === "TooManyRequests") {
+                                  toast(<p
+                                      style={{wordBreak: 'break-word'}}>Requests limit reached. Successfully
+                                      added: {successfullRequests}</p>, {
+                                      type: 'error',
+                                  })
+                              } else {
+                                  toast(<p
+                                      style={{wordBreak: 'break-word'}}>{error.message}</p>, {
+                                      type: 'error',
+                                  })
+                              }
                           })
+
                   })}>
                 <div className="habitica-subtasks-helper-form__section">
                     <Label className="title__label" htmlFor="title">
@@ -233,9 +266,14 @@ const App: FC = () => {
                                 />} rules={{required: 'Type is required'}}/>
                 </div>
                 <div className="habitica-subtasks-helper-form__section habitica-subtasks-helper-form-section">
-                    <Label className="amount__label" htmlFor="amount">
-                        Amount
-                    </Label>
+                    <div className="label-section">
+                        <Label className="amount__label" htmlFor="amount">
+                            Amount
+                        </Label>
+                        <InfoButton data-effect="solid"
+                                    data-place="top"
+                                    data-tip="You can add the same task multiple times. Limit is 30 per minute"/>
+                    </div>
                     <Input
                         autoComplete="off"
                         className="amount__input"
@@ -248,7 +286,10 @@ const App: FC = () => {
                             valueAsNumber: true, validate: (value) => {
                                 if (Number.isNaN(value)) return 'Value must be a number';
                             },
-                            max: {value: 30, message: 'Max value is 30'},
+                            max: {
+                                value: remainedRequestsLimit,
+                                message: `Remained requests limit is ${remainedRequestsLimit}`
+                            },
                             min: {value: 1, message: 'Min value is 1'}
                         })}
                     />
@@ -283,7 +324,11 @@ const App: FC = () => {
                     {errors.apiToken && <InputErrorMessage>{errors.apiToken.message}</InputErrorMessage>}
                 </div>
                 <div className="submit-section">
-                    <SubmitButton className="submit__submit-button">
+                    <SubmitButton className={`submit-button`} data-disabled={remainedRequestsLimit === 0}
+                                  data-effect="solid"
+                                  data-place="top" data-tip="Requests limit reached"
+                                  data-tip-disable={remainedRequestsLimit !== 0}
+                                  data-type="error">
                         Create
                     </SubmitButton>
                 </div>
