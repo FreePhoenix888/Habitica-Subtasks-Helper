@@ -22,14 +22,15 @@
 
 .separator {
   gap: 0.5em;
+  // .separator__input
+  &__input {
+    justify-self: center;
+    font-weight: 800;
+  }
 }
 
 .subtasks__textarea--focus {
   box-shadow: none;
-}
-
-.separator__input {
-  justify-self: center;
 }
 
 .amount {
