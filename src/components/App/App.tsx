@@ -157,10 +157,11 @@ const App: FC = () => {
                               className="subtasks__textarea"
                               id="subtasks"
                               placeholder={`What is the Venus Project?
-								Aims, Proposals.
-								FAQ.
-								Free e-Books.
-								Recommended books.`}
+								Aims
+								Proposals
+								FAQ
+								Free e-Books
+								Recommended books`}
                               rows={10}
                               wrap="soft"
                               {...register('subtasks')}
@@ -177,12 +178,13 @@ const App: FC = () => {
                                 <div>You can use any symbols or <Code>regular expression</Code> to separate your
                                     subtasks.
                                 </div>
-                                <b>Subtasks:</b> <Code>What is the Venus Project?;Aims, Proposals.;FAQ.</Code><br/>
+                                <b>Subtasks:</b> <Code>What is the Venus Project?;Aims;Proposals;FAQ</Code><br/>
                                 <div><b>Separator:</b> <Code>;</Code></div>
                                 <div><b>Result:</b></div>
                                 <ul>
                                     <li>What is the Venus Project?</li>
-                                    <li>Aims, Proposals.</li>
+                                    <li>Aims</li>
+                                    <li>Proposals.</li>
                                     <li>FAQ.</li>
                                 </ul>
                             </div>)
