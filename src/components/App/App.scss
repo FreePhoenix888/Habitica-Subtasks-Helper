@@ -13,12 +13,11 @@
   &__label {
     grid-area: label;
   }
+}
 
-  // .label-section__info-button
-  &__info-button {
-    grid-area: info-button;
-    justify-self: left;
-  }
+.habitica-subtasks-helper-info-button {
+  grid-area: info-button;
+  justify-self: left;
 }
 
 .separator {
@@ -33,9 +32,17 @@
   justify-self: center;
 }
 
-.amount__input {
-  width: 12ch;
-  justify-self: center;
+.amount {
+  // .amount__label
+  &__label {
+    grid-area: label;
+  }
+
+  // . .amount__input
+  &__input {
+    width: 12ch;
+    justify-self: center;
+  }
 }
 
 .submit__submit-button {
