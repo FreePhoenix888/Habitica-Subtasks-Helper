@@ -54,6 +54,10 @@ body {
 .container {
   max-width: 700px;
   margin: 0 auto;
+  padding: 0 15px;
+  @media (min-width: 720px){
+    padding: 0;
+  }
 }
 
 /* .h1 {
