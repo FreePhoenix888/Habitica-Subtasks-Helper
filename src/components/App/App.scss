@@ -49,11 +49,6 @@
 }
 
 .amount {
-  // .amount__label
-  &__label {
-    grid-area: label;
-  }
-
   // . .amount__input
   &__input {
     width: 12ch;

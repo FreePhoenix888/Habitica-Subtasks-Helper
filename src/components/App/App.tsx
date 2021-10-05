@@ -283,7 +283,7 @@ const App: FC = () => {
                 </div>
                 <div className="habitica-subtasks-helper-form__section habitica-subtasks-helper-form-section">
                     <div className="info-button-container">
-                        <Label className="amount__label" htmlFor="amount">
+                        <Label className="amount__label info-button-container__questions-origin" htmlFor="amount">
                             Amount
                         </Label>
                         <InfoButton data-effect="solid"
