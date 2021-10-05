@@ -33,6 +33,16 @@
   box-shadow: none;
 }
 
+.priority {
+  // .priority__radio-group
+  &__radio-group {
+    grid-auto-flow: row;
+    @media (min-width: 720px) {
+      grid-auto-flow: column;
+    }
+  }
+}
+
 .amount {
   // .amount__label
   &__label {
