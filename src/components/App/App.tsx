@@ -70,7 +70,7 @@ const App: FC = () => {
         <Tooltip/>
         <Header/>
         <div className="container">
-            <h1>Habitica Subtasks Helper</h1>
+            <div className="info-button-container"><h1 className="info-button-container__questions-origin">Habitica Subtasks Helper</h1><InfoButton onClick={() => {window.open('https://github.com/FreePhoenix888/Habitica-Subtasks-Helper#readme')}} /></div>
             <Form action="" className="habitica-subtasks-helper-form" onChange={() => {
                 console.log('change')
             }}
@@ -173,11 +173,11 @@ const App: FC = () => {
 
                 </div>
                 <div className="habitica-subtasks-helper-form__section">
-                    <div className="label-section">
-                        <Label className="separator__label label-section__label" htmlFor="separator">
+                    <div className="info-button-container">
+                        <Label className="separator__label info-button-container__questions-origin" htmlFor="separator">
                             Separator
                         </Label>
-                        <InfoButton className="separator__info-button label-section__info-button" onClick={() => {
+                        <InfoButton className="separator__info-button info-button-container__questions-origin" onClick={() => {
                             modalsStorageApi.add(<div>
                                 <div>You can use symbols or <Code>regular expression</Code> to separate your
                                     subtasks.
@@ -282,7 +282,7 @@ const App: FC = () => {
                                 />} rules={{required: 'Type is required'}}/>
                 </div>
                 <div className="habitica-subtasks-helper-form__section habitica-subtasks-helper-form-section">
-                    <div className="label-section">
+                    <div className="info-button-container">
                         <Label className="amount__label" htmlFor="amount">
                             Amount
                         </Label>
@@ -312,11 +312,11 @@ const App: FC = () => {
                     {errors.amount && <InputErrorMessage>{errors.amount.message}</InputErrorMessage>}
                 </div>
                 <div className="habitica-subtasks-helper-form__section">
-                    <div className="label-section">
-                        <Label className="label-section__label" htmlFor="userId">
+                    <div className="info-button-container">
+                        <Label className="info-button-container__questions-origin" htmlFor="userId">
                             User ID
                         </Label>
-                        <InfoButton className="label-section__info-button" onClick={() => {
+                        <InfoButton className="info-button-container__questions-origin" onClick={() => {
                             window.open('https://habitica.com/user/settings/api', '_blank').focus()
                         }}/>
                     </div>
@@ -325,11 +325,11 @@ const App: FC = () => {
                     {errors.userId && <InputErrorMessage>{errors.userId.message}</InputErrorMessage>}
                 </div>
                 <div className="habitica-subtasks-helper-form__section">
-                    <div className="label-section">
-                        <Label className="label-section__label" htmlFor="apiToken">
+                    <div className="info-button-container">
+                        <Label className="info-button-container__questions-origin" htmlFor="apiToken">
                             API Token:
                         </Label>
-                        <InfoButton className="label-section__info-button" onClick={() => {
+                        <InfoButton className="info-button-container__questions-origin" onClick={() => {
                             window.open('https://habitica.com/user/settings/api', '_blank').focus()
                         }}/>
                     </div>

@@ -2,18 +2,19 @@
   padding-bottom: 50px;
 }
 
-.label-section {
+.info-button-container {
   display: grid;
   align-items: center;
   justify-content: center;
-  grid-template-areas: 'empty label info-button';
+  grid-template-areas: 'none questions-origin info-button';
   grid-template-columns: 1fr auto 1fr;
   gap: 5px;
-  // .label-section__label
-  &__label {
-    grid-area: label;
+  &__questions-origin {
+    grid-area: questions-origin;
   }
 }
+
+
 
 .habitica-subtasks-helper-info-button {
   grid-area: info-button;
