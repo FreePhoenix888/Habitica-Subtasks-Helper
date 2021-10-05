@@ -4,6 +4,7 @@
   top: 50%;
   left: 50%;
   display: grid;
+  min-width: 300px;
   padding: 1em;
   transform: translate(-50%, -50%);
   border: solid 1px black;
@@ -41,12 +42,12 @@
   // .habitica-subtasks-helper-modal__close-button
   &__close-button {
     padding: 10px;
+    cursor: pointer;
     color: var(--text-color-active);
     border: none;
     background: var(--background-color-active);
     box-shadow: var(--box-shadow-primary);
     justify-self: center;
-    cursor: pointer;
 
     // .habitica-subtasks-helper-modal__close-button:active
     &:active {
