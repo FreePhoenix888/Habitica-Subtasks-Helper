@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/Habitica-Subtasks-Helper/static/css/main.64bd3199.chunk.css",
-    "main.js": "/Habitica-Subtasks-Helper/static/js/main.f7e008c3.chunk.js",
-    "main.js.map": "/Habitica-Subtasks-Helper/static/js/main.f7e008c3.chunk.js.map",
-    "runtime-main.js": "/Habitica-Subtasks-Helper/static/js/runtime-main.28de4c24.js",
-    "runtime-main.js.map": "/Habitica-Subtasks-Helper/static/js/runtime-main.28de4c24.js.map",
+    "main.js": "/Habitica-Subtasks-Helper/static/js/main.efc27d0d.chunk.js",
+    "main.js.map": "/Habitica-Subtasks-Helper/static/js/main.efc27d0d.chunk.js.map",
+    "runtime-main.js": "/Habitica-Subtasks-Helper/static/js/runtime-main.ad60dd81.js",
+    "runtime-main.js.map": "/Habitica-Subtasks-Helper/static/js/runtime-main.ad60dd81.js.map",
     "static/css/2.ce1c7ea2.chunk.css": "/Habitica-Subtasks-Helper/static/css/2.ce1c7ea2.chunk.css",
-    "static/js/2.7f2484c7.chunk.js": "/Habitica-Subtasks-Helper/static/js/2.7f2484c7.chunk.js",
-    "static/js/2.7f2484c7.chunk.js.map": "/Habitica-Subtasks-Helper/static/js/2.7f2484c7.chunk.js.map",
-    "static/js/3.0cd15631.chunk.js": "/Habitica-Subtasks-Helper/static/js/3.0cd15631.chunk.js",
-    "static/js/3.0cd15631.chunk.js.map": "/Habitica-Subtasks-Helper/static/js/3.0cd15631.chunk.js.map",
+    "static/js/2.b0340d03.chunk.js": "/Habitica-Subtasks-Helper/static/js/2.b0340d03.chunk.js",
+    "static/js/2.b0340d03.chunk.js.map": "/Habitica-Subtasks-Helper/static/js/2.b0340d03.chunk.js.map",
+    "static/js/3.64f9f0b1.chunk.js": "/Habitica-Subtasks-Helper/static/js/3.64f9f0b1.chunk.js",
+    "static/js/3.64f9f0b1.chunk.js.map": "/Habitica-Subtasks-Helper/static/js/3.64f9f0b1.chunk.js.map",
     "index.html": "/Habitica-Subtasks-Helper/index.html",
     "static/css/2.ce1c7ea2.chunk.css.map": "/Habitica-Subtasks-Helper/static/css/2.ce1c7ea2.chunk.css.map",
     "static/css/main.64bd3199.chunk.css.map": "/Habitica-Subtasks-Helper/static/css/main.64bd3199.chunk.css.map",
-    "static/js/2.7f2484c7.chunk.js.LICENSE.txt": "/Habitica-Subtasks-Helper/static/js/2.7f2484c7.chunk.js.LICENSE.txt",
+    "static/js/2.b0340d03.chunk.js.LICENSE.txt": "/Habitica-Subtasks-Helper/static/js/2.b0340d03.chunk.js.LICENSE.txt",
     "static/media/github.b68d2508.svg": "/Habitica-Subtasks-Helper/static/media/github.b68d2508.svg",
     "static/media/star.fe730a00.svg": "/Habitica-Subtasks-Helper/static/media/star.fe730a00.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.28de4c24.js",
+    "static/js/runtime-main.ad60dd81.js",
     "static/css/2.ce1c7ea2.chunk.css",
-    "static/js/2.7f2484c7.chunk.js",
+    "static/js/2.b0340d03.chunk.js",
     "static/css/main.64bd3199.chunk.css",
-    "static/js/main.f7e008c3.chunk.js"
+    "static/js/main.efc27d0d.chunk.js"
   ]
 }
