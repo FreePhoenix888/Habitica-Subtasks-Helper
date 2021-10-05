@@ -44,7 +44,7 @@ const App: FC = () => {
         apiToken: string;
         notes: string;
         priority: number;
-        separator: string;
+        separator: RegExp;
         subtasks: string;
         title: string;
         type: string;
@@ -60,8 +60,8 @@ const App: FC = () => {
         }
     });
 
-    const getSubtasks = useCallback((subtasks: string, separator: string) => {
-        if (!separator) return null;
+    const getSubtasks = useCallback((subtasks: string, separator: RegExp) => {
+        if (!separator) return [subtasks]
         return subtasks.split(separator).map((subtask) => subtask.trim());
     }, [])
 
@@ -85,12 +85,16 @@ const App: FC = () => {
                           'x-api-key': apiToken,
                       };
                       const processedSubtasks = getSubtasks(subtasks, separator);
+                      const checklist = [];
+                      for (const processedSubtask of processedSubtasks) {
+                          checklist.push({text: processedSubtask, completed: false});
+                      }
                       const body = JSON.stringify({
                           text,
                           type,
                           priority,
                           notes,
-                          checklist: processedSubtasks
+                          checklist
                       });
                       const promises: Promise<Response>[] = [];
                       let successfullRequests = 0;
@@ -175,7 +179,7 @@ const App: FC = () => {
                         </Label>
                         <InfoButton className="separator__info-button label-section__info-button" onClick={() => {
                             modalsStorageApi.add(<div>
-                                <div>You can use any symbols or <Code>regular expression</Code> to separate your
+                                <div>You can use symbols or <Code>regular expression</Code> to separate your
                                     subtasks.
                                 </div>
                                 <b>Subtasks:</b> <Code>What is the Venus Project?;Aims;Proposals;FAQ</Code><br/>
@@ -196,8 +200,18 @@ const App: FC = () => {
                                    id="separator"
                                    name="separator"
                                    placeholder="\n"
-                                   {...register('separator')}
+                                   {...register('separator', {
+                                       setValueAs: ((value: string) => {
+                                               try {
+                                                   return new RegExp(value)
+                                               } catch (error) {
+                                                   return null;
+                                               }
+                                       }),
+                                       validate: ((value) => value !== null)
+                                   })}
                     />
+                    {errors.separator && <InputErrorMessage>Invalid regular expression</InputErrorMessage>}
                 </div>
                 <div className="habitica-subtasks-helper-form__section">
                     <Label className="notes__label" htmlFor="notes">
