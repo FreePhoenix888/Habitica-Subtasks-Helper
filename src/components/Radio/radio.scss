@@ -1,6 +1,7 @@
 .habitica-subtasks-helper-radio {
   display: grid;
   align-items: center;
+  width: fit-content;
   padding: 8px;
   cursor: pointer;
   transition: background, color 0.15s ease-in-out;
