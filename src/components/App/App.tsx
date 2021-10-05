@@ -6,6 +6,7 @@ import {
     Header,
     InfoButton,
     Input,
+    InputAutoSize,
     InputErrorMessage,
     Label,
     ModalsStorage,
@@ -20,7 +21,6 @@ import {
 } from '../../components';
 import {ReactComponent as StarSVG} from '../../media/images/icons/star.svg';
 import './App.scss';
-import {InputAutoSize} from "../Input/InputAutoSize";
 import {useLocalStorage} from "../../helpers";
 import {Response} from "express";
 

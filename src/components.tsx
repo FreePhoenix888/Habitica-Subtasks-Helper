@@ -6,6 +6,7 @@ export {Form} from './components/Form/Form';
 export {InputErrorMessage} from './components/Form/InputErrorMessage';
 export {Form as FinalForm, Field} from 'react-final-form';
 export {Input} from './components/Input/Input';
+export {InputAutoSize} from './components/Input/InputAutoSize';
 export {TextArea} from './components/TextArea/TextArea';
 export {Radio} from './components/Radio/Radio';
 export {RadioGroup} from './components/Radio/RadioGroup';
