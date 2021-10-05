@@ -4,6 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import 'normalize.css';
 import './styles/index.scss';
 import App from './components/App/App';
+// fjsldakjflksjafl;j;lajflas
 
 ReactDOM.render(
     <React.StrictMode>
