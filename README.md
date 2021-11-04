@@ -5,8 +5,8 @@
 ## Why do I need this app? ##
 Let us imagine we want to save these pages as subtasks:  
 ![Next js bacics subtasks](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/next_js_basics_subtasks.png)  
-If we try to copy and paste it as `Habitica` subtasks, they will not be separates and you will get one subtask:  
-![Pasted subtasks in habitica](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/habitica_pasted_subtasks.png)  
+If we try to copy and paste it as `Habitica` subtasks, they will not be separated and you will get one subtask:  
+![Pasted subtasks in Habitica](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/habitica_pasted_subtasks.png)  
 We are very lazy to sepapate them themselves, let us use `Habitica Subtasks Helper` to make it easier:  
 ![Pasted subtasks in Habitica Subtasks Helper](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/example_with_next_js_subtasks_in_habitica_subtasks_helper.png)  
 And we will get such result:  
