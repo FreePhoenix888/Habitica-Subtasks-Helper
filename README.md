@@ -2,15 +2,17 @@
 
 ---
 
-
 ## Why do I need this app? ##
-* Create task with subtasks from plain text. <br/>
-  Let us imagine we have copied message with tasks from friend - `Clean PC, Update thermal grease, Add RAM` and the rest of the list. We do not want to separate this message ourselves, app provides the possibility to say<br/>*Separate my tasks! The separator is* `,`  
-  ![Subtasks and separator](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/subtasks_and_separator.png)
-* Create as many similar tasks as you want. Let us imagine we are going to praise themselves for every 5 pages of book we have read. We can create the task `Read 5 pages` multiple times  
-  ![Amount](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/amount.png)
+Let us imagine we want to save these pages as subtasks:  
+![Next js bacics subtasks](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/next_js_basics_subtasks.png)  
+If we try to copy and paste it as `Habitica` subtasks, they will not be separates and you will get one subtask:  
+![Pasted subtasks in habitica](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/habitica_pasted_subtasks.png)  
+We are very lazy to sepapate them themselves, let us use `Habitica Subtasks Helper` to make it easier:  
+![Pasted subtasks in Habitica Subtasks Helper](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/example_with_next_js_subtasks_in_habitica_subtasks_helper.png)  
+And we will get such result:  
+![Result](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/result.png)  
 
-
-## Who need this? ##
-
-People that copy their tasks from anywhere and do not want to separate them themselves.
+**Another reason is...**  
+Let us imagine we are reading book and we want to [positively reinforce](https://en.wikipedia.org/wiki/Reinforcement) ourselves for every 5 pages we have read.  
+It is very annoying to create a lot of tasks manually. We can create a lot of instances of task like `Read 5 pages`:  
+![Amount input](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/amount.png)
