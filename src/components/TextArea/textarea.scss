@@ -21,4 +21,9 @@
   &::placeholder {
     color: var(--text-color-non-active);
   }
+
+  // .habitica-subtasks-helper-textarea::-webkit-scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
