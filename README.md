@@ -12,6 +12,8 @@ We are very lazy to sepapate them themselves, let us use `Habitica Subtasks Help
 And we will get such result:  
 ![Result](https://raw.githubusercontent.com/FreePhoenix888/Habitica-Subtasks-Helper/main/readme_assets/result.png)  
 
+Note: Separator is `\n` because it is a new line terminator. For subtasks `Eat, sleep` you should use `,` separator
+
 **Another reason is...**  
 Let us imagine we are reading book and we want to [positively reinforce](https://en.wikipedia.org/wiki/Reinforcement) ourselves for every 5 pages we have read.  
 It is very annoying to create a lot of tasks manually. We can create a lot of instances of task like `Read 5 pages`:  
